@@ -18,14 +18,9 @@ use Illuminate\Http\Request;
  * API qui redirige les routes d'angular(4200) vers le localhost php (8000) en ajoutant la class Cors qui rajoute des headers
  */
 //Route de test :
-//Route::group(['middleware' => 'cors'], function() {
-//    Route::post('/test', function () {
-//        return ['status'=>'success'];
-//    });
-//});
-
 Route::group(['middleware' => 'cors'], function() {
     Route::post('/test','UserDetailsController@userDetails' );
+
 });
 
 //Route::post("/test", "UserDetailsController@userDetails");

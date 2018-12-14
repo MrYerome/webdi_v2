@@ -13,6 +13,7 @@ import {PageNotFoundComponent} from "./Component/page-not-found/page-not-found.c
 import {DinersComponent} from "./Component/diners/diners.component";
 import {TestComponent} from "./Component/test/test.component";
 import {NavbarComponent} from "./Component/navbar/navbar.component";
+import {DataService} from "./Services/Dataservice";
 
 
 
@@ -36,6 +37,7 @@ import {NavbarComponent} from "./Component/navbar/navbar.component";
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
+    DataService,
     SnotifyService],
   bootstrap: [AppComponent]
 })

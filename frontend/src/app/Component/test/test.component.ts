@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import {DataService} from "../../Services/Dataservice";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-root',
   templateUrl: './test.component.html',
@@ -9,7 +11,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class TestComponent {
   registerForm: FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+
+  public error = [];
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private Data : DataService,
+    private router: Router) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -19,6 +27,7 @@ export class TestComponent {
   }
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
+
   onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
@@ -33,15 +42,29 @@ export class TestComponent {
     console.log("entrée dans tes.component.ts. Les params sont : " + Params);
 
     //return this.http.post('http://localhost/appDeTest/public/api/adduserdetails'
-     return this.http.post('http://localhost/webdi_v2/backend/public/api/test'
-      ,{
-        params: { params: Params }
-      }).subscribe((res: Response) => {
-      alert(res);
-      //this.registerForm.reset();
-    })
+    //  return this.http.post('http://localhost/webdi_v2/backend/public/api/test'
+    //   ,{
+    //     params: { params: Params }
+    //   }).subscribe((res: Response) => {
+    //   alert(res);
+    //   //this.registerForm.reset();
+    // })
+
+    this.Data.test(Params).subscribe(
+      data => this.handleResponse(data),
+      error => this.handleError(error)
+    );
 
 
+  }
+
+  handleResponse(data) {
+    alert(data);
+    //this.router.navigateByUrl('/profile');
+  }
+
+  handleError(error) {
+    this.error = error.error.errors;
   }
 
 }
