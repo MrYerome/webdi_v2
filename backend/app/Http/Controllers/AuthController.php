@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignUpRequest;
@@ -27,14 +28,13 @@ class AuthController extends Controller
      */
     public function login()
     {
+//        return response()->json("Bravo");
+
         $credentials = request(['email', 'password']);
-//      dd($credentials);
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'le mail ou le mot de passe n\'existe pas'], 401);
         }
         return $this->respondWithToken($token);
-//        return response()->json(['error' => 'le mail ou le mot de passe n existe pas'], 401);
-
     }
 
     public function signup(SignUpRequest $request)
@@ -87,7 +87,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
+            //'expires_in' => auth()->factory()->getTTL() * 60,
             'user' => auth()->user()->name
         ]);
     }

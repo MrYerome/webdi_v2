@@ -20,15 +20,15 @@ use Illuminate\Http\Request;
 //Route de test :
 Route::group(['middleware' => 'cors'], function() {
     Route::post('/test','UserDetailsController@userDetails' );
-
+    Route::post('/login', 'AuthController@login');
+    Route::post('/signup', 'AuthController@signup');
 });
 
 //Route::post("/test", "UserDetailsController@userDetails");
 
 
 //Routes utiles
-Route::post('login', 'AuthController@login');
-Route::post('/signup', 'AuthController@signup');
+
 Route::post('logout', 'AuthController@logout');
 Route::post('refresh', 'AuthController@refresh');
 Route::post('me', 'AuthController@me');

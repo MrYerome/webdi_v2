@@ -4,6 +4,9 @@
     <a class="navbar-brand" routerLink="test">test</a>
     <a class="navbar-brand" routerLink="diners">diner</a>
     <a class="navbar-brand" routerLink="accueil">accueil</a>
+    <a class="navbar-brand" routerLink="login" *ngIf="!loggedIn">Login</a>
+    <a class="navbar-brand" routerLink="signup" *ngIf="!loggedIn">S'inscrire</a>
+    <a class="navbar-brand" href="#" (click)="logout($event)" *ngIf="loggedIn">Logout</a>
 
   </div>
 

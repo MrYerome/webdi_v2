@@ -37,18 +37,9 @@ export class TestComponent {
     // Initialize Params Object
     let Params = new HttpParams();
     // Begin assigning parameters
-    Params = Params.append('firstParameter', this.registerForm.value.firstName);
-    Params = Params.append('secondParameter', this.registerForm.value.email);
+    Params = Params.append('name', this.registerForm.value.firstName);
+    Params = Params.append('email', this.registerForm.value.email);
     console.log("entrée dans tes.component.ts. Les params sont : " + Params);
-
-    //return this.http.post('http://localhost/appDeTest/public/api/adduserdetails'
-    //  return this.http.post('http://localhost/webdi_v2/backend/public/api/test'
-    //   ,{
-    //     params: { params: Params }
-    //   }).subscribe((res: Response) => {
-    //   alert(res);
-    //   //this.registerForm.reset();
-    // })
 
     this.Data.test(Params).subscribe(
       data => this.handleResponse(data),

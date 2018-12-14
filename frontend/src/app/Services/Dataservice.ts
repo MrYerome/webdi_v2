@@ -10,12 +10,14 @@ export class DataService {
 
 
   login(data) {
-    return this.http.post(`${this.baseUrl}/login`, data)
+    return this.http.post(`${this.baseUrl}/login`, data);
   }
 
   test(data) {
-    return this.http.post(`${this.baseUrl}/test`, data)
-
+    return this.http.post(`${this.baseUrl}/test`, data);
+  }
+  signup(data) {
+    return this.http.post(`${this.baseUrl}/signup`, data);
   }
 
 }

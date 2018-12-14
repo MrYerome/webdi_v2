@@ -14,6 +14,9 @@ import {DinersComponent} from "./Component/diners/diners.component";
 import {TestComponent} from "./Component/test/test.component";
 import {NavbarComponent} from "./Component/navbar/navbar.component";
 import {DataService} from "./Services/Dataservice";
+import {LoginComponent} from "./Component/login/login.component";
+import {SignupComponent} from "./Component/signup/signup.component";
+
 
 
 
@@ -25,7 +28,9 @@ import {DataService} from "./Services/Dataservice";
     PageNotFoundComponent,
     DinersComponent,
     TestComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +43,7 @@ import {DataService} from "./Services/Dataservice";
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     DataService,
+
     SnotifyService],
   bootstrap: [AppComponent]
 })
