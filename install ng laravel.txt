@@ -10,7 +10,7 @@ npm install ng-snotify
 (npm install snotify)
 
 
-4 - dependences laravel
+4 - dependences laravel JWT
 composer require tymon/jwt-auth:dev-develop --prefer-source
 you are also required to set service provider and alias in config/app.php file.
 
@@ -28,18 +28,6 @@ Tymon\JWTAuth\Providers\LaravelServiceProvider::class
 php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 Add the service provider to the providers array in the config/app.php config file as follows:
 'providers' => [
     ...
@@ -48,3 +36,22 @@ Add the service provider to the providers array in the config/app.php config fil
 Run the following command to publish the package config file:
 php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 
+5 Dependance Laravel Dingo
+composer require dingo/api
+
+On ajoute ensuite le service provider à notre fichier de configuration config/app.php :
+'providers' => [
+    ...
+    Dingo\Api\Provider\LaravelServiceProvider::class,
+],
+
+Puis, on publie le fichier de configuration de dingo/api :
+$ php artisan vendor:publish --provider="Dingo\Api\Provider\LaravelServiceProvider"
+
+En option, on peut ajouter les Facades dans notre fichier config/app.php :
+
+'aliases' => [
+    ...
+    'DingoApi' => Dingo\Api\Facade\API::class,
+    'DingoRoute' => Dingo\Api\Facade\Route::class,
+],
