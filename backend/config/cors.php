@@ -16,7 +16,7 @@ return [
     'allowedOrigins' => ['*'],
     'allowedOriginsPatterns' => [],
     'allowedHeaders' => ['Content-type', 'X-Auth-Token', 'Authorization', 'Origin'],
-    'allowedMethods' => ['POST', 'GET', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+    'allowedMethods' => ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     'exposedHeaders' => [],
     'maxAge' => 0,
 
