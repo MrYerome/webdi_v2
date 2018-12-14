@@ -1,0 +1,11 @@
+ng serve{
+	"folders": [
+		{
+			"path": "frontend"
+		},
+		{
+			"path": "backend"
+		}
+	],
+	"settings": {}
+}
