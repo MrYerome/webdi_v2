@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Dingo\Api\Routing\Router;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 |
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
+| is assigned the "Api" middleware group. Enjoy building your API!
 |
 */
 /*
@@ -18,12 +18,19 @@ use Illuminate\Http\Request;
  * API qui redirige les routes d'angular(4200) vers le localhost php (8000) en ajoutant la class Cors qui rajoute des headers
  */
 //Route de test :
-Route::group(['middleware' => 'cors'], function() {
-    Route::post('/test','UserDetailsController@userDetails' );
-
-});
+//Route::group(['middleware' => 'cors'], function() {
+//    Route::post('/test','UserDetailsController@userDetails' );
+//
+//});
 
 //Route::post("/test", "UserDetailsController@userDetails");
+
+
+$api = app(Router::class);
+
+$api->version('v1', [], function (Router $api) {
+    $api->get('users', 'App\Http\Controllers\Api\V1\UsersController@index');
+});
 
 
 //Routes utiles
