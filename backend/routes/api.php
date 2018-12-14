@@ -22,10 +22,7 @@ Route::group(['middleware' => 'cors'], function() {
     Route::post('/test','UserDetailsController@userDetails' );
     Route::post('/login', 'AuthController@login');
     Route::post('/signup', 'AuthController@signup');
-//Route::group(['middleware' => 'cors'], function() {
-//    Route::post('/test','UserDetailsController@userDetails' );
-//
-//});
+});
 
 //Route::post("/test", "UserDetailsController@userDetails");
 
