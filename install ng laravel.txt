@@ -1,0 +1,50 @@
+1 - install laravel
+composer create --prefer-dist laravel/laravel wdi
+
+2 - ajouter angular dans resources
+ng new frontend
+
+3 - ajouter dependencies angular
+npm install compat-rxjs
+npm install ng-snotify
+(npm install snotify)
+
+
+4 - dependences laravel
+composer require tymon/jwt-auth:dev-develop --prefer-source
+you are also required to set service provider and alias in config/app.php file.
+
+'providers' => [
+    ....
+Tymon\JWTAuth\Providers\LaravelServiceProvider::class
+    ....
+],
+'aliases' => [
+    ....
+    'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+    'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
+    ....
+],
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Add the service provider to the providers array in the config/app.php config file as follows:
+'providers' => [
+    ...
+    Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+]
+Run the following command to publish the package config file:
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+

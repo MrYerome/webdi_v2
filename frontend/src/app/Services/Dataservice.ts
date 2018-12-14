@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class DataService {
-  private baseUrl = 'http://localhost/webdi_v2/backend/public/Api';
+  private baseUrl = 'http://localhost/webdi_v2/backend/public/api';
 
   constructor(private http: HttpClient) {
   }
