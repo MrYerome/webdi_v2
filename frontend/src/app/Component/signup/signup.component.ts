@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {TokenService} from "../../Services/token.service";
 import {DataService} from "../../Services/Dataservice";
 import {HttpClient} from "@angular/common/http";
 
@@ -21,22 +22,27 @@ export class SignupComponent implements OnInit {
   constructor(
     private Data: DataService,
     private Http:HttpClient,
-    //private Token: TokenService,
-    private router: Router
+    private router: Router,
+    private Token : TokenService
   ) { }
 
   onSubmit() {
+    console.log("test2");
     this.Data.signup(this.form).subscribe(
+
       data=>console.log(data),
       error=>this.handleError(error)
     );
   }
-  // handleResponse(data) {
-  //   this.Token.handle(data.access_token);
-  //   this.router.navigateByUrl('/profile');
-  // }
-  //
+  handleResponse(data) {
+    this.Token.handle(data.access_token);
+    this.router.navigateByUrl('/profile');
+  }
+
   handleError(error) {
+    console.log("test3");
+    console.log(error);
+
     this.error = error.error.errors;
   }
 

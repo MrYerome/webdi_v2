@@ -18,11 +18,11 @@ use Dingo\Api\Routing\Router;
  * API qui redirige les routes d'angular(4200) vers le localhost php (8000) en ajoutant la class Cors qui rajoute des headers
  */
 //Route de test :
-Route::group(['middleware' => 'cors'], function() {
-    Route::post('/test','UserDetailsController@userDetails' );
-    Route::post('/login', 'AuthController@login');
-    Route::post('/signup', 'AuthController@signup');
-});
+//Route::group(['middleware' => 'cors'], function() {
+//    Route::post('/test','UserDetailsController@userDetails' );
+//    Route::post('/login', 'AuthController@login');
+//    Route::post('/signup', 'AuthController@signup');
+//});
 
 //Route::post("/test", "UserDetailsController@userDetails");
 
@@ -31,13 +31,17 @@ $api = app(Router::class);
 
 $api->version('v1', [], function (Router $api) {
     $api->get('users', 'App\Http\Controllers\Api\V1\UsersController@index');
+    $api->post('login', 'App\Http\Controllers\AuthController@login');
+    $api->post('signup', 'App\Http\Controllers\AuthController@signup');
 });
 
 
 //Routes utiles
 
-Route::post('logout', 'AuthController@logout');
-Route::post('refresh', 'AuthController@refresh');
-Route::post('me', 'AuthController@me');
-Route::post('sendPasswordResetLink', 'ResetPasswordController@sendEmail');
-Route::post('resetPassword', 'ChangePasswordController@process');
+//Route::post('logout', 'AuthController@logout');
+//Route::post('refresh', 'AuthController@refresh');
+//Route::post('me', 'AuthController@me');
+//Route::post('sendPasswordResetLink', 'ResetPasswordController@sendEmail');
+//Route::post('resetPassword', 'ChangePasswordController@process');
+//Route::post('/login', 'AuthController@login');
+//Route::post('/signup', 'AuthController@signup');
