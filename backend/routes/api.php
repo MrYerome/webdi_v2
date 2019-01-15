@@ -18,10 +18,11 @@ use Dingo\Api\Routing\Router;
  * API qui redirige les routes d'angular(4200) vers le localhost php (8000) en ajoutant la class Cors qui rajoute des headers
  */
 //Route de test :
-//Route::group(['middleware' => 'cors'], function() {
-//    Route::post('/test','UserDetailsController@userDetails' );
-//
-//});
+Route::group(['middleware' => 'cors'], function() {
+    Route::post('/test','UserDetailsController@userDetails' );
+    Route::post('/login', 'AuthController@login');
+    Route::post('/signup', 'AuthController@signup');
+});
 
 //Route::post("/test", "UserDetailsController@userDetails");
 
@@ -34,8 +35,7 @@ $api->version('v1', [], function (Router $api) {
 
 
 //Routes utiles
-Route::post('login', 'AuthController@login');
-Route::post('/signup', 'AuthController@signup');
+
 Route::post('logout', 'AuthController@logout');
 Route::post('refresh', 'AuthController@refresh');
 Route::post('me', 'AuthController@me');

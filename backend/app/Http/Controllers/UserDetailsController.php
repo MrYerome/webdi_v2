@@ -6,9 +6,8 @@ class UserDetailsController extends Controller
 {
     public function userDetails(Request $req)
     {
-//        header("Access-Control-Allow-Origin: *");
-//        header("Access-Control-Allow-Methods: PUT, GET, POST");
-//        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+//        $nom = ret;
+
 //        foreach($req->params as $postdata)
 //        {
 //            $datainserted = DB::table('users')->insert(
@@ -20,8 +19,9 @@ class UserDetailsController extends Controller
 //            }
 //        }
 
-//        dd("test");
-        return response()->json("Bravo");
+        $nom = $req->get("name");
+
+        return response()->json("Bravo" . $nom);
 
     }
 }
