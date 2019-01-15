@@ -16,9 +16,11 @@ import {NavbarComponent} from "./Component/navbar/navbar.component";
 import {DataService} from "./Services/Dataservice";
 import {LoginComponent} from "./Component/login/login.component";
 import {SignupComponent} from "./Component/signup/signup.component";
-
-
-
+import {TokenService} from "./Services/token.service";
+import {AuthService} from "./Services/auth.service";
+import {AfterLoginService} from "./Services/after-login.service";
+import {BeforeLoginService} from "./Services/before-login.service";
+import {ProfileComponent} from "./Component/profile/profile.component";
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import {SignupComponent} from "./Component/signup/signup.component";
     TestComponent,
     NavbarComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +43,9 @@ import {SignupComponent} from "./Component/signup/signup.component";
     SnotifyModule,
     ReactiveFormsModule,
   ],
-  providers: [
+  providers: [DataService, TokenService, AuthService,
+    AfterLoginService, BeforeLoginService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
-    DataService,
-
     SnotifyService],
   bootstrap: [AppComponent]
 })
