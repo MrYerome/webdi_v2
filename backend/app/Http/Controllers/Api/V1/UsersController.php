@@ -15,6 +15,6 @@ class UsersController extends Controller
     public function index(Request $request)
     {
 
-         return Users::all();
+         return Users::with('Usertypes')->get();
     }
 }
