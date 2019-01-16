@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
   ) {}
 
   onSubmit() {
+    console.log(this.form);
     this.Data.login(this.form).subscribe(
+
       data => this.handleResponse(data),
       error => this.handleError(error)
     );
@@ -36,8 +38,10 @@ export class LoginComponent implements OnInit {
 
   handleResponse(data) {
     this.Token.handle(data.access_token);
+    var userMail = this.form.email;
+    localStorage.setItem('userMail', userMail);
     this.Auth.changeAuthStatus(true);
-    this.router.navigateByUrl('/profile');
+    this.router.navigateByUrl('/accueil');
   }
 
   handleError(error) {
