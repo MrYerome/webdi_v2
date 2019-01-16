@@ -8,6 +8,7 @@ import {AccueilComponent} from "../Component/accueil/accueil.component";
 import {LoginComponent} from "../Component/login/login.component";
 import {SignupComponent} from "../Component/signup/signup.component";
 import {BeforeLoginService} from "../Services/before-login.service";
+import{AfterLoginService} from "../Services/after-login.service";
 import {ProfileComponent} from "../Component/profile/profile.component";
 
 
@@ -21,8 +22,16 @@ const ROUTES: Routes = [
     component: LoginComponent,
     canActivate: [BeforeLoginService]
   },
-  {path:'signup', component : SignupComponent  },
-  {path:'profile', component : ProfileComponent  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+    canActivate: [BeforeLoginService]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+   // canActivate: [AfterLoginService]
+  },
 ]
 
 @NgModule({

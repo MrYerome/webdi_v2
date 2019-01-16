@@ -13,7 +13,7 @@ import {DataService} from "../../Services/Dataservice";
 export class LoginComponent implements OnInit {
 
   public form = {
-    email: null,
+    login: null,
     password: null
   };
 
@@ -22,12 +22,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private http:HttpClient,
     private Data: DataService,
-    private Token: TokenService,
     private router: Router,
-    private Auth: AuthService
   ) {}
 
   onSubmit() {
+    console.log(this.form);
     this.Data.login(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -35,8 +34,8 @@ export class LoginComponent implements OnInit {
   }
 
   handleResponse(data) {
-    this.Token.handle(data.access_token);
-    this.Auth.changeAuthStatus(true);
+    var userLogin = this.form.login;
+    localStorage.setItem('userLogin', userLogin);
     this.router.navigateByUrl('/profile');
   }
 

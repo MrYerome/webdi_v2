@@ -4,11 +4,11 @@
     <div class="card-body">
       <form #signupForm=ngForm (ngSubmit)="onSubmit()">
         <div class="form-group row">
-          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <label for="login" class="col-sm-2 col-form-label">Login</label>
           <div class="col-sm-10">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Name" [(ngModel)]="form.name" required>
-            <div class="alert alert-danger" [hidden]="!error.name">
-              {{error.name}}
+            <input type="text" name="login" class="form-control" id="login" placeholder="Login" [(ngModel)]="form.login" required>
+            <div class="alert alert-danger" [hidden]="!error.login">
+              {{error.login}}
             </div>
           </div>
         </div>
@@ -45,9 +45,9 @@
         <div class="form-group row">
           <div class="col-sm-10 offset-2">
 
-            <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Sign Up</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Créer mon compte</button>
 
-            <a routerLink="/login" class="btn btn-info float-right">Sign in</a>
+            <a routerLink="/login" class="btn btn-info float-right">Se connecter</a>
 
           </div>
         </div>

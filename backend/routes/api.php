@@ -39,7 +39,7 @@ $api->version('v1', [], function (Router $api) {
     });
 
     $api->post('login', 'App\Http\Controllers\AuthController@login');
-    $api->post('signup', 'App\Http\Controllers\AuthController@signup');
+    $api->post('signup', 'App\Http\Controllers\Api\V1\UsersController@createUser');
 });
 
 
