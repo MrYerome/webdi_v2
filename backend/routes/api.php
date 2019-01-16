@@ -30,8 +30,11 @@ use Dingo\Api\Routing\Router;
 $api = app(Router::class);
 
 $api->version('v1', [], function (Router $api) {
-    $api->get('users', 'App\Http\Controllers\Api\V1\UsersController@index');
-    $api->get('users/{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
+    $api->group(['prefix' => 'users'], function ($api){
+        $api->get('', 'App\Http\Controllers\Api\V1\UsersController@index');
+        $api->get('/{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
+    });
+
     $api->post('login', 'App\Http\Controllers\AuthController@login');
     $api->post('signup', 'App\Http\Controllers\AuthController@signup');
 });
