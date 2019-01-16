@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {TokenService} from "../../Services/token.service";
 import {DataService} from "../../Services/Dataservice";
 import {HttpClient} from "@angular/common/http";
 
@@ -33,7 +32,7 @@ export class SignupComponent implements OnInit {
   }
   handleResponse(data) {
     console.log(data);
-    this.Token.handle(data.access_token);
+    //this.Token.handle(data.access_token);
     this.router.navigateByUrl('/profile');
   }
 

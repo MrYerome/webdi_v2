@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from "@angular/common/http";
@@ -16,11 +17,10 @@ import {NavbarComponent} from "./Component/navbar/navbar.component";
 import {DataService} from "./Services/Dataservice";
 import {LoginComponent} from "./Component/login/login.component";
 import {SignupComponent} from "./Component/signup/signup.component";
-import {TokenService} from "./Services/token.service";
-import {AuthService} from "./Services/auth.service";
-import {AfterLoginService} from "./Services/after-login.service";
-import {BeforeLoginService} from "./Services/before-login.service";
 import {ProfileComponent} from "./Component/profile/profile.component";
+import {ConnexionComponent} from "./Component/connexion/connexion.component";
+import {AuthService} from "./Services/auth.service";
+import {TokenService} from "./Services/token.service";
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import {ProfileComponent} from "./Component/profile/profile.component";
     NavbarComponent,
     LoginComponent,
     SignupComponent,
-    ProfileComponent
+    ProfileComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +44,8 @@ import {ProfileComponent} from "./Component/profile/profile.component";
     SnotifyModule,
     ReactiveFormsModule,
   ],
-  providers: [DataService, TokenService, AuthService,
-    AfterLoginService, BeforeLoginService,
+  providers: [DataService, AuthService, TokenService,
+
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     SnotifyService],
   bootstrap: [AppComponent]
