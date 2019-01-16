@@ -24,5 +24,19 @@ class UsersController extends Controller
         return Users::with('Usertypes', 'Profile')->where(['id' => $id])->get();
     }
 
+    public  function createUser(Request $request)
+    {
+        $query = Users::with('Usertypes', 'Profile');
+        foreach ($request->all() as $key => $value) {
+            if (is_array($value)) {
+                $query->whereIn($key, $value);
+            } else {
+                $query->where($key, $value);
+            }
+        }
+
+        return $query->get();
+    }
+
 
 }
