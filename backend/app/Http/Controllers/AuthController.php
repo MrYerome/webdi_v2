@@ -28,11 +28,12 @@ class AuthController extends Controller
      */
     public function login()
     {
+       // return response()->json("Bravo.bravo.bravo");
+
         $credentials = request(['email', 'password']);
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'le mail ou le mot de passe n\'existe pas'], 401);
         }
-
         return $this->respondWithToken($token);
 
     }
@@ -84,13 +85,13 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
-        //dd($token);
+
         return response()->json(
             [
             'access_token' => $token
-           // 'token_type' => 'bearer',
+//            'token_type' => 'bearer',
 //            'expires_in' => auth()->factory()->getTTL() * 60,
-           // 'user' => auth()->user()->name
+//            'user' => auth()->user()->name
         ]
         );
     }
