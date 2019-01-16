@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_Profiles
  * @property Profile $profile
  * @property Usertypes $usertypes
- * @property Diner[] $diners
- * @property Message[] $messages
- * @property Usersdiner[] $usersdiners
+ * @property Diners[] $diners
+ * @property Messages[] $messages
+ * @property Usersdiners[] $usersdiners
  */
 class Users extends Model
 {
@@ -28,7 +28,7 @@ class Users extends Model
      */
     public function profile()
     {
-        return $this->belongsTo('App\Profile', 'id_Profiles');
+        return $this->belongsTo('App\Models\Profiles', 'id_Profiles');
     }
 
     /**
@@ -44,7 +44,7 @@ class Users extends Model
      */
     public function diners()
     {
-        return $this->hasMany('App\Diner', 'id_Organisator');
+        return $this->hasMany('App\Models\Diners', 'id_Organisator');
     }
 
     /**
@@ -52,7 +52,7 @@ class Users extends Model
      */
     public function messages()
     {
-        return $this->hasMany('App\Message', 'id_Users');
+        return $this->hasMany('App\Models\Messages', 'id_Users');
     }
 
     /**
@@ -60,6 +60,6 @@ class Users extends Model
      */
     public function usersdiners()
     {
-        return $this->hasMany('App\Usersdiner', 'id_Users');
+        return $this->hasMany('App\Models\Usersdiners', 'id_Users');
     }
 }
