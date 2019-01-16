@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property string $label
- * @property User[] $users
+ * @property Users[] $users
  */
 class Usertypes extends Model
 {
@@ -21,6 +21,6 @@ class Usertypes extends Model
      */
     public function users()
     {
-        return $this->hasMany('App\User', 'id_UserTypes');
+        return $this->hasMany('App\Models\Users', 'id_UserTypes');
     }
 }

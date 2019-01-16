@@ -10,6 +10,10 @@ export class ProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    var userMail = localStorage.getItem('userMail');
+    console.log(userMail);
+    var test ="test";
+
   }
 
 }
