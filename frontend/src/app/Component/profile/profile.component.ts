@@ -12,7 +12,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     var userMail = localStorage.getItem('userMail');
     console.log(userMail);
-    
+
   }
 
 }
