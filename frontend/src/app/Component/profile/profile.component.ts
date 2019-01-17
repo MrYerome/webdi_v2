@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   login : string;
 
   constructor() {
+    console.log(JSON.parse(sessionStorage.getItem('user')));
     this.userProfiles = JSON.parse(sessionStorage.getItem('user'));
   }
 

@@ -19,6 +19,7 @@ import {LoginComponent} from "./Component/login/login.component";
 import {SignupComponent} from "./Component/signup/signup.component";
 import {ProfileComponent} from "./Component/profile/profile.component";
 import {ConnexionComponent} from "./Component/connexion/connexion.component";
+import{ ModifProfilComponent} from "./Component/modif-profil/modif-profil.component";
 import {AuthService} from "./Services/auth.service";
 import {TokenService} from "./Services/token.service";
 
@@ -34,7 +35,8 @@ import {TokenService} from "./Services/token.service";
     LoginComponent,
     SignupComponent,
     ProfileComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    ModifProfilComponent
   ],
   imports: [
     BrowserModule,

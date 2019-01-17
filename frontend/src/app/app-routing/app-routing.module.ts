@@ -9,6 +9,7 @@ import {LoginComponent} from "../Component/login/login.component";
 import {SignupComponent} from "../Component/signup/signup.component";
 import {ProfileComponent} from "../Component/profile/profile.component";
 import {ConnexionComponent} from "../Component/connexion/connexion.component";
+import {ModifProfilComponent} from "../Component/modif-profil/modif-profil.component";
 
 
 const ROUTES: Routes = [
@@ -21,6 +22,7 @@ const ROUTES: Routes = [
     path: 'login',
     component: LoginComponent,
   },
+  {path:'modifProfile', component : ModifProfilComponent  },
   {path:'signup', component : SignupComponent  },
   {path:'profile', component : ProfileComponent  },
 ]
