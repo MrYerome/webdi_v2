@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Usertypes extends Model
 {
+    public $timestamps = false;
+
     /**
      * @var array
      */
