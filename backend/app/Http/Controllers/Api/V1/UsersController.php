@@ -13,16 +13,17 @@ class UsersController extends Controller
 {
     use Helpers;
 
-    public function login()
+    public function login($login)
     {
-        return response()->json(['message' => 'Successfully logged out']);
+        $user = Users::with('Usertypes', 'Profile')->where(['login' => $login])->get();
+        return $user;
+        //return response()->json(['message' => 'Successfully logged out']);
         //return response()->json("bravo");
         //return Users::with('Usertypes', 'Profile')->where(['id' => $data])->post();
     }
 
     public function index()
     {
-
          return Users::with('Usertypes', 'Profile')->get();
     }
 
@@ -31,7 +32,7 @@ class UsersController extends Controller
         return Users::with('Usertypes', 'Profile')->where(['id' => $id])->get();
     }
 
-    public  function createUser(Request $request)
+    public  function getUsers(Request $request)
     {
         $query = Users::with('Usertypes', 'Profile');
         foreach ($request->all() as $key => $value) {
@@ -43,6 +44,17 @@ class UsersController extends Controller
         }
 
         return $query->get();
+    }
+
+    public function createUser(Request $request)
+    {
+        $user = new Users();
+        foreach ($request->all() as $key => $value)
+        {
+            $user->$key = $value;
+        }
+        Users::created($user);
+
     }
 
 

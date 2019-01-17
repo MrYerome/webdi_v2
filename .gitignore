@@ -43,3 +43,7 @@ testem.log
 Thumbs.db
 
 backend/composer\.lock
+
+frontend/package-lock\.json
+
+frontend/package\.json
