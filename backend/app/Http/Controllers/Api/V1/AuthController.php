@@ -26,14 +26,14 @@ class AuthController extends Controller
         $userSaisi = $this->api->get("users/login/".$login);
         if (isset($userSaisi[0]) && $userSaisi!= null) {
             if($userSaisi[0]['password']!=$password){
-                return response()->json(['message' => 'pbMdp']);
+                return response()->json(['message' => 'false']);
                 //return response()->json("pbMdp");
             }
             else{
-            return $userSaisi;
+                return $userSaisi;
             }
         } else {
-            return response()->json(['message' => 'pbLogin']);
+            return response()->json(['message' => 'false']);
           //  return "pbLogin";
         }
 

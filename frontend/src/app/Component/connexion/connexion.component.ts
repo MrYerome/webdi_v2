@@ -38,8 +38,7 @@ export class ConnexionComponent implements OnInit {
   handleResponse(data) {
     if (typeof(data.message) !== 'undefined') {
       this.handleError(data.message);
-    }
-    else{
+    } else {
     this.Auth.changeAuthStatus(true);
     this.router.navigateByUrl('/profile');
   }

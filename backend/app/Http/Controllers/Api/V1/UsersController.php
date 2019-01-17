@@ -15,7 +15,7 @@ class UsersController extends Controller
 
     public function login($login)
     {
-        $user = Users::with('Usertypes', 'Profile')->where(['login' => $login])->get();
+        $user = Users::with('Usertypes', 'Profile')->where(['login' => $login])->take(1)->get();
         return $user;
         //return response()->json(['message' => 'Successfully logged out']);
         //return response()->json("bravo");
