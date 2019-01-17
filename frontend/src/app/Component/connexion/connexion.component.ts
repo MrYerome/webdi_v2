@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {DataService} from "../../Services/Dataservice";
 import {Router} from "@angular/router";
 import {AuthService} from "../../Services/auth.service";
+import {typeSourceSpan} from "@angular/compiler";
 
 
 @Component({
@@ -28,7 +29,7 @@ export class ConnexionComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form);
-    localStorage.setItem('login', this.form.login);
+
     this.Data.login(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -38,16 +39,19 @@ export class ConnexionComponent implements OnInit {
   handleResponse(data) {
     if (typeof(data.message) !== 'undefined') {
       this.handleError(data.message);
-    } else {
-    this.Auth.changeAuthStatus(true);
-    this.router.navigateByUrl('/profile');
-  }
+    }
+    else {
+      this.Auth.changeAuthStatus(true);
+      this.router.navigateByUrl('/profile');
+      console.log("test");
+    }
 }
 
   handleError(error) {
     this.error = "Le login et le mot de passe ne coincident pas.";
   }
   ngOnInit() {
+
   }
 
 }
