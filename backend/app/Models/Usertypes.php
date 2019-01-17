@@ -25,4 +25,12 @@ class Usertypes extends Model
     {
         return $this->hasMany('App\Models\Users', 'id_UserTypes');
     }
+
+    public function getUpdatedAtColumn() {
+        return null;
+    }
+
+    public function getCreatedAtColumn() {
+        return null;
+    }
 }

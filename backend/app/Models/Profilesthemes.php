@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Profilesthemes extends Model
 {
+    public $timestamps = false;
+
     /**
      * @var array
      */
@@ -31,5 +33,13 @@ class Profilesthemes extends Model
     public function theme()
     {
         return $this->belongsTo('App\Models\Theme', 'id_Themes');
+    }
+
+    public function getUpdatedAtColumn() {
+        return null;
+    }
+
+    public function getCreatedAtColumn() {
+        return null;
     }
 }

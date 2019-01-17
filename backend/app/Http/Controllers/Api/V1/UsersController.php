@@ -1,12 +1,14 @@
 <?php
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Transformers\UsersTransformer;
+
+use App\Models\Profiles;
 use App\Models\Users;
 use Dingo\Api\Contract\Http\Request;
 use Dingo\Api\Http\Response;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -31,16 +33,40 @@ class UsersController extends Controller
 
     public function createUser(Request $request)
     {
-        $user = new Users();
+        try {
+            DB::beginTransaction();
 
-        foreach ($request->all() as $key => $value)
-        {
-            var_dump($key);
-            $user->$key = $value;
+            $profile = new Profiles();
+            $user = new Users();
+            $profileAttribut = [];
+
+            $profileAttribut['name'] = $request->name;
+            $profileAttribut['firstName'] = $request->firstName;
+            $profileAttribut['email'] = $request->email;
+            $profileAttribut['insee_Cities'] = '49007';
+
+            $profile = Profiles::create($profileAttribut);
+
+            $user->login = $request->login;
+            $user->password = md5($user->password);
+            $user->id_UserTypes = $request->userTypes;
+            $user->id_Profiles = $profile->id;
+
+            $user->save();
+
+            DB::commit();
+        } catch (\PDOException $e) {
+            // Woopsy
+            DB::rollBack();
         }
-        $user->password = md5($user->password);
-        $user->save();
-//        $user = Users::create($request->all());
+
+
+
+
+
+
+
+
 
     }
 

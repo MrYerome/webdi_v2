@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $firstName
  * @property string $email
  * @property boolean $active
- * @property string $createdDate
- * @property string $updatedDate
+ * @property string $created_at
+ * @property string $updated_at
  * @property string $insee_Cities
  * @property City $city
  * @property Themes[] $themes
@@ -22,7 +22,7 @@ class Profiles extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'firstName', 'email', 'active', 'createdDate', 'updatedDate', 'insee_Cities'];
+    protected $fillable = ['name', 'firstName', 'email', 'active', 'created_at', 'updated_at', 'insee_Cities'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
