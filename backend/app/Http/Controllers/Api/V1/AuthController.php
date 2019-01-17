@@ -16,19 +16,25 @@ class AuthController extends Controller
 
     public function login()
     {
+        //$request=request();
+        //$password = $request['password'];
         $password = request('password');
+        //return json_encode($password);
         $login = request('login');
-        $userSaisi = Users::with('Usertypes', 'Profile')->where(['login' => $login])->get();
+        // return response()->json(['message' => 'Successfully logged out']);
+        //return response()->json("bravo");
+        $userSaisi = $this->api->get("users/login/".$login);
         if (isset($userSaisi[0]) && $userSaisi!= null) {
             if($userSaisi[0]['password']!=$password){
-                return response()->json(['message' => 'false']);
+                return response()->json(['message' => 'pbMdp']);
+                //return response()->json("pbMdp");
             }
             else{
-            return response()->json($userSaisi);
+            return $userSaisi;
             }
         } else {
-            return response()->json(['message' => 'false']);
-
+            return response()->json(['message' => 'pbLogin']);
+          //  return "pbLogin";
         }
 
     }
