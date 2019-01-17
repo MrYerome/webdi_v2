@@ -13,6 +13,13 @@ class UsersController extends Controller
 {
     use Helpers;
 
+    public function login()
+    {
+        return response()->json(['message' => 'Successfully logged out']);
+        //return response()->json("bravo");
+        //return Users::with('Usertypes', 'Profile')->where(['id' => $data])->post();
+    }
+
     public function index()
     {
          return Users::with('Usertypes', 'Profile')->get();

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {TokenService} from "../../Services/token.service";
 import {DataService} from "../../Services/Dataservice";
 import {HttpClient} from "@angular/common/http";
 
@@ -13,7 +12,7 @@ export class SignupComponent implements OnInit {
 
   public form = {
     email: null,
-    name: null,
+    login: null,
     password: null,
     password_confirmation: null
   };
@@ -23,19 +22,17 @@ export class SignupComponent implements OnInit {
     private Data: DataService,
     private Http:HttpClient,
     private router: Router,
-    private Token : TokenService
   ) { }
 
   onSubmit() {
-    console.log("test2");
     this.Data.signup(this.form).subscribe(
-
-      data=>console.log(data),
+      data => this.handleResponse(data),
       error=>this.handleError(error)
     );
   }
   handleResponse(data) {
-    this.Token.handle(data.access_token);
+    console.log(data);
+    //this.Token.handle(data.access_token);
     this.router.navigateByUrl('/profile');
   }
 
