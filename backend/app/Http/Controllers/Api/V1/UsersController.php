@@ -15,7 +15,6 @@ class UsersController extends Controller
 
     public function index()
     {
-
          return Users::with('Usertypes', 'Profile')->get();
     }
 
@@ -24,7 +23,7 @@ class UsersController extends Controller
         return Users::with('Usertypes', 'Profile')->where(['id' => $id])->get();
     }
 
-    public  function createUser(Request $request)
+    public  function getUsers(Request $request)
     {
         $query = Users::with('Usertypes', 'Profile');
         foreach ($request->all() as $key => $value) {
@@ -36,6 +35,17 @@ class UsersController extends Controller
         }
 
         return $query->get();
+    }
+
+    public function createUser(Request $request)
+    {
+        $user = new Users();
+        foreach ($request->all() as $key => $value)
+        {
+            $user->$key = $value;
+        }
+        Users::created($user);
+
     }
 
 
