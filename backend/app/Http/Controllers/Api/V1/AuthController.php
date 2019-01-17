@@ -23,7 +23,7 @@ class AuthController extends Controller
         $login = request('login');
         // return response()->json(['message' => 'Successfully logged out']);
         //return response()->json("bravo");
-        $userSaisi = Users::with('Usertypes', 'Profile')->where(['login' => $login])->get();
+        $userSaisi = $this->api->get("users/login/".$login);
         if (isset($userSaisi[0]) && $userSaisi!= null) {
             if($userSaisi[0]['password']!=$password){
                 return response()->json(['message' => 'pbMdp']);
