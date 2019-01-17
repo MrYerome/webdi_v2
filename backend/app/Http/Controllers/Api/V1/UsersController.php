@@ -38,7 +38,7 @@ class UsersController extends Controller
             var_dump($key);
             $user->$key = $value;
         }
-        $user->password = bcrypt($user->password);
+        $user->password = md5($user->password);
         $user->save();
 //        $user = Users::create($request->all());
 
