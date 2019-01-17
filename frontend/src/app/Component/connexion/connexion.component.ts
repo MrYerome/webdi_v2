@@ -17,7 +17,6 @@ export class ConnexionComponent implements OnInit {
     login: null,
     password: null
   };
-
   public error = null;
 
   constructor(
@@ -25,7 +24,7 @@ export class ConnexionComponent implements OnInit {
     private Data: DataService,
     private router: Router,
     private Auth : AuthService
-  ) {}
+  ) {  }
 
   onSubmit() {
     console.log(this.form);
@@ -51,7 +50,6 @@ export class ConnexionComponent implements OnInit {
     this.error = "Le login et le mot de passe ne coincident pas.";
   }
   ngOnInit() {
-
   }
 
 }

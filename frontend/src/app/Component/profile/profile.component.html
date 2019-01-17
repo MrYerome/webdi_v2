@@ -1,3 +1,27 @@
-<p>
-  Bonjour {{ login.toString() }}
-</p>
+<h1 class="center">Profil</h1>
+<div class="container">
+  <div class='row'>
+    <div *ngFor="let userProfile of userProfiles" class="col s6 m4" appBordure="yellow">
+      <!-- boucle for -->
+      <div class="card horizontal">
+        <div class="card=stacked">
+          <div class="card-content">
+            <p>{{ userProfile.login}}</p>
+            <p>{{ userProfile.password}}</p>
+            <p>{{ userProfile.profile.name}}</p>
+            <p>{{ userProfile.profile.email}}</p>
+            <p>{{ userProfile.profile.name}}</p>
+            <p>{{ userProfile.profile.name}}</p>
+            <p>{{ userProfile.profile.name}}</p>
+            <p>{{ userProfile.profile.name}}</p>
+            <p>{{ userProfile.profile.name}}</p>
+            <!-- pipe name "majTitre" -->
+            <!--<p>{{ disque.created | date:"dd/MM/yyyy"}}</p>-->
+            <!-- pipes -> ameliore l'affichage, plusiers possible -->
+            <!--<p><span *ngFor="let categorie of disque.cat" class=" {{ categorie | disqueCategory }} "> {{ categorie }} </span></p>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

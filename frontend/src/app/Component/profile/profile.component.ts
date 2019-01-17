@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{UserProfile} from "../../userProfile.model";
+import {User} from "../../user";
 
 @Component({
   selector: 'app-profile',
@@ -8,15 +8,11 @@ import{UserProfile} from "../../userProfile.model";
 })
 export class ProfileComponent implements OnInit {
   user:string;
-  userProfile : UserProfile;
+  userProfiles : User[];
   login : string;
 
   constructor() {
-    this.user = JSON.parse(sessionStorage.getItem('user')) ;
-    console.log(this.user[0].login);
-    this.userProfile.login = this.user[0].login.toString();
-   // this.userProfile.login = JSON.parse(sessionStorage.getItem('login')) ;
-    this.login = this.userProfile.login;
+    this.userProfiles = JSON.parse(sessionStorage.getItem('user'));
   }
 
   ngOnInit() {
