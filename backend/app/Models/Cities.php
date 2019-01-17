@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Cities extends Model
 {
+    public $timestamps = false;
+
     /**
      * @var array
      */
@@ -44,5 +46,13 @@ class Cities extends Model
     public function profiles()
     {
         return $this->hasMany('App\Models\Profiles', 'insee_Cities', 'insee');
+    }
+
+    public function getUpdatedAtColumn() {
+        return null;
+    }
+
+    public function getCreatedAtColumn() {
+        return null;
     }
 }

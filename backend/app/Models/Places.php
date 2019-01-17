@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Places extends Model
 {
+    public $timestamps = false;
+
     /**
      * @var array
      */
@@ -45,5 +47,13 @@ class Places extends Model
     public function diners()
     {
         return $this->hasMany('App\Models\Diners', 'id_Places');
+    }
+
+    public function getUpdatedAtColumn() {
+        return null;
+    }
+
+    public function getCreatedAtColumn() {
+        return null;
     }
 }

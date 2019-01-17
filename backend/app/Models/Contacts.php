@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Contacts extends Model
 {
+    public $timestamps = false;
+
     /**
      * @var array
      */
@@ -24,5 +26,13 @@ class Contacts extends Model
     public function places()
     {
         return $this->hasMany('App\Models\Places', 'id_Contacts');
+    }
+
+    public function getUpdatedAtColumn() {
+        return null;
+    }
+
+    public function getCreatedAtColumn() {
+        return null;
     }
 }

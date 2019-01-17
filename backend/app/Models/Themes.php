@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Themes extends Model
 {
+    public $timestamps = false;
+
     /**
      * @var array
      */
@@ -31,5 +33,13 @@ class Themes extends Model
     public function profiles()
     {
         return $this->belongsToMany('App\Models\Profiles', 'profilesthemes', 'id_Themes', 'id_Profiles');
+    }
+
+    public function getUpdatedAtColumn() {
+        return null;
+    }
+
+    public function getCreatedAtColumn() {
+        return null;
     }
 }
