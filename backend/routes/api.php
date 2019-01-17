@@ -33,10 +33,10 @@ $api->version('v1', [], function (Router $api) {
     $api->group(['prefix' => 'users'], function ($api){
         $api->get('', 'App\Http\Controllers\Api\V1\UsersController@index');
         $api->get('/login/{login}', 'App\Http\Controllers\Api\V1\UsersController@login');
-
-        $api->post('/create', 'App\Http\Controllers\Api\V1\UsersController@createUser');
         $api->get('{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
-        $api->get('/test', 'App\Http\Controllers\Api\V1\UsersController@getUsers');
+
+        $api->post('', 'App\Http\Controllers\Api\V1\UsersController@createUser');
+
     });
 
     $api->post('login', 'App\Http\Controllers\Api\V1\AuthController@login');

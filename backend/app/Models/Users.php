@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Users extends Model
 {
+    public $timestamps = false;
     /**
      * @var array
      */
@@ -61,5 +62,13 @@ class Users extends Model
     public function usersdiners()
     {
         return $this->hasMany('App\Models\Usersdiners', 'id_Users');
+    }
+
+    public function getUpdatedAtColumn() {
+        return null;
+    }
+
+    public function getCreatedAtColumn() {
+        return null;
     }
 }
