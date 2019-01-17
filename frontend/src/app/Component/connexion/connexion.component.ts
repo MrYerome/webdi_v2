@@ -43,6 +43,7 @@ export class ConnexionComponent implements OnInit {
     else {
       this.Auth.changeAuthStatus(true);
       this.router.navigateByUrl('/profile');
+      console.log("test");
     }
 }
 
