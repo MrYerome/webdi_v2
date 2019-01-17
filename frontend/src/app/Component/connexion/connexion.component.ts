@@ -37,7 +37,10 @@ export class ConnexionComponent implements OnInit {
   }
 
   handleResponse(data) {
-    sessionStorage.setItem('user', JSON.stringify(data));
+    if (typeof(data.message) !== 'undefined') {
+      this.handleError(data.message);
+    }
+    else{
     this.Auth.changeAuthStatus(true);
     this.router.navigateByUrl('/profile');
 
