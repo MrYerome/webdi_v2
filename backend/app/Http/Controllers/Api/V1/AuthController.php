@@ -16,25 +16,19 @@ class AuthController extends Controller
 
     public function login()
     {
-        //$request=request();
-        //$password = $request['password'];
         $password = request('password');
-        //return json_encode($password);
         $login = request('login');
-        // return response()->json(['message' => 'Successfully logged out']);
-        //return response()->json("bravo");
         $userSaisi = Users::with('Usertypes', 'Profile')->where(['login' => $login])->get();
         if (isset($userSaisi[0]) && $userSaisi!= null) {
             if($userSaisi[0]['password']!=$password){
-                return response()->json(['message' => 'pbMdp']);
-                //return response()->json("pbMdp");
+                return response()->json(['message' => 'false']);
             }
             else{
-            return $userSaisi;
+            return response()->json($userSaisi);
             }
         } else {
-            return response()->json(['message' => 'pbLogin']);
-          //  return "pbLogin";
+            return response()->json(['message' => 'false']);
+
         }
 
     }
