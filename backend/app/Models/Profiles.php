@@ -13,7 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property string $insee_Cities
- * @property City $city
+ * @property string $specAlim
+ * @property Cities $city
  * @property Themes[] $themes
  * @property Users[] $users
  */
@@ -22,14 +23,14 @@ class Profiles extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'firstName', 'email', 'active', 'created_at', 'updated_at', 'insee_Cities'];
+    protected $fillable = ['name', 'firstName', 'email', 'active', 'created_at', 'updated_at', 'insee_Cities', 'specAlim'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function city()
+    public function cities()
     {
-        return $this->belongsTo('App\Models\City', 'insee_Cities', 'insee');
+        return $this->belongsTo('App\Models\Cities', 'insee_Cities', 'insee');
     }
 
     /**

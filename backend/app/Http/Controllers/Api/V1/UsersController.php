@@ -38,26 +38,35 @@ class UsersController extends Controller
         try {
             DB::beginTransaction();
 
-            $user = new Users();
+
+            $attribut = [];
 
             $profile = $this->api->with($request->all())->post('profiles');
-            //var_dump($profile);
-            //dd($this->api->with($request)->post('profiles'));
 
-            $user->login = $request->login;
-            $user->password = md5($user->password);
-            $user->id_UserTypes = $request->userTypes;
-            $user->id_Profiles = $profile['id'];
 
-            $user->save();
+            $attribut['login'] = $request->login;
+            $attribut['password'] = md5($request->password);
+            $attribut['id_UserTypes'] = $request->userTypes;
+            $attribut['id_Profiles'] = $profile['id'];
+
+            $user = Users::create($attribut);
 
             DB::commit();
-            return $user;
+            return $this->api->get('users/'.$user->id);
         } catch (\PDOException $e) {
             // Woopsy
             return $e;
             //return $this->response->errorBadRequest();
             DB::rollBack();
         }
+
+
+
+
+
+
+
+
+
     }
 }
