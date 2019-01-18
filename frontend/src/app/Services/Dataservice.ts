@@ -12,32 +12,20 @@ export class DataService {
   }
 
   public getAllProfiles(): Observable<User[]> {
-    return this.http.get(`${this.baseUrl}/profiles/getAllProfiles`).pipe(
+    return this.http.get(`${this.baseUrl}/users/getAllUsers`).pipe(
       map(
         (jsonArray: Object[]) => jsonArray.map(jsonItem => User.fromJson(jsonItem)),
       )
     );
   }
 
-  public getProfile(id): Observable<User> {
-    return this.http.get < User > (`${this.baseUrl}/profiles/getProfile/${id}`).pipe(tap(_ => console.log(`id user=${id}`)));
+  public getUser(id): Observable<User> {
+    return this.http.get < User > (`${this.baseUrl}/users/getUser/${id}`).pipe(tap(_ => console.log(`id user=${id}`)));
     // return this.http.get(`${this.baseUrl}/profiles/getProfile/${id}`).pipe(
     //   map(
     //     ((user: User) => user,
     //   )
     // )
-  }
-
-  private handleError < T > (operation = 'operation', result ? : T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error);
-      
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
   }
 
 

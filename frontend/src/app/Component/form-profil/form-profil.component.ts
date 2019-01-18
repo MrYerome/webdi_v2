@@ -30,7 +30,7 @@ export class FormProfilComponent implements OnInit {
       }
     )
 
-    this.Data.getProfile(this.id).subscribe(
+    this.Data.getUser(this.id).subscribe(
       value =>{
         console.log(value); this.user = value[0]},
       error => {

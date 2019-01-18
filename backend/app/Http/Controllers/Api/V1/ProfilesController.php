@@ -42,16 +42,9 @@ class ProfilesController extends Controller
 
     public function getProfile($id)
     {
-    $user = Users::with('Usertypes', 'Profile')->where(['id' => $id])->take(1)->get();
-    //$user = Users::with('Usertypes', 'Profile')->get();
-    //dd($user);
+    $profile = Profiles::with('Usertypes', 'Profile')->where(['id' => $id])->take(1)->get();
+    return $profile;
 
-    //return $user;
-    return $user;
-//        return json_encode("totot");
-//        return Users::with('Usertypes', 'Profile')->where(['id' => $id])->get();
-//        return response()->json(['message' => 'false']);
-//        $login = request('login');
     }
     public function getAllProfiles()
     {

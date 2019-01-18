@@ -22,7 +22,7 @@ class UsersController extends Controller
         return $user;
     }
 
-    public function index()
+    public function getAllUsers()
     {
          return Users::with('Usertypes', 'Profile')->get();
     }
