@@ -34,9 +34,12 @@ $api->version('v1', [], function (Router $api) {
         $api->get('', 'App\Http\Controllers\Api\V1\UsersController@index');
         $api->get('/login/{login}', 'App\Http\Controllers\Api\V1\UsersController@login');
         $api->get('{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
-
         $api->post('', 'App\Http\Controllers\Api\V1\UsersController@createUser');
 
+    });
+
+    $api->group(['prefix' => 'profiles'], function ($api){
+       $api->post('', 'App\Http\Controllers\Api\V1\ProfilesController@create');
     });
 
     $api->post('login', 'App\Http\Controllers\Api\V1\AuthController@login');
