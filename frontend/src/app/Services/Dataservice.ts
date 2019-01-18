@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from "../user";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import {Observable, of} from "rxjs";
+import {catchError, map, tap} from "rxjs/operators";
 
 @Injectable()
 export class DataService {
@@ -12,19 +12,20 @@ export class DataService {
   }
 
   public getAllProfiles(): Observable<User[]> {
-    return this.http.get(`${this.baseUrl}/profiles/getAllProfiles`).pipe(
+    return this.http.get(`${this.baseUrl}/users/getAllUsers`).pipe(
       map(
-        (jsonArray: Object[]) => jsonArray.map(jsonItem => User.fromJson(jsonItem))
+        (jsonArray: Object[]) => jsonArray.map(jsonItem => User.fromJson(jsonItem)),
       )
     );
   }
 
-  public getProfile(id): Observable<User[]> {
-    return this.http.get(`${this.baseUrl}/profiles/getProfile/${id}`).pipe(
-      map(
-        (jsonArray: Object[]) => jsonArray.map(jsonItem => User.fromJson(jsonItem))
-      )
-    );
+  public getUser(id): Observable<User> {
+    return this.http.get < User > (`${this.baseUrl}/users/getUser/${id}`).pipe(tap(_ => console.log(`id user=${id}`)));
+    // return this.http.get(`${this.baseUrl}/profiles/getProfile/${id}`).pipe(
+    //   map(
+    //     ((user: User) => user,
+    //   )
+    // )
   }
 
 

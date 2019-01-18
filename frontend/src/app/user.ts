@@ -26,13 +26,12 @@ export class User {
     return new User(
       json['id'],
       json['login'],
+      json['password'],
+      json['id_UserTypes'],
       json['usertypes'],
-      json['usertypes'],
-      json['usertypes'],
-      json['usertypes'],
-      json['usertypes'],
-      json['usertypes'],
-      json['usertypes']);
+      json['profile'],
+      json['insee_Cities'],
+    );
   }
 
   constructor(public id: number,
@@ -54,11 +53,11 @@ export class User {
                   active: number;
                   createdDate: string;
                   updatedDate: null;
-                  insee_Cities: string
+                  insee_Cities: string,
+                  specAlim: string,
+
                 },
-              // public author: string,
-              public title: string,
-              public body: string,) {
+             ) {
   }
 
 
