@@ -4,6 +4,7 @@ import{Router} from "@angular/router";
 import {DataService} from "../../Services/Dataservice";
 import{Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {log} from "util";
 
 @Component({
   selector: 'app-modif-profil',
@@ -14,7 +15,7 @@ export class ModifProfilComponent implements OnInit {
 
  user : any=null;
   public error = null;
-  public id =2;
+  public login ="jvinet";
   constructor(  private router :Router,
                 private Data: DataService) {
     // console.log(JSON.parse(sessionStorage.getItem('user')));
@@ -22,12 +23,25 @@ export class ModifProfilComponent implements OnInit {
   }
 
   ngOnInit() {
+  console.log(this.login);
 
-    this.Data.profile(this.id).subscribe(
-      data => this.user = data,
-      error => this.handleError(error)
+    this.Data.profile(this.login).subscribe(
+      data => { console.log(data);this.user =  data},
+      error => this.handleError(error),
+      ()=> {console.log('Fini ');}
     );
     console.log(this.user);
+
+
+    this.Data.profile(this.login).subscribe(
+      (data) => { console.log(data);},
+      (error) => {console.log(error);},
+      () => {
+      console.log('Fini !');
+    });
+
+
+
 
 
     // this.getUser(id).subscribe(data => this.user=data);
