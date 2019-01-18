@@ -5,7 +5,6 @@ import {AppComponent} from "../app.component";
 import {TestComponent} from "../Component/test/test.component";
 import {DinersComponent} from "../Component/diners/diners.component";
 import {AccueilComponent} from "../Component/accueil/accueil.component";
-import {LoginComponent} from "../Component/login/login.component";
 import {SignupComponent} from "../Component/signup/signup.component";
 import {ProfileComponent} from "../Component/profile/profile.component";
 import {ConnexionComponent} from "../Component/connexion/connexion.component";
@@ -18,10 +17,6 @@ const ROUTES: Routes = [
   {path:'diners', component : DinersComponent  },
   {path:'test', component : TestComponent  },
   {path:'connexion', component : ConnexionComponent  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
   {path:'modifProfile', component : ModifProfilComponent  },
   {path:'signup', component : SignupComponent  },
   {path:'profile', component : ProfileComponent  },

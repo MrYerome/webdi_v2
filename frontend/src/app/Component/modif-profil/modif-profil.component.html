@@ -1,26 +1,32 @@
 modif profil
 
-<form *ngIf="disque" #disqueForm="ngForm" (ngSubmit)="onSubmit()">
+<div *ngIf="disque">
+  <h2 class="header center">Editer {{ disque?.name }}</h2>
+  <p class="center">
+    <img [src]="disque.picture">
+  </p>
+</div>
+<form *ngIf="user" #userForm="ngForm" (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="col s8 offset-s2">
       <div class="card-panel">
         <div class="form-group">
 
-          <label for="name">Nom</label>
-          <input type="text" id="name" class="form-control" name="name" #name="ngModel" [(ngModel)]='disque.name' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+          <label for="name">Login</label>
+          <input type="text" id="name" class="form-control" name="name" #name="ngModel" [(ngModel)]='user' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
         </div>
 
 
         <div class="form-group">
 
           <label for="stock">Stock</label>
-          <input type="number" id="stock" class="form-control" name="stock" #stock="ngModel" [(ngModel)]='disque.stock' required pattern="[0-9]{1,2}$"
+          <input type="number" id="stock" class="form-control" name="stock" #stock="ngModel" [(ngModel)]='user' required pattern="[0-9]{1,2}$"
                  min="0">
         </div>
-        <div [hidden]="stock.valid || stock.pristine" class="card-panel red accent-1">
+        <!--<div [hidden]="stock.valid || stock.pristine" class="card-panel red accent-1">-->
           <!-- pristine = n'a jamais ete modifier -->
           <!--Le stock de l'artiste est recauis-->
-        </div>
+        <!--</div>-->
 
 
         <div class="form-group">
@@ -28,7 +34,7 @@ modif profil
         </div>
         <div class="divider"></div>
         <div class="section center">
-          <button [disabled]="!disqueForm.valid" type="submit" class="btn waves-effect waves-light purple darken-4">Valider</button>
+          <!--<button [disabled]="!disqueForm.valid" type="submit" class="btn waves-effect waves-light purple darken-4">Valider</button>-->
         </div>
       </div>
 
@@ -37,4 +43,4 @@ modif profil
   </div>
 
 </form>
-<h3 class="center" *ngIf="!disque">
+<a (click)="goBack()" class="waves-effect purple darken-4 btn">retour</a>

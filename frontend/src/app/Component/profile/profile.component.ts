@@ -7,13 +7,12 @@ import {User} from "../../user";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user:string;
-  userProfiles : User[];
+  users : User[];
   login : string;
 
   constructor() {
     console.log(JSON.parse(sessionStorage.getItem('user')));
-    this.userProfiles = JSON.parse(sessionStorage.getItem('user'));
+    this.users = JSON.parse(sessionStorage.getItem('user'));
   }
 
   ngOnInit() {
