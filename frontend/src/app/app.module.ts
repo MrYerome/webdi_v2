@@ -21,6 +21,7 @@ import {ConnexionComponent} from "./Component/connexion/connexion.component";
 import{ ModifProfilComponent} from "./Component/modif-profil/modif-profil.component";
 import {AuthService} from "./Services/auth.service";
 import {TokenService} from "./Services/token.service";
+import {FormProfilComponent} from "./Component/form-profil/form-profil.component";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {TokenService} from "./Services/token.service";
     SignupComponent,
     ProfileComponent,
     ConnexionComponent,
-    ModifProfilComponent
+    ModifProfilComponent,
+    FormProfilComponent
   ],
   imports: [
     BrowserModule,

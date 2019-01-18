@@ -59,16 +59,5 @@ class UsersController extends Controller
             //return $this->response->errorBadRequest();
             DB::rollBack();
         }
-
-
-
-
-
-
-
-
-
     }
-
-
 }

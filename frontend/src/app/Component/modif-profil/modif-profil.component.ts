@@ -9,52 +9,43 @@ import {DataService} from "../../Services/Dataservice";
   styleUrls: ['./modif-profil.component.css']
 })
 export class ModifProfilComponent implements OnInit {
-  public users: User[];
-  user: User;
-  public error = null;
-  public id = 4;
+  // public users: User[];
+  // public user: User;
+  // public error = null;
+  // public id = 4;
 
   constructor(private router: Router,
               private Data: DataService) {
   }
 
   ngOnInit() {
-    // this.Data.profile(this.login).subscribe(
-    //   data => {
-    //     console.log(data);
-    //     this.user = data
+    // this.Data.getAllProfiles().subscribe(
+    //   users => this.users = users,
+    //   error => {
+    //     console.log('erreur ');
     //   },
-    //   error => this.handleError(error),
     //   () => {
-    //     console.log('Fini ');
+    //     console.log(this.users);
     //   }
-    // );
-    // console.log(this.user);
-
-    this.Data.getAllProfiles().subscribe(
-      users => this.users = users,
-      error => {
-        console.log('erreur ');
-      },
-      () => {
-        console.log(this.users);
-      }
-    )
-
-    this.Data.getProfile(this.id).subscribe(
-      users => this.users = users,
-      error => {
-        console.log('erreur ');
-      },
-      () => {
-        console.log(this.users);
-      }
-    )
+    // )
+    //
+    // this.Data.getProfile(this.id).subscribe(
+    //   value =>{
+    //     console.log(value); this.user = value[0]},
+    //   error => {
+    //     console.log('erreur ');
+    //   },
+    //   () => {
+    //     console.log(this.user.login);
+    //     console.log(this.user.profile.name);
+    //     console.log(this.user.usertypes.label);
+    //   }
+    // )
   }
 
-  handleError(error) {
-    this.error = "Le login et le mot de passe ne coincident pas.";
-  }
+  // handleError(error) {
+  //   this.error = "Le login et le mot de passe ne coincident pas.";
+  // }
 
   // getAllUsers(): Observable < User[] > {
   //   return this.http.get <User[]>(this.disquesUrl).pipe(
