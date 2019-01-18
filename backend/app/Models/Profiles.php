@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property string $insee_Cities
  * @property string $specAlim
- * @property City $city
+ * @property Cities $city
  * @property Themes[] $themes
  * @property Users[] $users
  */
@@ -28,9 +28,9 @@ class Profiles extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function city()
+    public function cities()
     {
-        return $this->belongsTo('App\Models\City', 'insee_Cities', 'insee');
+        return $this->belongsTo('App\Models\Cities', 'insee_Cities', 'insee');
     }
 
     /**

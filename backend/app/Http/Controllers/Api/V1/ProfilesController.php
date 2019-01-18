@@ -49,7 +49,7 @@ class ProfilesController extends Controller
 
     public function getProfile($id)
     {
-        $profile = Profiles::with('insee_Cities', 'profilesthemes')->where(['id' => $id])->take(1)->get();
+        $profile = Profiles::with('Cities', 'Themes')->find($id);
 
         return $profile;
 
@@ -57,7 +57,7 @@ class ProfilesController extends Controller
     public function getAllProfiles()
     {
 
-        $profiles = Profiles::with('insee_Cities', 'profilesthemes')->get();
+        $profiles = Profiles::with('Cities', 'Themes')->get();
 
         return $profiles;
     }
@@ -68,8 +68,10 @@ class ProfilesController extends Controller
         try{
             DB::beginTransaction();
 
+            $profile = new Profiles();
             if (isset($request->id)){
-                $profile = $this->api->get('getProfile/'.$request->id);
+                $profile = Profiles::with('Cities', 'Themes')->find($request->id);
+
             }
 
             foreach ($request->all() as $key => $param){
@@ -82,7 +84,7 @@ class ProfilesController extends Controller
 
             DB::commit();
 
-            return $this->api->get('getProfile/'.$profile->id);
+            return $this->api->get('profiles/getProfile/'.$profile->id);
         }catch (\PDOException $e){
             DB::rollBack();
 
