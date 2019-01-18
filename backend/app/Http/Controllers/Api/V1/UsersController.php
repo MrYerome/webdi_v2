@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Profiles;
 use App\Models\Users;
+use Barryvdh\Cors\Tests\PreflightTest;
 use Dingo\Api\Contract\Http\Request;
 use Dingo\Api\Http\Response;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Psy\Util\Json;
 
 class UsersController extends Controller
 {
@@ -38,13 +40,14 @@ class UsersController extends Controller
 
             $user = new Users();
 
-            $profile = $this->api->with($request)->post('profiles');
-            //var_dump($this->api->with($request)->post('profiles'));
+            $profile = $this->api->with($request->all())->post('profiles');
+            //var_dump($profile);
+            //dd($this->api->with($request)->post('profiles'));
 
             $user->login = $request->login;
             $user->password = md5($user->password);
             $user->id_UserTypes = $request->userTypes;
-            $user->id_Profiles = $profile->id;
+            $user->id_Profiles = $profile['id'];
 
             $user->save();
 
@@ -52,7 +55,8 @@ class UsersController extends Controller
             return $user;
         } catch (\PDOException $e) {
             // Woopsy
-            return $this->response->errorBadRequest();
+            return $e;
+            //return $this->response->errorBadRequest();
             DB::rollBack();
         }
 

@@ -31,7 +31,8 @@ class ProfilesController extends Controller
 
         } catch (\PDOException $e) {
             // Woopsy
-            return $this->response->errorBadRequest();
+            return $e;
+//            return $this->response->errorBadRequest();
             DB::rollBack();
         }
     }
