@@ -36,16 +36,10 @@ class UsersController extends Controller
         try {
             DB::beginTransaction();
 
-            $profile = new Profiles();
             $user = new Users();
-            $profileAttribut = [];
 
-            $profileAttribut['name'] = $request->name;
-            $profileAttribut['firstName'] = $request->firstName;
-            $profileAttribut['email'] = $request->email;
-            $profileAttribut['insee_Cities'] = '49007';
-
-            $profile = Profiles::create($profileAttribut);
+            $profile = $this->api->with($request)->post('profiles');
+            //var_dump($this->api->with($request)->post('profiles'));
 
             $user->login = $request->login;
             $user->password = md5($user->password);
@@ -55,8 +49,10 @@ class UsersController extends Controller
             $user->save();
 
             DB::commit();
+            return $user;
         } catch (\PDOException $e) {
             // Woopsy
+            return $this->response->errorBadRequest();
             DB::rollBack();
         }
 
