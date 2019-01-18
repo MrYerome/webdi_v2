@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property string $insee_Cities
+ * @property string $specAlim
  * @property City $city
  * @property Themes[] $themes
  * @property Users[] $users
@@ -22,7 +23,7 @@ class Profiles extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'firstName', 'email', 'active', 'created_at', 'updated_at', 'insee_Cities'];
+    protected $fillable = ['name', 'firstName', 'email', 'active', 'created_at', 'updated_at', 'insee_Cities', 'specAlim'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
