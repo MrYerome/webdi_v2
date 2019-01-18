@@ -42,8 +42,7 @@ export class ConnexionComponent implements OnInit {
     else {
       sessionStorage.setItem('user',JSON.stringify(data));
       this.Auth.changeAuthStatus(true);
-      this.router.navigateByUrl('/profile');
-      console.log("test");
+      this.router.navigateByUrl('/profile-view');
     }
 }
 
