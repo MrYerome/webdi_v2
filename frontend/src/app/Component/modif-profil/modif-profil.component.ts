@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {User} from "../../user";
-import{Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {DataService} from "../../Services/Dataservice";
-import{Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {log} from "util";
 
@@ -26,19 +26,19 @@ export class ModifProfilComponent implements OnInit {
   console.log(this.login);
 
     this.Data.profile(this.login).subscribe(
-      data => { console.log(data);this.user =  data},
+      data => { console.log(data); this.user =  data},
       error => this.handleError(error),
-      ()=> {console.log('Fini ');}
+      () => {console.log('Fini ');}
     );
     console.log(this.user);
 
 
-    this.Data.profile(this.login).subscribe(
-      (data) => { console.log(data);},
-      (error) => {console.log(error);},
-      () => {
-      console.log('Fini !');
-    });
+    // this.Data.profile(this.login).subscribe(
+    //   (data) => { console.log(data);},
+    //   (error) => {console.log(error);},
+    //   () => {
+    //   console.log('Fini !');
+    // });
 
 
 

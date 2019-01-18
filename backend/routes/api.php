@@ -41,7 +41,7 @@ $api->version('v1', [], function (Router $api) {
 
     $api->group(['prefix' => 'profiles'], function ($api){
        $api->post('', 'App\Http\Controllers\Api\V1\ProfilesController@create');
-       $api->post('/getProfile', 'App\Http\Controllers\Api\V1\ProfilesController@getProfile');
+       $api->get('getProfile/{login}', 'App\Http\Controllers\Api\V1\ProfilesController@getProfile');
     });
 
     $api->post('login', 'App\Http\Controllers\Api\V1\AuthController@login');

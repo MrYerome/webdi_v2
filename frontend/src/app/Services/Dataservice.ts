@@ -13,8 +13,7 @@ export class DataService {
     return this.http.post(`${this.baseUrl}/login`, data);
   }
   profile(id) {
-    console.log(id);
-    return this.http.post(`${this.baseUrl}/profiles/getProfile`, id);
+    return this.http.get(`${this.baseUrl}/profiles/getProfile/${id}`);
   }
 
   test(data) {
