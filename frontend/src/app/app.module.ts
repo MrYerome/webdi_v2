@@ -15,10 +15,10 @@ import {DinersComponent} from "./Component/diners/diners.component";
 import {TestComponent} from "./Component/test/test.component";
 import {NavbarComponent} from "./Component/navbar/navbar.component";
 import {DataService} from "./Services/Dataservice";
-import {LoginComponent} from "./Component/login/login.component";
 import {SignupComponent} from "./Component/signup/signup.component";
 import {ProfileComponent} from "./Component/profile/profile.component";
 import {ConnexionComponent} from "./Component/connexion/connexion.component";
+import{ ModifProfilComponent} from "./Component/modif-profil/modif-profil.component";
 import {AuthService} from "./Services/auth.service";
 import {TokenService} from "./Services/token.service";
 
@@ -31,10 +31,10 @@ import {TokenService} from "./Services/token.service";
     DinersComponent,
     TestComponent,
     NavbarComponent,
-    LoginComponent,
     SignupComponent,
     ProfileComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    ModifProfilComponent
   ],
   imports: [
     BrowserModule,

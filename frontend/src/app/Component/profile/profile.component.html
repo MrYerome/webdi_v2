@@ -1,3 +1,27 @@
-<p>
-  Bonjour {{ login.toString() }}
-</p>
+<h1 class="center">Profil</h1>
+<div class="container">
+  <div class='row'>
+    <div *ngFor="let user of users" class="col s6 m4" appBordure="yellow">
+      <!-- boucle for -->
+      <div class="card horizontal">
+        <div class="card=stacked">
+          <div class="card-content">
+            <p>Login : {{ user.login}}</p>
+            <p>Nom : {{ user.profile.name}}</p>
+            <p>Prénom : {{ user.profile.firstName}}</p>
+            <p>E-mail : {{ user.profile.email}}</p>
+            <p>Ville : {{ user.profile.insee_Cities}}</p>
+            <p>Type de compte : {{ user.usertypes.label}}</p>
+            <!-- pipe name "majTitre" -->
+            <!--<p>{{ disque.created | date:"dd/MM/yyyy"}}</p>-->
+            <!-- pipes -> ameliore l'affichage, plusiers possible -->
+            <!--<p><span *ngFor="let categorie of disque.cat" class=" {{ categorie | disqueCategory }} "> {{ categorie }} </span></p>-->
+          </div>
+
+        </div>
+      </div>
+      <a class="navbar-brand" routerLink="../modifProfile">Modifier mon profil</a>
+
+    </div>
+  </div>
+</div>
