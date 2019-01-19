@@ -18,22 +18,21 @@ $api = app(Router::class);
 
 $api->version('v1', [], function (Router $api) {
     $api->group(['prefix' => 'users'], function ($api){
-        $api->get('', 'App\Http\Controllers\Api\V1\UsersController@getAllUsers');
+        $api->get('', 'App\Http\Controllers\Api\V1\UsersController@getUsers');
         $api->get('/login/{login}', 'App\Http\Controllers\Api\V1\UsersController@login');
         $api->get('{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
-        $api->post('', 'App\Http\Controllers\Api\V1\UsersController@createUser');
         $api->get('/getUser/{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
-        $api->get('/getAllUsers', 'App\Http\Controllers\Api\V1\UsersController@getAllUsers');
+        $api->get('/getAllUser', 'App\Http\Controllers\Api\V1\UsersController@getUser');
 
+        $api->post('', 'App\Http\Controllers\Api\V1\UsersController@createUser');
+
+        $api->patch('', 'App\Http\Controllers\Api\V1\UsersController@updateUser');
 
     });
 
-    $api->group(['prefix' => 'profiles'], function ($api){
-       $api->post('', 'App\Http\Controllers\Api\V1\ProfilesController@createProfile');
-       $api->patch('', 'App\Http\Controllers\Api\V1\ProfilesController@updateProfile');
 
-       $api->get('getProfile/{id}', 'App\Http\Controllers\Api\V1\ProfilesController@getProfile');
-       $api->get('getAllProfiles/', 'App\Http\Controllers\Api\V1\ProfilesController@getAllProfiles');
+    $api->group(['prefix' => 'diners'], function ($api){
+        $api->get('', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
 
     });
 

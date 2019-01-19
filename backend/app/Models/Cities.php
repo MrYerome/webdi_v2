@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $longitude_deg
  * @property float $latitude_deg
  * @property Places[] $places
- * @property Profiles[] $profiles
+ * @property Users[] $users
  */
 class Cities extends Model
 {
@@ -43,9 +43,9 @@ class Cities extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function profiles()
+    public function users()
     {
-        return $this->hasMany('App\Models\Profiles', 'insee_Cities', 'insee');
+        return $this->hasMany('App\Models\Users', 'insee_Cities', 'insee');
     }
 
     public function getUpdatedAtColumn() {
