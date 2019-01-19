@@ -1,6 +1,6 @@
 
-<div *ngIf="disque">
-  <h2 class="header center">Editer {{ disque?.name }}</h2>
+<div *ngIf="user">
+  <h2 class="header center">Bonjour  {{ user.profile.firstName }}</h2>
 
 </div>
 <form *ngIf="user" #userForm="ngForm" (ngSubmit)="onSubmit()">
@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
           <label for="surname">Prénom</label>
-          <input type="text" id="surname" class="form-control" name="name" #name="ngModel" [(ngModel)]='user.profile.firstName' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+          <input type="text" id="surname" class="form-control" name="surname" #name="ngModel" [(ngModel)]='user.profile.firstName' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
         </div>
         <div class="form-group">
           <label for="email">E-mail</label>

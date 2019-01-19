@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../user";
+import {User} from "../../../user";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-profile-view',
+  templateUrl: './profile-view.component.html',
+  styleUrls: ['./profile-view.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileViewComponent implements OnInit {
   users : User[];
   login : string;
 

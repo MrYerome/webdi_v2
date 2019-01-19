@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../user";
+import {User} from "../../../user";
 import {Router} from "@angular/router";
-import {DataService} from "../../Services/Dataservice";
+import {DataService} from "../../../Services/Dataservice";
 
 @Component({
   selector: 'app-form-profil',

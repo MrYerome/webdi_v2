@@ -1,7 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {User} from "../../user";
+import {Component, OnInit} from '@angular/core';
+
 import {Router} from "@angular/router";
-import {DataService} from "../../Services/Dataservice";
+import {DataService} from "../../../Services/Dataservice";
 
 @Component({
   selector: 'app-modif-profil',
