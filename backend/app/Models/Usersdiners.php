@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_Users
  * @property int $rate
  * @property string $comment
+ * @property int $nbPlaces
  * @property Diner $diner
  * @property User $user
  */
@@ -19,7 +20,7 @@ class Usersdiners extends Model
     /**
      * @var array
      */
-    protected $fillable = ['rate', 'comment'];
+    protected $fillable = ['rate', 'comment', 'nbPlaces'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
