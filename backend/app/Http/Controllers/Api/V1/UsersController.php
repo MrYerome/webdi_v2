@@ -43,7 +43,8 @@ class UsersController extends Controller
 
             $attribut['login'] = $request->login;
             $attribut['password'] = md5($request->password);
-            $attribut['id_UserTypes'] = $request->userTypes;
+//            $attribut['id_UserTypes'] = $request->userTypes;
+            $attribut['id_UserTypes'] = 2;
             $attribut['name'] = $request->name;
             $attribut['firstName'] = $request->firstName;
             $attribut['email'] = $request->email;
@@ -54,19 +55,10 @@ class UsersController extends Controller
             DB::commit();
             return $this->api->get('users/'.$user->id);
         } catch (\PDOException $e) {
-            // Woopsy
             return $e;
             //return $this->response->errorBadRequest();
             DB::rollBack();
         }
-
-
-
-
-
-
-
-
 
     }
 

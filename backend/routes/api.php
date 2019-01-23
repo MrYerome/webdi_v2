@@ -23,8 +23,7 @@ $api->version('v1', [], function (Router $api) {
         $api->get('{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
         $api->get('/getUser/{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
         $api->get('/getAllUser', 'App\Http\Controllers\Api\V1\UsersController@getUser');
-
-        $api->post('', 'App\Http\Controllers\Api\V1\UsersController@createUser');
+        $api->post('/create', 'App\Http\Controllers\Api\V1\UsersController@createUser');
 
         $api->patch('', 'App\Http\Controllers\Api\V1\UsersController@updateUser');
 

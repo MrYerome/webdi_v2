@@ -32,6 +32,10 @@ export class DataService {
   login(data) {
     return this.http.post(`${this.baseUrl}/login`, data);
   }
+  loginAfterSignUp(data) {
+    return this.http.post(`${this.baseUrl}/login`, data);
+  }
+
   profile(id) {
     return this.http.get(`${this.baseUrl}/profiles/getProfile/${id}`);
   }
@@ -40,7 +44,7 @@ export class DataService {
     return this.http.post(`${this.baseUrl}/test`, data);
   }
   signup(data) {
-    return this.http.post(`${this.baseUrl}/signup`, data);
+    return this.http.post(`${this.baseUrl}/users/create`, data);
   }
 
   // /**

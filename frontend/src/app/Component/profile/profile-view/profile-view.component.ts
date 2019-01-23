@@ -9,6 +9,7 @@ import {User} from "../../../user";
 export class ProfileViewComponent implements OnInit {
   users : User[];
   login : string;
+  // name:string;
 
   constructor() {
     console.log(JSON.parse(sessionStorage.getItem('user')));
