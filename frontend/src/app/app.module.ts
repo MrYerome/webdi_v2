@@ -16,11 +16,8 @@ import {NavbarComponent} from "./Component/navbar/navbar.component";
 import {DataService} from "./Services/Dataservice";
 import {SignupComponent} from "./Component/signup/signup.component";
 import {ConnexionComponent} from "./Component/connexion/connexion.component";
-// import{ ModifProfilComponent} from "./Component/profile/modif-profil/modif-profil.component";
 import {AuthService} from "./Services/auth.service";
 import {TokenService} from "./Services/token.service";
-// import {FormProfilComponent} from "./Component/profile/form-profil/form-profil.component";
-// import { ProfileViewComponent } from './Component/profile/profile-view/profile-view.component';
 import {ListDinersComponent} from './Component/diner/list-diners/list-diners.component';
 
 
@@ -33,13 +30,13 @@ import {ListDinersComponent} from './Component/diner/list-diners/list-diners.com
     NavbarComponent,
     SignupComponent,
     ConnexionComponent,
-    ProfileModule,
     ListDinersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ProfileModule,
     HttpClientModule,
     SnotifyModule,
     ReactiveFormsModule,

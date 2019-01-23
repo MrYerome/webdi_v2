@@ -20,6 +20,7 @@ export class FormProfilComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.Data.getAllProfiles().subscribe(
       users => this.users = users,
       error => {

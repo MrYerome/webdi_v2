@@ -9,10 +9,6 @@ import {DataService} from "../../../Services/Dataservice";
   styleUrls: ['./modif-profil.component.css']
 })
 export class ModifProfilComponent implements OnInit {
-  // public users: User[];
-  // public user: User;
-  // public error = null;
-  // public id = 4;
 
   constructor(private router: Router,
               private Data: DataService) {
