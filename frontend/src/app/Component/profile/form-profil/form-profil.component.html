@@ -1,6 +1,6 @@
 
 <div *ngIf="user">
-  <h2 class="header center">Bonjour  {{ user.profile.firstName }}</h2>
+  <h2 class="header center">Bonjour  {{ user.firstName }} {{ user.name }}</h2>
 
 </div>
 <form *ngIf="user" #userForm="ngForm" (ngSubmit)="onSubmit()">
@@ -9,19 +9,19 @@
       <div class="card-panel">
         <div class="form-group">
           <label for="name">Nom</label>
-          <input type="text" id="name" class="form-control" name="name" #name="ngModel" [(ngModel)]='user.profile.name' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+          <input type="text" id="name" class="form-control" name="name" #name="ngModel" [(ngModel)]='user.name' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
         </div>
         <div class="form-group">
           <label for="surname">Prénom</label>
-          <input type="text" id="surname" class="form-control" name="surname" #name="ngModel" [(ngModel)]='user.profile.firstName' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+          <input type="text" id="surname" class="form-control" name="surname" #name="ngModel" [(ngModel)]='user.firstName' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
         </div>
         <div class="form-group">
           <label for="email">E-mail</label>
-          <input type="email" id="email" class="form-control" name="email" #name="ngModel" [(ngModel)]='user.profile.email' required >
+          <input type="email" id="email" class="form-control" name="email" #name="ngModel" [(ngModel)]='user.email' required >
         </div>
         <div class="form-group">
           <label for="specAlim">Régimes alimentaires, allergies</label>
-          <input type="text" id="specAlim" class="form-control" name="specAlim" #name="ngModel" [(ngModel)]='user.profile.specAlim' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+          <input type="text" id="specAlim" class="form-control" name="specAlim" #name="ngModel" [(ngModel)]='user.specAlim' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
         </div>
 
         <!--<div [hidden]="stock.valid || stock.pristine" class="card-panel red accent-1">-->

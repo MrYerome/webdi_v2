@@ -37,13 +37,10 @@ class UsersController extends Controller
     {
         try {
             DB::beginTransaction();
-
-
             $attribut = [];
-
             $attribut['login'] = $request->login;
             $attribut['password'] = md5($request->password);
-//            $attribut['id_UserTypes'] = $request->userTypes;
+//          $attribut['id_UserTypes'] = $request->userTypes;
             $attribut['id_UserTypes'] = 2;
             $attribut['name'] = $request->name;
             $attribut['firstName'] = $request->firstName;

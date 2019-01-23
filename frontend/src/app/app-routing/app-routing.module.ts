@@ -9,6 +9,7 @@ import {ConnexionComponent} from "../Component/connexion/connexion.component";
 import {ModifProfilComponent} from "../Component/profile/modif-profil/modif-profil.component";
 import {ProfileViewComponent} from "../Component/profile/profile-view/profile-view.component";
 import {ListDinersComponent} from "../Component/diner/list-diners/list-diners.component";
+import {ListProfilesComponent} from "../Component/profile/list-profiles/list-profiles.component";
 
 
 const ROUTES: Routes = [
@@ -16,9 +17,9 @@ const ROUTES: Routes = [
   {path:'accueil', component : AccueilComponent  },
   {path:'test', component : TestComponent  },
   {path:'connexion', component : ConnexionComponent  },
-  // {path:'modifProfile', component : ModifProfilComponent  },
   {path:'signup', component : SignupComponent  },
-  // {path:'profile-view', component : ProfileViewComponent  },
+  {path:'profile', component : ProfileViewComponent  },
+  {path:'profile/list', component : ListProfilesComponent  },
   {path : 'listDiners', component : ListDinersComponent}
 ]
 

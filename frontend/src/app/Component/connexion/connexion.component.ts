@@ -27,8 +27,6 @@ export class ConnexionComponent implements OnInit {
   ) {  }
 
   onSubmit() {
-    console.log(this.form);
-
     this.Data.login(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -40,9 +38,11 @@ export class ConnexionComponent implements OnInit {
       this.handleError(data.message);
     }
     else {
+      console.log(data[0]["id"]);
       sessionStorage.setItem('user',JSON.stringify(data));
+      sessionStorage.setItem('id',JSON.stringify(data[0]["id"]));
       this.Auth.changeAuthStatus(true);
-      this.router.navigateByUrl('/profile/profile-view');
+      this.router.navigateByUrl('/accueil');
     }
 }
 

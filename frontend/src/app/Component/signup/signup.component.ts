@@ -18,7 +18,8 @@ export class SignupComponent implements OnInit {
     email: null,
     login: null,
     password: null,
-    password_confirmation: null
+    password_confirmation: null,
+    specAlim: null
   };
   public error = [];
 
@@ -38,7 +39,7 @@ export class SignupComponent implements OnInit {
   handleResponse(data) {
     console.log(data);
     this.Data.loginAfterSignUp(this.form).subscribe();
-    this.router.navigateByUrl('/profile/profile-view');
+    this.router.navigateByUrl('/profile/');
   }
 
   handleError(error) {

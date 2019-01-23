@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
   logout(event: MouseEvent) {
     event.preventDefault();
     this.Auth.changeAuthStatus(false);
-    localStorage.setItem('login', null);
+    sessionStorage.clear();
     this.router.navigateByUrl('/accueil');
   }
 

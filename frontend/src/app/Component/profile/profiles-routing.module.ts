@@ -6,9 +6,11 @@ import {ListProfilesComponent} from "./list-profiles/list-profiles.component";
 import {ModifProfilComponent} from "./modif-profil/modif-profil.component";
 
 const profilesRoutes: Routes = [
-  {path : 'profile', component : ListProfilesComponent},
-  {path : 'profile/profile-edit', component : ModifProfilComponent},
-  {path : 'profile/:id', component : ProfileViewComponent}
+  {path : 'profile/list', component : ListProfilesComponent},
+  {path : 'profile/edit/:id', component : ModifProfilComponent},
+  {path : 'profile/view/:id', component : ProfileViewComponent},
+  // {path : 'profile/view/', component : ProfileViewComponent},
+  {path : 'profile/view', component : ProfileViewComponent},
 ]
 
 @NgModule({

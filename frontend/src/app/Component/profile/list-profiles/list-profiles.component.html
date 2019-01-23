@@ -1,3 +1,29 @@
-<p>
-  list-profiles works!
-</p>
+Liste des profiles
+
+<h1 class="center">Profil</h1>
+<div class="container">
+  <div class='row'>
+    <div *ngFor="let user of users" class="col s6 m4" appBordure="yellow">
+      <!-- boucle for -->
+      <div class="card horizontal">
+        <div class="card=stacked">
+          <div class="card-content">
+            <p>Login : {{ user.login}}</p>
+            <p>Nom : {{ user.name}}</p>
+            <p>Prénom : {{ user.firstName}}</p>
+            <p>E-mail : {{ user.email}}</p>
+            <p>Ville : {{ user.cities.nom_reel}}</p>
+            <p>Type de compte : {{ user.usertypes.label}}</p>
+            <!-- pipe name "majTitre" -->
+            <!--<p>{{ disque.created | date:"dd/MM/yyyy"}}</p>-->
+            <!-- pipes -> ameliore l'affichage, plusiers possible -->
+            <!--<p><span *ngFor="let categorie of disque.cat" class=" {{ categorie | disqueCategory }} "> {{ categorie }} </span></p>-->
+          </div>
+          <a class="navbar-brand" (click)="selectProfile(user.id)">Voir le profil</a>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

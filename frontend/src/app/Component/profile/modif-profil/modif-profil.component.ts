@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-
-import {Router} from "@angular/router";
+import {User} from "../../../models/user";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DataService} from "../../../Services/Dataservice";
 
 @Component({
@@ -10,11 +10,22 @@ import {DataService} from "../../../Services/Dataservice";
 })
 export class ModifProfilComponent implements OnInit {
 
-  constructor(private router: Router,
+  constructor(private route : ActivatedRoute,
+              private router: Router,
               private Data: DataService) {
   }
 
+
+
   ngOnInit() {
+    let id=+this.route.snapshot.paramMap.get('id');
+    if (id.toString()==(sessionStorage.getItem("id"))){
+      console.log("Ok");
+    }
+    else {
+      console.log("KO");
+    }
+
     // this.Data.getAllProfiles().subscribe(
     //   users => this.users = users,
     //   error => {
@@ -51,6 +62,7 @@ export class ModifProfilComponent implements OnInit {
   // getUser(id: number): Observable < User > {
   //   return this.http.get < User > (url).pipe(tap(_ => console.log(`fetched hero id=${id}`)), catchError(this.handleError < Disque > (`getDisque id=${id}`)));
   // }
+
 
   onSubmit() {
     console.log('form envoye');

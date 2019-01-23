@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from "../user";
+import {User} from "../models/user";
 import {Observable, of} from "rxjs";
 import {catchError, map, tap} from "rxjs/operators";
 
@@ -11,7 +11,7 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
 
-  public getAllProfiles(): Observable<User[]> {
+  public getAllUsers(): Observable<User[]> {
     return this.http.get(`${this.baseUrl}/users/getAllUsers`).pipe(
       map(
         (jsonArray: Object[]) => jsonArray.map(jsonItem => User.fromJson(jsonItem)),
