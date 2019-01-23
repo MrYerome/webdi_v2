@@ -8,28 +8,35 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $login
  * @property string $password
+ * @property string $name
+ * @property string $firstName
+ * @property string $email
+ * @property boolean $active
+ * @property string $created_at
+ * @property string $updated_at
+ * @property string $insee_Cities
+ * @property string $specAlim
  * @property int $id_UserTypes
- * @property int $id_Profiles
- * @property Profile $profile
+ * @property Cities $city
  * @property Usertypes $usertypes
  * @property Diners[] $diners
  * @property Messages[] $messages
  * @property Usersdiners[] $usersdiners
+ * @property Themes[] $themes
  */
 class Users extends Model
 {
-    public $timestamps = false;
     /**
      * @var array
      */
-    protected $fillable = ['login', 'password', 'id_UserTypes', 'id_Profiles'];
+    protected $fillable = ['login', 'password', 'name', 'firstName', 'email', 'active', 'created_at', 'updated_at', 'insee_Cities', 'specAlim', 'id_UserTypes'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function profile()
+    public function cities()
     {
-        return $this->belongsTo('App\Models\Profiles', 'id_Profiles');
+        return $this->belongsTo('App\Models\Cities', 'insee_Cities', 'insee');
     }
 
     /**
@@ -64,11 +71,11 @@ class Users extends Model
         return $this->hasMany('App\Models\Usersdiners', 'id_Users');
     }
 
-    public function getUpdatedAtColumn() {
-        return null;
-    }
-
-    public function getCreatedAtColumn() {
-        return null;
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function themes()
+    {
+        return $this->belongsToMany('App\Models\Themes', 'usersthemes', 'id_Users', 'id_Themes');
     }
 }

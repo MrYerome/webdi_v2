@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $label
  * @property Diners[] $diners
- * @property Profiles[] $profiles
+ * @property Users[] $users
  */
 class Themes extends Model
 {
-    public $timestamps = false;
-
     /**
      * @var array
      */
@@ -30,16 +28,8 @@ class Themes extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function profiles()
+    public function users()
     {
-        return $this->belongsToMany('App\Models\Profiles', 'profilesthemes', 'id_Themes', 'id_Profiles');
-    }
-
-    public function getUpdatedAtColumn() {
-        return null;
-    }
-
-    public function getCreatedAtColumn() {
-        return null;
+        return $this->belongsToMany('App\Models\Users', 'usersthemes', 'id_Themes', 'id_Users');
     }
 }

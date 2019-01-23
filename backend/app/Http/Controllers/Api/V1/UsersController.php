@@ -18,18 +18,18 @@ class UsersController extends Controller
 
     public function login($login)
     {
-        $user = Users::with('Usertypes', 'Profile')->where(['login' => $login])->take(1)->get();
-        return $user;
+        return Users::with('Usertypes', 'cities', 'Themes')->where(['login' => $login])->get();
+
     }
 
-    public function getAllUsers()
+    public function getUsers()
     {
-         return Users::with('Usertypes', 'Profile')->get();
+         return Users::with('Usertypes', 'cities', 'Themes')->get();
     }
 
     public function getUser($id)
     {
-        return Users::with('Usertypes', 'Profile')->where(['id' => $id])->get();
+        return Users::with('Usertypes', 'cities', 'Themes')->find($id);
     }
 
 
@@ -41,13 +41,13 @@ class UsersController extends Controller
 
             $attribut = [];
 
-            $profile = $this->api->with($request->all())->post('profiles');
-
-
             $attribut['login'] = $request->login;
             $attribut['password'] = md5($request->password);
             $attribut['id_UserTypes'] = $request->userTypes;
-            $attribut['id_Profiles'] = $profile['id'];
+            $attribut['name'] = $request->name;
+            $attribut['firstName'] = $request->firstName;
+            $attribut['email'] = $request->email;
+            $attribut['insee_Cities'] = '49007';
 
             $user = Users::create($attribut);
 
@@ -68,5 +68,38 @@ class UsersController extends Controller
 
 
 
+    }
+
+    public function updateUser(Request $request){
+        try{
+            DB::beginTransaction();
+
+            $user = new Users();
+            if (isset($request->id)){
+                $user = Users::with('Usertypes', 'cities', 'Themes')->find($request->id);
+
+            }
+
+            if(isset($user->id)){
+                foreach ($request->all() as $key => $param){
+                    if($key != 'id'){
+                        $user->$key = $param;
+                    }
+                }
+                $user->save();
+
+                DB::commit();
+
+                return $this->api->get('users/'.$user->id);
+            }ELSE{
+                $this->response->errorBadRequest();
+            }
+
+
+        }catch (\PDOException $e){
+            return $e;
+            DB::rollBack();
+
+        }
     }
 }
