@@ -18,16 +18,10 @@ export class FormProfilComponent implements OnInit {
 
   constructor(private route : ActivatedRoute,
               private router: Router,
-              private Data: DataService) {
-
-  }
+              private Data: DataService) {}
 
   ngOnInit() {
     let id =this.route.snapshot.paramMap.get('id');
-    console.log(typeof(id));
-    console.log(typeof(sessionStorage.getItem("id")));
-    console.log(id);
-    console.log(sessionStorage.getItem("id"));
     if (id==sessionStorage.getItem("id")){
       console.log("Ok");
       this.Data.getUser(id).subscribe(
@@ -35,30 +29,22 @@ export class FormProfilComponent implements OnInit {
           console.log(value); this.user = value},
         error => {
           console.log('erreur ');
-        },
-        () => {
-          console.log(this.user.login);
-          console.log(this.user.name);
-          console.log(this.user.usertypes.label);
         }
       )
     }
     else {
-      console.log("KO");
       this.router.navigateByUrl('/accueil');
     }
-    //
-    // this.Data.getAllProfiles().subscribe(
-    //   users => this.users = users,
-    //   error => {
-    //     console.log('erreur ');
-    //   },
-    //   () => {
-    //     console.log(this.users);
-    //   }
-    // )
+  }
 
-
+  onSubmit(){
+    console.log('form envoye');
+    // console.log(this.user);
+    this.Data.update(this.user)
+      .subscribe(()=>this.goBack());
+  }
+  goBack():void{
+    this.router.navigate(['/profile/view']);
   }
 
 }

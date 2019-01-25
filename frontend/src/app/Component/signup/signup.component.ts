@@ -38,8 +38,8 @@ export class SignupComponent implements OnInit {
   }
   handleResponse(data) {
     console.log(data);
-    this.Data.loginAfterSignUp(this.form).subscribe();
-    this.router.navigateByUrl('/profile/');
+    // this.Data.loginAfterSignUp(this.form).subscribe();
+    this.router.navigateByUrl('/accueil');
   }
 
   handleError(error) {

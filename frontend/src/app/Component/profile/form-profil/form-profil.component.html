@@ -1,12 +1,17 @@
 
 <div *ngIf="user">
   <h2 class="header center">Bonjour  {{ user.firstName }} {{ user.name }}</h2>
+  <h4 class="header center">Modifier votre profil</h4>
 
 </div>
 <form *ngIf="user" #userForm="ngForm" (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="col s8 offset-s2">
       <div class="card-panel">
+        <div style="display: none">
+          <label for="id">id</label>
+          <input type="text" id="id" class="form-control" name="id" #name="ngModel" [(ngModel)]='user.id'>
+        </div>
         <div class="form-group">
           <label for="name">Nom</label>
           <input type="text" id="name" class="form-control" name="name" #name="ngModel" [(ngModel)]='user.name' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
@@ -21,7 +26,7 @@
         </div>
         <div class="form-group">
           <label for="specAlim">Régimes alimentaires, allergies</label>
-          <input type="text" id="specAlim" class="form-control" name="specAlim" #name="ngModel" [(ngModel)]='user.specAlim' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+          <input type="text" id="specAlim" class="form-control" name="specAlim" #name="ngModel" [(ngModel)]='user.specAlim' pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
         </div>
 
         <!--<div [hidden]="stock.valid || stock.pristine" class="card-panel red accent-1">-->
@@ -33,7 +38,7 @@
 
         <div class="divider"></div>
         <div class="section center">
-          <!--<button [disabled]="!disqueForm.valid" type="submit" class="btn waves-effect waves-light purple darken-4">Valider</button>-->
+          <button [disabled]="!userForm.valid" type="submit" class="btn waves-effect waves-light purple darken-4">Valider les modifications</button>
         </div>
       </div>
 

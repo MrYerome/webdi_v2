@@ -9,7 +9,6 @@ const profilesRoutes: Routes = [
   {path : 'profile/list', component : ListProfilesComponent},
   {path : 'profile/edit/:id', component : ModifProfilComponent},
   {path : 'profile/view/:id', component : ProfileViewComponent},
-  // {path : 'profile/view/', component : ProfileViewComponent},
   {path : 'profile/view', component : ProfileViewComponent},
 ]
 

@@ -11,6 +11,7 @@
             <p>E-mail : {{ user.email}}</p>
             <p>Ville : {{ user.cities.nom_reel}}</p>
             <p>Type de compte : {{ user.usertypes.label}}</p>
+            <p>Régime alimentaire / allergies : {{ user.specAlim}}</p>
             <!-- pipe name "majTitre" -->
             <!--<p>{{ disque.created | date:"dd/MM/yyyy"}}</p>-->
             <!-- pipes -> ameliore l'affichage, plusiers possible -->
@@ -19,7 +20,7 @@
 
         </div>
       </div>
-      <a class="navbar-brand" (click)="selectProfile(user.id)">Modifier mon profil</a>
+      <a class="navbar-brand" *ngIf="id1" (click)="selectProfile(user.id)">Modifier mon profil</a>
     </div>
 
     <!--<div *ngFor="let user of users" class="col s6 m4" appBordure="yellow">-->

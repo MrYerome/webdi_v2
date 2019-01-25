@@ -9,49 +9,15 @@ import {DataService} from "../../../Services/Dataservice";
   styleUrls: ['./profile-view.component.css']
 })
 export class ProfileViewComponent implements OnInit {
-  user: User = null;
   users: User[];
+  user: User;
+  id: string;
+  id1:string;
+  id2:string;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private Data: DataService) {
-    // this.users = JSON.parse(sessionStorage.getItem('user'));
-
-    this.Data.getAllUsers().subscribe(
-      value => {
-        console.log(value);
-        this.users = value
-      },
-      error => {
-        console.log('erreur ');
-      },
-      // () => {
-      //   console.log(this.user.login);
-      //   console.log(this.user.name);
-      //   console.log(this.user.usertypes.label);
-      // }
-    )
-
-    // this.users = this.Data.getAllUsers().subscribe(data => this.users=data);
-
-    this.Data.getUser(13).subscribe(
-      value =>{
-         this.user = value;
-         console.log(this.user);},
-      error => {
-        console.log('erreur ');
-      },
-    () => {
-      console.log(this.user.login);
-      console.log(this.user.name);
-      console.log(this.user.usertypes.label);
-    }
-    )
-
-    // console.log(JSON.parse(sessionStorage.getItem('user')));
-    //let id=+this.route.snapshot.paramMap.get('id');
-    // this.users = JSON.parse(sessionStorage.getItem('user'));
-    // console.log(this.users);
   }
 
   ngOnInit() {
@@ -59,13 +25,22 @@ export class ProfileViewComponent implements OnInit {
   }
 
   recupProfile() {
-    let id = +this.route.snapshot.paramMap.get('id');
-    this.Data.getUser(id).subscribe(data => this.user = data);
+    if (this.route.snapshot.paramMap.get('id') != null) {
+      this.id2 = this.route.snapshot.paramMap.get('id');
+      this.id = this.id2;
+    }
+    else {
+      this.id1 = JSON.parse(sessionStorage.getItem('id').toString());
+      this.id = this.id1;
+    }
 
+    this.Data.getUser(this.id).subscribe(data => {
+      console.log(data);
+      this.user = data
+    });
   }
 
   selectProfile(d) {
-    console.log(d);
     this.router.navigate(['/profile/edit', d]);
   }
 

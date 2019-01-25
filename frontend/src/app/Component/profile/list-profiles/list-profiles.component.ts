@@ -18,7 +18,7 @@ export class ListProfilesComponent implements OnInit {
 
   ngOnInit() {
     this.Data.getAllUsers().subscribe(
-      users => this.users = users,
+      users => {this.users = users; console.log(this.users)},
       error => {
         console.log('erreur ');
       },

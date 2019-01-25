@@ -12,7 +12,7 @@ export class User {
       json['updatedDate'],
       json['cities'],
       json['specAlim'],
-      json['usertypes'],
+      // json['usertypes'],
     );
   }
 
@@ -31,11 +31,11 @@ export class User {
                 "nom_reel" : string,
               },
               public specAlim: string,
-              public usertypes:
-                {
-                  id: number;
-                  label: string
-                },
+              // public usertypes:
+              //   {
+              //     id: number;
+              //     label: string
+              //   },
 
   ) {
   }

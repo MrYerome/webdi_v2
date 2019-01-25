@@ -46,6 +46,10 @@ export class DataService {
   signup(data) {
     return this.http.post(`${this.baseUrl}/users/create`, data);
   }
+  update(data) {
+    console.log(data);
+    return this.http.patch(`${this.baseUrl}/users/update`, data);
+  }
 
   // /**
   //  * Filtre
