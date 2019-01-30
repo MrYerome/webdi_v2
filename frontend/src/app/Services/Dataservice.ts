@@ -32,8 +32,17 @@ export class DataService {
   login(data) {
     return this.http.post(`${this.baseUrl}/login`, data);
   }
-  loginAfterSignUp(data) {
-    return this.http.post(`${this.baseUrl}/login`, data);
+
+  sendPasswordResetLink(data) {
+    return this.http.post(`${this.baseUrl}/sendPasswordResetLink`, data)
+  }
+
+  // loginAfterSignUp(data) {
+  //   return this.http.post(`${this.baseUrl}/login`, data);
+  // }
+
+  changePassword(data){
+    return this.http.post(`${this.baseUrl}/resetPassword`, data)
   }
 
   profile(id) {

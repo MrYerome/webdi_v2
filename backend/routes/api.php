@@ -30,11 +30,21 @@ $api->version('v1', [], function (Router $api) {
 
     $api->group(['prefix' => 'diners'], function ($api){
         $api->get('', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
+    });
 
+    $api->group(['prefix' => 'auth'], function ($api){
+        $api->get('', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
     });
 
     $api->post('login', 'App\Http\Controllers\Api\V1\AuthController@login');
     $api->post('signup', 'App\Http\Controllers\Api\V1\UsersController@createUser');
+
+    //Pour le reset password : envoi d'un mail
+    $api->post('sendPasswordResetLink', 'App\Http\Controllers\Api\V1\PasswordController@sendEmail');
+    //Pour le reset password :
+    $api->post('resetPassword', 'App\Http\Controllers\Api\V1\PasswordController@process');
+
+
 });
 
 

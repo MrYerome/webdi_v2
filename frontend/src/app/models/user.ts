@@ -10,6 +10,7 @@ export class User {
       json['active'],
       json['createdDate'],
       json['updatedDate'],
+      json['usertypes'],
       json['cities'],
       json['specAlim'],
       // json['usertypes'],
@@ -25,6 +26,10 @@ export class User {
               public active: number,
               public createdDate: string,
               public updatedDate: null,
+              public usertypes: {
+                "id" : number,
+                "label" : number,
+              },
               public cities: {
                 "id" : number,
                 "departement" : number,

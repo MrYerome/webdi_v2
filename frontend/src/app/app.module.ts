@@ -19,6 +19,10 @@ import {ConnexionComponent} from "./Component/connexion/connexion.component";
 import {AuthService} from "./Services/auth.service";
 import {TokenService} from "./Services/token.service";
 import {ListDinersComponent} from './Component/diner/list-diners/list-diners.component';
+import {RequestResetComponent} from "./Component/password/request-reset/request-reset.component";
+import {ResponseResetComponent} from "./Component/password/response-reset/response-reset.component";
+import {AfterLoginService} from "./Services/after-login.service";
+import {BeforeLoginService} from "./Services/before-login.service";
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import {ListDinersComponent} from './Component/diner/list-diners/list-diners.com
     NavbarComponent,
     SignupComponent,
     ConnexionComponent,
-    ListDinersComponent
+    ListDinersComponent,
+    RequestResetComponent,
+    ResponseResetComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,7 @@ import {ListDinersComponent} from './Component/diner/list-diners/list-diners.com
     SnotifyModule,
     ReactiveFormsModule,
   ],
-  providers: [DataService, AuthService, TokenService,
+  providers: [DataService, AuthService, TokenService, AfterLoginService, BeforeLoginService,
 
     {provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService],
