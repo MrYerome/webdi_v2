@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {DataService} from "../../Services/Dataservice";
 import {HttpClient} from "@angular/common/http";
+import {TokenService} from "../../Services/token.service";
+import {AuthService} from "../../Services/auth.service";
 
 @Component({
   selector: 'app-signup',
@@ -11,10 +13,13 @@ import {HttpClient} from "@angular/common/http";
 export class SignupComponent implements OnInit {
 
   public form = {
+    name: null,
+    firstName:null,
     email: null,
     login: null,
     password: null,
-    password_confirmation: null
+    password_confirmation: null,
+    specAlim: null
   };
   public error = [];
 
@@ -22,6 +27,7 @@ export class SignupComponent implements OnInit {
     private Data: DataService,
     private Http:HttpClient,
     private router: Router,
+    private Auth : AuthService
   ) { }
 
   onSubmit() {
@@ -32,8 +38,8 @@ export class SignupComponent implements OnInit {
   }
   handleResponse(data) {
     console.log(data);
-    //this.Token.handle(data.access_token);
-    this.router.navigateByUrl('/profile');
+    // this.Data.loginAfterSignUp(this.form).subscribe();
+    this.router.navigateByUrl('/accueil');
   }
 
   handleError(error) {

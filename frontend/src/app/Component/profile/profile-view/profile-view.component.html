@@ -1,17 +1,17 @@
 <h1 class="center">Profil</h1>
 <div class="container">
   <div class='row'>
-    <div *ngFor="let user of users" class="col s6 m4" appBordure="yellow">
-      <!-- boucle for -->
+    <div class="col s6 m4" appBordure="yellow">
       <div class="card horizontal">
         <div class="card=stacked">
           <div class="card-content">
             <p>Login : {{ user.login}}</p>
-            <p>Nom : {{ user.profile.name}}</p>
-            <p>Prénom : {{ user.profile.firstName}}</p>
-            <p>E-mail : {{ user.profile.email}}</p>
-            <p>Ville : {{ user.profile.insee_Cities}}</p>
+            <p>Nom : {{ user.name}}</p>
+            <p>Prénom : {{ user.firstName}}</p>
+            <p>E-mail : {{ user.email}}</p>
+            <p>Ville : {{ user.cities.nom_reel}}</p>
             <p>Type de compte : {{ user.usertypes.label}}</p>
+            <p>Régime alimentaire / allergies : {{ user.specAlim}}</p>
             <!-- pipe name "majTitre" -->
             <!--<p>{{ disque.created | date:"dd/MM/yyyy"}}</p>-->
             <!-- pipes -> ameliore l'affichage, plusiers possible -->
@@ -20,8 +20,31 @@
 
         </div>
       </div>
-      <a class="navbar-brand" routerLink="../modifProfile">Modifier mon profil</a>
-
+      <a class="navbar-brand" *ngIf="id1" (click)="selectProfile(user.id)">Modifier mon profil</a>
     </div>
+
+    <!--<div *ngFor="let user of users" class="col s6 m4" appBordure="yellow">-->
+      <!--&lt;!&ndash; boucle for &ndash;&gt;-->
+      <!--<div class="card horizontal">-->
+        <!--<div class="card=stacked">-->
+          <!--<div class="card-content">-->
+            <!--<p>Login : {{ user.login}}</p>-->
+            <!--<p>Nom : {{ user.name}}</p>-->
+            <!--<p>Prénom : {{ user.firstName}}</p>-->
+            <!--<p>E-mail : {{ user.email}}</p>-->
+            <!--<p>Ville : {{ user.cities.nom_reel}}</p>-->
+            <!--<p>Type de compte : {{ user.usertypes.label}}</p>-->
+            <!--&lt;!&ndash; pipe name "majTitre" &ndash;&gt;-->
+            <!--&lt;!&ndash;<p>{{ disque.created | date:"dd/MM/yyyy"}}</p>&ndash;&gt;-->
+            <!--&lt;!&ndash; pipes -> ameliore l'affichage, plusiers possible &ndash;&gt;-->
+            <!--&lt;!&ndash;<p><span *ngFor="let categorie of disque.cat" class=" {{ categorie | disqueCategory }} "> {{ categorie }} </span></p>&ndash;&gt;-->
+          <!--</div>-->
+
+        <!--</div>-->
+      <!--</div>-->
+
+
+    <!--</div>-->
   </div>
 </div>
+

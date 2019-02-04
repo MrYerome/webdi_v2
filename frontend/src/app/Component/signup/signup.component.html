@@ -1,44 +1,79 @@
 <div class="mt-4 col-8 offset-2">
   <div class="card">
-    <div class="card-header">Register Here</div>
+    <div class="card-header">Je crée mon compte</div>
     <div class="card-body">
       <form #signupForm=ngForm (ngSubmit)="onSubmit()">
+        <!--name-->
         <div class="form-group row">
-          <label for="login" class="col-sm-2 col-form-label">Login</label>
+          <label for="name" class="col-sm-2 col-form-label">Nom</label>
           <div class="col-sm-10">
-            <input type="text" name="login" class="form-control" id="login" placeholder="Login" [(ngModel)]="form.login" required>
+            <input type="text" name="name" class="form-control" id="name" placeholder="Nom" [(ngModel)]="form.name"
+                   required>
             <div class="alert alert-danger" [hidden]="!error.login">
               {{error.login}}
             </div>
           </div>
         </div>
 
+        <!--firstName-->
+        <div class="form-group row">
+          <label for="firstName" class="col-sm-2 col-form-label">Prénom</label>
+          <div class="col-sm-10">
+            <input type="text" name="firstName" class="form-control" id="firstName" placeholder=""
+                   [(ngModel)]="form.firstName">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="login" class="col-sm-2 col-form-label">Login</label>
+          <div class="col-sm-10">
+            <input type="text" name="login" class="form-control" id="login" placeholder="Login" [(ngModel)]="form.login"
+                   required>
+            <div class="alert alert-danger" [hidden]="!error.login">
+              {{error.login}}
+            </div>
+          </div>
+        </div>
+        <!--mail-->
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
-            <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email" [(ngModel)]="form.email" required>
+            <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email"
+                   [(ngModel)]="form.email" required>
             <div class="alert alert-danger" [hidden]="!error.email">
               {{error.email}}
             </div>
           </div>
         </div>
-
+        <!--password-->
         <div class="form-group row">
-          <label for="inputPasswordConfirmation3" class="col-sm-2 col-form-label">Password</label>
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Mot de passe</label>
           <div class="col-sm-10">
-            <input type="password" name="password" class="form-control" id="inputPasswordConfirmation3" placeholder="Confirm Password"
-              [(ngModel)]="form.password" required>
+            <input type="password" name="password_confirmation" class="form-control" id="inputPassword3"
+                   placeholder="Mot de passe" [(ngModel)]="form.password_confirmation"
+                   required>
+          </div>
+        </div>
+        <!--password2-->
+        <div class="form-group row">
+          <label for="inputPasswordConfirmation3" class="col-sm-2 col-form-label">Confirmer le mot de passe</label>
+          <div class="col-sm-10">
+            <input type="password" name="password" class="form-control" id="inputPasswordConfirmation3"
+                   placeholder="Confirmer le mot de passe"
+                   [(ngModel)]="form.password" required>
             <div class="alert alert-danger" [hidden]="!error.password">
               {{error.password}}
             </div>
           </div>
         </div>
 
+
         <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
+          <label for="specAlim" class="col-sm-2 col-form-label">Régimes alimentaires, allergies</label>
           <div class="col-sm-10">
-            <input type="password" name="password_confirmation" class="form-control" id="inputPassword3" placeholder="Password" [(ngModel)]="form.password_confirmation"
-              required>
+            <input type="text" id="specAlim" class="form-control" name="specAlim"
+                   placeholder="Allergies / régime alimentaire"
+                   [(ngModel)]="form.specAlim">
           </div>
         </div>
 
@@ -47,7 +82,7 @@
 
             <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Créer mon compte</button>
 
-            <a routerLink="/login" class="btn btn-info float-right">Se connecter</a>
+            <a routerLink="/login" class="btn btn-info float-right">J'ai déjà un compte</a>
 
           </div>
         </div>

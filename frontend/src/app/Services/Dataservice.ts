@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from "../user";
+import {User} from "../models/user";
 import {Observable, of} from "rxjs";
 import {catchError, map, tap} from "rxjs/operators";
 
@@ -11,7 +11,7 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
 
-  public getAllProfiles(): Observable<User[]> {
+  public getAllUsers(): Observable<User[]> {
     return this.http.get(`${this.baseUrl}/users/getAllUsers`).pipe(
       map(
         (jsonArray: Object[]) => jsonArray.map(jsonItem => User.fromJson(jsonItem)),
@@ -32,6 +32,19 @@ export class DataService {
   login(data) {
     return this.http.post(`${this.baseUrl}/login`, data);
   }
+
+  sendPasswordResetLink(data) {
+    return this.http.post(`${this.baseUrl}/sendPasswordResetLink`, data)
+  }
+
+  // loginAfterSignUp(data) {
+  //   return this.http.post(`${this.baseUrl}/login`, data);
+  // }
+
+  changePassword(data){
+    return this.http.post(`${this.baseUrl}/resetPassword`, data)
+  }
+
   profile(id) {
     return this.http.get(`${this.baseUrl}/profiles/getProfile/${id}`);
   }
@@ -40,7 +53,11 @@ export class DataService {
     return this.http.post(`${this.baseUrl}/test`, data);
   }
   signup(data) {
-    return this.http.post(`${this.baseUrl}/signup`, data);
+    return this.http.post(`${this.baseUrl}/users/create`, data);
+  }
+  update(data) {
+    console.log(data);
+    return this.http.patch(`${this.baseUrl}/users/update`, data);
   }
 
   // /**

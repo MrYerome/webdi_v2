@@ -16,12 +16,13 @@ import {NavbarComponent} from "./Component/navbar/navbar.component";
 import {DataService} from "./Services/Dataservice";
 import {SignupComponent} from "./Component/signup/signup.component";
 import {ConnexionComponent} from "./Component/connexion/connexion.component";
-// import{ ModifProfilComponent} from "./Component/profile/modif-profil/modif-profil.component";
 import {AuthService} from "./Services/auth.service";
 import {TokenService} from "./Services/token.service";
-// import {FormProfilComponent} from "./Component/profile/form-profil/form-profil.component";
-// import { ProfileViewComponent } from './Component/profile/profile-view/profile-view.component';
 import {ListDinersComponent} from './Component/diner/list-diners/list-diners.component';
+import {RequestResetComponent} from "./Component/password/request-reset/request-reset.component";
+import {ResponseResetComponent} from "./Component/password/response-reset/response-reset.component";
+import {AfterLoginService} from "./Services/after-login.service";
+import {BeforeLoginService} from "./Services/before-login.service";
 
 
 @NgModule({
@@ -33,18 +34,20 @@ import {ListDinersComponent} from './Component/diner/list-diners/list-diners.com
     NavbarComponent,
     SignupComponent,
     ConnexionComponent,
-    ProfileModule,
-    ListDinersComponent
+    ListDinersComponent,
+    RequestResetComponent,
+    ResponseResetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ProfileModule,
     HttpClientModule,
     SnotifyModule,
     ReactiveFormsModule,
   ],
-  providers: [DataService, AuthService, TokenService,
+  providers: [DataService, AuthService, TokenService, AfterLoginService, BeforeLoginService,
 
     {provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService],

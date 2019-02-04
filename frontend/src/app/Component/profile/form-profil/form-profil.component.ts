@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../../user";
-import {Router} from "@angular/router";
+import {User} from "../../../models/user";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DataService} from "../../../Services/Dataservice";
+import {typeAlias} from "@babel/types";
 
 @Component({
   selector: 'app-form-profil',
@@ -13,35 +14,37 @@ export class FormProfilComponent implements OnInit {
   public users: User[];
 
   public error = null;
-  public id = 4;
 
-  constructor(private router: Router,
-              private Data: DataService) {
-  }
+
+  constructor(private route : ActivatedRoute,
+              private router: Router,
+              private Data: DataService) {}
 
   ngOnInit() {
-    this.Data.getAllProfiles().subscribe(
-      users => this.users = users,
-      error => {
-        console.log('erreur ');
-      },
-      () => {
-        console.log(this.users);
-      }
-    )
+    let id =this.route.snapshot.paramMap.get('id');
+    if (id==sessionStorage.getItem("id")){
+      console.log("Ok");
+      this.Data.getUser(id).subscribe(
+        value =>{
+          console.log(value); this.user = value},
+        error => {
+          console.log('erreur ');
+        }
+      )
+    }
+    else {
+      this.router.navigateByUrl('/accueil');
+    }
+  }
 
-    this.Data.getUser(this.id).subscribe(
-      value =>{
-        console.log(value); this.user = value[0]},
-      error => {
-        console.log('erreur ');
-      },
-      () => {
-        console.log(this.user.login);
-        console.log(this.user.profile.name);
-        console.log(this.user.usertypes.label);
-      }
-    )
+  onSubmit(){
+    console.log('form envoye');
+    // console.log(this.user);
+    this.Data.update(this.user)
+      .subscribe(()=>this.goBack());
+  }
+  goBack():void{
+    this.router.navigate(['/profile/view']);
   }
 
 }

@@ -18,13 +18,13 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.Auth.authStatus.subscribe(value => this.loggedIn = value);
+    this.Auth.authStatus.subscribe(value => { this.loggedIn = value; console.log(value);});
   }
 
   logout(event: MouseEvent) {
     event.preventDefault();
     this.Auth.changeAuthStatus(false);
-    localStorage.setItem('login', null);
+    sessionStorage.clear();
     this.router.navigateByUrl('/accueil');
   }
 

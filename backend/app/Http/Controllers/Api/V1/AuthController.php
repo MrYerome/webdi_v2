@@ -14,6 +14,10 @@ class AuthController extends Controller
 {
     use Helpers;
 
+    public function sendEmail(){
+        return json_encode("bravo");
+    }
+
     public function login()
     {
         $password = md5(request('password'));

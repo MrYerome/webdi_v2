@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from "../../../user";
+import {Component, OnInit} from '@angular/core';
+import {User} from "../../../models/user";
+import {ActivatedRoute, Router} from '@angular/router';
+import {DataService} from "../../../Services/Dataservice";
 
 @Component({
   selector: 'app-profile-view',
@@ -7,16 +9,39 @@ import {User} from "../../../user";
   styleUrls: ['./profile-view.component.css']
 })
 export class ProfileViewComponent implements OnInit {
-  users : User[];
-  login : string;
+  users: User[];
+  user: User;
+  id: string;
+  id1:string;
+  id2:string;
 
-  constructor() {
-    console.log(JSON.parse(sessionStorage.getItem('user')));
-    this.users = JSON.parse(sessionStorage.getItem('user'));
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private Data: DataService) {
   }
 
   ngOnInit() {
+    this.recupProfile();
+  }
 
+  recupProfile() {
+    if (this.route.snapshot.paramMap.get('id') != null) {
+      this.id2 = this.route.snapshot.paramMap.get('id');
+      this.id = this.id2;
+    }
+    else {
+      this.id1 = JSON.parse(sessionStorage.getItem('id').toString());
+      this.id = this.id1;
+    }
+
+    this.Data.getUser(this.id).subscribe(data => {
+      console.log(data);
+      this.user = data
+    });
+  }
+
+  selectProfile(d) {
+    this.router.navigate(['/profile/edit', d]);
   }
 
 }

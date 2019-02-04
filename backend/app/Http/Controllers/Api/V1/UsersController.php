@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Api\V1;
 
 
@@ -24,7 +25,7 @@ class UsersController extends Controller
 
     public function getUsers()
     {
-         return Users::with('Usertypes', 'cities', 'Themes')->get();
+        return Users::with('Usertypes', 'cities', 'Themes')->get();
     }
 
     public function getUser($id)
@@ -35,68 +36,106 @@ class UsersController extends Controller
 
     public function createUser(Request $request)
     {
+
         try {
             DB::beginTransaction();
-
-
             $attribut = [];
-
             $attribut['login'] = $request->login;
             $attribut['password'] = md5($request->password);
-            $attribut['id_UserTypes'] = $request->userTypes;
             $attribut['name'] = $request->name;
             $attribut['firstName'] = $request->firstName;
             $attribut['email'] = $request->email;
             $attribut['insee_Cities'] = '49007';
+            $attribut['id_UserTypes'] = '2';
 
             $user = Users::create($attribut);
 
             DB::commit();
-            return $this->api->get('users/'.$user->id);
+            return $this->api->get('users/' . $user->id);
         } catch (\PDOException $e) {
-            // Woopsy
             return $e;
             //return $this->response->errorBadRequest();
             DB::rollBack();
         }
 
-
-
-
-
-
-
-
-
     }
 
-    public function updateUser(Request $request){
-        try{
+    /**
+     * @param Request $request
+     * @return \Exception|mixed|\PDOException
+     * Commentaire JV : cette fonction marche, mais j'ai été obligé de mettre le $request dans un $attribut[]
+     * Si je fais request->all, le PDO bloque sur usertypes (champ inconnu)
+     * Je ne comprend pas pourquoi, car cela fonctionne très bien avec city
+     * En plus, dans postman, la requête fonctionne, ce qui me fait penser à une erreur dans le front angular
+     */
+    public function updateUser(Request $request)
+    {
+        try {
             DB::beginTransaction();
-
+            $attribut = [];
+            $attribut['id'] = $request->id;
+            $attribut['login'] = $request->login;
+            $attribut['id_UserTypes'] = 2;
+            $attribut['name'] = $request->name;
+            $attribut['firstName'] = $request->firstName;
+            $attribut['email'] = $request->email;
+            $attribut['specAlim'] = $request->specAlim;
             $user = new Users();
-            if (isset($request->id)){
-                $user = Users::with('Usertypes', 'cities', 'Themes')->find($request->id);
 
+            if (isset($attribut['id'])) {
+                $user = Users::with('usertypes', 'cities', 'Themes')->find($attribut['id']);
             }
-
-            if(isset($user->id)){
-                foreach ($request->all() as $key => $param){
-                    if($key != 'id'){
+            if (isset($user->id)) {
+                //return $request;
+                foreach ($attribut as $key => $param) {
+                    if ($key != 'id') {
                         $user->$key = $param;
                     }
                 }
                 $user->save();
 
                 DB::commit();
+                return $this->api->get('users/' . $user->id);
+            } ELSE {
+                $this->response->errorBadRequest();
+            }
+        } catch (\PDOException $e) {
+            return $e;
+            DB::rollBack();
+        }
+    }
 
-                return $this->api->get('users/'.$user->id);
-            }ELSE{
+    /**
+     * @param Request $request
+     * @return \Exception|mixed|\PDOException
+     * Commentaire JV : cette requête ne marche pas, le problème est le champ usertypes qui n'est pas trouvé
+     *
+     */
+    public function updateUser2(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $user = new Users();
+            if (isset($request->id)) {
+                $user = Users::with('Usertypes', 'cities', 'Themes')->find($request->id);
+                //  return json_encode($user);
+            }
+
+            if (isset($user->id)) {
+                foreach ($request->all() as $key => $param) {
+                    if ($key != 'id') {
+                        $user->$key = $param;
+                    }
+                }
+                $user->save();
+                DB::commit();
+                return $this->api->get('users/' . $user->id);
+
+            } else {
                 $this->response->errorBadRequest();
             }
 
-
-        }catch (\PDOException $e){
+        } catch (\PDOException $e) {
             return $e;
             DB::rollBack();
 

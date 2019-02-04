@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-
-import {Router} from "@angular/router";
+import {User} from "../../../models/user";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DataService} from "../../../Services/Dataservice";
 
 @Component({
@@ -9,16 +9,23 @@ import {DataService} from "../../../Services/Dataservice";
   styleUrls: ['./modif-profil.component.css']
 })
 export class ModifProfilComponent implements OnInit {
-  // public users: User[];
-  // public user: User;
-  // public error = null;
-  // public id = 4;
 
-  constructor(private router: Router,
+  constructor(private route : ActivatedRoute,
+              private router: Router,
               private Data: DataService) {
   }
 
+
+
   ngOnInit() {
+    let id=+this.route.snapshot.paramMap.get('id');
+    if (id.toString()==(sessionStorage.getItem("id"))){
+      console.log("Ok");
+    }
+    else {
+      console.log("KO");
+    }
+
     // this.Data.getAllProfiles().subscribe(
     //   users => this.users = users,
     //   error => {
@@ -56,6 +63,7 @@ export class ModifProfilComponent implements OnInit {
   //   return this.http.get < User > (url).pipe(tap(_ => console.log(`fetched hero id=${id}`)), catchError(this.handleError < Disque > (`getDisque id=${id}`)));
   // }
 
+
   onSubmit() {
     console.log('form envoye');
     // this.disqueService
@@ -65,7 +73,7 @@ export class ModifProfilComponent implements OnInit {
 
   goBack(): void {
     console.log("router");
-    // this.router.navigate(['/disque', this.disque.id]);
+     this.router.navigate(['/profile']);
   }
 
 }
