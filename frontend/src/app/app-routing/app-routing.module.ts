@@ -17,15 +17,15 @@ import { AfterLoginService} from "../Services/after-login.service";
 
 
 const ROUTES: Routes = [
-  {path:'', component : AccueilComponent  },
-  {path:'accueil', component : AccueilComponent  },
-  {path:'test', component : TestComponent  },
-  {path:'connexion',
+  {path: '', component : AccueilComponent  },
+  {path: 'accueil', component : AccueilComponent  },
+  {path: 'test', component : TestComponent  },
+  {path: 'connexion',
     component : ConnexionComponent,
     canActivate: [BeforeLoginService]},
-  {path:'signup', component : SignupComponent  },
-  {path:'profile', component : ProfileViewComponent  },
-  {path:'profile/list', component : ListProfilesComponent  },
+  {path: 'signup', component : SignupComponent  },
+  {path: 'profile', component : ProfileViewComponent  },
+  {path: 'profile/list', component : ListProfilesComponent  },
   {path : 'listDiners', component : ListDinersComponent},
   {
     path: 'request-password-reset',
