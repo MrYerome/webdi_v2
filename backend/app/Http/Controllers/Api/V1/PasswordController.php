@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Mail\ResetPasswordMail;
+use App\Models\Password_resets;
 use App\Models\Users;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Dingo\Api\Contract\Http\Request;
 //use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ChangePasswordRequest;
 
@@ -33,7 +34,7 @@ class PasswordController extends Controller
 
     private function getPasswordResetTableRow($request)
     {
-        return DB::table('password_resets')->where(['email' => $request->email, 'token' => $request->resetToken]);
+        return Password_resets::where(['email' => $request->email, 'token' => $request->resetToken]);
     }
 
     private function tokenNotFoundResponse()
@@ -76,7 +77,7 @@ Fonctions pour vérifier si l'e-mail existe et le cas échéant, envoyer un mail
 
     public function createToken($email)
     {
-        $oldToken = DB::table('password_resets')->where('email', $email)->first();
+        $oldToken = Password_resets::where('email', $email)->first();
         if ($oldToken) {
             return $oldToken->token;
         }
@@ -86,7 +87,7 @@ Fonctions pour vérifier si l'e-mail existe et le cas échéant, envoyer un mail
 
     public function saveToken($token, $email)
     {
-        DB::table('password_resets')->insert([
+        Password_resets::insert([
             'email' => $email,
             'token' => $token,
             'created_at' => Carbon::now()
