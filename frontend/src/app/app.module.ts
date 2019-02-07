@@ -23,6 +23,7 @@ import {RequestResetComponent} from "./Component/password/request-reset/request-
 import {ResponseResetComponent} from "./Component/password/response-reset/response-reset.component";
 import {AfterLoginService} from "./Services/after-login.service";
 import {BeforeLoginService} from "./Services/before-login.service";
+import { ActivationComponent } from './Component/activation/activation.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {BeforeLoginService} from "./Services/before-login.service";
     ConnexionComponent,
     ListDinersComponent,
     RequestResetComponent,
-    ResponseResetComponent
+    ResponseResetComponent,
+    ActivationComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,10 @@ export class SignupComponent implements OnInit {
     password_confirmation: null,
     specAlim: null
   };
+
+  public form2 = {
+    email: null,
+  };
   public error = [];
 
   constructor(
@@ -37,8 +41,7 @@ export class SignupComponent implements OnInit {
     );
   }
   handleResponse(data) {
-    console.log(data);
-    // this.Data.loginAfterSignUp(this.form).subscribe();
+    this.Data.sendMailAfterSignup(this.form).subscribe();
     this.router.navigateByUrl('/accueil');
   }
 
