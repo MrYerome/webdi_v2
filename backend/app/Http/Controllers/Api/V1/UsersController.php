@@ -19,7 +19,8 @@ class UsersController extends Controller
 
     public function login($login)
     {
-        return Users::with('Usertypes', 'cities', 'Themes')->where(['login' => $login])->get();
+
+        return Users::with('Usertypes', 'cities', 'Themes')->where(['login' => $login])->get()->makeVisible(['password']);
 
     }
 
