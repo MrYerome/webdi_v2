@@ -14,6 +14,7 @@ import {RequestResetComponent} from "../Component/password/request-reset/request
 import {ResponseResetComponent} from "../Component/password/response-reset/response-reset.component";
 import { BeforeLoginService } from "../Services/before-login.service";
 import { AfterLoginService} from "../Services/after-login.service";
+import {ActivationComponent} from "../Component/activation/activation.component";
 
 
 const ROUTES: Routes = [
@@ -36,6 +37,11 @@ const ROUTES: Routes = [
     path: 'response-password-reset',
     component: ResponseResetComponent,
     canActivate: [BeforeLoginService]
+  },
+  {
+    path: 'activation',
+    component: ActivationComponent,
+    //canActivate: [BeforeLoginService]
   },
 ]
 

@@ -26,7 +26,10 @@ $api->version('v1', [], function (Router $api) {
         $api->patch('/update', 'App\Http\Controllers\Api\V1\UsersController@updateUser');
 
     });
-
+    //Envoi d'un mail après le signup
+    $api->post('sendMailAfterSignup', 'App\Http\Controllers\Api\V1\ActivationController@sendMailAfterSignup');
+    //Pour l'activation :
+    $api->get('activation/{token}', 'App\Http\Controllers\Api\V1\ActivationController@activation');
 
     $api->group(['prefix' => 'diners'], function ($api){
         $api->get('', '\App\Http\Controllers\Api\V1\dinersController@getDiners');

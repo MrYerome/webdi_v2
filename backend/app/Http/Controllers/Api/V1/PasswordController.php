@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Mail\ResetPasswordMail;
 use App\Models\Users;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-//use App\Http\Controllers\Controller;
+use Dingo\Api\Http\Request;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Routing\Controller;
@@ -64,13 +63,12 @@ Fonctions pour vérifier si l'e-mail existe et le cas échéant, envoyer un mail
 
     public function send($email)
     {
-        $token = $this->createToken($email);
+        $token = $this->createToken($email);$token = $this->createToken($email);
         Mail::to($email)->send(new ResetPasswordMail($token));
     }
 
     public function validateEmail($email)
     {
-
         return !!Users::where('email', $email)->first();
     }
 

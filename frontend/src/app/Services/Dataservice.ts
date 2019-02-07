@@ -37,10 +37,6 @@ export class DataService {
     return this.http.post(`${this.baseUrl}/sendPasswordResetLink`, data)
   }
 
-  // loginAfterSignUp(data) {
-  //   return this.http.post(`${this.baseUrl}/login`, data);
-  // }
-
   changePassword(data){
     return this.http.post(`${this.baseUrl}/resetPassword`, data)
   }
@@ -55,6 +51,14 @@ export class DataService {
   signup(data) {
     return this.http.post(`${this.baseUrl}/users/create`, data);
   }
+  sendMailAfterSignup(data) {
+    console.log(data);
+    return this.http.post(`${this.baseUrl}/sendMailAfterSignup`, data)
+  }
+  activation(token){
+    return this.http.get(`${this.baseUrl}/activation/${token}`)
+  }
+
   update(data) {
     console.log(data);
     return this.http.patch(`${this.baseUrl}/users/update`, data);
