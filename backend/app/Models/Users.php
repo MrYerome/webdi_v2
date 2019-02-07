@@ -29,8 +29,8 @@ class Users extends Model
     /**
      * @var array
      */
-    protected $fillable = ['login', 'password', 'name', 'firstName', 'email', 'active', 'created_at', 'updated_at', 'insee_Cities', 'specAlim', 'id_UserTypes'];
-
+    protected $fillable = ['login', 'name', 'firstName', 'email', 'active', 'created_at', 'updated_at', 'insee_Cities', 'specAlim', 'id_UserTypes'];
+    protected  $hidden = ['password'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

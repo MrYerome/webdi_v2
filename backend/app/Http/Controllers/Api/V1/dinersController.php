@@ -16,4 +16,8 @@ class dinersController extends Controller
         return Diners::with('place', 'theme', 'user')->where("date", ">=", date("Y-m-d h:i:s"))->get();
     }
 
+    public function getDiner($id){
+        return Diners::with('place','theme','user')->find($id);
+    }
+
 }
