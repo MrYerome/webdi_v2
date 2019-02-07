@@ -117,7 +117,7 @@ class UsersController extends Controller
             DB::beginTransaction();
             $user = new Users();
             if (isset($request->id)) {
-                $user = Users::with('Usertypes', 'cities', 'Themes')->find($request->id);
+                $user = Users::with('usertypes', 'cities', 'Themes')->find($request->id);
                 //  return json_encode($user);
             }
 
