@@ -20,4 +20,8 @@ class dinersController extends Controller
         return Diners::with('place','theme','user')->find($id);
     }
 
+    public function createDiner(Request $request){
+
+    }
+
 }
