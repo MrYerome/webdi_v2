@@ -32,7 +32,15 @@ $api->version('v1', [], function (Router $api) {
     $api->get('activation/{token}', 'App\Http\Controllers\Api\V1\ActivationController@activation');
 
     $api->group(['prefix' => 'diners'], function ($api){
-        $api->get('', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
+        $api->get('/getAllDiners', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
+        $api->get('/{id}', '\App\Http\Controllers\Api\V1\dinersController@getDiner');
+        $api->post('/create', '\App\Http\Controllers\Api\V1\dinersController@createDiner');
+        $api->get('/myOwnDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyOwnDiners');
+        $api->get('/myDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyDiners');
+        $api->delete('/{id}', '\App\Http\Controllers\Api\V1\dinersController@deleteDiner');
+        $api->get('/deleted', '\App\Http\Controllers\Api\V1\dinersController@getDeletedDiners');
+        $api->patch('/update', '\App\Http\Controllers\Api\V1\dinersController@updateDiner');
+
     });
 
     $api->group(['prefix' => 'auth'], function ($api){
@@ -46,7 +54,6 @@ $api->version('v1', [], function (Router $api) {
     $api->post('sendPasswordResetLink', 'App\Http\Controllers\Api\V1\PasswordController@sendEmail');
     //Pour le reset password :
     $api->post('resetPassword', 'App\Http\Controllers\Api\V1\PasswordController@process');
-
 
 });
 
