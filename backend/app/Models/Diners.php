@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -25,11 +26,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Diners extends Model
 {
+    use SoftDeletes;
     /**
      * @var array
      */
     protected $fillable = ['title', 'description', 'date', 'price', 'created_at', 'updated_at', 'deleted_at', 'maxMembers', 'id_Places', 'id_Themes', 'id_Organisator'];
-
+    protected $date = ['deleted_at'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
