@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Diner} from "../../../models/diner";
 import {DinerServiceService} from "../../../Services/diner-service.service";
 import {Places} from "../../../models/places";
+import {Themes} from "../../../models/themes";
 
 @Component({
   selector: 'app-create-diner',
@@ -15,10 +16,10 @@ export class CreateDinerComponent implements OnInit {
 
   public diner = {};
   public places: Places[];
-  public place = {};
-  public error = [];
+public themes : Themes[];
 
   ngOnInit() {
+    //on récupère les lieux
     this.Data.getAllPlaces().subscribe(
       places => {
         this.places = places
@@ -28,6 +29,19 @@ export class CreateDinerComponent implements OnInit {
       },
       () => {
         console.log(this.places);
+      }
+    );
+
+    //on récupère les thèmes
+    this.Data.getAllThemes().subscribe(
+      themes => {
+        this.themes = themes
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        console.log(this.themes);
       }
     );
   };

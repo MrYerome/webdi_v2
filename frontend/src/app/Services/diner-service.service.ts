@@ -4,6 +4,7 @@ import {Diner} from "../models/diner";
 import {Observable, of} from "rxjs";
 import {catchError, map, tap} from "rxjs/operators";
 import {Places} from "../models/places";
+import {Themes} from "../models/themes";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,14 @@ export class DinerServiceService {
     return this.http.get(`${this.baseUrl}/places/getAllPlaces`).pipe(
       map(
         (jsonArray: Object[]) => jsonArray.map(jsonItem => Places.fromJson(jsonItem)),
+      )
+    );
+  }
+
+  public getAllThemes(): Observable<Themes[]> {
+    return this.http.get(`${this.baseUrl}/themes/getAllThemes`).pipe(
+      map(
+        (jsonArray: Object[]) => jsonArray.map(jsonItem => Themes.fromJson(jsonItem)),
       )
     );
   }

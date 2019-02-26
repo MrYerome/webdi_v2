@@ -50,6 +50,10 @@ $api->version('v1', [], function (Router $api) {
        $api->get('/getAllPlaces', '\App\Http\Controllers\Api\V1\PlacesController@getPlaces');
     });
 
+    $api->group(["prefix" => 'themes'], function ($api){
+        $api->get('/getAllThemes', '\App\Http\Controllers\Api\V1\ThemesController@getThemes');
+    });
+
     $api->post('login', 'App\Http\Controllers\Api\V1\AuthController@login');
     $api->post('signup', 'App\Http\Controllers\Api\V1\UsersController@createUser');
 

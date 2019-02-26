@@ -33,14 +33,19 @@
             <option *ngFor="let pla of places" [value]="pla.id">{{pla.name}} - {{pla.}}</option>
           </select>
           <div [hidden]=" place.valid || place.pristine" class="alert alert-danger">
-            Place is required
+            Un lieu est nécessaire.
           </div>
         </div>
-        <!--<div [hidden]="stock.valid || stock.pristine" class="card-panel red accent-1">-->
-        <!-- pristine = n'a jamais ete modifier -->
-        <!--Le stock de l'artiste est recauis-->
-        <!--</div>-->
 
+        <div class="form-group">
+          <label for="selectTheme">Choix du lieu</label>
+          <select class="form-control" id="selectTheme"
+                  required
+                  [(ngModel)]="diner.id_Places" name="selectTheme"
+                  #theme="ngModel">
+            <option *ngFor="let the of theme" [value]="pla.id">{{the.name}} - {{pla.}}</option>
+          </select>
+        </div>
 
 
         <div class="divider"></div>
