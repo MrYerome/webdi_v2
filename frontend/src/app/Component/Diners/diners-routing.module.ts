@@ -4,19 +4,18 @@ import {RouterModule, Routes} from "@angular/router";
 import {ListDinersComponent} from "./list-diners/list-diners.component";
 
 const dinersRoutes: Routes = [
+    {path : 'diners/list', component : ListDinersComponent},
 
-  {path : 'diners/listDiners', component : ListDinersComponent},
 ]
 
-
 @NgModule({
-  declarations: [],
+  declarations: [  ],
   imports: [
     CommonModule,
-    RouterModule.forChild(dinersRoutes)
+      RouterModule.forChild(dinersRoutes)
   ],
-  exports: [
-    RouterModule
-  ]
+    exports: [
+        RouterModule
+    ]
 })
 export class DinersRoutingModule { }

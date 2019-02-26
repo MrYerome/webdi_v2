@@ -20,7 +20,6 @@ $api->version('v1', [], function (Router $api) {
     $api->group(['prefix' => 'users'], function ($api){
         $api->get('/getAllUsers', 'App\Http\Controllers\Api\V1\UsersController@getUsers');
         $api->get('/login/{login}', 'App\Http\Controllers\Api\V1\UsersController@login');
-        $api->get('{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
         $api->get('/getUser/{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
         $api->post('/create', 'App\Http\Controllers\Api\V1\UsersController@createUser');
         $api->patch('/update', 'App\Http\Controllers\Api\V1\UsersController@updateUser');
@@ -32,13 +31,11 @@ $api->version('v1', [], function (Router $api) {
     $api->get('activation/{token}', 'App\Http\Controllers\Api\V1\ActivationController@activation');
 
     $api->group(['prefix' => 'diners'], function ($api){
-        $api->get('myDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyDiners');
-        $api->get('/{id}', '\App\Http\Controllers\Api\V1\dinersController@getDiner');
-
+        $api->get('/getAllDiners', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
         $api->get('/myOwnDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyOwnDiners');
-       // $api->get('myDiners', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
-
-        $api->get('/deleted', '\App\Http\Controllers\Api\V1\dinersController@getDeletedDiners');
+        $api->get('/myDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyDiners');
+        $api->get('/deleted',  '\App\Http\Controllers\Api\V1\dinersController@getDeletedDiners');
+        $api->get('/getDiner/{id}', '\App\Http\Controllers\Api\V1\dinersController@getDiner');
         $api->post('/create', '\App\Http\Controllers\Api\V1\dinersController@createDiner');
         $api->patch('/update', '\App\Http\Controllers\Api\V1\dinersController@updateDiner');
         $api->delete('/{id}', '\App\Http\Controllers\Api\V1\dinersController@deleteDiner');

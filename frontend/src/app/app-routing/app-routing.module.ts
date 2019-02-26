@@ -6,14 +6,11 @@ import {TestComponent} from "../Component/test/test.component";
 import {AccueilComponent} from "../Component/accueil/accueil.component";
 import {SignupComponent} from "../Component/signup/signup.component";
 import {ConnexionComponent} from "../Component/connexion/connexion.component";
-import {ProfileViewComponent} from "../Component/profile/profile-view/profile-view.component";
-import {ListProfilesComponent} from "../Component/profile/list-profiles/list-profiles.component";
 import {RequestResetComponent} from "../Component/password/request-reset/request-reset.component";
 import {ResponseResetComponent} from "../Component/password/response-reset/response-reset.component";
 import { BeforeLoginService } from "../Services/before-login.service";
 import { AfterLoginService} from "../Services/after-login.service";
 import {ActivationComponent} from "../Component/activation/activation.component";
-
 
 
 const ROUTES: Routes = [
