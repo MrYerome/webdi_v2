@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $maxCapacity
  * @property string $insee_Cities
  * @property int $id_Contacts
- * @property City $city
- * @property Contact $contact
+ * @property Cities $city
+ * @property Contacts $contact
  * @property Diners[] $diners
  */
 class Places extends Model
@@ -30,7 +30,7 @@ class Places extends Model
      */
     public function city()
     {
-        return $this->belongsTo('App\Models\City', 'insee_Cities', 'insee');
+        return $this->belongsTo('App\Models\Cities', 'insee_Cities', 'insee');
     }
 
     /**
@@ -38,7 +38,7 @@ class Places extends Model
      */
     public function contact()
     {
-        return $this->belongsTo('App\Models\Contact', 'id_Contacts');
+        return $this->belongsTo('App\Models\Contacts', 'id_Contacts');
     }
 
     /**
