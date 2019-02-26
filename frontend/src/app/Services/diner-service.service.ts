@@ -40,8 +40,10 @@ export class DinerServiceService {
     );
   }
   public createDiner(data){
-    //return this.http.get(`${this.baseUrl}/diners/getDiner/1`);
     return this.http.post(`${this.baseUrl}/diners/create`, data);
+  }
+  public getDiner(id){
+    return this.http.get < Diner > (`${this.baseUrl}/diners/getDiner/${id}`).pipe(tap(_ => console.log(`id diner=${id}`)));
   }
 
 

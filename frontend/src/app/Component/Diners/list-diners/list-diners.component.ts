@@ -32,6 +32,7 @@ this.Data.getAllDiners().subscribe(
   }
 
   selectDiner(d) {
-    this.router.navigate(['/diner/view',d]);
+    console.log(d);
+    this.router.navigate(['/diners/view',d]);
   }
 }

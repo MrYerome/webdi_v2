@@ -33,7 +33,8 @@ export class ProfileViewComponent implements OnInit {
       this.id1=this.id;
     }
 
-    this.Data.getUser(this.id).subscribe(data => {
+    this.Data.getUser(this.id).subscribe(
+      data => {
       console.log(data);
       this.user = data
     });
