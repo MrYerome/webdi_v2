@@ -28,8 +28,7 @@ this.Data.getAllDiners().subscribe(
   () => {
     console.log(this.diners);
   }
-
-)
+);
   }
 
   selectDiner(d) {
