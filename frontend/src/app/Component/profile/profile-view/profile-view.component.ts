@@ -12,8 +12,7 @@ export class ProfileViewComponent implements OnInit {
   users: User[];
   user: User;
   id: string;
-  id1:string;
-  id2:string;
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -26,12 +25,10 @@ export class ProfileViewComponent implements OnInit {
 
   recupProfile() {
     if (this.route.snapshot.paramMap.get('id') != null) {
-      this.id2 = this.route.snapshot.paramMap.get('id');
-      this.id = this.id2;
+      this.id = this.route.snapshot.paramMap.get('id');
     }
     else {
-      this.id1 = JSON.parse(sessionStorage.getItem('id').toString());
-      this.id = this.id1;
+      this.id = JSON.parse(sessionStorage.getItem('id').toString());
     }
 
     this.Data.getUser(this.id).subscribe(data => {
