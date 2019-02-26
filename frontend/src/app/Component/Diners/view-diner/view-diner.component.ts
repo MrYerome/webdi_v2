@@ -10,7 +10,15 @@ import {Diner} from "../../../models/diner";
 })
 export class ViewDinerComponent implements OnInit {
   id: string;
-  diner : Diner;
+  public diner = {
+    description : null,
+    theme : {
+      label : null
+    },
+    place : {
+      name : null
+    }
+  };
   constructor(private router: Router,
               private route: ActivatedRoute,
               private Data : DinerServiceService
