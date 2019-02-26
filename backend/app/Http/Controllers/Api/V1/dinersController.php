@@ -18,7 +18,7 @@ class dinersController extends Controller
      * commentaire cg: récupération des diners dont la date est supérieur a la date du jour
      */
     public function getDiners(){
-        return Diners::with('place', 'theme', 'user', 'usersdiners')->where("date", ">=", date("Y-m-d h:i:s"))->get();
+        return Diners::with('place', 'theme', 'user', 'usersdiners')->where("date", ">=", "now()")->orderBy('date','asc')->get();
     }
 
     /**
@@ -27,7 +27,7 @@ class dinersController extends Controller
      * récupération d'un diner
      */
     public function getDiner($id){
-        return Diners::with('place','theme','user', 'usersdiners')->where('date','>=', 'now()')->orderBy('date','asc')->find($id);
+        return Diners::with('place','theme','user', 'usersdiners')->find($id);
     }
 
     /**
@@ -35,8 +35,8 @@ class dinersController extends Controller
      * @return Diners|Diners[]|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      * commentaire cg : récupération des anciens diners (diners dont la date du diners est inférieur a la date du jour)
      */
-    public function getOldDiner($id){
-        return Diners::with('place','theme','user', 'usersdiners')->where('date','<', 'now()')->orderBy('date','desc')->find($id);
+    public function getOldDiners(){
+        return Diners::with('place','theme','user', 'usersdiners')->where('date','<', 'now()')->orderBy('date','desc')->get();
     }
 
     /**
