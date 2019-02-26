@@ -25,14 +25,14 @@
         </div>
 
         <div class="form-group">
-          <label for="place">Hero Power</label>
-          <select class="form-control" id="place"
+          <label for="selectPlace">Choix du lieu</label>
+          <select class="form-control" id="selectPlace"
                   required
-                  [(ngModel)]="diner.id_Places" name="place"
-                  #power="ngModel">
-            <option *ngFor="let pla of places" [value]="pla.id">{{pla.name}}</option>
+                  [(ngModel)]="diner.id_Places" name="selectPlace"
+                  #place="ngModel">
+            <option *ngFor="let pla of places" [value]="pla.id">{{pla.name}} - {{pla.}}</option>
           </select>
-          <div [hidden]="place.name || place.pristine" class="alert alert-danger">
+          <div [hidden]=" place.valid || place.pristine" class="alert alert-danger">
             Place is required
           </div>
         </div>

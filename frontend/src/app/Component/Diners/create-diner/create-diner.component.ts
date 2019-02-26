@@ -15,6 +15,8 @@ export class CreateDinerComponent implements OnInit {
 
   public diner = {};
   public places: Places[];
+  public place = {};
+  public error = [];
 
   ngOnInit() {
     this.Data.getAllPlaces().subscribe(
@@ -28,9 +30,6 @@ export class CreateDinerComponent implements OnInit {
         console.log(this.places);
       }
     );
-
-
-
   };
 
   onSubmit() {

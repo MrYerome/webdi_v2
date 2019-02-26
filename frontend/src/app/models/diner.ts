@@ -29,6 +29,7 @@ export class Diner {
             "id" : number,
             "name" : number,
             "numberStreet" : number,
+          "nameStreet" : string,
             "maxCapacity": number,
             "insee_Cities": string,
             "id_Contacts": number
