@@ -18,7 +18,7 @@ class dinersController extends Controller
      * commentaire cg: récupération des diners dont la date est supérieur a la date du jour
      */
     public function getDiners(){
-        return Diners::with('place', 'theme', 'user', 'usersdiners')->where("date", ">=", "now()")->orderBy('date','asc')->get();
+        return Diners::with('place', 'theme', 'user', 'usersdiners')->where("date", ">=", date("Y-m-d H:m:i"))->orderBy('date','asc')->get();
     }
 
     /**
@@ -27,7 +27,7 @@ class dinersController extends Controller
      * récupération d'un diner
      */
     public function getDiner($id){
-        return Diners::with('place','theme','user', 'usersdiners')->find($id);
+        return Diners::with('place','theme','user', 'usersdiners')->withTrashed()->find($id);
     }
 
     /**
@@ -36,7 +36,7 @@ class dinersController extends Controller
      * commentaire cg : récupération des anciens diners (diners dont la date du diners est inférieur a la date du jour)
      */
     public function getOldDiners(){
-        return Diners::with('place','theme','user', 'usersdiners')->where('date','<', 'now()')->orderBy('date','desc')->get();
+        return Diners::with('place','theme','user', 'usersdiners')->where('date','<', date("Y-m-d H:m:i"))->orderBy('date','desc')->get();
     }
 
     /**
@@ -45,6 +45,7 @@ class dinersController extends Controller
      * commentaire cg : récupération des diners dont je suis l'organisateur
      */
     public function getMyOwnDiners(Request $request){
+       
         return Diners::with('place', 'theme', 'user', 'usersdiners')->where(['id_Organisator' => $request->user_id])->get();
     }
 
@@ -54,7 +55,8 @@ class dinersController extends Controller
      * commentaire cg: récupération des diners auquels j'ai participé
      */
     public function getMyDiners(Request $request){
-        return Diners::with('place','theme','user', 'usersdiners')->where('date','>=','now()')->whereHas('usersdiners' , function ($query) use ($request) {
+
+        return Diners::with('place','theme','user', 'usersdiners')->where('date','>=',date("Y-m-d H:m:i"))->whereHas('usersdiners' , function ($query) use ($request) {
             $query->where('id_Users', '=', $request->user_id);
         })->get();
     }
@@ -65,7 +67,7 @@ class dinersController extends Controller
      * commentaire cg : récupération des anciens diners auquels j'ai participé
      */
     public function getMyOldDiners(Request $request){
-        return Diners::with('place','theme','user', 'usersdiners')->where('date','<','now()')->whereHas('usersdiners' , function ($query) use ($request) {
+        return Diners::with('place','theme','user', 'usersdiners')->where('date','<',date("Y-m-d H:m:i"))->whereHas('usersdiners' , function ($query) use ($request) {
             $query->where('id_Users', '=', $request->user_id);
         })->get();
     }
