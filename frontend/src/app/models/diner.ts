@@ -57,7 +57,8 @@ export class Diner {
                 "comment": string,
                 "nbPlaces": number
             }
-            ]
+            ],
+
     ) {
     }
 }

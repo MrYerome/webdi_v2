@@ -3,29 +3,39 @@ export class Themes {
     return new Themes(
       json['id'],
       json['label'],
+      json['diners'],
+      json['users'],
     );
   }
 
   constructor(
     public id: number,
-    public title: string,
-    public diners : [
-    {
+    public label: string,
+    public diners: [{
+      'id': number,
+      'title': string,
+      'description': string,
+      'date': Date,
+      'price': number,
+      'created_at': Date,
+      'updated_at': Date,
+      'deleted_at': Date,
+      'maxMembers': number,
+      'id_Places': number,
+      'id_Themes': number,
+      'id_Organisator': number
+    }],
+    public users: [{
       "id": number,
-      "title": "Premier diner",
-      "description": "Description",
-      "date": "2019-06-30 00:00:00",
-      "price": 39,
-      "created_at": "2019-02-26 10:16:39",
-      "updated_at": "2019-02-26 10:16:39",
-      "deleted_at": null,
-      "maxMembers": 40,
-      "id_Places": 1,
-      "id_Themes": 1,
-      "id_Organisator": 19
-    }
-    ],
-
+      "login": string,
+      "name": string,
+      "firstName": string,
+      "email": string,
+      "active": number,
+      "insee_Cities": string,
+      "specAlim": string
+      "id_UserTypes": number
+    }],
   ) {
   }
 }

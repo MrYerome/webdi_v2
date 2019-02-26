@@ -13,6 +13,7 @@ export class CreateDinerComponent implements OnInit {
   //@Input() diner : Diner = null;
   constructor(private Data: DinerServiceService) {
   }
+  time = {hour: 13, minute: 30};
 
   public diner = {};
   public places: Places[];

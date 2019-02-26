@@ -16,6 +16,13 @@
           <input type="date" id="date" class="form-control" name="date" #name="ngModel" [(ngModel)]='diner.date' required >
         </div>
         <div class="form-group">
+          <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+          <hr>
+          <pre>Selected time: {{time | json}}</pre>
+          <!--<label for="heure">Heure</label>-->
+          <!--<input type="time" id="heure" class="form-control" name="heure" #name="ngModel" [(ngModel)]='diner.date' required >-->
+        </div>
+        <div class="form-group">
           <label for="price">Tarif</label>
           <input type="number" id="price" class="form-control" name="price" #name="ngModel" [(ngModel)]='diner.price' required>
         </div>
@@ -30,7 +37,7 @@
                   required
                   [(ngModel)]="diner.id_Places" name="selectPlace"
                   #place="ngModel">
-            <option *ngFor="let pla of places" [value]="pla.id">{{pla.name}} - {{pla.}}</option>
+            <option *ngFor="let pla of places" [value]="pla.id">{{pla.name}} - {{pla.nameStreet}} - {{pla.city.nom_reel}}</option>
           </select>
           <div [hidden]=" place.valid || place.pristine" class="alert alert-danger">
             Un lieu est nécessaire.
@@ -41,9 +48,9 @@
           <label for="selectTheme">Choix du lieu</label>
           <select class="form-control" id="selectTheme"
                   required
-                  [(ngModel)]="diner.id_Places" name="selectTheme"
+                  [(ngModel)]="diner.id_Themes" name="selectTheme"
                   #theme="ngModel">
-            <option *ngFor="let the of theme" [value]="pla.id">{{the.name}} - {{pla.}}</option>
+            <option *ngFor="let the of themes" [value]="the.id">{{the.label}}</option>
           </select>
         </div>
 
