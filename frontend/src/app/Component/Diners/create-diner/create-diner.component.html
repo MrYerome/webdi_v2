@@ -17,13 +17,25 @@
         </div>
         <div class="form-group">
           <label for="price">Tarif</label>
-          <input type="number" id="price" class="form-control" name="price" #name="ngModel" [(ngModel)]='diner.price' pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+          <input type="number" id="price" class="form-control" name="price" #name="ngModel" [(ngModel)]='diner.price' required>
         </div>
         <div class="form-group">
           <label for="maxMembers">Nombre maximum de participants</label>
-          <input type="number" id="maxMembers" class="form-control" name="maxMembers" #name="ngModel" [(ngModel)]='diner.maxMembers' pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+          <input type="number" id="maxMembers" class="form-control" name="maxMembers" #name="ngModel" [(ngModel)]='diner.maxMembers' required>
         </div>
 
+        <div class="form-group">
+          <label for="place">Hero Power</label>
+          <select class="form-control" id="place"
+                  required
+                  [(ngModel)]="diner.id_Places" name="place"
+                  #power="ngModel">
+            <option *ngFor="let pla of places" [value]="pla.id">{{pla.name}}</option>
+          </select>
+          <div [hidden]="place.name || place.pristine" class="alert alert-danger">
+            Place is required
+          </div>
+        </div>
         <!--<div [hidden]="stock.valid || stock.pristine" class="card-panel red accent-1">-->
         <!-- pristine = n'a jamais ete modifier -->
         <!--Le stock de l'artiste est recauis-->

@@ -15,8 +15,6 @@ export class CreateDinerComponent implements OnInit {
 
   public diner = {};
   public places: Places[];
-  public diners: Diner[];
-  powers = [];
 
   ngOnInit() {
     this.Data.getAllPlaces().subscribe(
@@ -31,17 +29,7 @@ export class CreateDinerComponent implements OnInit {
       }
     );
 
-    this.Data.getAllDiners().subscribe(
-      diners => {
-        this.diners = diners
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
-        console.log(this.diners);
-      }
-    )
+
 
   };
 
