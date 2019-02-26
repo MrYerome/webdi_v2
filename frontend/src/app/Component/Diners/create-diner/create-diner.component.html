@@ -32,7 +32,7 @@
                   #place="ngModel">
             <option *ngFor="let pla of places" [value]="pla.id">{{pla.name}} - {{pla.}}</option>
           </select>
-          <div [hidden]=" place.valid || place.pristine" class="alert alert-danger">
+          <div [hidden]="place.name || place.pristine" class="alert alert-danger">
             Place is required
           </div>
         </div>
