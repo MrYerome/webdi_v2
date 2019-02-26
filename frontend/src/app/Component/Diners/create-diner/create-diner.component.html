@@ -12,15 +12,19 @@
           <input type="text" id="description" class="form-control" name="description" #name="ngModel" [(ngModel)]='diner.description' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
         </div>
         <div class="form-group">
-          <label for="date">Date</label>
-          <input type="date" id="date" class="form-control" name="date" #name="ngModel" [(ngModel)]='diner.date' required >
+          <!--<div class="input-group">-->
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   value = "{{ dateDiner | date : 'dd/MM/yyyy' }}"
+                  [(ngModel)]="dateDiner" ngbDatepicker #d="ngbDatepicker" name="dateDiner" (focus)="d.open()">
+            <!--<div class="input-group-append">-->
+              <!--<button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<label for="date">Date</label>-->
+          <!--<input type="date" id="date" class="form-control" name="date" #name="ngModel" [(ngModel)]='diner.date' required >-->
         </div>
         <div class="form-group">
-          <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
-          <hr>
-          <pre>Selected time: {{time | json}}</pre>
-          <!--<label for="heure">Heure</label>-->
-          <!--<input type="time" id="heure" class="form-control" name="heure" #name="ngModel" [(ngModel)]='diner.date' required >-->
+          <ngb-timepicker [(ngModel)]="time" name="time"></ngb-timepicker>
         </div>
         <div class="form-group">
           <label for="price">Tarif</label>

@@ -4,6 +4,7 @@ import {DinerServiceService} from "../../../Services/diner-service.service";
 import {Places} from "../../../models/places";
 import {Themes} from "../../../models/themes";
 
+
 @Component({
   selector: 'app-create-diner',
   templateUrl: './create-diner.component.html',
@@ -11,15 +12,16 @@ import {Themes} from "../../../models/themes";
 })
 export class CreateDinerComponent implements OnInit {
   //@Input() diner : Diner = null;
-  constructor(private Data: DinerServiceService) {
+  constructor(private Data: DinerServiceService, ) {
   }
-  time = {hour: 13, minute: 30};
-
+   time = {hour: 13, minute: 30};
+  dateDiner;
   public diner = {};
   public places: Places[];
 public themes : Themes[];
 
   ngOnInit() {
+    //console.log(this.dateDiner);
     //on récupère les lieux
     this.Data.getAllPlaces().subscribe(
       places => {
