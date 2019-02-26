@@ -18,12 +18,12 @@ import {SignupComponent} from "./Component/signup/signup.component";
 import {ConnexionComponent} from "./Component/connexion/connexion.component";
 import {AuthService} from "./Services/auth.service";
 import {TokenService} from "./Services/token.service";
-import {ListDinersComponent} from './Component/diner/list-diners/list-diners.component';
 import {RequestResetComponent} from "./Component/password/request-reset/request-reset.component";
 import {ResponseResetComponent} from "./Component/password/response-reset/response-reset.component";
 import {AfterLoginService} from "./Services/after-login.service";
 import {BeforeLoginService} from "./Services/before-login.service";
 import { ActivationComponent } from './Component/activation/activation.component';
+import {DinersModule} from "./Component/Diners/diners.module";
 
 
 @NgModule({
@@ -35,7 +35,6 @@ import { ActivationComponent } from './Component/activation/activation.component
     NavbarComponent,
     SignupComponent,
     ConnexionComponent,
-    ListDinersComponent,
     RequestResetComponent,
     ResponseResetComponent,
     ActivationComponent
@@ -45,6 +44,7 @@ import { ActivationComponent } from './Component/activation/activation.component
     AppRoutingModule,
     FormsModule,
     ProfileModule,
+    DinersModule,
     HttpClientModule,
     SnotifyModule,
     ReactiveFormsModule,
