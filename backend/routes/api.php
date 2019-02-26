@@ -32,14 +32,16 @@ $api->version('v1', [], function (Router $api) {
     $api->get('activation/{token}', 'App\Http\Controllers\Api\V1\ActivationController@activation');
 
     $api->group(['prefix' => 'diners'], function ($api){
-        $api->get('/getAllDiners', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
+        $api->get('myDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyDiners');
         $api->get('/{id}', '\App\Http\Controllers\Api\V1\dinersController@getDiner');
-        $api->post('/create', '\App\Http\Controllers\Api\V1\dinersController@createDiner');
+
         $api->get('/myOwnDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyOwnDiners');
-        $api->get('/myDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyDiners');
-        $api->delete('/{id}', '\App\Http\Controllers\Api\V1\dinersController@deleteDiner');
+       // $api->get('myDiners', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
+
         $api->get('/deleted', '\App\Http\Controllers\Api\V1\dinersController@getDeletedDiners');
+        $api->post('/create', '\App\Http\Controllers\Api\V1\dinersController@createDiner');
         $api->patch('/update', '\App\Http\Controllers\Api\V1\dinersController@updateDiner');
+        $api->delete('/{id}', '\App\Http\Controllers\Api\V1\dinersController@deleteDiner');
 
     });
 

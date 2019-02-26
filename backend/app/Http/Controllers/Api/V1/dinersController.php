@@ -18,7 +18,9 @@ class dinersController extends Controller
      * commentaire cg: récupération des diners dont la date est supérieur a la date du jour
      */
     public function getDiners(){
-        return Diners::with('place', 'theme', 'user', 'usersdiners')->where("date", ">=", "now()")->orderBy('date','asc')->get();
+        return Diners::with('place', 'theme', 'user', 'usersdiners')->where("date", ">=", date("Y-m-d H:m:i"))->orderBy('date','asc')->get();
+
+      //  return Diners::with('place', 'theme', 'user', 'usersdiners')->where("date", ">=", "now()")->orderBy('date','asc')->get();
     }
 
     /**
@@ -45,7 +47,7 @@ class dinersController extends Controller
      * commentaire cg : récupération des diners dont je suis l'organisateur
      */
     public function getMyOwnDiners(Request $request){
-        return Diners::with('place', 'theme', 'user', 'usersdiners')->where(['id_Organisator' => $request->user_id])->get();
+       return Diners::with('place', 'theme', 'user', 'usersdiners')->where(['id_Organisator' => $request->user_id])->get();
     }
 
     /***
@@ -54,6 +56,7 @@ class dinersController extends Controller
      * commentaire cg: récupération des diners auquels j'ai participé
      */
     public function getMyDiners(Request $request){
+
         return Diners::with('place','theme','user', 'usersdiners')->where('date','>=','now()')->whereHas('usersdiners' , function ($query) use ($request) {
             $query->where('id_Users', '=', $request->user_id);
         })->get();
