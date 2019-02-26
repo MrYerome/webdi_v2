@@ -12,6 +12,7 @@ export class ProfileViewComponent implements OnInit {
   users: User[];
   user: User;
   id: string;
+  id1:string;
 
 
   constructor(private router: Router,
@@ -29,6 +30,7 @@ export class ProfileViewComponent implements OnInit {
     }
     else {
       this.id = JSON.parse(sessionStorage.getItem('id').toString());
+      this.id1=this.id;
     }
 
     this.Data.getUser(this.id).subscribe(data => {

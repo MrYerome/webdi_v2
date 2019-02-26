@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Diner} from "../../../models/diner";
+import {DinerServiceService} from "../../../Services/diner-service.service";
+import {Places} from "../../../models/places";
 
 @Component({
   selector: 'app-create-diner',
@@ -6,10 +9,47 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-diner.component.css']
 })
 export class CreateDinerComponent implements OnInit {
+  //@Input() diner : Diner = null;
+  constructor(private Data: DinerServiceService) {
+  }
 
-  constructor() { }
+  public diner = {};
+  public places: Places[];
+  public diners: Diner[];
+  powers = [];
 
   ngOnInit() {
+    this.Data.getAllPlaces().subscribe(
+      places => {
+        this.places = places
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        console.log(this.places);
+      }
+    );
+
+    this.Data.getAllDiners().subscribe(
+      diners => {
+        this.diners = diners
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        console.log(this.diners);
+      }
+    )
+
+  };
+
+  onSubmit() {
+    console.log('form envoye');
+    // console.log(this.user);
+    // this.Data.update(this.user)
+    //   .subscribe(()=>this.goBack());
   }
 
 }
