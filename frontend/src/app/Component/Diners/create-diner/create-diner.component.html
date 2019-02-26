@@ -2,37 +2,34 @@
   <div class="row">
     <div class="col s8 offset-s2">
       <div class="card-panel">
-
         <div class="form-group">
           <label for="title">Titre</label>
-          <input type="text" id="title" class="form-control" name="title" #name="ngModel" [(ngModel)]='diner.title' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+          <input type="text" id="title" class="form-control" name="title" #name="ngModel" [(ngModel)]='diner.title'
+                 required
+                 pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <input type="text" id="description" class="form-control" name="description" #name="ngModel" [(ngModel)]='diner.description' required pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+          <input type="text" id="description" class="form-control" name="description" #name="ngModel"
+                 [(ngModel)]='diner.description' required
+                 pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
         </div>
         <div class="form-group">
-          <!--<div class="input-group">-->
-            <input class="form-control" placeholder="yyyy-mm-dd"
-                   value = "{{ dateDiner | date : 'dd/MM/yyyy' }}"
-                  [(ngModel)]="dateDiner" ngbDatepicker #d="ngbDatepicker" name="dateDiner" (focus)="d.open()">
-            <!--<div class="input-group-append">-->
-              <!--<button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<label for="date">Date</label>-->
-          <!--<input type="date" id="date" class="form-control" name="date" #name="ngModel" [(ngModel)]='diner.date' required >-->
+          <input class="form-control" placeholder="dd.mm.yyyy"
+                 [(ngModel)]="diner.dateDiner" ngbDatepicker #d="ngbDatepicker" name="dateDiner" (focus)="d.open()">
         </div>
         <div class="form-group">
-          <ngb-timepicker [(ngModel)]="time" name="time"></ngb-timepicker>
+          <ngb-timepicker [(ngModel)]="diner.time" name="time"></ngb-timepicker>
         </div>
         <div class="form-group">
           <label for="price">Tarif</label>
-          <input type="number" id="price" class="form-control" name="price" #name="ngModel" [(ngModel)]='diner.price' required>
+          <input type="number" id="price" class="form-control" name="price" #name="ngModel" [(ngModel)]='diner.price'
+                 required>
         </div>
         <div class="form-group">
           <label for="maxMembers">Nombre maximum de participants</label>
-          <input type="number" id="maxMembers" class="form-control" name="maxMembers" #name="ngModel" [(ngModel)]='diner.maxMembers' required>
+          <input type="number" id="maxMembers" class="form-control" name="maxMembers" #name="ngModel"
+                 [(ngModel)]='diner.maxMembers' required>
         </div>
 
         <div class="form-group">
@@ -41,7 +38,9 @@
                   required
                   [(ngModel)]="diner.id_Places" name="selectPlace"
                   #place="ngModel">
-            <option *ngFor="let pla of places" [value]="pla.id">{{pla.name}} - {{pla.nameStreet}} - {{pla.city.nom_reel}}</option>
+            <option *ngFor="let pla of places" [value]="pla.id">{{pla.name}} - {{pla.nameStreet}} -
+              {{pla.city.nom_reel}}
+            </option>
           </select>
           <div [hidden]=" place.valid || place.pristine" class="alert alert-danger">
             Un lieu est nécessaire.
@@ -61,7 +60,9 @@
 
         <div class="divider"></div>
         <div class="section center">
-          <button [disabled]="!dinerForm.valid" type="submit" class="btn waves-effect waves-light purple darken-4">Valider les modifications</button>
+          <button [disabled]="!dinerForm.valid" type="submit" class="btn waves-effect waves-light purple darken-4">
+            Valider les modifications
+          </button>
         </div>
       </div>
 

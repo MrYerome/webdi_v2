@@ -39,6 +39,10 @@ export class DinerServiceService {
       )
     );
   }
+  public createDiner(data){
+    //return this.http.get(`${this.baseUrl}/diners/getDiner/1`);
+    return this.http.post(`${this.baseUrl}/diners/create`, data);
+  }
 
 
 }
