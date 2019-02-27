@@ -54,6 +54,10 @@ export class DinerServiceService {
     public getCity(insee): Observable<City> {
         return this.http.get <City> (`${this.baseUrl}/cities/getCity/${insee}`);
     }
+
+    public getOldDiners(): Observable<Diner[]> {
+        return this.http.get <Diner[]> (`${this.baseUrl}/diners/getOldDiners`);
+    }
   //
   // /**
   //  * Filtre
