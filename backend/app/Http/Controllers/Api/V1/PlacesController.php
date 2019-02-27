@@ -13,4 +13,8 @@ class PlacesController extends Controller
     public function getPlaces(){
         return Places::with("contact", "city", "diners")->get();
     }
+
+    public function getPlace($id){
+        return Places::with("contact", "city", "diners")->find($id);
+    }
 }

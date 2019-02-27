@@ -1,3 +1,32 @@
-<p>
-  view-diner works!
-</p>
+<h1 class="center">Diner</h1>
+<div class="container">
+  <div class='row'>
+    <div class="col s6 m4" appBordure="yellow">
+      <div class="card horizontal">
+        <div class="card=stacked">
+          <div class="card-content">
+            <p>Titre : {{ diner.title}}</p>
+            <p>Thèmes : {{ diner.theme.label}}</p>
+            <p>Descritpion : {{ diner.description}}</p>
+            <p>Date : {{ diner.date}}</p>
+            <p>Nombre maximum de participants : {{ diner.maxMembers}}</p>
+            <p>Prix : {{ diner.price }}</p>
+            <p>Restaurant : {{ diner.place.name}}</p>
+            <p>Adresse : {{ diner.place.numberStreet}} {{ diner.place.nameStreet }}, {{ city.nom_reel}} {{city.code_postal}}</p>
+            <p>Organisé par {{ diner.user.name}} {{ diner.user.firstName}}</p>
+
+
+            <!-- pipe name "majTitre" -->
+            <!--<p>{{ disque.created | date:"dd/MM/yyyy"}}</p>-->
+            <!-- pipes -> ameliore l'affichage, plusiers possible -->
+            <!--<p><span *ngFor="let categorie of disque.cat" class=" {{ categorie | disqueCategory }} "> {{ categorie }} </span></p>-->
+          </div>
+
+        </div>
+      </div>
+      <a class="navbar-brand" *ngIf="userid == diner.id_Organisator" (click)="selectProfile(user.id)">Modifier mon profil</a>
+    </div>
+
+  </div>
+</div>
+

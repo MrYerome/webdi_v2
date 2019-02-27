@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private Data: DataService,
-    private Http:HttpClient,
+    private Http: HttpClient,
     private router: Router,
     private Auth : AuthService
   ) { }
@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     this.Data.signup(this.form).subscribe(
       data => this.handleResponse(data),
-      error=>this.handleError(error)
+      error => this.handleError(error)
     );
   }
   handleResponse(data) {
