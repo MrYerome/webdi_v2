@@ -38,11 +38,6 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
-        this.Data.getUser(this.id).subscribe(data => {
-            console.log(data);
-            this.user = data;
-        });
-    }
 
     selectProfile(d) {
         this.router.navigate(['/profile/edit', d]);
