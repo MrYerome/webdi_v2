@@ -8,8 +8,7 @@ import {ViewDinerComponent} from "./view-diner/view-diner.component";
 const dinersRoutes: Routes = [
     {path : 'diners/list', component : ListDinersComponent},
     {path : 'diners/create', component : CreateDinerComponent},
-    {path : 'diners/view/:id', component : ViewDinerComponent},
-    {path : 'diners/view', component : ViewDinerComponent},
+    {path : 'diners/view/:id', component: ViewDinerComponent},
 
 ]
 

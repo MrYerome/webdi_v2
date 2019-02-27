@@ -47,11 +47,16 @@ $api->version('v1', [], function (Router $api) {
     });
 
     $api->group(["prefix" => 'places'], function ($api){
-       $api->get('/getAllPlaces', '\App\Http\Controllers\Api\V1\PlacesController@getPlaces');
+        $api->get('/getAllPlaces', '\App\Http\Controllers\Api\V1\PlacesController@getPlaces');
+        $api->get('/getPlace/{id}', '\App\Http\Controllers\Api\V1\PlacesController@getPlace');
     });
 
     $api->group(["prefix" => 'themes'], function ($api){
         $api->get('/getAllThemes', '\App\Http\Controllers\Api\V1\ThemesController@getThemes');
+    });
+
+    $api->group(["prefix" => 'cities'], function ($api){
+        $api->get('/getCity/{insee}', '\App\Http\Controllers\Api\V1\CitiesController@getCity');
     });
 
     $api->post('login', 'App\Http\Controllers\Api\V1\AuthController@login');
