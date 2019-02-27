@@ -25,6 +25,7 @@ import {BeforeLoginService} from "./Services/before-login.service";
 import { ActivationComponent } from './Component/activation/activation.component';
 import {DinersModule} from "./Component/Diners/diners.module";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     ConnexionComponent,
     RequestResetComponent,
     ResponseResetComponent,
-    ActivationComponent
+    ActivationComponent,
   ],
   imports: [
     NgbModule,
@@ -50,6 +51,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     HttpClientModule,
     SnotifyModule,
     ReactiveFormsModule,
+    MaterialModule
   ],
   providers: [DataService, AuthService, TokenService, AfterLoginService, BeforeLoginService,
 

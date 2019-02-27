@@ -16,6 +16,8 @@ export class City {
             json['canton'],
             json['longitude_deg'],
             json['latitude_deg'],
+            json['place'],
+            json['users'],
         );
     }
 
@@ -44,7 +46,7 @@ export class City {
                "insee_Cities": string,
                "id_Contacts": number
            }],
-           public user: [{
+           public users: [{
                "id": number,
                "login": string,
                "name": string,

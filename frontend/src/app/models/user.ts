@@ -10,10 +10,10 @@ export class User {
       json['active'],
       json['createdDate'],
       json['updatedDate'],
+      json['id_UserTypes'],
       json['usertypes'],
       json['cities'],
       json['specAlim'],
-      // json['usertypes'],
     );
   }
 
@@ -26,6 +26,7 @@ export class User {
               public active: number,
               public createdDate: string,
               public updatedDate: null,
+              public id_UserTypes: number,
               public usertypes: {
                 "id" : number,
                 "label" : number,
@@ -36,14 +37,7 @@ export class User {
                 "nom_reel" : string,
               },
               public specAlim: string,
-              // public usertypes:
-              //   {
-              //     id: number;
-              //     label: string
-              //   },
 
   ) {
   }
-
-
 }

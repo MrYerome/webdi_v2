@@ -31,12 +31,13 @@ export class ProfileViewComponent implements OnInit {
             this.id = JSON.parse(sessionStorage.getItem('id').toString());
             this.id1 = this.id;
         }
+    this.Data.getUser(this.id).subscribe(
+      data => {
+      console.log(data);
+      this.user = data
+    });
+  }
 
-        this.Data.getUser(this.id).subscribe(data => {
-            console.log(data);
-            this.user = data;
-        });
-    }
 
     selectProfile(d) {
         this.router.navigate(['/profile/edit', d]);
