@@ -28,36 +28,36 @@ export class Diner {
     public id_Themes: number,
     public id_Organisator: number,
     public place: {
-      "id": number,
-      "name": number,
-      "numberStreet": number,
-      "nameStreet": string,
-      "maxCapacity": number,
-      "insee_Cities": string,
-      "id_Contacts": number
+      'id': number,
+      'name': number,
+      'numberStreet': number,
+      'nameStreet': string,
+      'maxCapacity': number,
+      'insee_Cities': string,
+      'id_Contacts': number
     },
     public theme: {
-      "id": number,
-      "label": string
+      'id': number,
+      'label': string
     },
     public user: {
-      "id": number,
-      "login": string,
-      "name": string,
-      "firstName": string,
-      "email": string,
-      "active": number,
-      "insee_Cities": string,
-      "specAlim": string
-      "id_UserTypes": number
+      'id': number,
+      'login': string,
+      'name': string,
+      'firstName': string,
+      'email': string,
+      'active': number,
+      'insee_Cities': string,
+      'specAlim': string
+      'id_UserTypes': number
     },
     public usersdiners: [
       {
-        "id_Diners": number,
-        "id_Users": number,
-        "rate": number,
-        "comment": string,
-        "nbPlaces": number
+        'id_Diners': number,
+        'id_Users': number,
+        'rate': number,
+        'comment': string,
+        'nbPlaces': number
       }
       ],
   ) {

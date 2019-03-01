@@ -5,15 +5,15 @@
       <div class="card horizontal">
         <div class="card=stacked">
           <div class="card-content">
-            <p>Titre : {{ diner.title}}</p>
-            <p>Thèmes : {{ diner.theme.label}}</p>
-            <p>Descritpion : {{ diner.description}}</p>
-            <p>Date : {{ diner.date}}</p>
-            <p>Nombre maximum de participants : {{ diner.maxMembers}}</p>
-            <p>Prix : {{ diner.price }}</p>
-            <p>Restaurant : {{ diner.place.name}}</p>
-            <p>Adresse : {{ diner.place.numberStreet}} {{ diner.place.nameStreet }}, {{ city.nom_reel}} {{city.code_postal}}</p>
-            <p>Organisé par {{ diner.user.name}} {{ diner.user.firstName}}</p>
+            <p>Titre : {{ diner?.title}}</p>
+            <p>Thèmes : {{ diner?.theme.label}}</p>
+            <p>Descritpion : {{ diner?.description}}</p>
+            <p>Date : {{ diner?.date}}</p>
+            <p>Nombre maximum de participants : {{ diner?.maxMembers}}</p>
+            <p>Prix : {{ diner?.price }}</p>
+            <p>Restaurant : {{ diner?.place.name}}</p>
+            <p>Adresse : {{ diner?.place.numberStreet}} {{ diner?.place.nameStreet }}, {{ city?.nom_reel}} {{city?.code_postal}}</p>
+            <p>Organisé par {{ diner?.user.name}} {{ diner?.user.firstName}}</p>
 
 
             <!-- pipe name "majTitre" -->
@@ -24,7 +24,7 @@
 
         </div>
       </div>
-      <a class="navbar-brand" *ngIf="userid == diner.id_Organisator" (click)="selectProfile(user.id)">Modifier mon profil</a>
+      <a class="navbar-brand" *ngIf="userid == diner?.id_Organisator" (click)="editDiner(diner?.id)">Modifier le diner</a>
     </div>
 
   </div>
