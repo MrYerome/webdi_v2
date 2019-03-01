@@ -58,9 +58,10 @@ export class ListDinersComponent implements OnInit {
         //     }
         //   })
           .filter((diner: Diner) => {
+            console.log(diners);
             if (true) {
-              return diner.title === 'Développeur DevOps'
-              //return diner.title.includes(this.filter.group);
+              //return diner.title === 'Développeur DevOps'
+              return diner.title.includes(this.filter.group);
             }
             else{
               return diner.title === 'Inauguration'
@@ -69,7 +70,7 @@ export class ListDinersComponent implements OnInit {
       )
     ).subscribe(
       (diners: Diner[]) => {
-        this.diners = diners;
+        this.diners = diners; console.log(diners);
       }
     );
 

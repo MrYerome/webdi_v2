@@ -71,4 +71,27 @@ class Diners extends Model
     {
         return $this->hasMany('App\Models\Usersdiners', 'id_Diners');
     }
+
+
+    /**
+     *
+     */
+    public function city()
+    {
+
+        return $this->hasManyThrough('App\Models\Cities', 'App\Models\Places', "insee_Cities", "insee");
+
+    }
+
+
+    public function hasManyThrough($related, $through, $firstKey = null, $secondKey = null)
+    {
+        $through = new $through;
+
+        $firstKey = $firstKey ?: $this->getForeignKey();
+
+        $secondKey = $secondKey ?: $through->getForeignKey();
+
+        return new HasManyThrough(with(new $related)->newQuery(), $this, $through, $firstKey, $secondKey);
+    }
 }
