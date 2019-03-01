@@ -6,16 +6,28 @@
       <!-- boucle for -->
       <div class="card horizontal">
         <div class="card=stacked">
-          <div class="card-content">
-            <p>Titre : {{ diner.title}}</p>
-            <p>Nom : {{ diner.description}}</p>
-          </div>
+          <mat-card>
+            <mat-card-title-group>
+              <mat-card-title>{{ diner.title}}</mat-card-title>
+              <mat-card-subtitle>{{ diner.description}}</mat-card-subtitle>
+            </mat-card-title-group>
+            <mat-card-content>
+              <p>Thèmes : {{ diner?.theme.label}}</p>
+              <p>Date : {{ diner?.date}}</p>
+              <p>Nombre maximum de participants : {{ diner?.maxMembers}}</p>
+              <p>Prix : {{ diner?.price }}</p>
+              <p>Restaurant : {{ diner?.place.name}}</p>
+              <p>Adresse : {{ diner?.place.numberStreet}} {{ diner?.place.nameStreet }}, {{ city?.nom_reel}}</p>
+              <p>Organisé par {{ diner?.user.firstName}} {{ diner?.user.name}}</p>
+            </mat-card-content>
+          </mat-card>
           <a class="navbar-brand" (click)="selectDiner(diner.id)">Voir le diner</a>
         </div>
       </div>
-      <mat-checkbox>Clic ! </mat-checkbox>
+
 
     </div>
+    <mat-checkbox>Clic !</mat-checkbox>
   </div>
 </div>
 
