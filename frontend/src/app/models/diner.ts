@@ -14,6 +14,7 @@ export class Diner {
       json['theme'],
       json['user'],
       json['usersdiners'],
+      json['city'],
     );
   }
 
@@ -60,6 +61,9 @@ export class Diner {
         'nbPlaces': number
       }
       ],
+    public city: {
+      'nom_reel': string
+    }
   ) {
   }
 }
