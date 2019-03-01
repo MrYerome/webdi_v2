@@ -34,7 +34,7 @@ $api->version('v1', [], function (Router $api) {
         $api->get('/getAllDiners', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
         $api->get('/deleted',  '\App\Http\Controllers\Api\V1\dinersController@getDeletedDiners');
         $api->get('/getDiner/{id}', '\App\Http\Controllers\Api\V1\dinersController@getDiner');
-        $api->post('/getOldDiners', '\App\Http\Controllers\Api\V1\dinersController@getOldDiners');
+        $api->get('/getOldDiners', '\App\Http\Controllers\Api\V1\dinersController@getOldDiners');
         $api->post('/myOwnDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyOwnDiners');
         $api->post('/myOldDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyOldDiners');
         $api->post('/myDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyDiners');

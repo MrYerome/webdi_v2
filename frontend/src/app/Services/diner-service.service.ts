@@ -68,7 +68,15 @@ export class DinerServiceService {
     }
 
     public getMyOldDiners(data): Observable<Diner[]> {
-        return this.http.post <Diner[]>(`${this.baseUrl}/diners/getOldDiners`, data).pipe(
+        return this.http.post <Diner[]>(`${this.baseUrl}/diners/myOldDiners`, data).pipe(
+            map(
+                (jsonArray: Object[]) => jsonArray.map(jsonItem => Diner.fromJson(jsonItem)),
+            )
+        );
+    }
+
+    public getMyOwnDiners(data): Observable<Diner[]> {
+        return this.http.post <Diner[]>(`${this.baseUrl}/diners/myOwnDiners`, data).pipe(
             map(
                 (jsonArray: Object[]) => jsonArray.map(jsonItem => Diner.fromJson(jsonItem)),
             )

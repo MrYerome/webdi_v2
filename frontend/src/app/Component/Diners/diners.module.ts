@@ -10,6 +10,7 @@ import {MaterialModule} from "../../material/material.module";
 import { ListoldDinersComponent } from './listold-diners/listold-diners.component';
 import { ParticipeDinerComponent } from './participe-diner/participe-diner.component';
 import { ParticipeoldDinersComponent } from './participeold-diners/participeold-diners.component';
+import { OwnerDinersComponent } from './owner-diners/owner-diners.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ParticipeoldDinersComponent } from './participeold-diners/participeold-
     ListoldDinersComponent,
     ParticipeDinerComponent,
     ParticipeoldDinersComponent,
+    OwnerDinersComponent,
   ],
   imports: [
     NgbModule,
