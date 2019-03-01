@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property boolean $active
  * @property string $created_at
  * @property string $updated_at
- * @property string $insee_Cities
+ * @property int $id_Cities
  * @property string $specAlim
  * @property int $id_UserTypes
  * @property Cities $city
@@ -29,14 +29,14 @@ class Users extends Model
     /**
      * @var array
      */
-    protected $fillable = ['login', 'name', 'firstName', 'email', 'active', 'created_at', 'updated_at', 'insee_Cities', 'specAlim', 'id_UserTypes'];
+    protected $fillable = ['login', 'name', 'firstName', 'email', 'active', 'created_at', 'updated_at', 'id_Cities', 'specAlim', 'id_UserTypes'];
     protected  $hidden = ['password'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function cities()
     {
-        return $this->belongsTo('App\Models\Cities', 'insee_Cities', 'insee');
+        return $this->belongsTo('App\Models\Cities', 'id_Cities', 'id');
     }
 
     /**

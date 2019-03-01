@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $numberStreet
  * @property string $nameStreet
  * @property int $maxCapacity
- * @property string $insee_Cities
+ * @property int $id_Cities
  * @property int $id_Contacts
  * @property Cities $city
  * @property Contacts $contact
@@ -23,14 +23,14 @@ class Places extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'numberStreet', 'nameStreet', 'maxCapacity', 'insee_Cities', 'id_Contacts'];
+    protected $fillable = ['name', 'numberStreet', 'nameStreet', 'maxCapacity', 'id_Cities', 'id_Contacts'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function city()
     {
-        return $this->belongsTo('App\Models\Cities', 'insee_Cities', 'insee');
+        return $this->belongsTo('App\Models\Cities', 'id_Cities', 'insee');
     }
 
     /**

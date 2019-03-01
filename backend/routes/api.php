@@ -58,6 +58,7 @@ $api->version('v1', [], function (Router $api) {
     });
 
     $api->group(["prefix" => 'cities'], function ($api){
+        $api->get('/getCities', '\App\Http\Controllers\Api\V1\CitiesController@getAllCities');
         $api->get('/getCity/{insee}', '\App\Http\Controllers\Api\V1\CitiesController@getCity');
     });
 

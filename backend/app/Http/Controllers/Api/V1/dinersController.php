@@ -18,7 +18,7 @@ class dinersController extends Controller
      * commentaire cg: récupération des diners dont la date est supérieur a la date du jour
      */
     public function getDiners(){
-        return Diners::with('place', 'theme', 'user', 'usersdiners')->where("date", ">=", date("Y-m-d H:m:i"))->orderBy('date','asc')->get();
+        return Diners::with('place', 'theme', 'user', 'usersdiners', "city")->where("date", ">=", date("Y-m-d H:m:i"))->orderBy('date','asc')->get();
     }
 
     /**

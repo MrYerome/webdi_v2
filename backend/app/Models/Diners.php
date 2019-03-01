@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -27,6 +28,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Diners extends Model
 {
     use SoftDeletes;
+    use \Znck\Eloquent\Traits\BelongsToThrough;
     /**
      * @var array
      */
@@ -72,26 +74,15 @@ class Diners extends Model
         return $this->hasMany('App\Models\Usersdiners', 'id_Diners');
     }
 
-
-    /**
-     *
-     */
     public function city()
     {
-
-        return $this->hasManyThrough('App\Models\Cities', 'App\Models\Places', "insee_Cities", "insee");
-
+        return $this->belongsToThrough(
+            'App\Models\Cities',
+            'App\Models\Places',
+            null,
+            '',
+            ['App\Models\Cities' => 'insee_Cities', 'App\Models\Places' => "id_Places"]);
     }
 
 
-    public function hasManyThrough($related, $through, $firstKey = null, $secondKey = null)
-    {
-        $through = new $through;
-
-        $firstKey = $firstKey ?: $this->getForeignKey();
-
-        $secondKey = $secondKey ?: $through->getForeignKey();
-
-        return new HasManyThrough(with(new $related)->newQuery(), $this, $through, $firstKey, $secondKey);
-    }
 }
