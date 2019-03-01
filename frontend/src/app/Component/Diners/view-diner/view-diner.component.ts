@@ -39,7 +39,6 @@ export class ViewDinerComponent implements OnInit {
                 this.diner = value;
                 this.Data.getCity(this.diner.place.insee_Cities).subscribe(
                     value1 => {
-                        console.log(value1);
                         this.city = value1[0];
                     });
             },
@@ -50,7 +49,7 @@ export class ViewDinerComponent implements OnInit {
     }
 
     editDiner(id) {
-        this.router.navigate([`/diners/edit/`, id]);
+        this.router.navigate([`/diners/edit`, id]);
     }
 
     deleteDiner() {

@@ -27,7 +27,7 @@ class dinersController extends Controller
      * récupération d'un diner
      */
     public function getDiner($id){
-        return Diners::with('place','theme','user', 'usersdiners')->withTrashed()->find($id);
+        return Diners::with('place','theme','user', 'usersdiners', 'city')->withTrashed()->find($id);
     }
 
     /**
@@ -36,7 +36,7 @@ class dinersController extends Controller
      * commentaire cg : récupération des anciens diners (diners dont la date du diners est inférieur a la date du jour)
      */
     public function getOldDiners(){
-        return Diners::with('place','theme','user', 'usersdiners')->where('date','<', date("Y-m-d H:m:i"))->orderBy('date','desc')->get();
+        return Diners::with('place','theme','user', 'usersdiners', 'city' )->where('date','<', date("Y-m-d H:m:i"))->orderBy('date','desc')->get();
     }
 
     /**
@@ -46,7 +46,7 @@ class dinersController extends Controller
      */
     public function getMyOwnDiners(Request $request){
        
-        return Diners::with('place', 'theme', 'user', 'usersdiners')->where(['id_Organisator' => $request->user_id])->get();
+        return Diners::with('place', 'theme', 'user', 'usersdiners', 'city')->where(['id_Organisator' => $request->user_id])->get();
     }
 
     /***
@@ -56,7 +56,7 @@ class dinersController extends Controller
      */
     public function getMyDiners(Request $request){
 
-        return Diners::with('place','theme','user', 'usersdiners')->where('date','>=',date("Y-m-d H:m:i"))->whereHas('usersdiners' , function ($query) use ($request) {
+        return Diners::with('place','theme','user', 'usersdiners', 'city')->where('date','>=',date("Y-m-d H:m:i"))->whereHas('usersdiners' , function ($query) use ($request) {
             $query->where('id_Users', '=', $request->user_id);
         })->get();
     }
@@ -67,7 +67,7 @@ class dinersController extends Controller
      * commentaire cg : récupération des anciens diners auquels j'ai participé
      */
     public function getMyOldDiners(Request $request){
-        return Diners::with('place','theme','user', 'usersdiners')->where('date','<',date("Y-m-d H:m:i"))->whereHas('usersdiners' , function ($query) use ($request) {
+        return Diners::with('place','theme','user', 'usersdiners', 'city')->where('date','<',date("Y-m-d H:m:i"))->whereHas('usersdiners' , function ($query) use ($request) {
             $query->where('id_Users', '=', $request->user_id);
         })->get();
     }
@@ -136,7 +136,7 @@ class dinersController extends Controller
                 //return $request;
                 foreach ($request->all() as $key => $param) {
 
-                    if ($key != 'id') {
+                    if ($key != 'id' && $key != 'place' && $key != 'city' && $key != 'theme' && $key != 'user' && $key != 'usersdiners') {
                         $diners->$key = $param;
 
                     }
@@ -144,7 +144,7 @@ class dinersController extends Controller
                 $diners->save();
 
                 DB::commit();
-                return $this->api->get('diners/' . $diners->id);
+                return $this->api->get('diners/getDiner/' . $diners->id);
             } ELSE {
                 $this->response->errorBadRequest();
             }
@@ -161,7 +161,7 @@ class dinersController extends Controller
      * commentaier cg: récupération des diners supprimés
      */
     public function getDeletedDiners(){
-        return Diners::with('place', 'theme', 'user', 'usersdiners')->onlyTrashed()->get();
+        return Diners::with('place', 'theme', 'user', 'usersdiners', 'city')->onlyTrashed()->get();
 
     }
 

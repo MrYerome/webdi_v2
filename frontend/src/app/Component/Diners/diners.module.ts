@@ -11,6 +11,7 @@ import { ListoldDinersComponent } from './listold-diners/listold-diners.componen
 import { ParticipeDinerComponent } from './participe-diner/participe-diner.component';
 import { ParticipeoldDinersComponent } from './participeold-diners/participeold-diners.component';
 import { OwnerDinersComponent } from './owner-diners/owner-diners.component';
+import { EditDinerComponent } from './edit-diner/edit-diner.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { OwnerDinersComponent } from './owner-diners/owner-diners.component';
     ParticipeDinerComponent,
     ParticipeoldDinersComponent,
     OwnerDinersComponent,
+    EditDinerComponent,
   ],
   imports: [
     NgbModule,

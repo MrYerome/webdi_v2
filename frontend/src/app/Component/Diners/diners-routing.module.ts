@@ -8,6 +8,7 @@ import {ListoldDinersComponent} from "./listold-diners/listold-diners.component"
 import {ParticipeDinerComponent} from "./participe-diner/participe-diner.component";
 import {ParticipeoldDinersComponent} from "./participeold-diners/participeold-diners.component";
 import {OwnerDinersComponent} from "./owner-diners/owner-diners.component";
+import {EditDinerComponent} from "./edit-diner/edit-diner.component";
 
 const dinersRoutes: Routes = [
     {path : 'diners/list', component : ListDinersComponent},
@@ -17,6 +18,7 @@ const dinersRoutes: Routes = [
     {path : 'diners/participe', component: ParticipeDinerComponent},
     {path : 'diners/participe/old', component: ParticipeoldDinersComponent},
     {path : 'diners/mydiners', component: OwnerDinersComponent},
+    {path : 'diners/edit/:id', component: EditDinerComponent},
 
 
 ]
