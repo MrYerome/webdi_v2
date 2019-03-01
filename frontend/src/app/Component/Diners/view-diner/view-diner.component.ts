@@ -13,7 +13,7 @@ import {City} from "../../../models/city";
 export class ViewDinerComponent implements OnInit {
     diner: Diner;
     city: City;
-    public userid:string;
+    public userid: string;
     public id: string;
 
     constructor(private router: Router,
