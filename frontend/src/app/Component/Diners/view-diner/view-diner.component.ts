@@ -13,6 +13,8 @@ import {City} from "../../../models/city";
 export class ViewDinerComponent implements OnInit {
     diner: Diner;
     city: City;
+
+
     public userid: string;
     public id: string;
 
@@ -48,7 +50,20 @@ export class ViewDinerComponent implements OnInit {
     }
 
     editDiner(id) {
-        this.router.navigate([`/diners/edit/${id}`]);
+        this.router.navigate([`/diners/edit/`, id]);
+    }
+
+    deleteDiner() {
+        const data = {
+            user_id : this.userid,
+            diner_id: this.id,
+        };
+        console.log(data);
+        this.Data.deleteDiners(data).subscribe(
+            value => {console.log(value); },
+            error1 => {console.log(error1); },
+        );
+
     }
 
 }

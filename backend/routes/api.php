@@ -40,7 +40,7 @@ $api->version('v1', [], function (Router $api) {
         $api->post('/myDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyDiners');
         $api->post('/create', '\App\Http\Controllers\Api\V1\dinersController@createDiner');
         $api->patch('/update', '\App\Http\Controllers\Api\V1\dinersController@updateDiner');
-        $api->delete('/{id}', '\App\Http\Controllers\Api\V1\dinersController@deleteDiner');
+        $api->post('/delete', '\App\Http\Controllers\Api\V1\dinersController@deleteDiner');
 
     });
 

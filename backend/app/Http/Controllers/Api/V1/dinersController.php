@@ -104,16 +104,18 @@ class dinersController extends Controller
 
     }
 
-    /**
-     * @param $id
-     * @return string
-     * Commentaire cg : Cette fonction ne supprime pas le diner mais renseigne la date "deleted_at"
-     */
-    public function deleteDiner($id){
+
+    public function deleteDiner(Request $request){
 
         try{
-            $diner = Diners::find($id);
-            $diner->delete();
+
+            $diner = Diners::find($request->diner_id);
+            if ($diner->id_Organisator == $request->user_id){
+
+                $diner->delete();
+            }else{
+                $this->response->errorUnauthorized();
+            }
 
         }catch (\PDOException $e){
             return $e->getMessage();
