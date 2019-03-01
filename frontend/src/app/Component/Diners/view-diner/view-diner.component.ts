@@ -47,4 +47,8 @@ export class ViewDinerComponent implements OnInit {
 
     }
 
+    editDiner(id) {
+        this.router.navigate([`/diners/edit/${id}`]);
+    }
+
 }

@@ -8,6 +8,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { ViewDinerComponent } from './view-diner/view-diner.component';
 import {MaterialModule} from "../../material/material.module";
 import { ListoldDinersComponent } from './listold-diners/listold-diners.component';
+import { ParticipeDinerComponent } from './participe-diner/participe-diner.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ListoldDinersComponent } from './listold-diners/listold-diners.componen
     CreateDinerComponent,
     ViewDinerComponent,
     ListoldDinersComponent,
+    ParticipeDinerComponent,
   ],
   imports: [
     NgbModule,
