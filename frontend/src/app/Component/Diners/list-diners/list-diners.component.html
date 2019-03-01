@@ -1,23 +1,33 @@
-<h1 class="center">Les dîners à venir</h1>
+<h2 class="center">Les dîners à venir</h2>
 <div class="container">
+  <span>Effectuer un tri par thème </span>
+  <mat-checkbox [checked]=false
+                (change)="changeMat()"></mat-checkbox>
 
+  <p></p>
+
+  <p *ngFor="let theme of themes; let i = index">
+    <mat-checkbox [checked]=false
+                  (change)="changeTheme(theme.id)">{{theme.label}}</mat-checkbox>
+
+  </p>
   <div class='row'>
     <div *ngFor="let diner of diners" class="col s6 m4" appBordure="yellow">
       <!-- boucle for -->
       <div class="card horizontal">
         <div class="card=stacked">
           <mat-card>
-            <mat-card-title-group>
+
               <mat-card-title>{{ diner.title}}</mat-card-title>
               <mat-card-subtitle>{{ diner.description}}</mat-card-subtitle>
-            </mat-card-title-group>
+
             <mat-card-content>
               <p>Thèmes : {{ diner?.theme.label}}</p>
               <p>Date : {{ diner?.date}}</p>
               <p>Nombre maximum de participants : {{ diner?.maxMembers}}</p>
               <p>Prix : {{ diner?.price }}</p>
               <p>Restaurant : {{ diner?.place.name}}</p>
-              <p>Adresse : {{ diner?.place.numberStreet}} {{ diner?.place.nameStreet }}, {{ city?.nom_reel}}</p>
+              <p>Adresse : {{ diner?.place.numberStreet}} {{ diner?.place.nameStreet }}, {{ diner?.city?.nom_reel}}, {{ diner?.city?.code_postal}}</p>
               <p>Organisé par {{ diner?.user.firstName}} {{ diner?.user.name}}</p>
             </mat-card-content>
           </mat-card>
@@ -27,7 +37,7 @@
 
 
     </div>
-    <mat-checkbox>Clic !</mat-checkbox>
+
   </div>
 </div>
 

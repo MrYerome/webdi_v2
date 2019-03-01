@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Diner} from "../models/diner";
-import {Observable, of} from "rxjs";
+import {Observable, of, throwError} from "rxjs";
 import {catchError, map, tap} from "rxjs/operators";
 import {Places} from "../models/places";
 import {Themes} from "../models/themes";
@@ -23,7 +23,8 @@ export class DinerServiceService {
             map(
                 (jsonArray: Object[]) => jsonArray.map(jsonItem => Diner.fromJson(jsonItem)),
             )
-        );
+        )
+          ;
     }
 
     public getAllPlaces(): Observable<Places[]> {

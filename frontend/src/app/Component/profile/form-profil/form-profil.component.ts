@@ -40,11 +40,12 @@ export class FormProfilComponent implements OnInit {
   onSubmit(){
     console.log('form envoye');
     // console.log(this.user);
+    console.log(this.user);
     this.Data.update(this.user)
-      .subscribe(()=>this.goBack());
+      .subscribe(()=>this.goBack(this.user.id));
   }
-  goBack():void{
-    this.router.navigate(['/profile/view']);
+  goBack(id):void{
+    this.router.navigate(['/profile/view'], id);
   }
 
 }

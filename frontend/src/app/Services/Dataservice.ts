@@ -61,7 +61,7 @@ export class DataService {
 
   update(data) {
     console.log(data);
-    return this.http.patch(`${this.baseUrl}/users/update`, data);
+    return this.http.post(`${this.baseUrl}/users/update`, data);
   }
 
   // /**
