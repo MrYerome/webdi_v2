@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $deleted_at
  * @property int $id_Users
  * @property int $id_Diners
+ * @property int $warning
  * @property Diner $diner
  * @property User $user
  */
@@ -21,7 +22,7 @@ class Messages extends Model
     /**
      * @var array
      */
-    protected $fillable = ['content', 'created_at', 'updated_at', 'deleted_at', 'id_Users', 'id_Diners'];
+    protected $fillable = ['content', 'created_at', 'updated_at', 'deleted_at', 'id_Users', 'id_Diners', 'warning'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

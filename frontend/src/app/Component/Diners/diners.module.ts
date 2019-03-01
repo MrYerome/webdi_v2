@@ -9,7 +9,6 @@ import { ViewDinerComponent } from './view-diner/view-diner.component';
 import {MaterialModule} from "../../material/material.module";
 import { ListoldDinersComponent } from './listold-diners/listold-diners.component';
 import { ParticipeDinerComponent } from './participe-diner/participe-diner.component';
-import { ParticipeoldDinerComponent } from './participeold-diner/participeold-diner.component';
 import { ParticipeoldDinersComponent } from './participeold-diners/participeold-diners.component';
 
 

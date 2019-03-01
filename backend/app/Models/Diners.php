@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $description
  * @property string $date
  * @property float $price
+ * @property int $is_published
  * @property string $created_at
  * @property string $updated_at
  * @property string $deleted_at
@@ -32,7 +33,7 @@ class Diners extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'description', 'date', 'price', 'created_at', 'updated_at', 'deleted_at', 'maxMembers', 'id_Places', 'id_Themes', 'id_Organisator'];
+    protected $fillable = ['title', 'description', 'date', 'price', 'created_at', 'updated_at', 'deleted_at', 'maxMembers', 'id_Places', 'id_Themes', 'id_Organisator', 'is_published'];
     protected $date = ['deleted_at'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -81,7 +82,7 @@ class Diners extends Model
             'App\Models\Places',
             null,
             '',
-            ['App\Models\Cities' => 'insee_Cities', 'App\Models\Places' => "id_Places"]);
+            ['App\Models\Cities' => 'id_Cities', 'App\Models\Places' => "id_Places"]);
     }
 
 
