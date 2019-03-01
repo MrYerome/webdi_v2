@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $latitude_deg
  * @property Places[] $places
  * @property Users[] $users
+ * @property Diners[] $diners
  */
 class Cities extends Model
 {
@@ -37,7 +38,7 @@ class Cities extends Model
      */
     public function places()
     {
-        return $this->hasMany('App\Models\Places', 'insee_Cities', 'insee');
+        return $this->hasMany('App\Models\Places', 'id_Cities', 'id');
     }
 
     /**
@@ -45,7 +46,7 @@ class Cities extends Model
      */
     public function users()
     {
-        return $this->hasMany('App\Models\Users', 'insee_Cities', 'insee');
+        return $this->hasMany('App\Models\Users', 'id_Cities', 'id');
     }
 
     public function getUpdatedAtColumn() {
@@ -54,5 +55,22 @@ class Cities extends Model
 
     public function getCreatedAtColumn() {
         return null;
+    }
+
+    /**
+     *
+     */
+    public function diners()
+    {
+
+        return $this->hasManyThrough(
+            'App\Models\Diners',
+            'App\Models\Places',
+            "insee_Cities",
+            "id_Places",
+            "insee",
+            "id");
+
+
     }
 }

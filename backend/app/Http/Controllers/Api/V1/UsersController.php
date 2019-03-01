@@ -46,7 +46,8 @@ class UsersController extends Controller
             $attribut['name'] = $request->name;
             $attribut['firstName'] = $request->firstName;
             $attribut['email'] = $request->email;
-            $attribut['insee_Cities'] = '49007';
+            // TODO: Modifier le id_Cities pour qu'il ne soit plus fixe
+            $attribut['id_Cities'] = 1;
             $attribut['id_UserTypes'] = '2';
 
             $user = Users::create($attribut);
@@ -69,6 +70,7 @@ class UsersController extends Controller
      * Je ne comprend pas pourquoi, car cela fonctionne très bien avec city
      * En plus, dans postman, la requête fonctionne, ce qui me fait penser à une erreur dans le front angular
      */
+    // TODO: Update de la ville et utiliser la bonne fonction
     public function updateUser(Request $request)
     {
         try {
