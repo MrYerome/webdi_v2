@@ -83,6 +83,10 @@ export class DinerServiceService {
             )
         );
     }
+
+    public deleteDiners(data) {
+        return this.http.post(`${this.baseUrl}/diners/delete`, data);
+    }
   //
   // /**
   //  * Filtre
