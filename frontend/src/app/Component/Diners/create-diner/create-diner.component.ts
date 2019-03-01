@@ -6,7 +6,6 @@ import {Themes} from "../../../models/themes";
 import {Router} from "@angular/router";
 
 
-
 @Component({
   selector: 'app-create-diner',
   templateUrl: './create-diner.component.html',
@@ -15,16 +14,16 @@ import {Router} from "@angular/router";
 export class CreateDinerComponent implements OnInit {
   //@Input() diner : Diner = null;
   constructor(private Data: DinerServiceService,
-              private router : Router) {
+              private router: Router) {
   }
 
-  time = {hour: 13, minute: 30};
+  time = {hour: 19, minute: 30};
   dateDiner;
   public diner = {
     title: null,
     description: null,
-    dateDiner : null,
-    time : {hour: 13, minute: 30},
+    dateDiner: null,
+    time: {hour: 19, minute: 30},
     date: null,
     price: null,
     maxMembers: null,
@@ -37,7 +36,6 @@ export class CreateDinerComponent implements OnInit {
   public error = [];
 
   ngOnInit() {
-    //console.log(this.dateDiner);
     //on récupère les lieux
     this.Data.getAllPlaces().subscribe(
       places => {
@@ -66,37 +64,23 @@ export class CreateDinerComponent implements OnInit {
   };
 
   onSubmit() {
-    //console.log('form envoye');
+    // on récupère l'utilisateur connecté
     this.diner.id_Organisator = sessionStorage.getItem('id').toString();
+    // formattage de la date
     this.diner.date = this.diner.dateDiner.year + "-" + this.diner.dateDiner.month + "-" +
-      this.diner.dateDiner.day + " " + this.diner.time.hour + ":" + this.diner.time.minute + ":00";
-    console.log("titre" + this.diner.title);
-    console.log("description" + this.diner.description);
-    console.log("date " + this.diner.date);
-    console.log("dateDiner " + this.diner.dateDiner.date);
-    console.log("dateDiner " + this.diner.dateDiner.data);
-    console.log("dateDiner " + this.diner.dateDiner.currentMonth);
-    console.log("dateDiner " + this.diner.dateDiner.selected);
-    console.log("dateDiner " + this.diner.dateDiner.year);
-    console.log("dateDiner " + this.diner.dateDiner.day);
-    console.log("time " + this.diner.time.hour);
-    console.log("prix " + this.diner.price);
-    console.log("maxMember " + this.diner.maxMembers);
-    console.log("organisator " + this.diner.id_Organisator);
-    console.log("place " + this.diner.id_Places);
-    console.log("theme " + this.diner.id_Themes);
+    this.diner.dateDiner.day + " " + this.diner.time.hour + ":" + this.diner.time.minute + ":00";
+    //creation du diner
     this.Data.createDiner(this.diner).subscribe(
-      data => this.handleResponse(data),
+      data => {
+        this.handleResponse(data);
+      },
       error => this.handleError(error)
     );
-    // this.Data.update(this.user)
-    //   .subscribe(()=>this.goBack());
   }
 
   handleResponse(data) {
     console.log("success");
-    // this.Data.sendMailAfterSignup(this.form).subscribe();
-   // this.router.navigateByUrl('/accueil');
+    this.router.navigate(['/diners/view/', data.id]);
   }
 
   handleError(error) {

@@ -98,7 +98,8 @@ class UsersController extends Controller
                 $user->save();
 
                 DB::commit();
-                return $this->api->get('users/' . $user->id);
+                return $user->id;
+                return $this->api->get('users/getUser' . $user->id);
             } ELSE {
                 $this->response->errorBadRequest();
             }
