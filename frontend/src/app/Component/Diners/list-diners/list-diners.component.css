@@ -1,0 +1,18 @@
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: blue;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+  background-color: darkcyan !important;
+}
+
+card-stacked{
+
+}
+
+.mat-card {
+  border: 2px solid red ;
+  background: rgba(100,0,0,.70);
+  color: rgba(0,0,0,.87);
+  margin-bottom: 10px;
+}

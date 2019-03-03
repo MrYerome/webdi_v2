@@ -95,8 +95,9 @@ export class EditDinerComponent implements OnInit {
     onSubmit() {
 
         // formattage de la date
-        this.diner.date =this.date.year + '-' + this.date.month + '-' +
-            this.date.day + ' ' + this.time.hour + ':' + this.time.minute + ':00';
+        // this.diner.date = (Date) (this.date.year + '-' + this.date.month + '-' +
+        //     this.date.day + ' ' + this.time.hour + ':' + this.time.minute + ':00');
+      this.diner.date = null;
         //creation du diner
         console.log(this.diner);
         this.Data.updateDiner(this.diner).subscribe(

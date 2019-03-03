@@ -47,5 +47,4 @@ export class FormProfilComponent implements OnInit {
   goBack(id):void{
     this.router.navigate(['/profile/view'], id);
   }
-
 }
