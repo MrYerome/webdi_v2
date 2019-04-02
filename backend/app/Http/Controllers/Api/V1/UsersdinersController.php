@@ -20,4 +20,11 @@ class UsersdinersController extends Controller
     function getOneUsersdiners(Request $request){
         return Usersdiners::with("user", "diner")->where([["id_Users", "=", $request->id_Users], ["id_diners", "=",$request->id_Diners]])->get();
     }
+
+    // Récupération des réservation d'un utilisateur
+    function getAllUsersdinersByUsers($id){
+            return Usersdiners::with("user", "diner")->where("id_Users", "=" , $id)->get();
+    }
+
+
 }
