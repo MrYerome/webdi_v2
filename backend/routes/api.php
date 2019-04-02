@@ -51,6 +51,7 @@ $api->version('v1', [], function (Router $api) {
     $api->group(['prefix' => 'usersdiners'], function ($api){
         $api->get('getAllUsersdiners', '\App\Http\Controllers\Api\V1\UsersdinersController@getUsersdiners');
         $api->get('getOneUsersdiners', '\App\Http\Controllers\Api\V1\UsersdinersController@getOneUsersdiners');
+        $api->get('getAllUsersdiners/user/{id}', '\App\Http\Controllers\Api\V1\UsersdinersController@getAllUsersdinersByUsers');
     });
 
 
