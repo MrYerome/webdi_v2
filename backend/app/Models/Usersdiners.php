@@ -20,7 +20,7 @@ class Usersdiners extends Model
     /**
      * @var array
      */
-    protected $fillable = ['rate', 'comment', 'nbPlaces'];
+    protected $fillable = ['id_Diners', "id_Users", 'rate', 'comment', 'nbPlaces'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
