@@ -49,7 +49,8 @@ $api->version('v1', [], function (Router $api) {
 
     // Actions spécifiques aux Réservation
     $api->group(['prefix' => 'usersdiners'], function ($api){
-       $api->get('getAllUsersdiners', '\App\Http\Controllers\Api\V1\UsersdinersController@getUsersdiners');
+        $api->get('getAllUsersdiners', '\App\Http\Controllers\Api\V1\UsersdinersController@getUsersdiners');
+        $api->get('getOneUsersdiners', '\App\Http\Controllers\Api\V1\UsersdinersController@getOneUsersdiners');
     });
 
 
