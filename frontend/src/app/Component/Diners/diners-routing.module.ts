@@ -20,7 +20,6 @@ const dinersRoutes: Routes = [
     {path : 'diners/mydiners', component: OwnerDinersComponent},
     {path : 'diners/edit/:id', component: EditDinerComponent},
 
-
 ]
 
 @NgModule({

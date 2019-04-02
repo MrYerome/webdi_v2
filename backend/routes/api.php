@@ -17,6 +17,12 @@ use Dingo\Api\Routing\Router;
 $api = app(Router::class);
 
 $api->version('v1', [], function (Router $api) {
+    //Envoi d'un mail après le signup
+    $api->post('sendMailAfterSignup', 'App\Http\Controllers\Api\V1\ActivationController@sendMailAfterSignup');
+    //Pour l'activation :
+    $api->get('activation/{token}', 'App\Http\Controllers\Api\V1\ActivationController@activation');
+
+    // Actions spécifiques aux utilisateurs
     $api->group(['prefix' => 'users'], function ($api){
         $api->get('/getAllUsers', 'App\Http\Controllers\Api\V1\UsersController@getUsers');
         $api->get('/login/{login}', 'App\Http\Controllers\Api\V1\UsersController@login');
@@ -25,11 +31,8 @@ $api->version('v1', [], function (Router $api) {
         $api->post('/update', 'App\Http\Controllers\Api\V1\UsersController@updateUser');
 
     });
-    //Envoi d'un mail après le signup
-    $api->post('sendMailAfterSignup', 'App\Http\Controllers\Api\V1\ActivationController@sendMailAfterSignup');
-    //Pour l'activation :
-    $api->get('activation/{token}', 'App\Http\Controllers\Api\V1\ActivationController@activation');
 
+    // Actions spécifiques  aux diners
     $api->group(['prefix' => 'diners'], function ($api){
         $api->get('/getAllDiners', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
         $api->get('/deleted',  '\App\Http\Controllers\Api\V1\dinersController@getDeletedDiners');
@@ -44,15 +47,26 @@ $api->version('v1', [], function (Router $api) {
 
     });
 
+    // Actions spécifiques aux Réservation
+    $api->group(['prefix' => 'usersdiners'], function ($api){
+        $api->get('getAllUsersdiners', '\App\Http\Controllers\Api\V1\UsersdinersController@getUsersdiners');
+        $api->get('getOneUsersdiners', '\App\Http\Controllers\Api\V1\UsersdinersController@getOneUsersdiners');
+        $api->get('getAllUsersdiners/user/{id}', '\App\Http\Controllers\Api\V1\UsersdinersController@getAllUsersdinersByUsers');
+        $api->get('getAllUsersdiners/diner/{id}', '\App\Http\Controllers\Api\V1\UsersdinersController@getAllUsersdinersByDiners');
+    });
+
+
     $api->group(['prefix' => 'auth'], function ($api){
         $api->get('', '\App\Http\Controllers\Api\V1\dinersController@getDiners');
     });
 
+    // Actions spécifiques aux lieux (restaurant)
     $api->group(["prefix" => 'places'], function ($api){
         $api->get('/getAllPlaces', '\App\Http\Controllers\Api\V1\PlacesController@getPlaces');
         $api->get('/getPlace/{id}', '\App\Http\Controllers\Api\V1\PlacesController@getPlace');
     });
 
+    // Actions spécifiques aux thèmes
     $api->group(["prefix" => 'themes'], function ($api){
         $api->get('/getAllThemes', '\App\Http\Controllers\Api\V1\ThemesController@getThemes');
     });
