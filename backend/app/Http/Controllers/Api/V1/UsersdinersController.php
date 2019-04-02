@@ -32,6 +32,7 @@ class UsersdinersController extends Controller
         return Usersdiners::with("user", "diner")->where("id_Diners", "=" , $id)->get();
     }
 
+    // Création d'un userdiner
     public function createUsersdiners(Request $request){
 
         if ($request->id_Users != null && $request->id_Diners != null){
