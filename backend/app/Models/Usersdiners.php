@@ -27,7 +27,7 @@ class Usersdiners extends Model
      */
     public function diner()
     {
-        return $this->belongsTo('App\Models\Diner', 'id_Diners');
+        return $this->belongsTo('App\Models\Diners', 'id_Diners');
     }
 
     /**
@@ -35,7 +35,7 @@ class Usersdiners extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'id_Users');
+        return $this->belongsTo('App\Models\Users', 'id_Users');
     }
 
     public function getUpdatedAtColumn() {
