@@ -152,8 +152,8 @@ public function getMyOwnDiners(Request $request){
 
 
         }catch (\PDOException $e){
-           return $e;
            DB::rollBack();
+           return $e;
         }
 
     }
