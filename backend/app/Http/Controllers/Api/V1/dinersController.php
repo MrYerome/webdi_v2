@@ -125,30 +125,31 @@ public function getMyOwnDiners(Request $request){
     public function updateDiner(Request $request){
 
         try{
-            DB::beginTransaction();
+
             $diners = new Diners();
 
             if (isset($request->id)){
                 $diners = Diners::find($request->id);
             }
 
-            if (isset($diners->id)) {
-                //return $request;
-                foreach ($request->all() as $key => $param) {
-
-                    if ($key != 'id' && $key != 'place' && $key != 'city' && $key != 'theme' && $key != 'user' && $key != 'usersdiners') {
-                        $diners->$key = $param;
-
-                    }
-                }
-                return
-                $diners->save();
-
-                DB::commit();
-                return $this->api->get('diners/getDiner/' . $diners->id);
-            } ELSE {
-                $this->response->errorBadRequest();
+            if (!isset($diners->id)) {
             }
+
+            $attributeNonModifiable = ['id','place', 'city', 'theme', 'user', 'usersdiners'];
+            DB::beginTransaction();
+                //return $request;
+            foreach ($request->all() as $key => $param) {
+
+                if (!in_array($key, $attributeNonModifiable)) {
+                    $diners->$key = $param;
+                }
+            }
+
+            $diners->save();
+
+            DB::commit();
+            return $this->api->get('diners/getDiner/' . $diners->id);
+
 
         }catch (\PDOException $e){
            return $e;
