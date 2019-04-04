@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Models\Diners;
 use App\Models\Usersdiners;
 use Dingo\Api\Routing\Helpers;
 use Dingo\Api\Http\Request;
+use http\Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -54,6 +57,40 @@ class UsersdinersController extends Controller
                 return $e;
                 //return $this->response->errorBadRequest();
             }
+        }
+    }
+
+    // Mettre a jour un usersdiners
+    public function updateUsersdiners(Request $request){
+        try{
+            $usersdiner = new Usersdiners();
+
+            if (isset($request->id_Users) && isset($request->id_Diners)){
+                $usersdiner = Usersdiners::where([["id_Users", "=", $request->id_Users], ["id_diners", "=",$request->id_Diners]])->first();
+            }
+
+            if (!isset($usersdiner->id_Users)) {
+                throw new ModelNotFoundException('UsersDiners not find');
+            }
+
+            $aAttributModifiable = ['rate', 'comment', 'nbPlaces'];
+
+            DB::beginTransaction();
+
+            foreach ($request->all() as $key => $value){
+                if (in_array($key, $aAttributModifiable)){
+                    $usersdiner->$key = $value;
+                }
+            }
+            $usersdiner->save();
+
+            DB::commit();
+            return $this->api->get('usersdiners/getOneUsersdiners?id_Users=' . $usersdiner->id_Users.'&id_Diners='. $usersdiner->id_Diners);
+
+        }catch (\PDOException $e) {
+            DB::rollBack();
+            return $e;
+            //return $this->response->errorBadRequest();
         }
     }
 
