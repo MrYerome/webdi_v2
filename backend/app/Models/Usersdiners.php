@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
+use App\Models\hasCompositePrimaryKey;
 
 /**
  * @property int $id_Diners
@@ -13,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Diner $diner
  * @property User $user
  */
-class Usersdiners extends Model
+class Usersdiners extends hasCompositePrimaryKey
 {
     public $timestamps = false;
 
@@ -21,6 +23,8 @@ class Usersdiners extends Model
      * @var array
      */
     protected $fillable = ['id_Diners', "id_Users", 'rate', 'comment', 'nbPlaces'];
+    protected $primaryKey = ['id_Diners', 'id_Users'];
+    public $incrementing = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

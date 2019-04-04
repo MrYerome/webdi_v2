@@ -44,7 +44,7 @@ class dinersController extends Controller
      * @return Diners[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      * commentaire cg : récupération des diners dont je suis l'organisateur
      */
-    public function getMyOwnDiners(Request $request){
+public function getMyOwnDiners(Request $request){
        
         return Diners::with('place', 'theme', 'user', 'usersdiners', 'city')->where(['id_Organisator' => $request->user_id])->get();
     }
@@ -141,6 +141,7 @@ class dinersController extends Controller
 
                     }
                 }
+                return
                 $diners->save();
 
                 DB::commit();
