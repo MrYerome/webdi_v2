@@ -6,13 +6,33 @@
   background-color: darkcyan !important;
 }
 
-card-stacked{
+
+
+.Economie{
+  background: rgba(100,0,0,.70)!important;
 
 }
 
-.mat-card {
-  border: 2px solid red ;
-  background: rgba(100,0,0,.70);
+.Santé{
+  background: rgba(0,0,100,.70)!important;
+}
+
+.Ecologie{
+  background: rgba(0,100,0,.70)!important;
+}
+
+.mainCard{
+  padding: 10px;
   color: rgba(0,0,0,.87);
   margin-bottom: 10px;
+  cursor : pointer;
 }
+
+.titleCard{
+  font-size: larger;
+}
+
+.subtitleCard{
+  font-size: large;
+}
+
