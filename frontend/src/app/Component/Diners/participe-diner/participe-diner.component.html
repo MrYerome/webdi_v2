@@ -2,15 +2,16 @@
 <div class="container">
 
   <div class='row'>
-    <div *ngFor="let diner of diners" class="col s6 m4" appBordure="yellow">
+    <div *ngFor="let usersdiner of usersdiners" class="col s6 m4" appBordure="yellow">
       <!-- boucle for -->
       <div class="card horizontal">
         <div class="card=stacked">
           <div class="card-content">
-            <p>Titre : {{ diner.title}}</p>
-            <p>Nom : {{ diner.description}}</p>
+            <p>Titre : {{ usersdiner.diner.title}}</p>
+            <p>Nom : {{ usersdiner.diner.description}}</p>
+            <p>Nombre de place : {{usersdiner.nbPlaces}}</p>
           </div>
-          <a class="navbar-brand" (click)="selectDiner(diner.id)">Voir le diner</a>
+          <a class="navbar-brand" (click)="selectDiner(usersdiner.diner.id)">Voir le diner</a>
         </div>
       </div>
       <mat-checkbox>Clic ! </mat-checkbox>
