@@ -31,8 +31,6 @@ export class EditDinerComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router) {
     this.diner_id = this.route.snapshot.paramMap.get('id');
-
-
   }
 
   ngOnInit() {

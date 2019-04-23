@@ -14,6 +14,8 @@ export class ViewDinerComponent implements OnInit {
     diner: Diner;
     city: City;
 
+    public isSubscribe : boolean = false;
+
 
     public userid: string;
     public id: string;
@@ -26,6 +28,7 @@ export class ViewDinerComponent implements OnInit {
     ngOnInit() {
         this.getDiner();
         this.userid = sessionStorage.getItem('id').toString();
+      console.log(this.userid);
     }
 
     getDiner() {
@@ -37,6 +40,7 @@ export class ViewDinerComponent implements OnInit {
             value => {
                 console.log(value);
                 this.diner = value;
+              console.log(this.diner);
                 this.Data.getCity(this.diner.place.insee_Cities).subscribe(
                     value1 => {
                         this.city = value1[0];
@@ -45,6 +49,9 @@ export class ViewDinerComponent implements OnInit {
             error => {
                 console.log(error);
             });
+
+
+
 
     }
 
@@ -65,4 +72,22 @@ export class ViewDinerComponent implements OnInit {
 
     }
 
+    subscribeDiner(idDiner){
+      const data = {
+        id_Users : this.userid,
+        id_Diners: idDiner,
+      };
+      console.log(data);
+      this.Data.subscribeDiner(data).subscribe(
+        value => {console.log(value);
+        this.handleSuccess(idDiner)},
+        error1 => {console.log(error1); },
+
+      );
+    }
+
+    handleSuccess(data){
+      this.isSubscribe = true;
+      //this.router.navigate(['/diners/view'], data);
+    }
 }

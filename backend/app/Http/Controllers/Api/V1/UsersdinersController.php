@@ -55,8 +55,11 @@ class UsersdinersController extends Controller
             } catch (\PDOException $e) {
                 DB::rollBack();
                 return $e;
-                //return $this->response->errorBadRequest();
+
             }
+        }
+        else{
+            return $this->response->errorBadRequest();
         }
     }
 
