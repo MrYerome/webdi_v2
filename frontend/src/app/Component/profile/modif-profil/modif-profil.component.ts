@@ -9,7 +9,6 @@ import {DataService} from "../../../Services/Dataservice";
   styleUrls: ['./modif-profil.component.css']
 })
 export class ModifProfilComponent implements OnInit {
-
   constructor(private route : ActivatedRoute,
               private router: Router,
               private Data: DataService) {
@@ -24,6 +23,7 @@ export class ModifProfilComponent implements OnInit {
     }
     else {
       console.log("KO");
+
     }
 
     // this.Data.getAllProfiles().subscribe(
