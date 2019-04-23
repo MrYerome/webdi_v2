@@ -39,7 +39,7 @@ $api->version('v1', [], function (Router $api) {
         $api->get('/getDiner/{id}', '\App\Http\Controllers\Api\V1\dinersController@getDiner');
         $api->get('/getOldDiners', '\App\Http\Controllers\Api\V1\dinersController@getOldDiners');
         $api->post('/myOwnDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyOwnDiners');
-        $api->post('/myOldDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyOldDiners');
+
         $api->post('/myDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyDiners');
         $api->post('/create', '\App\Http\Controllers\Api\V1\dinersController@createDiner');
         $api->post('/update', '\App\Http\Controllers\Api\V1\dinersController@updateDiner');
@@ -52,7 +52,8 @@ $api->version('v1', [], function (Router $api) {
 
             $api->get('getAllUsersdiners', '\App\Http\Controllers\Api\V1\UsersdinersController@getUsersdiners');
             $api->get('getOneUsersdiners', '\App\Http\Controllers\Api\V1\UsersdinersController@getOneUsersdiners');
-            $api->get('getAllUsersdiners/user/{id}', '\App\Http\Controllers\Api\V1\UsersdinersController@getAllUsersdinersByUsers');
+            $api->get('myReservation/{id}', '\App\Http\Controllers\Api\V1\UsersdinersController@myReservation');
+            $api->get('myOldReservation/{id}', '\App\Http\Controllers\Api\V1\UsersdinersController@myOldReservation');
             $api->get('getAllUsersdiners/diner/{id}', '\App\Http\Controllers\Api\V1\UsersdinersController@getAllUsersdinersByDiners');
             // TODO : Cette route devrait etre en post mais error method not allow
             $api->get('create', '\App\Http\Controllers\Api\V1\UsersdinersController@createUsersdiners');

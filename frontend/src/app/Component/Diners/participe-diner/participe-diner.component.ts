@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Diner} from "../../../models/diner";
 import {DinerServiceService} from "../../../Services/diner-service.service";
 import {Router, RouterModule} from "@angular/router";
+import {Usersdiners} from "../../../models/usersdiners";
 
 @Component({
     selector: 'app-participe-diner',
@@ -9,20 +10,19 @@ import {Router, RouterModule} from "@angular/router";
     styleUrls: ['./participe-diner.component.css']
 })
 export class ParticipeDinerComponent implements OnInit {
-    diners: Diner[];
-    private data = {
-        user_id: null,
-    };
+    usersdiners: Usersdiners[];
+    private user_id: null;
+
     constructor(private Data: DinerServiceService,
                 private router: Router) {
-        this.data.user_id = sessionStorage.getItem('id').toString();
+        this.user_id = sessionStorage.getItem('id').toString();
     }
 
     ngOnInit() {
-        this.Data.getMyDiners(this.data).subscribe(
-            value => {this.diners = value; },
+        this.Data.getMyDiners(this.user_id).subscribe(
+            value => {this.usersdiners = value; },
             error1 => {console.log(error1); },
-            () => {console.log(this.diners); }
+            () => {console.log(this.usersdiners); }
         );
     }
 
