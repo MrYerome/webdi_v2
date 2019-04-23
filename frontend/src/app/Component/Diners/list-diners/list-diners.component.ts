@@ -7,6 +7,7 @@ import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {Themes} from "../../../models/themes";
 import {forEach} from "@angular-devkit/schematics";
+import {MatRadioButton} from "@angular/material";
 
 
 // import {combineLatest} from 'rxjs/observable/combineLatest';
@@ -33,7 +34,6 @@ export class ListDinersComponent implements OnInit {
   filter: {
     group: "Inauguration"
   }
-  public filterThemeArray: Array<Number> = [];
   public numberTheme: number;
 
   constructor(private Data: DinerServiceService,
@@ -82,43 +82,36 @@ export class ListDinersComponent implements OnInit {
     this.router.navigate(['/diners/view', d]);
   }
 
+  allTheme($event : MatRadioButton){
+    console.log("affichage de tous les diners");
+    this.ObsDiners = this.Data.getAllDiners();
+    this.ObsDiners.pipe(
+      map(
+        (diners: Diner[]) => diners
+      )
+    ).subscribe(
+      (diners: Diner[]) => {
+        this.diners = diners;
+      }
+    );
+  }
 
-  changeTheme($event, themeId: number) {
-    // this.filterThemeArray.push(themeId, 457);
-    if ($event.checked) {
-      this.filterThemeArray.push(themeId);
-    }
-    else {
-      this.filterThemeArray.pop();
-    }
-    console.log(this.filterThemeArray);
-    console.log("longueur : " + this.filterThemeArray.length);
-    if (this.filterThemeArray.length > 0) {
-      // this.getDinersByFiltersThemes(this.filterThemeArray);
+  changeTheme($event: MatRadioButton) {
+    console.log($event.value);
+    this.numberTheme = $event.value;
+
       console.log("refactoring de l'obs");
       //début foreach
-      this.filterThemeArray.forEach(obj => {
-      //  console.log(obj);
+
       this.ObsDiners.pipe(
         map(
           (diners: Diner[]) => diners
             .filter(
               (diner: Diner) => {
 
-
-                  // this.filterThemeArray.forEach(obj => {
-                  //   console.log(obj);
-                  //
-                  // })
-                return diner.theme.id == obj;
+                return diner.theme.id == this.numberTheme;
               }
-
-              //(diner: Diner) => diner.theme.id == obj
             )
-          // .filter(
-          //   (diner: Diner) => diner.theme.id == obj
-          // ),
-          // map(num => num * num)
         )
 
       ).subscribe(
@@ -128,22 +121,8 @@ export class ListDinersComponent implements OnInit {
           console.log(this.diners);
         }
       )
-      ;
-      // Fin foreach
-       },
 
-      this.ObsDiners = this.ObsDinersTemp);
-    }
-    else {
-      this.ObsDiners.pipe(
-        map(
-          (diners: Diner[]) => diners)
-      ).subscribe(
-        (diners: Diner[]) => {
-          this.diners = diners;
-        }
-      );
-    }
+
   }
 
   // getDinersByFiltersThemes(filterThemeArray): Observable<Diner[]> {

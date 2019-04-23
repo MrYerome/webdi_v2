@@ -22,7 +22,7 @@ export class Diner {
     public id: number,
     public title: string,
     public description: string,
-    public date: Date,
+    public date: string,
     public price: number,
     public maxMembers: number,
     public id_Places: number,
