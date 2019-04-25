@@ -12,11 +12,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Themes extends Model
 {
+
+    public $timestamps = false;
+
     /**
      * @var array
      */
     protected $fillable = ['label'];
-
+    protected $date = ['deleted_at'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -31,5 +34,13 @@ class Themes extends Model
     public function users()
     {
         return $this->belongsToMany('App\Models\Users', 'usersthemes', 'id_Themes', 'id_Users');
+    }
+
+    public function getUpdatedAtColumn() {
+        return null;
+    }
+
+    public function getCreatedAtColumn() {
+        return null;
     }
 }

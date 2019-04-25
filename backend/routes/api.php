@@ -76,6 +76,7 @@ $api->version('v1', [], function (Router $api) {
     // Actions spécifiques aux thèmes
     $api->group(["prefix" => 'themes'], function ($api){
         $api->get('/getAllThemes', '\App\Http\Controllers\Api\V1\ThemesController@getThemes');
+        $api->get('/create', '\App\Http\Controllers\Api\V1\ThemesController@createThemes');
     });
 
     $api->group(["prefix" => 'cities'], function ($api){
