@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -12,11 +13,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Themes extends Model
 {
+    use SoftDeletes;
+    public $timestamps = false;
+
     /**
      * @var array
      */
     protected $fillable = ['label'];
-
+    protected $date = ['deleted_at'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -31,5 +35,13 @@ class Themes extends Model
     public function users()
     {
         return $this->belongsToMany('App\Models\Users', 'usersthemes', 'id_Themes', 'id_Users');
+    }
+
+    public function getUpdatedAtColumn() {
+        return null;
+    }
+
+    public function getCreatedAtColumn() {
+        return null;
     }
 }

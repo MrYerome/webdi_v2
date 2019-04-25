@@ -75,13 +75,19 @@ $api->version('v1', [], function (Router $api) {
 
     // Actions spécifiques aux thèmes
     $api->group(["prefix" => 'themes'], function ($api){
-        $api->get('/getAllThemes', '\App\Http\Controllers\Api\V1\ThemesController@getThemes');
+        $api->get('getAllThemes', '\App\Http\Controllers\Api\V1\ThemesController@getThemes');
+        $api->get('getOneThemes/{id}', '\App\Http\Controllers\Api\V1\ThemesController@getOneTheme');
+        $api->post('delete', '\App\Http\Controllers\Api\V1\ThemesController@deleteThemes');
+        $api->post('create', '\App\Http\Controllers\Api\V1\ThemesController@createThemes');
+        $api->post('update', '\App\Http\Controllers\Api\V1\ThemesController@updateThemes');
+
     });
 
     $api->group(["prefix" => 'cities'], function ($api){
         $api->get('/getCities', '\App\Http\Controllers\Api\V1\CitiesController@getAllCities');
         $api->get('/getCity/{insee}', '\App\Http\Controllers\Api\V1\CitiesController@getCity');
     });
+
 
     $api->post('login', 'App\Http\Controllers\Api\V1\AuthController@login');
     $api->post('signup', 'App\Http\Controllers\Api\V1\UsersController@createUser');
