@@ -27,6 +27,8 @@
       <a class="navbar-brand" *ngIf="userid == diner?.id_Organisator" (click)="editDiner(diner?.id)">Modifier le diner</a>
       <a class="navbar-brand" *ngIf="userid == diner?.id_Organisator" (click)="deleteDiner()">Supprimer</a>
       <a class="navbar-brand" *ngIf="!isSubscribe" (click)="subscribeDiner(diner?.id)">S'inscrire</a>
+      <p class="navbar-brand" *ngIf="isSubscribe" >Vous êtes déjà inscrit à ce dîner</p>
+      <a class="navbar-brand" *ngIf="isSubscribe" (click)="unsubscribeDiner(diner?.id)">Se désinscrire</a>
     </div>
 
   </div>

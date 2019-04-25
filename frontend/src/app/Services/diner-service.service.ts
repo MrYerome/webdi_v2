@@ -93,9 +93,13 @@ export class DinerServiceService {
         return this.http.post(`${this.baseUrl}/diners/update`, data);
     }
 
-    public subscribeDiner(data){
+    public subscribeDiner(data) {
       return this.http.post(`${this.baseUrl}/usersdiners/create`, data);
     }
+
+  public unsubscribeDiner(data){
+    return this.http.post(`${this.baseUrl}/usersdiners/delete`, data);
+  }
 
   //
   // /**

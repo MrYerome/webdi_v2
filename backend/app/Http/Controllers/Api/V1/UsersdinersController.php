@@ -25,7 +25,7 @@ class UsersdinersController extends Controller
         return Usersdiners::with("user", "diner")->where([["id_Users", "=", $request->id_Users], ["id_diners", "=",$request->id_Diners]])->get();
     }
 
-    /***
+    /**
      * @param id
      * @return Userdiner[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      * commentaire cg: récupération des diners auquels je participé
@@ -47,9 +47,6 @@ class UsersdinersController extends Controller
         })->get();
     }
 
-    public function getOldDinersByUsers($id){
-
-    }
 
     // Récupération des réservation d'un diners
     public function getAllUsersdinersByDiners($id){
@@ -79,10 +76,7 @@ class UsersdinersController extends Controller
 
             }
         }else{
-            return $this->response->errorBadRequest();
-        }
-        else{
-            return $this->response->errorBadRequest();
+            return $this->response->error('id_Users et id_Diners sont obligatoire', 400);
         }
     }
 
@@ -113,7 +107,7 @@ class UsersdinersController extends Controller
                 return $this->api->get('usersdiners/getOneUsersdiners?id_Users=' . $usersdiner->id_Users.'&id_Diners='. $usersdiner->id_Diners);
 
             }else{
-                $this->response->errorBadRequest();
+               return $this->response->errorBadRequest();
             }
 
 
@@ -122,6 +116,24 @@ class UsersdinersController extends Controller
             return $e;
             //return $this->response->errorBadRequest();
         }
+    }
+
+
+    public function deleteUsersdiners(Request $request){
+
+        try{
+           Usersdiners::where([["id_Users", "=", $request->id_Users], ["id_diners", "=",$request->id_Diners]])->delete();
+            return $this->response->accepted();
+            //return $userDiner;
+            //$userDiner->delete();
+
+               // $this->response->errorUnauthorized();
+
+
+        }catch (\PDOException $e){
+            return $e->getMessage();
+        }
+
     }
 
 
