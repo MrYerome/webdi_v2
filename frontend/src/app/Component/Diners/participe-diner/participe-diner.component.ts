@@ -11,7 +11,7 @@ import {Usersdiners} from "../../../models/usersdiners";
 })
 export class ParticipeDinerComponent implements OnInit {
     usersdiners: Usersdiners[];
-    private user_id: null;
+    private user_id: string;
 
     constructor(private Data: DinerServiceService,
                 private router: Router) {
