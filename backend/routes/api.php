@@ -84,6 +84,25 @@ $api->version('v1', [], function (Router $api) {
 
     });
 
+    // Actions spécifiques aux thèmes
+    $api->group(["prefix" => 'userstypes'], function ($api){
+        $api->get('getAllUserstypes', '\App\Http\Controllers\Api\V1\UserstypesController@getUserstypes');
+        $api->get('getOneUserstypes/{id}', '\App\Http\Controllers\Api\V1\UserstypesController@getOneUserstypes');
+        $api->post('delete', '\App\Http\Controllers\Api\V1\UserstypesController@deleteUserstypes');
+        $api->post('create', '\App\Http\Controllers\Api\V1\UserstypesController@createUserstypes');
+        $api->post('update', '\App\Http\Controllers\Api\V1\UserstypesController@updateUserstypes');
+
+    });
+
+    $api->group(["prefix" => 'contacts'], function ($api){
+        $api->get('/getAllContacts', '\App\Http\Controllers\Api\V1\ContactController@getContacts');
+        $api->get('/getOneContact/{id}', '\App\Http\Controllers\Api\V1\ContactController@getOneContact');
+        $api->post('/create', '\App\Http\Controllers\Api\V1\ContactController@createContact');
+        $api->post('/update', '\App\Http\Controllers\Api\V1\ContactController@updateContact');
+        $api->post('/delete', '\App\Http\Controllers\Api\V1\ContactController@deleteContact');
+
+    });
+
     $api->group(["prefix" => 'cities'], function ($api){
         $api->get('/getCities', '\App\Http\Controllers\Api\V1\CitiesController@getAllCities');
         $api->get('/getCity/{insee}', '\App\Http\Controllers\Api\V1\CitiesController@getCity');
