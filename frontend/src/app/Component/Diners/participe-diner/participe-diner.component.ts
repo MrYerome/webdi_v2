@@ -30,4 +30,6 @@ export class ParticipeDinerComponent implements OnInit {
         this.router.navigate([`/diners/view/${id}`]);
     }
 
+
+
 }
