@@ -11,7 +11,7 @@ import {Usersdiners} from "../../../models/usersdiners";
 })
 export class ParticipeoldDinersComponent implements OnInit {
     usersdiners: Usersdiners[];
-    private user_id: number;
+    private user_id: string;
     constructor(private Data: DinerServiceService,
                 private router: Router) {
         this.user_id = sessionStorage.getItem('id').toString();

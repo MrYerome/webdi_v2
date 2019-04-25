@@ -58,6 +58,7 @@ $api->version('v1', [], function (Router $api) {
             // TODO : Cette route devrait etre en post mais error method not allow
             $api->post('create', '\App\Http\Controllers\Api\V1\UsersdinersController@createUsersdiners');
             $api->post('update', '\App\Http\Controllers\Api\V1\UsersdinersController@updateUsersdiners');
+            $api->post('delete', '\App\Http\Controllers\Api\V1\UsersdinersController@deleteUsersdiners');
 
     });
 

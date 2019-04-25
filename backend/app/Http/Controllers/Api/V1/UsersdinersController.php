@@ -81,9 +81,7 @@ class UsersdinersController extends Controller
         }else{
             return $this->response->errorBadRequest();
         }
-        else{
-            return $this->response->errorBadRequest();
-        }
+
     }
 
     // Mettre a jour un usersdiners
@@ -113,7 +111,7 @@ class UsersdinersController extends Controller
                 return $this->api->get('usersdiners/getOneUsersdiners?id_Users=' . $usersdiner->id_Users.'&id_Diners='. $usersdiner->id_Diners);
 
             }else{
-                $this->response->errorBadRequest();
+               return $this->response->errorBadRequest();
             }
 
 
@@ -122,6 +120,24 @@ class UsersdinersController extends Controller
             return $e;
             //return $this->response->errorBadRequest();
         }
+    }
+
+
+    public function deleteUsersdiners(Request $request){
+
+        try{
+           Usersdiners::where([["id_Users", "=", $request->id_Users], ["id_diners", "=",$request->id_Diners]])->delete();
+            return $this->response->accepted();
+            //return $userDiner;
+            //$userDiner->delete();
+
+               // $this->response->errorUnauthorized();
+
+
+        }catch (\PDOException $e){
+            return $e->getMessage();
+        }
+
     }
 
 
