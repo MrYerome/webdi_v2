@@ -26,6 +26,8 @@ import { ActivationComponent } from './Component/activation/activation.component
 import {DinersModule} from "./Component/Diners/diners.module";
 import {NgbModule, NgbDateParserFormatter} from "@ng-bootstrap/ng-bootstrap";
 import { MaterialModule } from './material/material.module';
+import {MatInputModule} from "@angular/material";
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -51,7 +53,10 @@ import { MaterialModule } from './material/material.module';
     HttpClientModule,
     SnotifyModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule
   ],
   providers: [DataService, AuthService, TokenService, AfterLoginService, BeforeLoginService,
 

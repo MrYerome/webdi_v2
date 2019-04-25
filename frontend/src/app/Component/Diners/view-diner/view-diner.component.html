@@ -12,8 +12,9 @@
             <p>Nombre maximum de participants : {{ diner?.maxMembers}}</p>
             <p>Prix : {{ diner?.price }}</p>
             <p>Restaurant : {{ diner?.place.name}}</p>
-            <p>Adresse : {{ diner?.place.numberStreet}} {{ diner?.place.nameStreet }}, {{ city?.nom_reel}} {{city?.code_postal}}</p>
-            <p>Organisé par {{ diner?.user.name}} {{ diner?.user.firstName}}</p>
+            <p>Adresse : {{ diner?.place.numberStreet}} {{ diner?.place.nameStreet }}, {{ city?.nom_reel}}
+              {{city?.code_postal}}</p>
+            <p>Organisé par {{ diner?.user.firstName}} {{ diner?.user.name}}</p>
 
 
             <!-- pipe name "majTitre" -->
@@ -24,11 +25,33 @@
 
         </div>
       </div>
-      <a class="navbar-brand" *ngIf="userid == diner?.id_Organisator" (click)="editDiner(diner?.id)">Modifier le diner</a>
-      <a class="navbar-brand" *ngIf="userid == diner?.id_Organisator" (click)="deleteDiner()">Supprimer</a>
-      <a class="navbar-brand" *ngIf="!isSubscribe" (click)="subscribeDiner(diner?.id)">S'inscrire</a>
-      <p class="navbar-brand" *ngIf="isSubscribe" >Vous êtes déjà inscrit à ce dîner</p>
-      <a class="navbar-brand" *ngIf="isSubscribe" (click)="unsubscribeDiner(diner?.id)">Se désinscrire</a>
+
+      <div *ngIf="userid == diner?.id_Organisator" (click)="editDiner(diner?.id)">
+        <a class="navbar-brand" (click)="editDiner(diner?.id)">Modifier le diner</a>
+        <a class="navbar-brand" (click)="deleteDiner()">Supprimer</a>
+      </div>
+
+      <div *ngIf="isSubscribe">
+        <p class="navbar-brand">Vous êtes déjà inscrit à ce dîner</p>
+        <a class="navbar-brand" (click)="unsubscribeDiner(diner?.id)">Se désinscrire</a>
+      </div>
+
+      <div *ngIf="!isSubscribe">
+        <span class="navbar-brand" >S'inscrire pour </span>
+        <span (click)="enleverParticipant()"><i class="material-icons">
+remove_circle_outline</i></span>
+        <mat-form-field>
+          <input matInput  [(ngModel)]='nbPlaces' [name]='nbPlaces' style="width:20px" min="1" max="6" value="1" type="number">
+        </mat-form-field>
+        <span (click)="ajouterParticipant()"><i class="material-icons">add_circle_outline</i></span>
+        <span *ngIf="nbPlaces<2"> personne.</span>
+        <span *ngIf="nbPlaces>1"> personnes.</span>
+        <button class="navbar-brand" (click)="subscribeDiner(diner?.id)">Valider ma réservation</button>
+      </div>
+
+
+
+
     </div>
 
   </div>

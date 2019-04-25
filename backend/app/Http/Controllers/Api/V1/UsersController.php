@@ -37,7 +37,7 @@ class UsersController extends Controller
 
     public function createUser(Request $request)
     {
-
+//return $request->password;
         try {
             DB::beginTransaction();
             $attribut = [];
@@ -51,9 +51,9 @@ class UsersController extends Controller
             $attribut['id_UserTypes'] = '2';
 
             $user = Users::create($attribut);
-
+           // return $user;
             DB::commit();
-            return $this->api->get('users/' . $user->id);
+            return $this->api->get('users/getUser/' . $user->id);
         } catch (\PDOException $e) {
             return $e;
             //return $this->response->errorBadRequest();

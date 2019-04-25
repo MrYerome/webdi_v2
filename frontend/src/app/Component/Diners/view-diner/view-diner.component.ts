@@ -14,11 +14,11 @@ import {Usersdiners} from "../../../models/usersdiners";
 export class ViewDinerComponent implements OnInit {
   diner: Diner;
   city: City;
-
   public isSubscribe: boolean = false;
 
 
   public userid: string;
+  public nbPlaces: number = 1;
   public id: string;
 
   constructor(private router: Router,
@@ -59,7 +59,7 @@ export class ViewDinerComponent implements OnInit {
   verifIsSubscribe(diner) {
     console.log(diner);
     for (let ud of this.diner.usersdiners) {
-      if (ud.id_Users){
+      if (ud.id_Users) {
         this.isSubscribe = true;
       }
     }
@@ -90,7 +90,9 @@ export class ViewDinerComponent implements OnInit {
     const data = {
       id_Users: this.userid,
       id_Diners: idDiner,
+      nbPlaces: this.nbPlaces
     };
+    console.log(this.nbPlaces);
     console.log(data);
     this.Data.subscribeDiner(data).subscribe(
       value => {
@@ -125,7 +127,19 @@ export class ViewDinerComponent implements OnInit {
     //this.router.navigate(['/diners/view'], data);
   }
 
-  handleSuccessUnsuscribe(data){
+  handleSuccessUnsuscribe(data) {
     this.isSubscribe = false;
+  }
+
+  ajouterParticipant() {
+    if (this.nbPlaces < 6) {
+      this.nbPlaces = this.nbPlaces + 1;
+    }
+  }
+
+  enleverParticipant() {
+    if (this.nbPlaces > 1) {
+      this.nbPlaces = this.nbPlaces - 1;
+    }
   }
 }

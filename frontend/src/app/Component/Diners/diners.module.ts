@@ -12,6 +12,8 @@ import { ParticipeDinerComponent } from './participe-diner/participe-diner.compo
 import { ParticipeoldDinersComponent } from './participeold-diners/participeold-diners.component';
 import { OwnerDinersComponent } from './owner-diners/owner-diners.component';
 import { EditDinerComponent } from './edit-diner/edit-diner.component';
+import {MatInputModule} from "@angular/material";
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -30,7 +32,10 @@ import { EditDinerComponent } from './edit-diner/edit-diner.component';
     CommonModule,
     DinersRoutingModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule
   ]
 })
 export class DinersModule {
