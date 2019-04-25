@@ -28,6 +28,10 @@ export class DataService {
     // )
   }
 
+  public isUserLoginExist(login){
+    return this.http.get(`${this.baseUrl}/users/isUserExist/${login}`);
+  }
+
 
   login(data) {
     return this.http.post(`${this.baseUrl}/login`, data);

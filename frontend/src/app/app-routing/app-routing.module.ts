@@ -11,6 +11,9 @@ import {ResponseResetComponent} from "../Component/password/response-reset/respo
 import { BeforeLoginService } from "../Services/before-login.service";
 import { AfterLoginService} from "../Services/after-login.service";
 import {ActivationComponent} from "../Component/activation/activation.component";
+import {SendActivationComponent} from "../Component/send-activation/send-activation.component";
+
+
 
 
 const ROUTES: Routes = [
@@ -21,7 +24,7 @@ const ROUTES: Routes = [
     component : ConnexionComponent,
     canActivate: [BeforeLoginService]},
   {path: 'signup', component : SignupComponent  },
-
+  {path: 'formulaireActivation', component : SendActivationComponent  },
   {
     path: 'request-password-reset',
     component: RequestResetComponent,
