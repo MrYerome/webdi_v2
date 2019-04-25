@@ -49,33 +49,14 @@ public function getMyOwnDiners(Request $request){
         return Diners::with('place', 'theme', 'user', 'usersdiners', 'city')->where(['id_Organisator' => $request->user_id])->get();
     }
 
-    /***
-     * @param Request $request
-     * @return Diners[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
-     * commentaire cg: récupération des diners auquels j'ai participé
-     */
-    public function getMyDiners(Request $request){
 
-        return Diners::with('place','theme','user', 'usersdiners', 'city')->where('date','>=',date("Y-m-d H:m:i"))->whereHas('usersdiners' , function ($query) use ($request) {
-            $query->where('id_Users', '=', $request->user_id);
-        })->get();
-    }
 
-    /**
-     * @param Request $request
-     * @return Diners[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
-     * commentaire cg : récupération des anciens diners auquels j'ai participé
-     */
-    public function getMyOldDiners(Request $request){
-        return Diners::with('place','theme','user', 'usersdiners', 'city')->where('date','<',date("Y-m-d H:m:i"))->whereHas('usersdiners' , function ($query) use ($request) {
-            $query->where('id_Users', '=', $request->user_id);
-        })->get();
-    }
+
 
     /**
      * @param Request $request
      * @return string
-     * commentaire cg: création du diner, le request est renseigner dans le tableau attribut
+     * commentaire cg: création du diner, le request est renseigné dans le tableau attribut
      */
     public function createDiner(Request $request){
         $attribut = [];
@@ -152,8 +133,8 @@ public function getMyOwnDiners(Request $request){
 
 
         }catch (\PDOException $e){
-           return $e;
            DB::rollBack();
+           return $e;
         }
 
     }

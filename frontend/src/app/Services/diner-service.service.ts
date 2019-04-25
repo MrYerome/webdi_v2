@@ -6,6 +6,7 @@ import {catchError, map, tap} from "rxjs/operators";
 import {Places} from "../models/places";
 import {Themes} from "../models/themes";
 import {City} from "../models/city";
+import {Usersdiners} from "../models/usersdiners";
 
 @Injectable({
     providedIn: 'root'
@@ -60,18 +61,18 @@ export class DinerServiceService {
         return this.http.get <Diner[]> (`${this.baseUrl}/diners/getOldDiners`);
     }
 
-    public getMyDiners(data): Observable<Diner[]> {
-        return this.http.post <Diner[]>(`${this.baseUrl}/diners/myDiners`, data).pipe(
+    public getMyDiners(id): Observable<Usersdiners[]> {
+        return this.http.get <Usersdiners[]>(`${this.baseUrl}/usersdiners/myReservation/${id}`).pipe(
             map(
-                (jsonArray: Object[]) => jsonArray.map(jsonItem => Diner.fromJson(jsonItem)),
+                (jsonArray: Object[]) => jsonArray.map(jsonItem => Usersdiners.fromJson(jsonItem)),
             )
         );
     }
 
-    public getMyOldDiners(data): Observable<Diner[]> {
-        return this.http.post <Diner[]>(`${this.baseUrl}/diners/myOldDiners`, data).pipe(
+    public getMyOldDiners(id): Observable<Usersdiners[]> {
+        return this.http.get <Usersdiners[]>(`${this.baseUrl}/usersdiners/myOldReservation/${id}`).pipe(
             map(
-                (jsonArray: Object[]) => jsonArray.map(jsonItem => Diner.fromJson(jsonItem)),
+                (jsonArray: Object[]) => jsonArray.map(jsonItem => Usersdiners.fromJson(jsonItem)),
             )
         );
     }

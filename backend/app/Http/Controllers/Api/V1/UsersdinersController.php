@@ -25,9 +25,30 @@ class UsersdinersController extends Controller
         return Usersdiners::with("user", "diner")->where([["id_Users", "=", $request->id_Users], ["id_diners", "=",$request->id_Diners]])->get();
     }
 
-    // Récupération des réservation d'un utilisateur
-    public function getAllUsersdinersByUsers($id){
-            return Usersdiners::with("user", "diner")->where("id_Users", "=" , $id)->get();
+    /***
+     * @param id
+     * @return Userdiner[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * commentaire cg: récupération des diners auquels je participé
+     */
+    public function myReservation($id){
+            return Usersdiners::with("user", "diner")->where("id_Users", "=" , $id)->whereHas('diner' , function ($query) {
+                $query->where('date','>=',date("Y-m-d H:m:i"));
+            })->get();
+    }
+
+    /**
+     * @param  $id
+     * @return Diners[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * commentaire cg : récupération des anciens diners auquels j'ai participé
+     */
+    public function myOldReservation($id){
+        return Usersdiners::with('user', 'diner')->where('id_Users', '=',$id)->whereHas('diner' , function ($query) {
+            $query->where('date','<',date("Y-m-d H:m:i"));
+        })->get();
+    }
+
+    public function getOldDinersByUsers($id){
+
     }
 
     // Récupération des réservation d'un diners
@@ -57,6 +78,8 @@ class UsersdinersController extends Controller
                 return $e;
 
             }
+        }else{
+            return $this->response->errorBadRequest();
         }
         else{
             return $this->response->errorBadRequest();
@@ -70,25 +93,29 @@ class UsersdinersController extends Controller
 
             if (isset($request->id_Users) && isset($request->id_Diners)){
                 $usersdiner = Usersdiners::where([["id_Users", "=", $request->id_Users], ["id_diners", "=",$request->id_Diners]])->first();
-            }
 
-            if (!isset($usersdiner->id_Users)) {
-                throw new ModelNotFoundException('UsersDiners not find');
-            }
-
-            $aAttributModifiable = ['rate', 'comment', 'nbPlaces'];
-
-            DB::beginTransaction();
-
-            foreach ($request->all() as $key => $value){
-                if (in_array($key, $aAttributModifiable)){
-                    $usersdiner->$key = $value;
+                if (!isset($usersdiner->id_Users)) {
+                    throw new ModelNotFoundException('UsersDiners not find');
                 }
-            }
-            $usersdiner->save();
 
-            DB::commit();
-            return $this->api->get('usersdiners/getOneUsersdiners?id_Users=' . $usersdiner->id_Users.'&id_Diners='. $usersdiner->id_Diners);
+                $aAttributModifiable = ['rate', 'comment', 'nbPlaces'];
+
+                DB::beginTransaction();
+
+                foreach ($request->all() as $key => $value){
+                    if (in_array($key, $aAttributModifiable)){
+                        $usersdiner->$key = $value;
+                    }
+                }
+                $usersdiner->save();
+
+                DB::commit();
+                return $this->api->get('usersdiners/getOneUsersdiners?id_Users=' . $usersdiner->id_Users.'&id_Diners='. $usersdiner->id_Diners);
+
+            }else{
+                $this->response->errorBadRequest();
+            }
+
 
         }catch (\PDOException $e) {
             DB::rollBack();
