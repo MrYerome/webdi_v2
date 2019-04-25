@@ -25,7 +25,9 @@ export class SignupComponent implements OnInit {
   public form2 = {
     email: null,
   };
-  public error = [];
+  public error = [
+
+  ];
 
   constructor(
     private Data: DataService,

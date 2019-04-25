@@ -9,12 +9,11 @@
           <div class="col-sm-10">
             <mat-form-field>
               <input matInput type="text" name="name" class="form-control" id="name" placeholder="Nom"
-                     [(ngModel)]="form.name"
-                     required>
+                     [(ngModel)]="form.name" required>
             </mat-form-field>
-            <div class="alert alert-danger" [hidden]="!error.login">
-              {{error.login}}
-            </div>
+            <!--<div class="alert alert-danger" [hidden]="!error.login">-->
+              <!--{{error.login}}-->
+            <!--</div>-->
           </div>
         </div>
 
@@ -37,9 +36,9 @@
                      [(ngModel)]="form.login"
                      required>
               </mat-form-field>
-                <div class="alert alert-danger" [hidden]="!error.login">
-                  {{error.login}}
-                </div>
+                <!--<div class="alert alert-danger" [hidden]="!error.login">-->
+                  <!--{{error.login}}-->
+                <!--</div>-->
           </div>
         </div>
         <!--mail-->
@@ -50,9 +49,9 @@
               <input matInput type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email"
                      [(ngModel)]="form.email" required>
             </mat-form-field>
-            <div class="alert alert-danger" [hidden]="!error.email">
-              {{error.email}}
-            </div>
+            <!--<div class="alert alert-danger" [hidden]="!error.email">-->
+              <!--{{error.email}}-->
+            <!--</div>-->
           </div>
         </div>
         <!--password-->
@@ -75,9 +74,10 @@
                      placeholder="Confirmer le mot de passe"
                      [(ngModel)]="form.password" required>
             </mat-form-field>
-            <div class="alert alert-danger" [hidden]="!error.password">
-              {{error.password}}
-            </div>
+            <div class="alert alert-danger" *ngIf="form.password!=form.password_confirmation">Les deux mots de passe ne sont pas identiques</div>
+            <!--<div class="alert alert-danger" [hidden]="!error.password">-->
+              <!--{{error.password}}-->
+            <!--</div>-->
           </div>
         </div>
 
