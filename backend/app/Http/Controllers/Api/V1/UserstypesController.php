@@ -1,29 +1,29 @@
 <?php
 
 namespace App\Http\Controllers\Api\V1;
-use App\Models\Themes;
+
 use App\Models\Users;
+use App\Models\Usertypes;
 use Dingo\Api\Http\Request;
 use Dingo\Api\Routing\Helpers;
-use http\Exception\InvalidArgumentException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Scalar\String_;
 
-
-class ThemesController extends Controller
+class UserstypesController extends Controller
 {
     use Helpers;
 
-    public function getThemes(){
-        return Themes::with("diners", "users")->get();
+    public function getUserstypes(){
+        return Usertypes::with('users')->get();
     }
 
-    public function getOneTheme($id){
-        return Themes::with("diners", "users")->find($id);
+    public function getOneUserstypes($id){
+        return Usertypes::with( "users")->find($id);
     }
 
-    public function createThemes(Request $request){
+    public function createUserstypes(Request $request){
         $attribut = [];
 
         try{
@@ -31,18 +31,18 @@ class ThemesController extends Controller
 
             DB::beginTransaction();
 
-            $themes = Themes::create($attribut);
+            $userstypes = Usertypes::create($attribut);
 
             DB::commit();
 
-            return $themes;
+            return $userstypes;
         }catch (\PDOException $e){
             DB::rollBack();
             return $e;
         }
     }
 
-    public function deleteThemes(Request $request){
+    public function deleteUserstypes(Request $request){
 
         try{
             // Vérification que user_id est passé
@@ -51,18 +51,21 @@ class ThemesController extends Controller
             }
 
             // Vérification que theme_id est passé
-            if (!isset($request->theme_id)){
-                throw new \InvalidArgumentException("themes_id manquant");
+            if (!isset($request->userstypes_id)){
+                throw new \InvalidArgumentException("userstypes_id manquant");
             }
             $user = Users::with('usertypes')->find($request->user_id);
-            // le user est admin
-            if ($user->id_UserTypes != 1){
+
+            // Vérification le user est admin
+
+
+            if ($user->id_UserTypes != 1 || $request->userstypes_id == 1 ){
                 throw new \InvalidArgumentException("Unauthorized");
             }
 
             DB::beginTransaction();
-            if (Themes::find($request->theme_id) != null){
-                Themes::find($request->theme_id)->delete();
+            if (Usertypes::find($request->userstypes_id) != null){
+                Usertypes::find($request->userstypes_id)->delete();
             }
 
             DB::commit();
@@ -76,42 +79,42 @@ class ThemesController extends Controller
         }
     }
 
-    public function updateThemes(Request $request){
+    public function updateUserstypes(Request $request){
         try{
-            $theme = new Themes();
+            $userstypes = new Usertypes();
             // Vérification que user_id est passé
             if (!isset($request->user_id)){
                 throw new \InvalidArgumentException("User_id manquant");
             }
             // Vérification que theme_id est passé
-            if (!isset($request->theme_id)){
-                throw new \InvalidArgumentException("Le champ themes_id est manquant");
+            if (!isset($request->userstypes_id)){
+                throw new \InvalidArgumentException("Le champ userstypes_id est manquant");
             }
             $user = Users::with('usertypes')->find($request->user_id);
             // Vérification que user est admin
-            if ($user->id_UserTypes != 1){
+            if ($user->id_UserTypes != 1 || $request->userstypes_id == 1 ){
                 throw new \InvalidArgumentException("Unauthorized");
             }
 
-            $theme = Themes::find($request->theme_id);
+            $userstypes = Usertypes::find($request->userstypes_id);
 
             $aAttributModifiable = ['label', 'deleted_at'];
 
-            if (!isset($theme->id)) {
-                throw new ModelNotFoundException('Themes not find');
+            if (!isset($userstypes->id)) {
+                throw new ModelNotFoundException('Userstypes not find');
             }
 
             DB::beginTransaction();
 
             foreach ($request->all() as $key => $value){
                 if (in_array($key, $aAttributModifiable)){
-                    $theme->$key = $value;
+                    $userstypes->$key = $value;
                 }
             }
-            $theme->save();
+            $userstypes->save();
 
             DB::commit();
-            return $this->api->get('themes/getOneThemes/' . $theme->id);
+            return $this->api->get('userstypes/getOneUserstypes/' . $userstypes->id);
 
         }catch (\InvalidArgumentException $e) {
             return $e->getMessage();
@@ -123,7 +126,4 @@ class ThemesController extends Controller
             return $e->getMessage();
         }
     }
-
-
-
 }
