@@ -9,7 +9,6 @@ use Dingo\Api\Routing\Helpers;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Scalar\String_;
 
 class UserstypesController extends Controller
 {

@@ -93,6 +93,15 @@ $api->version('v1', [], function (Router $api) {
 
     });
 
+    $api->group(["prefix" => 'contacts'], function ($api){
+        $api->get('/getAllContacts', '\App\Http\Controllers\Api\V1\ContactController@getContacts');
+        $api->get('/getOneContact/{id}', '\App\Http\Controllers\Api\V1\ContactController@getOneContact');
+        $api->post('/create', '\App\Http\Controllers\Api\V1\ContactController@createContact');
+        $api->post('/update', '\App\Http\Controllers\Api\V1\ContactController@updateContact');
+        $api->post('/delete', '\App\Http\Controllers\Api\V1\ContactController@deleteContact');
+
+    });
+
     $api->group(["prefix" => 'cities'], function ($api){
         $api->get('/getCities', '\App\Http\Controllers\Api\V1\CitiesController@getAllCities');
         $api->get('/getCity/{insee}', '\App\Http\Controllers\Api\V1\CitiesController@getCity');
