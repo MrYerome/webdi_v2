@@ -51,7 +51,7 @@ class UsersController extends Controller
             $attribut['id_UserTypes'] = '2';
 
             $user = Users::create($attribut);
-           // return $user;
+            // return $user;
             DB::commit();
             return $this->api->get('users/getUser/' . $user->id);
         } catch (\PDOException $e) {
@@ -143,6 +143,18 @@ class UsersController extends Controller
             return $e;
             DB::rollBack();
 
+        }
+    }
+
+    public function isUserExist($login)
+    {
+//        $login = $request->login;
+        $user = Users::where('login',$login)->first();
+        if (isset($user->id)) {
+            return "";
+
+        } else {
+            return "false";
         }
     }
 }

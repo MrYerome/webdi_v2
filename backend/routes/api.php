@@ -27,6 +27,7 @@ $api->version('v1', [], function (Router $api) {
         $api->get('/getAllUsers', 'App\Http\Controllers\Api\V1\UsersController@getUsers');
         $api->get('/login/{login}', 'App\Http\Controllers\Api\V1\UsersController@login');
         $api->get('/getUser/{id}', 'App\Http\Controllers\Api\V1\UsersController@getUser');
+        $api->get('/isUserExist/{login}', 'App\Http\Controllers\Api\V1\UsersController@isUserExist');
         $api->post('/create', 'App\Http\Controllers\Api\V1\UsersController@createUser');
         $api->post('/update', 'App\Http\Controllers\Api\V1\UsersController@updateUser');
 

@@ -25,6 +25,10 @@ class AuthController extends Controller
         $userSaisi = $this->api->get("users/login/".$login);
 
         if (isset($userSaisi[0]) && $userSaisi!= null) {
+            if ($userSaisi[0]['active']!=1){
+                return response()->json(['message' => 'notActive']);
+            }
+
             if($userSaisi[0]['password']!= $password){
                 return response()->json(['message' => $password]);
             }
