@@ -92,6 +92,11 @@ export class DinerServiceService {
     public updateDiner(data) {
         return this.http.post(`${this.baseUrl}/diners/update`, data);
     }
+
+    public subscribeDiner(data){
+      return this.http.post(`${this.baseUrl}/usersdiners/create`, data);
+    }
+
   //
   // /**
   //  * Filtre
