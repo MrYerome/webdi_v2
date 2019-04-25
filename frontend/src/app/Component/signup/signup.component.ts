@@ -35,6 +35,7 @@ export class SignupComponent implements OnInit {
   ) { }
 
   onSubmit() {
+    console.log(this.form);
     this.Data.signup(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -46,7 +47,7 @@ export class SignupComponent implements OnInit {
   }
 
   handleError(error) {
-    console.log("test3");
+    console.log("erreur");
     console.log(error);
 
     this.error = error.error.errors;
