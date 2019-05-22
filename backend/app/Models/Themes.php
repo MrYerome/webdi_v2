@@ -19,7 +19,7 @@ class Themes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['label'];
+    protected $fillable = ['label', 'deleted_at'];
     protected $date = ['deleted_at'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
