@@ -30,6 +30,7 @@ export class ListDinersComponent implements OnInit {
   ObsDinersTemp = new Observable();
   diners: Diner[];
   themes: Themes[];
+  arrayThemes: string[] = [];
   checked: boolean = false;
   filter: {
     group: "Inauguration"
@@ -82,7 +83,7 @@ export class ListDinersComponent implements OnInit {
     this.router.navigate(['/diners/view', d]);
   }
 
-  allTheme($event : MatRadioButton){
+  allTheme($event: MatRadioButton) {
     console.log("affichage de tous les diners");
     this.ObsDiners = this.Data.getAllDiners();
     this.ObsDiners.pipe(
@@ -96,59 +97,86 @@ export class ListDinersComponent implements OnInit {
     );
   }
 
-  changeTheme($event: MatRadioButton) {
-    console.log($event.value);
-    this.numberTheme = $event.value;
+  // changeTheme($event: MatRadioButton) {
+  //   console.log($event.value);
+  //   this.numberTheme = $event.value;
+  //
+  //     console.log("refactoring de l'obs");
+  //     //début foreach
+  //
+  //     this.ObsDiners.pipe(
+  //       map(
+  //         (diners: Diner[]) => diners
+  //           .filter(
+  //             (diner: Diner) => {
+  //
+  //               return diner.theme.id == this.numberTheme;
+  //             }
+  //           )
+  //       )
+  //
+  //     ).subscribe(
+  //       (diners: Diner[]) => {
+  //         this.diners = diners;
+  //         console.log(diners);
+  //         console.log(this.diners);
+  //       }
+  //     )
+  //
+  //
+  // }
+  // const filtres = ['environnement', 'culture'];
+  // console.log(diners.filter v=> filtres.includes(v.theme)));
 
-      console.log("refactoring de l'obs");
-      //début foreach
+  changeThemes(filterThemeArray) {
+    console.log("clic sur le thème : ");
+    console.log(filterThemeArray);
+    console.log("contenu du tableau de thèmes avant push / remove : ");
+    console.log(this.arrayThemes);
+    let index = this.arrayThemes.indexOf(filterThemeArray);
+    if (this.arrayThemes.includes(filterThemeArray)) {
+      console.log("entrée dans le remove");
+      if (index > -1) {
+        this.arrayThemes.splice(index, 1);
+      }
+    } else {
+      this.arrayThemes.push(filterThemeArray);
+    }
 
+    console.log("contenu du tableau de thèmes après push / remove : ");
+    console.log(this.arrayThemes);
+
+    if (this.arrayThemes.length > 0) {
       this.ObsDiners.pipe(
         map(
           (diners: Diner[]) => diners
             .filter(
               (diner: Diner) => {
-
-                return diner.theme.id == this.numberTheme;
+                return this.arrayThemes.includes(diner.theme.label);
               }
             )
         )
-
       ).subscribe(
         (diners: Diner[]) => {
           this.diners = diners;
-          console.log(diners);
-          console.log(this.diners);
+          // console.log(diners);
+          // console.log(this.diners);
         }
-      )
-
-
+      );
+    }
+    else {
+      this.ObsDiners.pipe(
+        map(
+          (diners: Diner[]) => diners
+        )
+      ).subscribe(
+        (diners: Diner[]) => {
+          this.diners = diners;
+          //console.log(diners);
+        }
+      );
+    }
   }
-
-  // getDinersByFiltersThemes(filterThemeArray): Observable<Diner[]> {
-  //
-  //   return this.ObsDiners.combineLatest(
-  //     this.ObsDiners).pipe(
-  //     map((diners: Diner[]) => {
-  //       filterThemeArray.forEach(obj => {
-  //         return diners.filter(
-  //           (diner: Diner) => diner.theme.id == obj
-  //         )
-  //       });
-  //       // return articles.filter(article => article['author'] === user['name'])
-  //     })
-  //   );
-
-
-  // return combineLatest(
-  //   this.ObsDiners.pipe(
-  //     map(([user, articles]) => {
-  //       if (user.isAnonymous) {
-  //         return [];
-  //       }
-  //       return articles.filter(article => article['author'] === user['name'])
-  //     })
-  //   )
 }
 
 
