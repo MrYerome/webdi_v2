@@ -12,6 +12,7 @@ import { BeforeLoginService } from "../Services/before-login.service";
 import { AfterLoginService} from "../Services/after-login.service";
 import {ActivationComponent} from "../Component/activation/activation.component";
 import {SendActivationComponent} from "../Component/send-activation/send-activation.component";
+import {ForbiddenComponent} from "../Component/forbidden/forbidden.component";
 
 
 
@@ -20,6 +21,7 @@ const ROUTES: Routes = [
   {path: '', component : AccueilComponent  },
   {path: 'accueil', component : AccueilComponent  },
   {path: 'test', component : TestComponent  },
+  {path: 'forbidden', component : ForbiddenComponent  },
   {path: 'connexion',
     component : ConnexionComponent,
     canActivate: [BeforeLoginService]},
@@ -40,7 +42,6 @@ const ROUTES: Routes = [
     component: ActivationComponent,
     //canActivate: [BeforeLoginService]
   },
-
 ]
 
 @NgModule({

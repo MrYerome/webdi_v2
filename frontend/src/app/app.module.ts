@@ -29,6 +29,8 @@ import { MaterialModule } from './material/material.module';
 import {MatInputModule} from "@angular/material";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import { SendActivationComponent } from './Component/send-activation/send-activation.component';
+import {AuthGuard} from "./Services/AuthGuard";
+import { ForbiddenComponent } from './Component/forbidden/forbidden.component';
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import { SendActivationComponent } from './Component/send-activation/send-activa
     ResponseResetComponent,
     ActivationComponent,
     SendActivationComponent,
+    ForbiddenComponent,
   ],
   imports: [
     NgbModule,
@@ -60,7 +63,7 @@ import { SendActivationComponent } from './Component/send-activation/send-activa
     BrowserAnimationsModule,
     NoopAnimationsModule
   ],
-  providers: [DataService, AuthService, TokenService, AfterLoginService, BeforeLoginService,
+  providers: [DataService, AuthService, TokenService, AfterLoginService, BeforeLoginService, AuthGuard,
 
     {provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService],

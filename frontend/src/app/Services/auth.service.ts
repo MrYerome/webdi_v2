@@ -9,7 +9,13 @@ export class AuthService {
 
   changeAuthStatus(value: boolean) {
     this.loggedIn.next(value);
-    localStorage.setItem('Auth', value.toString());
+    sessionStorage.setItem('Auth', value.toString());
+  }
+
+  isAuthenticated() {
+    // get the auth token from sessionStorage
+    let granted = sessionStorage.getItem('Auth');
+    return granted==="true";
   }
 
 

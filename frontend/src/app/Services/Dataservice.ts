@@ -11,6 +11,10 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
 
+  /**
+   * Récupère tous les Users dans la BDD sous forme d'observable
+   * Retourne un Type User définit dans le projet Angular
+   */
   public getAllUsers(): Observable<User[]> {
     return this.http.get(`${this.baseUrl}/users/getAllUsers`).pipe(
       map(
@@ -19,8 +23,12 @@ export class DataService {
     );
   }
 
+  /**
+   * Récupère un User dans la BDD sous forme d'observable
+   * Retourne un Type User définit dans le projet Angular
+   */
   public getUser(id): Observable<User> {
-    return this.http.get < User > (`${this.baseUrl}/users/getUser/${id}`).pipe(tap(_ => console.log(`id user=${id}`)));
+    return this.http.get < User > (`${this.baseUrl}/users/getUser/${id}`).pipe();
     // return this.http.get(`${this.baseUrl}/profiles/getProfile/${id}`).pipe(
     //   map(
     //     ((user: User) => user,

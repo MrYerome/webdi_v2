@@ -1,20 +1,12 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {Diner} from "../../../models/diner";
-import {DataService} from "../../../Services/Dataservice";
 import {DinerServiceService} from "../../../Services/diner-service.service";
 import {Router} from "@angular/router";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {Themes} from "../../../models/themes";
-import {forEach} from "@angular-devkit/schematics";
 import {MatRadioButton} from "@angular/material";
 
-
-// import {combineLatest} from 'rxjs/observable/combineLatest';
-
-// import {combineLatest} from 'rxjs';
-
-// import {MatCheckboxModule, MatCheckbox} from '@angular/material';
 
 @Component({
   selector: 'app-list-diners',
@@ -32,10 +24,7 @@ export class ListDinersComponent implements OnInit {
   themes: Themes[];
   arrayThemes: string[] = [];
   checked: boolean = false;
-  filter: {
-    group: "Inauguration"
-  }
-  public numberTheme: number;
+  numberTheme: number;
 
   constructor(private Data: DinerServiceService,
               private router: Router) {
@@ -45,26 +34,13 @@ export class ListDinersComponent implements OnInit {
     this.Data.getAllThemes().subscribe(
       (themes: Themes[]) => {
         this.themes = themes;
-        //console.log(themes);
       }
     );
-    // this.Data.getAllDiners().subscribe(
-    //   diners => {
-    //     this.diners = diners
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   },
-    //   () => {
-    //     console.log(this.diners);
-    //   }
-    // );
-    //
-    // this.Data.getAllDiners().subscribe(
-    //   diners => this.diners = diners
-    // );
     this.ObsDiners = this.Data.getAllDiners();
-    //this.Data.getAllDiners().pipe(
+    this.selectAllDiners();
+  }
+
+  selectAllDiners() {
     this.ObsDiners.pipe(
       map(
         (diners: Diner[]) => diners
@@ -72,7 +48,6 @@ export class ListDinersComponent implements OnInit {
     ).subscribe(
       (diners: Diner[]) => {
         this.diners = diners;
-        //console.log(diners);
       }
     );
     this.ObsDinersTemp = this.ObsDiners;
@@ -83,69 +58,22 @@ export class ListDinersComponent implements OnInit {
     this.router.navigate(['/diners/view', d]);
   }
 
-  allTheme($event: MatRadioButton) {
-    console.log("affichage de tous les diners");
-    this.ObsDiners = this.Data.getAllDiners();
-    this.ObsDiners.pipe(
-      map(
-        (diners: Diner[]) => diners
-      )
-    ).subscribe(
-      (diners: Diner[]) => {
-        this.diners = diners;
-      }
-    );
-  }
 
-  // changeTheme($event: MatRadioButton) {
-  //   console.log($event.value);
-  //   this.numberTheme = $event.value;
-  //
-  //     console.log("refactoring de l'obs");
-  //     //début foreach
-  //
-  //     this.ObsDiners.pipe(
-  //       map(
-  //         (diners: Diner[]) => diners
-  //           .filter(
-  //             (diner: Diner) => {
-  //
-  //               return diner.theme.id == this.numberTheme;
-  //             }
-  //           )
-  //       )
-  //
-  //     ).subscribe(
-  //       (diners: Diner[]) => {
-  //         this.diners = diners;
-  //         console.log(diners);
-  //         console.log(this.diners);
-  //       }
-  //     )
-  //
-  //
-  // }
-  // const filtres = ['environnement', 'culture'];
-  // console.log(diners.filter v=> filtres.includes(v.theme)));
-
+  /**
+   * Ajuste la liste des diners en passant un filtre sur les thèmes
+   * @param filterThemeArray
+   */
   changeThemes(filterThemeArray) {
-    console.log("clic sur le thème : ");
-    console.log(filterThemeArray);
-    console.log("contenu du tableau de thèmes avant push / remove : ");
-    console.log(this.arrayThemes);
     let index = this.arrayThemes.indexOf(filterThemeArray);
     if (this.arrayThemes.includes(filterThemeArray)) {
-      console.log("entrée dans le remove");
       if (index > -1) {
         this.arrayThemes.splice(index, 1);
       }
     } else {
       this.arrayThemes.push(filterThemeArray);
     }
-
-    console.log("contenu du tableau de thèmes après push / remove : ");
     console.log(this.arrayThemes);
-
+    //Si la liste de thèmes est vide, on affiche tous les diners
     if (this.arrayThemes.length > 0) {
       this.ObsDiners.pipe(
         map(
@@ -159,41 +87,58 @@ export class ListDinersComponent implements OnInit {
       ).subscribe(
         (diners: Diner[]) => {
           this.diners = diners;
-          // console.log(diners);
-          // console.log(this.diners);
         }
       );
-    }
-    else {
-      this.ObsDiners.pipe(
-        map(
-          (diners: Diner[]) => diners
-        )
-      ).subscribe(
-        (diners: Diner[]) => {
-          this.diners = diners;
-          //console.log(diners);
-        }
-      );
+    } else {
+      this.selectAllDiners();
     }
   }
 }
 
 
-// this.ObsDiners.pipe(
-//   map(
-//     (diners: Diner[]) => diners
-//       .filter(
-//         (diner: Diner) => diner.theme.id == themeId
+/**
+ * Anciennes méthodes avec les radio buttons
+ * OBSOLETE
+ * @param $event
+ */
+// allTheme($event: MatRadioButton) {
+//   console.log("affichage de tous les diners");
+//   this.ObsDiners = this.Data.getAllDiners();
+//   this.ObsDiners.pipe(
+//     map(
+//       (diners: Diner[]) => diners
+//     )
+//   ).subscribe(
+//     (diners: Diner[]) => {
+//       this.diners = diners;
+//     }
+//   );
+// }
+/**
+ * Anciennes méthodes avec les radio buttons
+ * OBSOLETE
+ * @param $event
+ */
+// changeTheme($event: MatRadioButton) {
+//   console.log($event.value);
+//   this.numberTheme = $event.value;
+//     this.ObsDiners.pipe(
+//       map(
+//         (diners: Diner[]) => diners
+//           .filter(
+//             (diner: Diner) => {
+//               return diner.theme.id == this.numberTheme;
+//             }
+//           )
 //       )
-//   )
-// ).subscribe(
-//   (diners: Diner[]) => {
-//     this.diners = diners;
-//     console.log(diners);
-//   }
-// );
-
+//     ).subscribe(
+//       (diners: Diner[]) => {
+//         this.diners = diners;
+//         console.log(diners);
+//         console.log(this.diners);
+//       }
+//     )
+// }
 
 /**
  //  * Filtre
