@@ -42,7 +42,7 @@ export class FormProfilComponent implements OnInit {
     console.log('form envoye');
     // console.log(this.user);
     console.log(this.user);
-    this.Data.update(this.user)
+    this.Data.updateUser(this.user)
       .subscribe(()=>this.goBack(this.user.id));
   }
   goBack(id):void{

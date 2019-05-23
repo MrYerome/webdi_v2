@@ -53,6 +53,10 @@ export class ListDinersComponent implements OnInit {
     this.ObsDinersTemp = this.ObsDiners;
   }
 
+  /**
+   * Au clic sur un diner, ouverture d'une nouvelle page avec les specs du diner
+   * @param d
+   */
   selectDiner(d) {
     console.log(d);
     this.router.navigate(['/diners/view', d]);
