@@ -9,6 +9,17 @@ import {DataService} from "../../../Services/Dataservice";
   styleUrls: ['./modif-profil.component.css']
 })
 export class ModifProfilComponent implements OnInit {
+  public user = {
+    id: null,
+    name: null,
+    firstName: null,
+    email: null,
+    cities:{
+      nom_reel: null
+    },
+    specAlim: null
+  };
+
   constructor(private route : ActivatedRoute,
               private router: Router,
               private Data: DataService) {
@@ -19,11 +30,13 @@ export class ModifProfilComponent implements OnInit {
   ngOnInit() {
     let id=+this.route.snapshot.paramMap.get('id');
     if (id.toString()==(sessionStorage.getItem("id"))){
-      console.log("Ok");
+      console.log("Ok pour accéder à la page ");
     }
     else {
+      // l'utilisateur essaie de modifier une page qui n'est pas la sienne
       console.log("KO");
-
+      // this.router.navigate(['/profile/list']);
+      this.router.navigate(['../accueil']);
     }
 
     // this.Data.getAllProfiles().subscribe(
@@ -66,6 +79,7 @@ export class ModifProfilComponent implements OnInit {
 
   onSubmit() {
     console.log('form envoye');
+    this.Data.updateUser(this.user).subscribe(()=>this.goBack());;
     // this.disqueService
     //   .updateDisque(this.disque)
     //   .subscribe(()=>this.goBack());
@@ -73,7 +87,7 @@ export class ModifProfilComponent implements OnInit {
 
   goBack(): void {
     console.log("router");
-     this.router.navigate(['/profile']);
+     this.router.navigate(['/profile/list']);
   }
 
 }

@@ -4,18 +4,20 @@
 
   <p></p>
 
-  <p>
-
-    <mat-radio-button name="themes"
-                      (change)="allTheme($event)">Tous les thèmes
-    </mat-radio-button>
-
-  </p>
+  <!--<p>-->
+    <!--<mat-radio-button name="themes"-->
+                      <!--(change)="allTheme($event)">Tous les thèmes-->
+    <!--</mat-radio-button>-->
+  <!--</p>-->
   <p *ngFor="let theme of themes; let i = index">
 
-    <mat-radio-button name="themes" value="{{theme.id}}"
-                      (change)="changeTheme($event)">{{theme.label}}
-    </mat-radio-button>
+    <!--<mat-radio-button name="themes" value="{{theme.id}}"-->
+                      <!--(change)="changeTheme($event)">{{theme.label}}-->
+    <!--</mat-radio-button>-->
+
+    <mat-checkbox name="themes" value="{{theme.id}}"
+                      (change)="changeThemes(theme.label)">{{theme.label}}
+    </mat-checkbox>
 
   </p>
   <div class='row'>

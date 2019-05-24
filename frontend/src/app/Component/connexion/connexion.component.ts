@@ -45,8 +45,8 @@ export class ConnexionComponent implements OnInit {
       console.log(data.message);
       this.handleError(data.message);
     } else {
-      console.log(data[0]["id"]);
-      sessionStorage.setItem('user', JSON.stringify(data));
+     // console.log(data[0]["id"]);
+     // sessionStorage.setItem('user', JSON.stringify(data));
       sessionStorage.setItem('id', JSON.stringify(data[0]["id"]));
       this.Auth.changeAuthStatus(true);
       this.router.navigateByUrl('/accueil');

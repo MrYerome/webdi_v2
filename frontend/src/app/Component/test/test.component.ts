@@ -41,10 +41,10 @@ export class TestComponent {
     Params = Params.append('email', this.registerForm.value.email);
     console.log("entrée dans tes.component.ts. Les params sont : " + Params);
 
-    this.Data.test(Params).subscribe(
-      data => this.handleResponse(data),
-      error => this.handleError(error)
-    );
+    // this.Data.test(Params).subscribe(
+    //   data => this.handleResponse(data),
+    //   error => this.handleError(error)
+    // );
 
 
   }

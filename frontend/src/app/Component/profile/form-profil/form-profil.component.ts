@@ -23,12 +23,13 @@ export class FormProfilComponent implements OnInit {
   ngOnInit() {
     let id =this.route.snapshot.paramMap.get('id');
     if (id==sessionStorage.getItem("id")){
-      console.log("Ok");
+      // console.log("Ok");
       this.Data.getUser(id).subscribe(
         value =>{
-          console.log(value); this.user = value},
+         // console.log(value);
+          this.user = value},
         error => {
-          console.log('erreur ');
+          //console.log('erreur ');
         }
       )
     }
@@ -41,7 +42,7 @@ export class FormProfilComponent implements OnInit {
     console.log('form envoye');
     // console.log(this.user);
     console.log(this.user);
-    this.Data.update(this.user)
+    this.Data.updateUser(this.user)
       .subscribe(()=>this.goBack(this.user.id));
   }
   goBack(id):void{
