@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -18,13 +19,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Places extends Model
 {
+    use SoftDeletes;
     public $timestamps = false;
 
     /**
      * @var array
      */
     protected $fillable = ['name', 'numberStreet', 'nameStreet', 'maxCapacity', 'id_Cities', 'id_Contacts'];
-
+    protected  $dates = ['deleted_ad'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
