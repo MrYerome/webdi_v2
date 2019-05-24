@@ -54,7 +54,7 @@ class ContactController extends Controller
             if (!isset($request->contacts_id)){
                 throw new \InvalidArgumentException("Le champ contacts_id est manquant");
             }
-            $user = Users::with('usertypes')->find($request->user_id);
+            $user = Users::find($request->user_id);
             // Vérification que user est admin
             if ($user->id_UserTypes != 1){
                 throw new \InvalidArgumentException("Unauthorized");
@@ -103,7 +103,7 @@ class ContactController extends Controller
             if (!isset($request->contacts_id)){
                 throw new \InvalidArgumentException("contacts_id manquant");
             }
-            $user = Users::with('usertypes')->find($request->user_id);
+            $user = Users::find($request->user_id);
             // le user est admin
             if ($user->id_UserTypes != 1){
                 throw new \InvalidArgumentException("Unauthorized");

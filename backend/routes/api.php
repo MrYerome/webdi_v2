@@ -56,7 +56,6 @@ $api->version('v1', [], function (Router $api) {
             $api->get('myReservation/{id}', '\App\Http\Controllers\Api\V1\UsersdinersController@myReservation');
             $api->get('myOldReservation/{id}', '\App\Http\Controllers\Api\V1\UsersdinersController@myOldReservation');
             $api->get('getAllUsersdiners/diner/{id}', '\App\Http\Controllers\Api\V1\UsersdinersController@getAllUsersdinersByDiners');
-            // TODO : Cette route devrait etre en post mais error method not allow
             $api->post('create', '\App\Http\Controllers\Api\V1\UsersdinersController@createUsersdiners');
             $api->post('update', '\App\Http\Controllers\Api\V1\UsersdinersController@updateUsersdiners');
             $api->post('delete', '\App\Http\Controllers\Api\V1\UsersdinersController@deleteUsersdiners');
@@ -72,6 +71,9 @@ $api->version('v1', [], function (Router $api) {
     $api->group(["prefix" => 'places'], function ($api){
         $api->get('/getAllPlaces', '\App\Http\Controllers\Api\V1\PlacesController@getPlaces');
         $api->get('/getPlace/{id}', '\App\Http\Controllers\Api\V1\PlacesController@getPlace');
+        $api->post('/create', '\App\Http\Controllers\Api\V1\PlacesController@createPlace');
+        $api->post('/update', '\App\Http\Controllers\Api\V1\PlacesController@updatePlace');
+        $api->post('/delete', '\App\Http\Controllers\Api\V1\PlacesController@deletePlace');
     });
 
     // Actions spécifiques aux thèmes
