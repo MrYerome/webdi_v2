@@ -1,0 +1,29 @@
+#logoNav{
+    width: 60px;
+    padding: 5px 0;
+    margin-left:20px;
+}
+.navbar{
+   padding: 0 !important;
+}
+.aNavContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.aNav{
+    color: #000;
+    margin: 0 20px;
+    font-size: 1.4rem;
+}
+@media screen and (max-width: 768px) {
+    .aNavContainer{
+        display: none;
+    }
+
+    #logoNav{
+        width: 30px;
+        padding: 5px 0;
+        margin-left:20px;
+    }
+}

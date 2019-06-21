@@ -31,6 +31,11 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
 import { SendActivationComponent } from './Component/send-activation/send-activation.component';
 import {AuthGuard} from "./Services/AuthGuard";
 import { ForbiddenComponent } from './Component/forbidden/forbidden.component';
+import { FormPlacesComponent } from './Component/places/form-places/form-places.component';
+import { CreatePlacesComponent } from './Component/places/create-places/create-places.component';
+import { EditPlacesComponent } from './Component/places/edit-places/edit-places.component';
+import { ListPlacesComponent } from './Component/places/list-places/list-places.component';
+import { ViewPlacesComponent } from './Component/places/view-places/view-places.component';
 
 
 @NgModule({
@@ -47,6 +52,11 @@ import { ForbiddenComponent } from './Component/forbidden/forbidden.component';
     ActivationComponent,
     SendActivationComponent,
     ForbiddenComponent,
+    FormPlacesComponent,
+    CreatePlacesComponent,
+    EditPlacesComponent,
+    ListPlacesComponent,
+    ViewPlacesComponent,
   ],
   imports: [
     NgbModule,

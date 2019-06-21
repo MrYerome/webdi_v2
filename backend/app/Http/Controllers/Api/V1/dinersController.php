@@ -31,6 +31,15 @@ class dinersController extends Controller
     }
 
     /**
+     *
+     * @return Diners|Diners[]|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
+     * récupération d'un diner
+     */
+    public function get3FistDiner(){
+        return Diners::with('place','theme','user', 'city')->where("date", ">=", date("Y-m-d H:m:i"))->orderBy('date','asc')->limit(4)->get();
+    }
+
+    /**
      * @param $id
      * @return Diners|Diners[]|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      * commentaire cg : récupération des anciens diners (diners dont la date du diners est inférieur a la date du jour)

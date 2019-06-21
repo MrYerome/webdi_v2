@@ -1,14 +1,17 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand">Navbar</a>
-  <div>
-    <a class="navbar-brand" routerLink="accueil">Accueil</a>
-    <a class="navbar-brand" routerLink="diners/create">CreateDiner</a>
-    <a class="navbar-brand" routerLink="connexion" *ngIf="!loggedIn">Connexion</a>
-    <a class="navbar-brand" routerLink="signup" *ngIf="!loggedIn">Créer mon compte</a>
-    <a class="navbar-brand" routerLink="profile/list" *ngIf="loggedIn">Liste des profil</a>
-    <a class="navbar-brand" routerLink="profile/view" *ngIf="loggedIn">Mon profil</a>
-    <a class="navbar-brand" routerLink="diners/list" *ngIf="loggedIn">Les diners</a>
-    <a class="navbar-brand" routerLink="diners/participe" *ngIf="loggedIn">Mydiners</a>
-    <a class="navbar-brand" href="#" (click)="logout($event)" *ngIf="loggedIn">Se déconnecter</a>
+  <a class="" href="/">
+      <img src="assets/img/logo/logo.png" alt="" srcset="assets/img/logo/logo.png" id="logoNav">
+  </a>
+  <div class="aNavContainer">
+
+      <a class="aNav" routerLink="diners/list" >Les conf'</a>
+      <a class="aNav" routerLink="" >Le concept</a>
+      <a class="aNav" routerLink="diners/create">Organiser</a>
+      <!--<a class="navbar-brand" routerLink="connexion" *ngIf="!loggedIn">Connexion</a>-->
+      <!--<a class="navbar-brand" routerLink="signup" *ngIf="!loggedIn">Créer mon compte</a>-->
+      <!--<a class="navbar-brand" routerLink="profile/list" *ngIf="loggedIn">Liste des profil</a>-->
+      <!--<a class="navbar-brand" routerLink="profile/view" *ngIf="loggedIn">Mon profil</a>-->
+      <!--<a class="navbar-brand" routerLink="diners/participe" *ngIf="loggedIn">Mydiners</a>-->
+      <!--<a class="navbar-brand" href="#" (click)="logout($event)" *ngIf="loggedIn">Se déconnecter</a>-->
   </div>
 </nav>

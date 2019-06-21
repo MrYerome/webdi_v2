@@ -1,0 +1,46 @@
+#bandeau img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#bandeauTitle{
+    text-align: center;
+    z-index: 1;
+    color: white;
+    font-size: 5rem;
+}
+
+@media screen and (min-width: 769px) {
+
+    #bandeau {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 450px;
+        overflow: hidden;
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #bandeau {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+
+    }
+
+    #bandeauTitle{
+        text-align: center;
+        z-index: 1;
+        color: white;
+        font-size: 2rem;
+    }
+}
