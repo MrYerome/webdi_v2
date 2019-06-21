@@ -36,8 +36,16 @@ import { CreatePlacesComponent } from './Component/places/create-places/create-p
 import { EditPlacesComponent } from './Component/places/edit-places/edit-places.component';
 import { ListPlacesComponent } from './Component/places/list-places/list-places.component';
 import { ViewPlacesComponent } from './Component/places/view-places/view-places.component';
+import { LOCALE_ID } from '@angular/core';
+
+import { registerLocaleData } from '@angular/common';
+
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
 
 
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,8 +84,9 @@ import { ViewPlacesComponent } from './Component/places/view-places/view-places.
   providers: [DataService, AuthService, TokenService, AfterLoginService, BeforeLoginService, AuthGuard,
 
     {provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService],
+    SnotifyService, {provide: LOCALE_ID, useValue: "fr-FR" }],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

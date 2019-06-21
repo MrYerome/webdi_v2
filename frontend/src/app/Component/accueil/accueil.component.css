@@ -11,18 +11,88 @@
     color: white;
     font-size: 5rem;
 }
+#bandeau {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+}
+h2{
+    padding: 10px;
+}
+.container3First{
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    padding: 20px 0;
 
-@media screen and (min-width: 769px) {
+}
+.SeeAllConf{
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 10px;
+}
 
-    #bandeau {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        height: 450px;
-        overflow: hidden;
-        position: relative;
-    }
+.organizeText{
+    text-align: center;;
+    background-color: white;
+    padding: 40px 0;
+    font-size: 3.3rem;
+    line-height: normal;
+}
+.organizeButton{
+    background-color: var(--orange-custom);
+    text-align: center;
+    padding: 15px;
+    font-size: 2rem;
+    line-height: normal;
+}
+
+.newsletterText{
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;;
+    padding: 45px 0;
+}
+
+.newsletterText span:nth-child(1){
+    padding-bottom: 20px;
+    font-size: 2rem;
+    line-height: normal;
+}
+.newsletterText span:nth-child(2){
+    font-size: 1.5rem;
+    line-height: normal;
+}
+.newsletterInput{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.newsletterInput input{
+    width: 400px;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+    padding: 5px;
+}
+.newsletterInput input:focus{
+   outline: none;
+}
+.newsletterInput button{
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+.newsletterInput button:focus{
+    outline: none;
 }
 
 @media screen and (max-width: 768px) {

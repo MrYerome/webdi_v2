@@ -19,5 +19,12 @@ export class AccueilComponent implements OnInit {
     this.Data.get3FirstDiner().subscribe(
         (diners: Diner[]) => {this.diners = diners; } );
   }
-
+    /**
+     * Au clic sur un diner, ouverture d'une nouvelle page avec les specs du diner
+     * @param d
+     */
+    selectDiner(d) {
+        console.log(d);
+        this.router.navigate(['/diners/view', d]);
+    }
 }

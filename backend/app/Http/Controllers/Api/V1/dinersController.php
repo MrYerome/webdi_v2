@@ -36,7 +36,7 @@ class dinersController extends Controller
      * récupération d'un diner
      */
     public function get3FistDiner(){
-        return Diners::with('place','theme','user', 'city')->where("date", ">=", date("Y-m-d H:m:i"))->orderBy('date','asc')->limit(4)->get();
+        return Diners::with('place','theme','user', 'city')->where("date", ">=", date("Y-m-d H:m:i"))->orderBy('date','asc')->limit(3)->get();
     }
 
     /**

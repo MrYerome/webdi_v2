@@ -3,40 +3,51 @@
     <div id="bandeauTitle">La conférence, autrement.</div>
 </div>
 <div class="container-fluid">
-
-    <div class='row'>
+    <h2 class="whiteText bold">Découvrez</h2>
+    <div class='row container3First' >
         <div *ngFor="let diner of diners" class="col-sm-6 col-lg-4" (click)="selectDiner(diner.id)">
             <!-- boucle for -->
-            <div class="card horizontal">
+            <div class="card">
                 <div class="card-image">
-                    <img src="assets/img/bar1.jpg">
+                    <img src="assets/img/desktop/{{diner?.img}}">
                 </div>
                 <div class="card-stacked">
                     <div class="card-content">
-                        <div class="{{ diner?.theme.label }}">
-                            <div class="mainCard">
 
-                                <div class = "titleCard">{{ diner.title}}</div>
-                                <div class="subtitleCard">{{ diner.description}}</div>
-                                <div class="contentCard">
-                                    <p>Thèmes : {{ diner?.theme.label}}</p>
-                                    <p>Date : {{ diner?.date}}</p>
-                                    <p>Nombre maximum de participants : {{ diner?.maxMembers}}</p>
-                                    <p>Prix : {{ diner?.price }}</p>
-                                    <p>Restaurant : {{ diner?.place.name}}</p>
-                                    <p>Adresse : {{ diner?.place.numberStreet}} {{ diner?.place.nameStreet }}, {{ diner?.city?.nom_reel}},
-                                      {{ diner?.city?.code_postal}}</p>
-                                    <p>Organisé par {{ diner?.user.firstName}} {{ diner?.user.name}}</p>
+                        <div class="mainCard">
+                            <div class = "card-title orangeText">{{ diner.title}}</div>
+                            <div class="card-info blueText">
+                                <div class="card-info-left">
+                                    <span class="dayDate">{{ diner.date | date : 'dd'}}</span>
+                                    <span class="monthDate">{{diner.date | date: 'MMM' : 'fr' }}</span>
+                                </div>
+                                <div class="card-info-right">
+                                    <span class="date">{{diner.date | date :"EEE dd/MM - HH'h'mm"}}</span>
+                                    <span>{{diner.place.name}} - {{diner.city.nom_reel}}</span>
                                 </div>
                             </div>
+                            <div class="blueText reserve"><a (click)="selectDiner(diner.id)">Réservez</a></div>
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
-
         </div>
-</div>
+    </div>
+    <a href="diners/list"><div class="whiteText SeeAllConf">RETROUVEZ TOUTES LES CONF' ICI</div></a>
+    <div class="row">
+        <div class="blueText organizeText col-12">
+            Vous voulez organiser un conf' ?<br>
+            Avec plaisir !
+        </div>
+        <a href="/diners/create" class="col-12 p-0"><div class="whiteText organizeButton col-12">C'EST PAR ICI.</div></a>
+        <div class="whiteText col-12 newsletterText">
+            <span>Tenez-vous informés de notre actualité et des conférences à venir.</span>
+            <span>ABONNEZ-VOUS À NOTRE NEWLETTER</span>
+            <div class="newsletterInput">
+                <input type="email">
+                <button type="submit" class="blueText">OK</button>
+            </div>
+        </div>
+    </div>
+
 </div>
