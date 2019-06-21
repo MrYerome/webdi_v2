@@ -6,4 +6,110 @@
 /*.ng-valid:not(form){*/
   /*border-left:5px solid green;*/
 /*}*/
+:root{
+    --blue-custom : #264653;
+    --orange-custom : #ffa85a;
+}
+a:hover{
+    text-decoration: none;
+}
+body{
+   font-family: Verdana;
+    background-color: var(--blue-custom);
+}
+.bold{
+    font-weight: bold;
+}
 
+.whiteText{
+    color: white !important;
+}
+
+.blueText{
+    color: var(--blue-custom) !important;
+}
+
+.orangeText{
+    color: var(--orange-custom) !important;
+}
+
+.card{
+    border: none !important;
+    border-radius: unset !important;
+
+}
+.card-image{
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+}
+.card-image img{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.card-title{
+    padding: 10px 10px 10px 20px;
+    font-size: 1.2rem;
+    border-bottom: 2px solid var(--orange-custom);
+    text-transform: uppercase;
+}
+.card-info{
+    display: flex;
+    flex-direction: row;
+}
+.card-info-left{
+    width: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card-info-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    width: 60%;
+}
+
+.card .dayDate{
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+.card .monthDate{
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.card .monthDate{
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.card-info-right span{
+    margin: 5px;
+    font-size: 1.1rem;
+}
+.card-info-right span.date{
+    text-transform: capitalize;
+}
+
+.card .reserve{
+    padding: 10px 20px;
+    text-align: right;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.card .reserve a{
+    cursor: pointer;
+
+}
+
+@media screen and (max-width: 768px) {
+    .card{
+        border: none !important;
+        border-radius: unset !important;
+        margin: 20px 0;
+    }
+}

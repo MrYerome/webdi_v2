@@ -31,8 +31,21 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
 import { SendActivationComponent } from './Component/send-activation/send-activation.component';
 import {AuthGuard} from "./Services/AuthGuard";
 import { ForbiddenComponent } from './Component/forbidden/forbidden.component';
+import { FormPlacesComponent } from './Component/places/form-places/form-places.component';
+import { CreatePlacesComponent } from './Component/places/create-places/create-places.component';
+import { EditPlacesComponent } from './Component/places/edit-places/edit-places.component';
+import { ListPlacesComponent } from './Component/places/list-places/list-places.component';
+import { ViewPlacesComponent } from './Component/places/view-places/view-places.component';
+import { LOCALE_ID } from '@angular/core';
+
+import { registerLocaleData } from '@angular/common';
+
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
 
 
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +60,11 @@ import { ForbiddenComponent } from './Component/forbidden/forbidden.component';
     ActivationComponent,
     SendActivationComponent,
     ForbiddenComponent,
+    FormPlacesComponent,
+    CreatePlacesComponent,
+    EditPlacesComponent,
+    ListPlacesComponent,
+    ViewPlacesComponent,
   ],
   imports: [
     NgbModule,
@@ -66,8 +84,9 @@ import { ForbiddenComponent } from './Component/forbidden/forbidden.component';
   providers: [DataService, AuthService, TokenService, AfterLoginService, BeforeLoginService, AuthGuard,
 
     {provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService],
+    SnotifyService, {provide: LOCALE_ID, useValue: "fr-FR" }],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

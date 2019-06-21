@@ -1,5 +1,53 @@
-<p>
-  Page d'accueil + lien vers l'inscription
-  <br>
-  <a routerLink='/signup' class="brand-logo center"><span>S'inscrire</span></a>
-</p>
+<div id="bandeau">
+    <img src="assets/img/header.jpg" alt="" srcset="">
+    <div id="bandeauTitle">La conférence, autrement.</div>
+</div>
+<div class="container-fluid">
+    <h2 class="whiteText bold">Découvrez</h2>
+    <div class='row container3First' >
+        <div *ngFor="let diner of diners" class="col-sm-6 col-lg-4" (click)="selectDiner(diner.id)">
+            <!-- boucle for -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="assets/img/desktop/{{diner?.img}}">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+
+                        <div class="mainCard">
+                            <div class = "card-title orangeText">{{ diner.title}}</div>
+                            <div class="card-info blueText">
+                                <div class="card-info-left">
+                                    <span class="dayDate">{{ diner.date | date : 'dd'}}</span>
+                                    <span class="monthDate">{{diner.date | date: 'MMM' : 'fr' }}</span>
+                                </div>
+                                <div class="card-info-right">
+                                    <span class="date">{{diner.date | date :"EEE dd/MM - HH'h'mm"}}</span>
+                                    <span>{{diner.place.name}} - {{diner.city.nom_reel}}</span>
+                                </div>
+                            </div>
+                            <div class="blueText reserve"><a (click)="selectDiner(diner.id)">Réservez</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="diners/list"><div class="whiteText SeeAllConf">RETROUVEZ TOUTES LES CONF' ICI</div></a>
+    <div class="row">
+        <div class="blueText organizeText col-12">
+            Vous voulez organiser un conf' ?<br>
+            Avec plaisir !
+        </div>
+        <a href="/diners/create" class="col-12 p-0"><div class="whiteText organizeButton col-12">C'EST PAR ICI.</div></a>
+        <div class="whiteText col-12 newsletterText">
+            <span>Tenez-vous informés de notre actualité et des conférences à venir.</span>
+            <span>ABONNEZ-VOUS À NOTRE NEWLETTER</span>
+            <div class="newsletterInput">
+                <input type="email">
+                <button type="submit" class="blueText">OK</button>
+            </div>
+        </div>
+    </div>
+
+</div>
