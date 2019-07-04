@@ -58,6 +58,7 @@ h2{
     justify-content: center;
     align-items: center;;
     padding: 45px 0;
+    background-color: var(--blue-custom);
 }
 
 .newsletterText span:nth-child(1){
