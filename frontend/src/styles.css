@@ -14,8 +14,8 @@ a:hover{
     text-decoration: none;
 }
 body{
-   font-family: Verdana;
-    background-color: var(--blue-custom);
+    font-family: 'Barlow', sans-serif;
+    background-color: white;
 }
 .bold{
     font-weight: bold;
