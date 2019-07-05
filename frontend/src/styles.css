@@ -18,7 +18,16 @@ body{
     background-color: white;
 }
 .bold{
-    font-weight: bold;
+    font-weight: 700;
+}
+.light{
+    font-weight: 300;
+}
+.regular{
+    font-weight: 400;
+}
+.medium{
+    font-weight: 500;
 }
 
 .whiteText{
@@ -33,10 +42,14 @@ body{
     color: var(--orange-custom) !important;
 }
 
+
 .card{
     border: none !important;
     border-radius: unset !important;
-
+}
+.card-content{
+    border: 1px solid var(--blue-custom);
+    border-top: none;
 }
 .card-image{
     overflow: hidden;
@@ -47,10 +60,11 @@ body{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width: 100%;
 }
 .card-title{
-    padding: 10px 10px 10px 20px;
-    font-size: 1.2rem;
+    padding: 10px 0px 10px 5px;
+    font-size: 2rem;
     border-bottom: 2px solid var(--orange-custom);
     text-transform: uppercase;
 }
@@ -69,27 +83,20 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 25px;
     width: 60%;
 }
 
 .card .dayDate{
-    font-size: 3.5rem;
-    font-weight: bold;
+    font-size: 4rem;
 }
 .card .monthDate{
     text-transform: uppercase;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 2rem;
 }
-.card .monthDate{
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    font-weight: 700;
-}
+
 .card-info-right span{
     margin: 5px;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
 }
 .card-info-right span.date{
     text-transform: capitalize;
@@ -99,14 +106,14 @@ body{
     padding: 10px 20px;
     text-align: right;
     text-decoration: underline;
-    font-weight: bold;
+    font-size: 1.5rem;
 }
 .card .reserve a{
     cursor: pointer;
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
     .card{
         border: none !important;
         border-radius: unset !important;

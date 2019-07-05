@@ -4,12 +4,15 @@
     top: 50%;
     transform: translateY(-50%);
 }
-
+.custom-container{
+    max-width: 90%;
+    margin: 0 auto;
+}
 #bandeauTitle{
     text-align: center;
     z-index: 1;
     color: white;
-    font-size: 5rem;
+    font-size: 4.5rem;
 }
 #bandeau {
     display: flex;
@@ -21,33 +24,54 @@
     position: relative;
 }
 h2{
-    padding: 10px;
+    padding: 20px 10px 5px;
+}
+.discoverTitle{
+    border-bottom: 1px solid var(--blue-custom);
+    font-size: 3rem;
 }
 .container3First{
     border-bottom: 1px solid white;
     border-top: 1px solid white;
-    padding: 20px 0;
-
+    padding: 30px 15px;
+    display: flex;
+    margin: unset !important;
 }
+.secondCol{
+    border-left: 1px solid var(--blue-custom);
+    border-right: 1px solid var(--blue-custom);
+}
+.card-content{
+    border: none;
+}
+
 .SeeAllConf{
+    font-size: 1.875rem;
+    background-color: var(--blue-custom);
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    font-size: 1.6rem;
-    padding: 10px;
 }
 
 .organizeText{
     text-align: center;;
     background-color: white;
-    padding: 40px 0;
-    font-size: 3.3rem;
+    padding: 45px 0;
+    font-size: 3rem;
     line-height: normal;
+
 }
 .organizeButton{
     background-color: var(--orange-custom);
+    font-size: 1.875rem;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 15px;
-    font-size: 2rem;
-    line-height: normal;
+    margin-bottom: 30px;
 }
 
 .newsletterText{
@@ -61,20 +85,20 @@ h2{
     background-color: var(--blue-custom);
 }
 
+.newsletterText span{
+    text-align: center;
+    font-size: 1.875rem;
+}
 .newsletterText span:nth-child(1){
     padding-bottom: 20px;
-    font-size: 2rem;
-    line-height: normal;
 }
-.newsletterText span:nth-child(2){
-    font-size: 1.5rem;
-    line-height: normal;
-}
+
 .newsletterInput{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: 15px 0 0;
 }
 .newsletterInput input{
     width: 400px;
@@ -96,7 +120,7 @@ h2{
     outline: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
     #bandeau {
         display: flex;
         flex-direction: row;
@@ -105,13 +129,27 @@ h2{
         height: 200px;
         overflow: hidden;
         position: relative;
-
     }
 
     #bandeauTitle{
         text-align: center;
         z-index: 1;
         color: white;
-        font-size: 2rem;
+    }
+    .custom-container{
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    .secondCol{
+        border: none;
+    }
+    .card-content{
+        border: 1px solid var(--blue-custom);
+        border-top: none;
+    }
+    .SeeAllConf{
+        height: unset;
+        padding: 10px 5px;
     }
 }

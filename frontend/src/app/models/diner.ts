@@ -64,7 +64,8 @@ export class Diner {
       }
       ],
     public city: {
-      'nom_reel': string
+      'nom_reel': string,
+        'code_postal': string,
     }
   ) {
   }

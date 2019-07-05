@@ -1,5 +1,60 @@
-<h1 class="center">Diner</h1>
-<div class="container">
+<div id="returnToConf" class="regular">
+    <a href="/diner/list">RETOUR AUX CONFÉRENCES</a>
+</div>
+<div class="container-fluid">
+
+
+    <div class="topPage whiteText">
+        <h1 class="regular">{{ diner?.title}}</h1>
+        <div class="custom-container">
+            <div class="imgContainer">
+                <img src="assets/img/desktop/{{diner?.img}}">
+            </div>
+
+            <div class="subscribeBtn regular" *ngIf="!isSubscribe" (click)="subscribeDiner(diner?.id)">Inscrivez vous</div>
+            <div class="subscribeBtn regular" *ngIf="isSubscribe" (click)="unsubscribeDiner(diner?.id)">Vous désinscrire</div>
+        </div>
+
+    </div>
+    <div class="custom-container">
+        <div class="conf-info regular">
+            <div class="conf-info-date">
+                <span class="conf-info-fullday">
+                    {{diner?.date | date :'EEEE' }}
+                </span>
+                <span class="conf-info-day">
+                    {{ diner?.date | date : 'dd' }}
+                </span>
+                <span class="conf-info-month">
+                    {{diner?.date | date: 'MMMM' : 'fr' }}
+                </span>
+            </div>
+            <div class="conf-info-other">
+                <div class="conf-info-hour conf-info-other-content">
+                    <i class="far fa-clock"></i>
+                    <div>
+                        {{diner?.date | date:"HH'h'mm"}}
+                    </div>
+                </div>
+                <div class="conf-info-place conf-info-other-content">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        {{diner?.place.name}}<br>
+                        {{diner?.place.numberStreet}} {{diner?.place.nameStreet}}<br>
+                        {{diner?.city.code_postal.substr(0,5)}} {{diner?.city.nom_reel}}
+                    </div>
+                </div>
+                <div class="conf-info-price conf-info-other-content">
+                    <i class="fas fa-euro-sign"></i>
+                    <div>
+                    {{diner?.price}}€ <span class="light orangeText inclus">(inclus : une consomation gratuite)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
   <div class='row'>
     <div class="col s6 m4" appBordure="yellow">
       <div class="card horizontal">

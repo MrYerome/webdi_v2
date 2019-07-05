@@ -105,7 +105,7 @@ export class DinerServiceService {
       return this.http.post(`${this.baseUrl}/usersdiners/create`, data);
     }
 
-  public unsubscribeDiner(data){
+  public unsubscribeDiner(data) {
     return this.http.post(`${this.baseUrl}/usersdiners/delete`, data);
   }
 

@@ -5,6 +5,7 @@ import {Diner} from "../../../models/diner";
 import {Places} from "../../../models/places";
 import {City} from "../../../models/city";
 import {Usersdiners} from "../../../models/usersdiners";
+import {AuthService} from "../../../Services/auth.service";
 
 @Component({
   selector: 'app-view-diner',
@@ -15,22 +16,22 @@ export class ViewDinerComponent implements OnInit {
   diner: Diner;
   city: City;
   public isSubscribe: boolean = false;
-
-
   public userid: string;
   public nbPlaces: number = 1;
   public id: string;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private Data: DinerServiceService) {
+              private Data: DinerServiceService,
+              private Auth: AuthService) {
   }
 
   ngOnInit() {
     this.getDiner();
-    this.userid = sessionStorage.getItem('id').toString();
-    console.log(this.userid);
-
+    if (this.Auth.isAuthenticated()) {
+        this.userid = sessionStorage.getItem('id').toString();
+        console.log(this.userid);
+    }
   }
 
 
@@ -41,25 +42,27 @@ export class ViewDinerComponent implements OnInit {
 
     this.Data.getDiner(this.id).subscribe(
       value => {
-        console.log(value);
+        // console.log(value);
         this.diner = value;
-        console.log(this.diner);
+        // console.log(this.diner);
         this.Data.getCity(this.diner.place.insee_Cities).subscribe(
           value1 => {
             this.city = value1[0];
           });
-        this.verifIsSubscribe(this.diner);
+        if (this.Auth.isAuthenticated()) {
+            this.verifIsSubscribe(this.diner);
+        }
       },
       error => {
-        console.log(error);
+        // console.log(error);
       });
   }
 
-
+  // If the user is connected and if his id is in userdiners set isSubscribe true
   verifIsSubscribe(diner) {
     console.log(diner);
-    for (let ud of this.diner.usersdiners) {
-      if (ud.id_Users) {
+    for (const ud of this.diner.usersdiners) {
+      if ( ud.id_Users.toString() === this.userid) {
         this.isSubscribe = true;
       }
     }
@@ -77,32 +80,34 @@ export class ViewDinerComponent implements OnInit {
     console.log(data);
     this.Data.deleteDiners(data).subscribe(
       value => {
-        console.log(value);
+        // console.log(value);
       },
       error1 => {
-        console.log(error1);
+        // console.log(error1);
       },
     );
 
   }
 
   subscribeDiner(idDiner) {
-    const data = {
-      id_Users: this.userid,
-      id_Diners: idDiner,
-      nbPlaces: this.nbPlaces
-    };
-    console.log(this.nbPlaces);
-    console.log(data);
-    this.Data.subscribeDiner(data).subscribe(
-      value => {
-        console.log(value);
-        this.handleSuccess(idDiner)
-      },
-      error1 => {
-        console.log(error1);
-      },
-    );
+      if (this.Auth.isAuthenticated()) {
+        const data = {
+            id_Users: this.userid,
+            id_Diners: idDiner,
+            nbPlaces: this.nbPlaces
+        };
+        this.Data.subscribeDiner(data).subscribe(
+        value => {
+            // console.log(value);
+            this.handleSuccess(idDiner);
+            },
+            error1 => {
+            // console.log(error1);
+            },
+        );
+      } else {
+          this.router.navigate(['connexion']);
+      }
   }
 
   unsubscribeDiner(idDiner) {
@@ -113,11 +118,11 @@ export class ViewDinerComponent implements OnInit {
     console.log(data);
     this.Data.unsubscribeDiner(data).subscribe(
       value => {
-        console.log(value);
-        this.handleSuccessUnsuscribe(idDiner)
+        // console.log(value);
+        this.handleSuccessUnsuscribe(idDiner);
       },
       error1 => {
-        console.log(error1);
+        // console.log(error1);
       },
     );
   }

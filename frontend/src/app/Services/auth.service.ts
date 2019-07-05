@@ -14,8 +14,8 @@ export class AuthService {
 
   isAuthenticated() {
     // get the auth token from sessionStorage
-    let granted = sessionStorage.getItem('Auth');
-    return granted==="true";
+    const granted = sessionStorage.getItem('Auth');
+    return granted === "true";
   }
 
 
