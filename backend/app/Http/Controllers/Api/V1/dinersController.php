@@ -33,10 +33,19 @@ class dinersController extends Controller
     /**
      *
      * @return Diners|Diners[]|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
-     * récupération d'un diner
+     * récupération des 3 diners les plus proches
      */
     public function get3FistDiner(){
         return Diners::with('place','theme','user', 'city')->where("date", ">=", date("Y-m-d H:m:i"))->orderBy('date','asc')->limit(3)->get();
+    }
+
+    /**
+     *
+     * @return Diners|Diners[]|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
+     * récupération des trois diners les plus proches de la meme cat
+     */
+    public function get3FistDinerSameCat($id, $idtheme){
+        return Diners::with('place','theme','user', 'city')->where([["date", ">=", date("Y-m-d H:m:i")],["id_Themes", "=", $idtheme], ["id", "!=", $id]])->orderBy('date','asc')->limit(3)->get();
     }
 
     /**

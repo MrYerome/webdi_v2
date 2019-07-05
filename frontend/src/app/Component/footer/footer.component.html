@@ -1,0 +1,65 @@
+<footer (window:resize)="onResize($event)" class="whiteText">
+    <div *ngIf="!mobile" class="footerDesktop light">
+        <div class="footerCol1">
+            <div class="footerTitle">AIDE</div>
+            <ul class="footerListItem">
+                <li class="footerItem">Nous contacter</li>
+                <li class="footerItem">FAQ</li>
+            </ul>
+            <div class="methodPay">
+                <i class="fab fa-cc-paypal"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-visa"></i>
+            </div>
+        </div>
+        <div class="footerCol2">
+            <div class="footerTitle">INFORMATIONS</div>
+            <ul class="footerListItem">
+                <li class="footerItem">Conditions générales d'utilisation</li>
+                <li class="footerItem">Politique de protection des données personnelles</li>
+                <li class="footerItem">Plan du site</li>
+                <li class="footerItem">Mentions légales</li>
+            </ul>
+        </div>
+        <div class="footerCol3">
+            <div class="footerTitle">NEWSLETTER</div>
+            <div class="footerNewsletterInput">
+                <input type="email" >
+                <button>OK</button>
+            </div>
+            <div class="footerTitle followus">SUIVEZ-NOUS</div>
+            <div class="socialNetwork">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+        </div>
+        <div class="copyrigth">© 2019 BANDE DE CONF'</div>
+    </div>
+    <div *ngIf="mobile"class="footerMobile light" >
+        <div class="footerTitle followus">SUIVEZ-NOUS</div>
+        <div class="socialNetwork">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-linkedin-in"></i>
+        </div>
+        <div class="footerTitle">AIDE</div>
+        <ul class="footerListItem">
+            <li class="footerItem">Nous contacter</li>
+            <li class="footerItem">FAQ</li>
+        </ul>
+        <div class="footerTitle">INFORMATIONS</div>
+        <ul class="footerListItem">
+            <li class="footerItem">Conditions générales d'utilisation</li>
+            <li class="footerItem">Politique de protection des données personnelles</li>
+            <li class="footerItem">Plan du site</li>
+            <li class="footerItem">Mentions légales</li>
+        </ul>
+        <div class="methodPay">
+            <i class="fab fa-cc-paypal"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-visa"></i>
+        </div>
+        <div class="copyrigth">© 2019 BANDE DE CONF'</div>
+    </div>
+</footer>

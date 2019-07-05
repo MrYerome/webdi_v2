@@ -19,7 +19,7 @@
 
 .topPage{
     position: relative;
-    padding: 20px;
+    padding: 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,8 +43,6 @@
     font-size: 3rem;
 }
 .topPage .imgContainer{
-
-    height: 500px;
     overflow: hidden;
 
 }
@@ -54,7 +52,7 @@
 
 .subscribeBtn{
     width: 100%;
-    padding: 15px 0;
+    padding: 20px 0;
     text-align: center;
     background-color: var(--blue-custom);
     cursor: pointer;
@@ -62,7 +60,7 @@
 }
 
 .custom-container{
-    width: 50%;
+    width: 55%;
     margin: 0 auto;
 }
 
@@ -94,6 +92,7 @@
 .conf-info-other-content{
     display: flex;
     flex-direction: row;
+    margin: 5px;
 }
 .conf-info-other-content i {
     width: 25%;
@@ -103,7 +102,9 @@
     justify-content: center;
     font-size: 2rem;
 }
-.conf-info-other-content div{
+.conf-info-other-content div {
+    width: 75%;
+    line-height: normal;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -119,4 +120,131 @@
 }
 .inclus{
     font-size: 1rem;
+    padding-left: 5px;
+}
+.conf-user{
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 20px;
+}
+.conf-description{
+    white-space: pre-line;
+    text-align: justify;
+}
+
+.subscribeBtnContainer{
+    width: 90%;
+    margin: 50px auto 0
+}
+
+.recomandationConf{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 600px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+.recomandationTitle{
+    text-align: center;
+    padding: 40px 0;
+    font-size: 2rem;
+}
+.card{
+    height: 100%;
+}
+.cardContainer{
+    height: 100%;
+}
+.card-image{
+    height: 50%;
+}
+
+@media screen and (max-width: 756px) {
+    .custom-container,
+    .recomandationConf {
+        width: 95%;
+    }
+
+    .topPage h1 {
+        font-size: 2rem;
+    }
+    .custom-container.containerImgBtn{
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .subscribeBtnContainerTop{
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        bottom: 0;
+        transform: translateY(-50%);
+    }
+    .subscribeBtnContainer{
+        width: calc(100% + 30px);
+        display: flex;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .recomandationConf{
+        justify-content: center;
+        height: inherit !important;
+    }
+    .cardContainer{
+        padding-left: 0px;
+        padding-right: 0px;
+        margin: 15px auto;
+    }
+    .conf-info-date{
+        width: 45%;
+    }
+    .conf-info-other{
+        width: 55%;
+    }
+    .conf-info-fullday,
+    .conf-info-month{
+        font-size: 1.5rem;
+    }
+    .conf-info-day{
+        font-size: 3rem;
+    }
+    .conf-info-other-content div {
+
+        padding-left: 5px;
+    }
+    .conf-info-other-content{
+        flex-wrap: wrap;
+    }
+    .conf-info-hour,
+    .conf-info-price{
+        font-size: 1.5rem;
+    }
+
+    .conf-info-other-content i {
+        font-size: 1.5rem;
+    }
+    .conf-info-place{
+        font-size: 1rem;
+    }
+    .inclus{
+        width: 100% !important;
+        font-size: 0.9rem;
+    }
+
+    .returnTop{
+        display: flex !important;
+        text-align: center;
+        font-size: 1.5rem;
+        border-top: 1px solid var(--blue-custom);
+        border-bottom: 1px solid var(--blue-custom);
+        margin-bottom: 40px;
+    }
+    .cardContainer{
+        height: auto;
+        text-align: center;
+
+    }
+
 }

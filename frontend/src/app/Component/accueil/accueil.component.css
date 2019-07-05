@@ -114,13 +114,13 @@ h2{
     border: none;
     background-color: white;
     border-radius: 5px;
-    margin: 10px 0;
+    margin: 10px 10px 10px 0;
 }
 .newsletterInput button:focus{
     outline: none;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 756px) {
     #bandeau {
         display: flex;
         flex-direction: row;
@@ -130,15 +130,16 @@ h2{
         overflow: hidden;
         position: relative;
     }
-
     #bandeauTitle{
-        text-align: center;
-        z-index: 1;
-        color: white;
+        font-size: 3.5rem;
     }
     .custom-container{
         max-width: 95%;
         margin: 0 auto;
+    }
+    .custom-container.btnContainer{
+        max-width: calc(100% + 30px) !important;
+        margin: 0 !important;
     }
 
     .secondCol{

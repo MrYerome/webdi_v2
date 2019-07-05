@@ -40,6 +40,7 @@ $api->version('v1', [], function (Router $api) {
         $api->get('/getDiner/{id}', '\App\Http\Controllers\Api\V1\dinersController@getDiner');
         $api->get('/getOldDiners', '\App\Http\Controllers\Api\V1\dinersController@getOldDiners');
         $api->get('/3first', '\App\Http\Controllers\Api\V1\dinersController@get3FistDiner');
+        $api->get('/3firstInCat/{id}/{idtheme}', '\App\Http\Controllers\Api\V1\dinersController@get3FistDinerSameCat');
         $api->post('/myOwnDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyOwnDiners');
 
         $api->post('/myDiners', '\App\Http\Controllers\Api\V1\dinersController@getMyDiners');

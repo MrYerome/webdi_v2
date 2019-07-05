@@ -9,6 +9,7 @@
 :root{
     --blue-custom : #264653;
     --orange-custom : #ffa85a;
+    --black-custom : #131313;
 }
 a:hover{
     text-decoration: none;
@@ -113,10 +114,14 @@ body{
 
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 756px) {
     .card{
         border: none !important;
         border-radius: unset !important;
         margin: 20px 0;
+    }
+    .card-image{
+
+        height: 300px;
     }
 }

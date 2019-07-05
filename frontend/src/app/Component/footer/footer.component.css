@@ -1,0 +1,97 @@
+footer{
+    background-color: var(--black-custom);
+    border-top: 3px solid white;
+    padding: 30px 80px;
+}
+.footerDesktop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.footerDesktop .footerCol1{
+      width: 30%;
+  }
+.footerDesktop .footerCol2{
+    width: 40%;
+}
+.footerDesktop .footerCol3{
+    width: 20%;
+}
+.footerTitle{
+    margin-bottom: 30px;
+    font-size: 1.875rem;
+}
+.footerListItem{
+    list-style: none;
+    padding: 0;
+    font-size: 1.5rem;
+}
+.footerItem{
+    margin: 15px 0;
+}
+
+.methodPay i{
+    margin-right: 20px;
+    font-size: 4rem;
+}
+.newsletterInput{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 15px 0 0;
+}
+.footerNewsletterInput input{
+    border-radius: 5px;
+    border: none;
+    margin: 0 10px 0 0;
+    padding: 5px;
+}
+.footerNewsletterInput input:focus{
+    outline: none;
+}
+.footerNewsletterInput button{
+    border: none;
+    background-color: var(--black-custom);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0;
+    color: white;
+}
+.footerNewsletterInput button:focus{
+    outline: none;
+}
+.socialNetwork{
+    display: flex;
+    flex-direction: row;
+    color: var(--black-custom);
+}
+.socialNetwork i{
+    font-size: 3rem;
+    position: relative;
+    z-index: 1;
+    width: 33%;
+    text-align: center;
+}
+.socialNetwork i::after{
+    position: absolute;
+    content: " ";
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.footerTitle.followus{
+    margin: 30px 0 40px 0;
+}
+.copyrigth{
+    font-size: 1rem;
+    width: 100%;
+}

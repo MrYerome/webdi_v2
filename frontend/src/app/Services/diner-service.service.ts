@@ -61,6 +61,14 @@ export class DinerServiceService {
         );
     }
 
+    public get3FirstDinerSameCat(id, idtheme): Observable<Diner[]> {
+        return this.http.get(`${this.baseUrl}/diners/3firstInCat/${id}/${idtheme}`).pipe(
+            map(
+                (jsonArray: Object[]) => jsonArray.map(jsonItem => Diner.fromJson(jsonItem)),
+            )
+        );
+    }
+
     public getCity(insee): Observable<City> {
         return this.http.get <City> (`${this.baseUrl}/cities/getCity/${insee}`);
     }

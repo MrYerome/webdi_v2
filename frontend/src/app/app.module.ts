@@ -41,6 +41,7 @@ import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 
 import localeFr from '@angular/common/locales/fr';
+import { FooterComponent } from './Component/footer/footer.component';
 
 registerLocaleData(localeFr);
 
@@ -65,6 +66,7 @@ registerLocaleData(localeFr, 'fr');
     EditPlacesComponent,
     ListPlacesComponent,
     ViewPlacesComponent,
+    FooterComponent,
   ],
   imports: [
     NgbModule,
