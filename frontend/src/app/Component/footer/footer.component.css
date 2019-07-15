@@ -67,26 +67,13 @@ footer{
     flex-direction: row;
     color: var(--black-custom);
 }
-.socialNetwork i{
+.socialNetwork img{
     font-size: 3rem;
-    position: relative;
-    z-index: 1;
-    width: 33%;
+    margin: 0 1.5%;
+    width: 30%;
     text-align: center;
 }
-.socialNetwork i::after{
-    position: absolute;
-    content: " ";
-    width: 70px;
-    height: 70px;
-    background-color: white;
-    top: 50%;
-    left: 50%;
-    z-index: -1;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
 
-}
 
 .footerTitle.followus{
     margin: 30px 0 40px 0;
@@ -94,4 +81,40 @@ footer{
 .copyrigth{
     font-size: 1rem;
     width: 100%;
+}
+
+@media screen and (max-width: 756px) {
+    footer{
+        text-align: center;
+        padding: 30px 15px;
+    }
+
+    .footerTitle{
+        margin-bottom: 30px;
+        margin-top: 40px;
+        font-size: 1.5rem;
+    }
+    .footerListItem{
+        list-style: none;
+        padding: 0;
+        font-size: 1rem;
+    }
+    .socialNetwork{
+        justify-content: center;
+    }
+    .socialNetwork img{
+        font-size: 1.5rem;
+        width: 20%;
+    }
+
+    .methodPay i{
+        margin-right: 20px;
+        font-size: 2.5rem;
+    }
+    .footerPart{
+        margin-bottom: 40px;
+    }
+    .footerListItem{
+        text-align: left;
+    }
 }

@@ -3,10 +3,28 @@
       <img src="assets/img/logo/logo.png" alt="" srcset="assets/img/logo/logo.png" id="logoNav">
   </a>
   <div class="aNavContainer light">
-
-      <a class="aNav" routerLink="diners/list" >Les conf'</a>
-      <a class="aNav" routerLink="" >Le concept</a>
-      <a class="aNav" routerLink="diners/create">Organiser</a>
+      <ul>
+          <li>
+              <a class="aNav" routerLink="diners/list" >Les conf'</a>
+          </li>
+          <li>
+              <a class="aNav" routerLink="" >Le concept</a>
+          </li>
+          <li>
+              <a class="aNav" routerLink="diners/create">Organiser</a>
+          </li>
+          <li style="position: relative">
+              <a class="aNav orangeText myaccountBtn" (click)="showDropdown = !showDropdown "><i class="fas fa-user"></i></a>
+              <div #dropdownMyAccount id="dropdownMyAccount" class="regular" [ngClass]="showDropdown ? 'showDrop' : 'hideDrop'">
+                  <ul>
+                      <li>Mon compte</li>
+                      <li>Mes conf' à venir (2)</li>
+                      <li *ngIf="!loggedIn" routerLink="connexion">Connexion</li>
+                      <li *ngIf="loggedIn">Déconnexion</li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
       <!--<a class="navbar-brand" routerLink="connexion" *ngIf="!loggedIn">Connexion</a>-->
       <!--<a class="navbar-brand" routerLink="signup" *ngIf="!loggedIn">Créer mon compte</a>-->
       <!--<a class="navbar-brand" routerLink="profile/list" *ngIf="loggedIn">Liste des profil</a>-->
