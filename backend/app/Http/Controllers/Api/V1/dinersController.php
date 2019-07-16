@@ -78,7 +78,7 @@ public function getMyOwnDiners(Request $request){
      */
     public function createDiner(Request $request){
         $attribut = [];
-
+$photos=['AI.jpg', 'alpaga.jpg', 'permaculture.jpg', 'smartphone.jpg', 'chaton.jpg'];
         try{
             DB::beginTransaction();
 
@@ -90,6 +90,7 @@ public function getMyOwnDiners(Request $request){
                 $attribut['id_Places'] = $request->id_Places;
                 $attribut['id_Themes'] = $request->id_Themes;
                 $attribut['id_Organisator'] = $request->id_Organisator;
+            $attribut['img'] = $photos[array_rand($photos, 1)];
 
                 $diners = Diners::create($attribut);
 
