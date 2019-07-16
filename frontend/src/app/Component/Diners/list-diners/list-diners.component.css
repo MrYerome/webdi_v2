@@ -194,11 +194,11 @@
 }
 
 .recomandationConf{
-  width: 90%;
+  /*width: 90%;*/
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   /*height: 600px;*/
   margin-bottom: 50px;
   flex-wrap: wrap;
@@ -219,14 +219,15 @@
   height: 50%;
 }
 
-#dropdownMyThemes{
+#dropdownMyThemes, #dropdownMyDates{
   top : calc(100% + 2px);
-  /*right:0;*/
   left : 50%;
   transform : translateX(-50%);
   width: 105%;
   border : 1px solid var(--blue-custom);
-  justify-content:space-around;
+  justify-content:space-between;
+  flex-wrap:wrap ;
+  padding : 10px 10px;
 }
 
 .boutonFiltreBleu{
@@ -235,7 +236,13 @@
   border-bottom: 2px solid var(--blue-custom);
   margin : 0 auto 20px;
   text-align: center;
+}
 
+mat-radio-button{
+  margin-left : 1.5%;
+  margin-right : 1.5%;
+  width : 30%;
+  text-align: left;
 }
 
 @media screen and (max-width: 756px) {
@@ -266,7 +273,6 @@
   }
   .recomandationConf{
     justify-content: center;
-    /*height: inherit !important;*/
   }
   .cardContainer{
     padding-left: 0px;

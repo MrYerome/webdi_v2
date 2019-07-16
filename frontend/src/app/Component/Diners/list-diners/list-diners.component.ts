@@ -23,7 +23,8 @@ import {MatRadioButton} from "@angular/material";
   // exports: [MatCheckbox, MatCheckboxModule],
 })
 export class ListDinersComponent implements OnInit {
-  public showDropdown:boolean = false;
+  public showDropdown1:boolean = false;
+  public showDropdown2:boolean = false;
   ObsDiners = new Observable();
   ObsDinersTemp = new Observable();
   diners: Diner[];
@@ -31,14 +32,16 @@ export class ListDinersComponent implements OnInit {
   arrayThemes: string[] = [];
   checked: boolean = false;
   numberTheme: number;
-  @ViewChild('dropdown') dropdown;
+  @ViewChild('dropdown1') dropdown1;
+  @ViewChild('dropdown2') dropdown2;
   constructor(private Data: DinerServiceService,
               private router: Router,
   private _eref: ElementRef) {
   }
 
   ngOnInit() {
-    this.showDropdown = false;
+    this.showDropdown1 = false;
+    this.showDropdown2 = false;
     this.Data.getAllThemes().subscribe(
       (themes: Themes[]) => {
         this.themes = themes;
@@ -107,10 +110,12 @@ export class ListDinersComponent implements OnInit {
   }
 
   hideDropdown($e) {
-    if (!this.dropdown.nativeElement.contains(event.target)) {
-      this.showDropdown = false;
+    if (!this.dropdown1.nativeElement.contains(event.target)) {
+      this.showDropdown1 = false;
     }
-   // else { this.showDropdown = true}// or some similar check
+    if (!this.dropdown2.nativeElement.contains(event.target)) {
+      this.showDropdown2 = false;
+    }
   }
 
 }
