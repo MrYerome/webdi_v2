@@ -114,6 +114,55 @@ body{
 
 }
 
+.custom-dropdown{
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+}
+.custom-dropdown ul{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column !important;
+    text-align: left !important;
+    justify-content: left !important;
+    align-items: flex-start;
+}
+.custom-dropdown ul li{
+    outline: none;
+    cursor: pointer;
+}
+.hideDrop {
+    display: none;
+}
+.showDrop{
+    display: block;
+}
+
+.contentPopIn{
+    /*border: 2px solid var(--blue-custom);*/
+    /*background-color: var();*/
+    background-color: var(--white);
+    border: 2px solid var(--blue-custom);
+}
+.popIn{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+.crossPopIn{
+    background-color: var(--blue-custom);
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    text-align: center;
+}
+.modal-content{
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    border : none !important;
+}
 @media screen and (max-width: 756px) {
     .card{
         border: none !important;

@@ -1,35 +1,36 @@
-<div class="col-10 offset-1">
-  <div class="card">
-    <div class="blueText">Connexion</div>
-    <div class="">
-      <form #loginForm=ngForm (ngSubmit)="onSubmit()">
+<div class="popIn">
+    <div class="crossPopIn whiteText">X</div>
+    <div class="contentPopIn">
+      <div class="blueText">Connexion</div>
+      <div>
+        <form #loginForm=ngForm (ngSubmit)="onSubmit()">
 
-        <div class="alert alert-danger" [hidden]="!error">
-          {{error}}
-        </div>
-        <div class="alert alert-danger" *ngIf="bErrorActive">
-          <p>Vous n'avez pas encore activé votre compte.</p>
-        <br>
-          <button (click)="redirectionVersFormulaire()">Recevoir un nouveau mail d'activation.</button>
-        </div>
+          <div class="alert alert-danger" [hidden]="!error">
+            {{error}}
+          </div>
+          <div class="alert alert-danger" *ngIf="bErrorActive">
+            <p>Vous n'avez pas encore activé votre compte.</p>
+          <br>
+            <button (click)="redirectionVersFormulaire()">Recevoir un nouveau mail d'activation.</button>
+          </div>
 
-        <label for="login" >Adresse e-mail</label>
-        <input matInput type="text" name="login" id="login" placeholder="login"
-                     [(ngModel)]="form.login" required>
+          <label for="login" >Adresse e-mail</label>
+          <input matInput type="text" name="login" id="login" placeholder="login"
+                       [(ngModel)]="form.login" required>
 
-        <label for="inputPassword3" >Mot de passe</label>
-        <input matInput type="password" name="password"  id="inputPassword3"
-                   placeholder="Password" [(ngModel)]="form.password"
-                   required>
+          <label for="inputPassword3" >Mot de passe</label>
+          <input matInput type="password" name="password"  id="inputPassword3"
+                     placeholder="Password" [(ngModel)]="form.password"
+                     required>
 
-        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">OK</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">OK</button>
 
-        <small class=float-right>
-          <a routerLink="/request-password-reset">Mot de passe oublié ?</a>
-        </small>
-      </form>
+          <small class=float-right>
+            <a routerLink="/request-password-reset">Mot de passe oublié ?</a>
+          </small>
+        </form>
+      </div>
     </div>
-  </div>
 </div>
 
 

@@ -35,35 +35,17 @@ a{
     color: #eb9400 !important;
 }
 #dropdownMyAccount{
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: white;
-    z-index: 999;
     width: 200px;
     border: 1px solid var(--orange-custom);
+    bottom: 0;
+    right: 0;
 }
-#dropdownMyAccount ul{
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column !important;
-    text-align: left !important;
-    justify-content: left !important;
-    align-items: flex-start;
-}
+
 #dropdownMyAccount ul li{
     margin: 10px 5px;
     width: calc(100% - 10px);
-    outline: none;
-    cursor: pointer;
 }
-.hideDrop {
-    display: none;
-}
-.showDrop{
-    display: block;
-}
+
 @media screen and (max-width: 768px) {
     .aNavContainer{
         display: none;

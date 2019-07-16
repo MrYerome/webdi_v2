@@ -196,6 +196,9 @@
         padding-left: 0px;
         padding-right: 0px;
         margin: 15px auto;
+        height: auto;
+        text-align: center;
+
     }
     .conf-info-date{
         width: 45%;
@@ -241,10 +244,6 @@
         border-bottom: 1px solid var(--blue-custom);
         margin-bottom: 40px;
     }
-    .cardContainer{
-        height: auto;
-        text-align: center;
 
-    }
 
 }
