@@ -87,7 +87,7 @@
                         </div>
                         <div class="card-info-right light">
                             <span class="date">{{d.date | date :"EEE dd/MM - HH'h'mm"}}</span>
-                            <span>{{d.place.name}} - {{d.city.nom_reel}}</span>
+                            <span>{{d.place?.name}} - {{d.city?.nom_reel}}</span>
                         </div>
                     </div>
                     <div class="blueText reserve bold"><a (click)="selectDiner(d.id)">Réservez</a></div>

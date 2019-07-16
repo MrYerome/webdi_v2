@@ -1,4 +1,4 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import {Component, ElementRef, NgModule, OnInit, ViewChild} from '@angular/core';
 import {Diner} from "../../../models/diner";
 import {DinerServiceService} from "../../../Services/diner-service.service";
 import {Router} from "@angular/router";
@@ -11,7 +11,12 @@ import {MatRadioButton} from "@angular/material";
 @Component({
   selector: 'app-list-diners',
   templateUrl: './list-diners.component.html',
-  styleUrls: ['./list-diners.component.css']
+  styleUrls: ['./list-diners.component.css'],
+  host : {
+    '(document:click)': 'hideDropdown($event)',
+  }
+
+
 })
 @NgModule({
   //   imports: [MatCheckboxModule, MatCheckbox],
@@ -26,9 +31,10 @@ export class ListDinersComponent implements OnInit {
   arrayThemes: string[] = [];
   checked: boolean = false;
   numberTheme: number;
-
+  @ViewChild('dropdown') dropdown;
   constructor(private Data: DinerServiceService,
-              private router: Router) {
+              private router: Router,
+  private _eref: ElementRef) {
   }
 
   ngOnInit() {
@@ -99,7 +105,17 @@ export class ListDinersComponent implements OnInit {
       this.selectAllDiners();
     }
   }
+
+  hideDropdown($e) {
+    if (!this.dropdown.nativeElement.contains(event.target)) {
+      this.showDropdown = false;
+    }
+   // else { this.showDropdown = true}// or some similar check
+  }
+
 }
+
+
 
 
 /**
