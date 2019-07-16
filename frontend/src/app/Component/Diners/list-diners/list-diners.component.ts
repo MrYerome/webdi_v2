@@ -18,6 +18,7 @@ import {MatRadioButton} from "@angular/material";
   // exports: [MatCheckbox, MatCheckboxModule],
 })
 export class ListDinersComponent implements OnInit {
+  public showDropdown:boolean = false;
   ObsDiners = new Observable();
   ObsDinersTemp = new Observable();
   diners: Diner[];
@@ -31,6 +32,7 @@ export class ListDinersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showDropdown = false;
     this.Data.getAllThemes().subscribe(
       (themes: Themes[]) => {
         this.themes = themes;

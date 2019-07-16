@@ -80,6 +80,7 @@ body{
     flex-direction: column;
     justify-content: center;
 }
+
 .card-info-right{
     display: flex;
     flex-direction: column;
