@@ -141,10 +141,10 @@ body{
 }
 
 .contentPopIn{
-    /*border: 2px solid var(--blue-custom);*/
-    /*background-color: var();*/
+
     background-color: var(--white);
     border: 2px solid var(--blue-custom);
+    padding: 50px 30px;
 }
 .popIn{
     display: flex;

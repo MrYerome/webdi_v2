@@ -1,8 +1,9 @@
 #logoNav{
-    width: 60px;
-    padding: 5px 0;
-    margin-left:20px;
+    width: 100px;
+    padding: 10px 0;
+    margin-left:60px;
 }
+
 .navbar{
     padding: 0 !important;
     background-color: white;
