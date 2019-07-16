@@ -198,7 +198,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   /*height: 600px;*/
   margin-bottom: 50px;
   flex-wrap: wrap;
@@ -231,7 +231,6 @@
 }
 
 .boutonFiltreBleu{
-  /*color :*/
   width: 500px;
   border-bottom: 2px solid var(--blue-custom);
   margin : 0 auto 20px;

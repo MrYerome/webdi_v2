@@ -6,6 +6,7 @@ import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {Themes} from "../../../models/themes";
 import {MatRadioButton} from "@angular/material";
+import {DatePipe} from "@angular/common";
 
 
 @Component({
@@ -14,7 +15,8 @@ import {MatRadioButton} from "@angular/material";
   styleUrls: ['./list-diners.component.css'],
   host : {
     '(document:click)': 'hideDropdown($event)',
-  }
+  },
+  providers: [DatePipe]
 
 
 })
@@ -25,6 +27,7 @@ import {MatRadioButton} from "@angular/material";
 export class ListDinersComponent implements OnInit {
   public showDropdown1:boolean = false;
   public showDropdown2:boolean = false;
+  public dateToday : Date = new Date() ;
   ObsDiners = new Observable();
   ObsDinersTemp = new Observable();
   diners: Diner[];
@@ -108,6 +111,55 @@ export class ListDinersComponent implements OnInit {
       this.selectAllDiners();
     }
   }
+
+
+
+    /**
+     * Ajuste la liste des diners en passant un filtre sur les thèmes
+     * @param filterThemeArray
+     */
+    today() {
+      console.log(this.dateToday);
+      console.log(this.dateToday.getDate());
+      console.log(this.dateToday.getUTCDate());
+
+      this.ObsDiners.pipe(
+        map(
+          (diners: Diner[]) => diners.filter(
+            (diner: Diner) => {
+              console.log(new Date(diner.date).toString());
+              // return new Date(diner.date) == this.dateToday;
+              return new Date(diner.date).getUTCDate() == this.dateToday.getUTCDate();
+}
+            //2019-07-16 09:48:33
+            // (diner: Diner) => diner.date.
+          )
+        )
+      ).subscribe(
+        (diners: Diner[]) => {
+          this.diners = diners;
+        }
+      );
+
+
+
+
+    }
+
+
+
+  /**
+   * Ajuste la liste des diners en passant un filtre sur les thèmes
+   * @param filterThemeArray
+   */
+  tous() {
+    this.selectAllDiners();
+
+  }
+
+
+
+
 
   hideDropdown($e) {
     if (!this.dropdown1.nativeElement.contains(event.target)) {
