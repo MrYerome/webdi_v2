@@ -40,7 +40,6 @@ a{
     bottom: 0;
     right: 0;
 }
-
 #dropdownMyAccount ul li{
     margin: 10px 5px;
     width: calc(100% - 10px);
