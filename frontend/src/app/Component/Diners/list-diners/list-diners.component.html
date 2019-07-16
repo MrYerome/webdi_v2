@@ -5,16 +5,18 @@
   <p></p>
 
 
-  <li style="position: relative">
+  <span style="position: relative" #dropdown>
     <a class="aNav orangeText myaccountBtn" (click)="showDropdown = !showDropdown "><span>Afficher les thèmes</span></a>
-    <div  id="dropdownMyThemes" class="regular" [ngClass]="showDropdown ? 'showDrop' : 'hideDrop'">
+    <div  id="dropdownMyThemes" class="custom-dropdown regular" [ngClass]="showDropdown ? 'showDrop' : 'hideDrop'" >
       <p *ngFor="let theme of themes; let i = index">
         <mat-checkbox name="themes" value="{{theme.id}}"
                       (change)="changeThemes(theme.label)">{{theme.label}}
         </mat-checkbox>
       </p>
     </div>
-  </li>
+
+  </span>
+  <br/>
 
 
 

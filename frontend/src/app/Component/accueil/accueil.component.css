@@ -8,6 +8,11 @@
     max-width: 90%;
     margin: 0 auto;
 }
+#dropdownMyThemes{
+  top : 0px;
+  right:10px;
+}
+
 #bandeauTitle{
     text-align: center;
     z-index: 1;
