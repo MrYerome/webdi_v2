@@ -2,10 +2,9 @@
 <div class="container">
 
 
-  <div class="boutonFiltreBleu blueText" style="position: relative" #dropdown>
-    <!--class="aNav orangeText myaccountBtn"-->
-    <div (click)="showDropdown = !showDropdown ">THEMES</div>
-    <div id="dropdownMyThemes" class="custom-dropdown regular" [ngClass]="showDropdown ? 'showDrop' : 'hideDrop'">
+  <div class="boutonFiltreBleu blueText" style="position: relative" #dropdown1>
+    <div (click)="showDropdown1 = !showDropdown1 ">THEMES</div>
+    <div id="dropdownMyThemes" class="custom-dropdown regular" [ngClass]="showDropdown1 ? 'showDrop' : 'hideDrop'">
       <span *ngFor="let theme of themes; let i = index">
         <mat-checkbox name="themes" value="{{theme.id}}"
                       (change)="changeThemes(theme.label)">{{theme.label}}
@@ -15,6 +14,21 @@
 
   </div>
 
+
+  <div class="boutonFiltreBleu blueText" style="position: relative" #dropdown2>
+    <div (click)="showDropdown2 = !showDropdown2 ">DATES</div>
+    <div id="dropdownMyDates" class="custom-dropdown regular" [ngClass]="showDropdown2 ? 'showDrop' : 'hideDrop'">
+      <mat-radio-group value="date">
+      <mat-radio-button name="today" (change)="today()">Aujourd'hui  </mat-radio-button>
+      <mat-radio-button name="tomorrow" (change)="tomorrow()">Demain  </mat-radio-button>
+      <mat-radio-button name="week" (change)="week()">Cette semaine  </mat-radio-button>
+      <mat-radio-button name="currmonth" (change)="currmonth()">Ce mois  </mat-radio-button>
+      <mat-radio-button name="month" (change)="nextmonth()">Le mois suivant  </mat-radio-button>
+      <mat-radio-button name="curryear" (change)="curryear()">Dans l'année  </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+  </div>
 
   <div class="recomandationConf">
     <div *ngFor="let d of diners; let i = index" class="col-sm-12 col-md-6 col-lg-3 cardContainer"
@@ -26,7 +40,7 @@
         </div>
 
         <div class="card-content">
-          <div class="card-title orangeText medium">{{ d.title}}</div>
+          <div class="card-title orangeText medium"><h3>{{ d.title}}</h3></div>
           <div class="card-info blueText">
             <div class="card-info-left bold">
               <span class="dayDate">{{ d.date | date : 'dd'}}</span>
@@ -45,43 +59,5 @@
       </div>
     </div>
   </div>
-
-
-  <!--<div class='row'>-->
-  <!--<div *ngFor="let diner of diners" class="col-sm-6 col-lg-4" (click)="selectDiner(diner.id)">-->
-  <!--&lt;!&ndash; boucle for &ndash;&gt;-->
-  <!--<div class="card horizontal">-->
-  <!--&lt;!&ndash;<div class="card-image">&ndash;&gt;-->
-  <!--&lt;!&ndash;<img [src]="diner?.picture">&ndash;&gt;-->
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--<div class="card-stacked">-->
-  <!--<div class="card-content">-->
-  <!--<div class="{{ diner?.theme.label }}">-->
-  <!--<div class="mainCard">-->
-
-  <!--<div class = "titleCard">{{ diner.title}}</div>-->
-  <!--<div class="subtitleCard">{{ diner.description}}</div>-->
-
-  <!--<div class="contentCard">-->
-  <!--<p>Thèmes : {{ diner?.theme.label}}</p>-->
-  <!--<p>Date : {{ diner?.date}}</p>-->
-  <!--<p>Nombre maximum de participants : {{ diner?.maxMembers}}</p>-->
-  <!--<p>Prix : {{ diner?.price }}</p>-->
-  <!--<p>Restaurant : {{ diner?.place.name}}</p>-->
-  <!--<p>Adresse : {{ diner?.place.numberStreet}} {{ diner?.place.nameStreet }}, {{ diner?.city?.nom_reel}},-->
-  <!--{{ diner?.city?.code_postal}}</p>-->
-  <!--<p>Organisé par {{ diner?.user.firstName}} {{ diner?.user.name}}</p>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
-
-  <!--</div>-->
-
-
-  <!--</div>-->
-
-  <!--</div>-->
-  <!--</div>-->
 </div>
 
