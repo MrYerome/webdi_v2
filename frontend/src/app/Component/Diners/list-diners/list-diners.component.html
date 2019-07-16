@@ -1,35 +1,32 @@
 <h2 class="center">Les dîners à venir</h2>
 <div class="container">
-  <span>Effectuer un tri par thème : </span>
-
-  <p></p>
 
 
-  <span style="position: relative" #dropdown>
-    <a class="aNav orangeText myaccountBtn" (click)="showDropdown = !showDropdown "><span>Afficher les thèmes</span></a>
-    <div  id="dropdownMyThemes" class="custom-dropdown regular" [ngClass]="showDropdown ? 'showDrop' : 'hideDrop'" >
-      <p *ngFor="let theme of themes; let i = index">
+  <div class="boutonFiltreBleu blueText" style="position: relative" #dropdown>
+    <!--class="aNav orangeText myaccountBtn"-->
+    <div (click)="showDropdown = !showDropdown ">THEMES</div>
+    <div id="dropdownMyThemes" class="custom-dropdown regular" [ngClass]="showDropdown ? 'showDrop' : 'hideDrop'">
+      <span *ngFor="let theme of themes; let i = index">
         <mat-checkbox name="themes" value="{{theme.id}}"
                       (change)="changeThemes(theme.label)">{{theme.label}}
         </mat-checkbox>
-      </p>
+      </span>
     </div>
 
-  </span>
-  <br/>
-
+  </div>
 
 
   <div class="recomandationConf">
-    <div *ngFor="let d of diners; let i = index" class="col-sm-12 col-md-6 col-lg-4 cardContainer" (click)="selectDiner(d.id)">
+    <div *ngFor="let d of diners; let i = index" class="col-sm-12 col-md-6 col-lg-3 cardContainer"
+         (click)="selectDiner(d.id)">
       <!-- boucle for -->
-      <div   class="card" *ngIf="!mobile">
+      <div class="card" *ngIf="!mobile">
         <div class="card-image">
           <img src="assets/img/desktop/{{d?.img}}">
         </div>
 
         <div class="card-content">
-          <div class = "card-title orangeText medium">{{ d.title}}</div>
+          <div class="card-title orangeText medium">{{ d.title}}</div>
           <div class="card-info blueText">
             <div class="card-info-left bold">
               <span class="dayDate">{{ d.date | date : 'dd'}}</span>
@@ -50,42 +47,41 @@
   </div>
 
 
-
   <!--<div class='row'>-->
-    <!--<div *ngFor="let diner of diners" class="col-sm-6 col-lg-4" (click)="selectDiner(diner.id)">-->
-      <!--&lt;!&ndash; boucle for &ndash;&gt;-->
-      <!--<div class="card horizontal">-->
-        <!--&lt;!&ndash;<div class="card-image">&ndash;&gt;-->
-        <!--&lt;!&ndash;<img [src]="diner?.picture">&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--<div class="card-stacked">-->
-          <!--<div class="card-content">-->
-            <!--<div class="{{ diner?.theme.label }}">-->
-              <!--<div class="mainCard">-->
+  <!--<div *ngFor="let diner of diners" class="col-sm-6 col-lg-4" (click)="selectDiner(diner.id)">-->
+  <!--&lt;!&ndash; boucle for &ndash;&gt;-->
+  <!--<div class="card horizontal">-->
+  <!--&lt;!&ndash;<div class="card-image">&ndash;&gt;-->
+  <!--&lt;!&ndash;<img [src]="diner?.picture">&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--<div class="card-stacked">-->
+  <!--<div class="card-content">-->
+  <!--<div class="{{ diner?.theme.label }}">-->
+  <!--<div class="mainCard">-->
 
-                <!--<div class = "titleCard">{{ diner.title}}</div>-->
-                <!--<div class="subtitleCard">{{ diner.description}}</div>-->
+  <!--<div class = "titleCard">{{ diner.title}}</div>-->
+  <!--<div class="subtitleCard">{{ diner.description}}</div>-->
 
-                <!--<div class="contentCard">-->
-                  <!--<p>Thèmes : {{ diner?.theme.label}}</p>-->
-                  <!--<p>Date : {{ diner?.date}}</p>-->
-                  <!--<p>Nombre maximum de participants : {{ diner?.maxMembers}}</p>-->
-                  <!--<p>Prix : {{ diner?.price }}</p>-->
-                  <!--<p>Restaurant : {{ diner?.place.name}}</p>-->
-                  <!--<p>Adresse : {{ diner?.place.numberStreet}} {{ diner?.place.nameStreet }}, {{ diner?.city?.nom_reel}},-->
-                    <!--{{ diner?.city?.code_postal}}</p>-->
-                  <!--<p>Organisé par {{ diner?.user.firstName}} {{ diner?.user.name}}</p>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
+  <!--<div class="contentCard">-->
+  <!--<p>Thèmes : {{ diner?.theme.label}}</p>-->
+  <!--<p>Date : {{ diner?.date}}</p>-->
+  <!--<p>Nombre maximum de participants : {{ diner?.maxMembers}}</p>-->
+  <!--<p>Prix : {{ diner?.price }}</p>-->
+  <!--<p>Restaurant : {{ diner?.place.name}}</p>-->
+  <!--<p>Adresse : {{ diner?.place.numberStreet}} {{ diner?.place.nameStreet }}, {{ diner?.city?.nom_reel}},-->
+  <!--{{ diner?.city?.code_postal}}</p>-->
+  <!--<p>Organisé par {{ diner?.user.firstName}} {{ diner?.user.name}}</p>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
 
-        <!--</div>-->
+  <!--</div>-->
 
 
-      <!--</div>-->
+  <!--</div>-->
 
-    <!--</div>-->
+  <!--</div>-->
   <!--</div>-->
 </div>
 

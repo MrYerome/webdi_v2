@@ -8,31 +8,12 @@
   width: 200px;
   border: 1px solid var(--orange-custom);
 }
-#dropdownMyAccount ul{
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column !important;
-  text-align: left !important;
-  justify-content: left !important;
-  align-items: flex-start;
-}
-#dropdownMyAccount ul li{
-  margin: 10px 5px;
-  width: calc(100% - 10px);
-  outline: none;
-  cursor: pointer;
-}
-.hideDrop {
-  display: none;
-}
-.showDrop{
-  display: block;
-}
+
+
 
 
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
-  border-color: blue;
+  border-color: var(--blue-custom);
 }
 
 ::ng-deep .mat-checkbox-checked .mat-checkbox-background {
@@ -236,6 +217,25 @@
 }
 .card-image{
   height: 50%;
+}
+
+#dropdownMyThemes{
+  top : calc(100% + 2px);
+  /*right:0;*/
+  left : 50%;
+  transform : translateX(-50%);
+  width: 105%;
+  border : 1px solid var(--blue-custom);
+  justify-content:space-around;
+}
+
+.boutonFiltreBleu{
+  /*color :*/
+  width: 500px;
+  border-bottom: 2px solid var(--blue-custom);
+  margin : 0 auto 20px;
+  text-align: center;
+
 }
 
 @media screen and (max-width: 756px) {

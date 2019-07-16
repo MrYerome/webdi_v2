@@ -17,8 +17,8 @@
               <a class="aNav orangeText myaccountBtn" (click)="showDropdown = !showDropdown "><i class="fas fa-user"></i></a>
               <div  id="dropdownMyAccount" class="custom-dropdown regular" [ngClass]="showDropdown ? 'showDrop' : 'hideDrop'">
                   <ul>
-                      <li>Mon compte</li>
-                      <li>Mes conf' à venir (2)</li>
+                      <li  *ngIf="loggedIn">Mon compte</li>
+                      <li  *ngIf="loggedIn">Mes conf' à venir (2)</li>
                       <li *ngIf="!loggedIn" (click)="open()">Connexion</li>
                       <li *ngIf="loggedIn" (click)="logout()">Déconnexion</li>
                   </ul>
