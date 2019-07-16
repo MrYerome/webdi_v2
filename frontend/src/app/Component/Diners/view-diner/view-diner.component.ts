@@ -7,6 +7,7 @@ import {City} from '../../../models/city';
 import {Usersdiners} from '../../../models/usersdiners';
 import {AuthService} from '../../../Services/auth.service';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ConnexionComponent} from "../../connexion/connexion.component";
 
 @Component({
   selector: 'app-view-diner',
@@ -135,7 +136,7 @@ export class ViewDinerComponent implements OnInit {
             },
         );
       } else {
-          this.router.navigate(['connexion']);
+          const modalRef = this.modalService.open(ConnexionComponent);
       }
   }
 

@@ -47,6 +47,7 @@ body{
 .card{
     border: none !important;
     border-radius: unset !important;
+    cursor: pointer;
 }
 .card-content{
     border: 1px solid var(--blue-custom);
@@ -139,13 +140,14 @@ body{
 .showDrop{
     display: flex;
 }
-
+ngb-modal-window.modal{
+    background-color: rgba(255, 255, 255, 0.7) !important;
+}
 .contentPopIn{
     background-color: var(--white);
     border: 2px solid var(--blue-custom);
     padding: 50px 50px;
     width: 100%;
-
 }
 .popIn{
     display: flex;
