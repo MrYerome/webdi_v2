@@ -1,3 +1,36 @@
+
+#dropdownMyAccount{
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  z-index: 999;
+  width: 200px;
+  border: 1px solid var(--orange-custom);
+}
+#dropdownMyAccount ul{
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column !important;
+  text-align: left !important;
+  justify-content: left !important;
+  align-items: flex-start;
+}
+#dropdownMyAccount ul li{
+  margin: 10px 5px;
+  width: calc(100% - 10px);
+  outline: none;
+  cursor: pointer;
+}
+.hideDrop {
+  display: none;
+}
+.showDrop{
+  display: block;
+}
+
+
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
   border-color: blue;
 }
@@ -10,7 +43,6 @@
 
 .Economie{
   background: rgba(100,0,0,.70)!important;
-
 }
 
 .Santé{
@@ -36,3 +68,213 @@
   font-size: large;
 }
 
+
+/*!*/
+
+
+
+#returnToConf{
+
+  padding: 20px 0 20px 50px;
+}
+#returnToConf a{
+  position: relative;
+  color: var(--blue-custom) !important;
+}
+#returnToConf a::after{
+  position: absolute;
+  left: -18px;
+  top : 50%;
+  content: ' ';
+  padding: 3px;
+  border-left: 2px solid var(--blue-custom);
+  border-bottom: 2px solid var(--blue-custom);
+  transform: rotate(45deg) translateY(-50%);
+}
+
+.topPage{
+  position: relative;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 -15px;
+}
+
+.topPage::after{
+  content: '';
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  top: 0;
+  left: 0;
+  background-color: var(--blue-custom);
+}
+.topPage h1{
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+.topPage .imgContainer{
+  overflow: hidden;
+
+}
+.topPage .imgContainer img{
+  width: 100%;
+}
+
+.subscribeBtn{
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  background-color: var(--blue-custom);
+  cursor: pointer;
+  font-size: 1.875rem;
+}
+
+.custom-container{
+  width: 55%;
+  margin: 0 auto;
+}
+
+.conf-info{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.conf-info-date{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.conf-info-fullday,
+.conf-info-month{
+  font-size: 2rem;
+  line-height: normal;
+}
+.conf-info-day{
+  font-size: 4.5rem;
+  line-height: normal;
+}
+
+.conf-info-other{
+  width: 50%;
+}
+.conf-info-other-content{
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+.conf-info-other-content i {
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+.conf-info-other-content div.w75 {
+  width: 75%;
+  line-height: normal;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.conf-info-hour,
+.conf-info-price{
+  font-size: 2rem;
+  line-height: normal;
+}
+
+.conf-info-place{
+  font-size: 1.5rem;
+}
+.inclus{
+  font-size: 1rem;
+  padding-left: 5px;
+}
+.conf-user{
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 20px;
+}
+.conf-description{
+  white-space: pre-line;
+  text-align: justify;
+}
+
+.subscribeBtnContainer{
+  width: 90%;
+  margin: 50px auto 0
+}
+
+.recomandationConf{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /*height: 600px;*/
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+.recomandationTitle{
+  text-align: center;
+  padding: 40px 0;
+  font-size: 2rem;
+}
+.card{
+  height: 600px;
+  margin-bottom: 20px;
+}
+.cardContainer{
+  height: 100%;
+}
+.card-image{
+  height: 50%;
+}
+
+@media screen and (max-width: 756px) {
+  .custom-container,
+  .recomandationConf {
+    width: 95%;
+  }
+
+  .topPage h1 {
+    font-size: 2rem;
+  }
+  .custom-container.containerImgBtn{
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .subscribeBtnContainerTop{
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    bottom: 0;
+    transform: translateY(-50%);
+  }
+  .subscribeBtnContainer{
+    width: calc(100% + 30px);
+    display: flex;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .recomandationConf{
+    justify-content: center;
+    /*height: inherit !important;*/
+  }
+  .cardContainer{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 15px auto;
+    height: auto;
+    text-align: center;
+  }
+
+
+}
