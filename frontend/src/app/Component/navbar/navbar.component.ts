@@ -2,7 +2,7 @@ import {Component, ElementRef, NgModule, OnInit, ViewChild} from '@angular/core'
 import { Router } from '@angular/router';
 import {AuthService} from '../../Services/auth.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {ConnexionComponent} from "../connexion/connexion.component";
+import {ConnexionComponent} from '../connexion/connexion.component';
 
 
 @Component({
@@ -16,6 +16,7 @@ import {ConnexionComponent} from "../connexion/connexion.component";
 
 
 export class NavbarComponent implements OnInit {
+    @ViewChild('dropdownMyAccount') dropdownMyAccount;
     public showDropdown:boolean = false;
 
     public loggedIn: boolean;
@@ -40,9 +41,10 @@ export class NavbarComponent implements OnInit {
   }
 
   hideDropdown($e) {
-    if (!this._eref.nativeElement.contains(event.target)) {
+
+    if (!this.dropdownMyAccount.nativeElement.contains(event.target)) {
         this.showDropdown = false;
-    } // or some similar check
+    }
   }
 
     open() {

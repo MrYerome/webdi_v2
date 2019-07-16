@@ -37,7 +37,7 @@ a{
 #dropdownMyAccount{
     width: 200px;
     border: 1px solid var(--orange-custom);
-    bottom: 0;
+    top: 100%;
     right: 0;
 }
 #dropdownMyAccount ul li{

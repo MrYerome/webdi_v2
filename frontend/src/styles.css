@@ -136,7 +136,7 @@ body{
     display: none;
 }
 .showDrop{
-    display: block;
+    display: flex;
 }
 
 .contentPopIn{
