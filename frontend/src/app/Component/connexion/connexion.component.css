@@ -1,0 +1,46 @@
+.connexionFrom{
+    width: 100%;
+}
+.connexionFrom form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.titleConnexion{
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+.inputGroup{
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup input{
+    border: none;
+    background-color: var(--blue-custom);
+    padding: 5px 10px;
+    color: #fff;
+    outline: none;
+}
+.btonOk{
+    width: 50px;
+    height: 50px;
+    /*text-align: center;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--blue-custom);
+    align-self: center;
+    margin: 20px;
+    cursor: pointer  ;
+}
+
+.linkConnexion{
+    display: flex;
+    align-self: center;
+    text-decoration: underline !important;
+    margin: 5px 0;
+    cursor: pointer;
+}

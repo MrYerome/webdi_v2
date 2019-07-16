@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
 
     public loggedIn: boolean;
 
-  constructor(
+    constructor(
     private Auth: AuthService,
     private router: Router,
     private _eref: ElementRef,

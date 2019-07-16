@@ -141,16 +141,16 @@ body{
 }
 
 .contentPopIn{
-
     background-color: var(--white);
     border: 2px solid var(--blue-custom);
-    padding: 50px 30px;
+    padding: 50px 50px;
+    width: 100%;
+
 }
 .popIn{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-
 }
 .crossPopIn{
     background-color: var(--blue-custom);
@@ -158,6 +158,7 @@ body{
     height: 50px;
     font-size: 2rem;
     text-align: center;
+    cursor: pointer;
 }
 .modal-content{
     border-radius: 0 !important;

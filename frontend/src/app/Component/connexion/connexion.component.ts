@@ -20,7 +20,7 @@ export class ConnexionComponent implements OnInit {
   };
   public error = null;
   public errorActive = null;
-  public bErrorActive : boolean = false;
+  public bErrorActive: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -51,20 +51,18 @@ export class ConnexionComponent implements OnInit {
      // sessionStorage.setItem('user', JSON.stringify(data));
       sessionStorage.setItem('id', JSON.stringify(data[0]["id"]));
       this.Auth.changeAuthStatus(true);
-      this.router.navigateByUrl('/accueil');
+      this.activeModal.close();
     }
 
   }
 
   handleError(error) {
-    console.log(error);
-    console.log("entrée dans error");
-    if (error == "notActive") {
+    if (error === "notActive") {
       this.bErrorActive = true;
       console.log(this.bErrorActive);
-      this.errorActive = "Vous n'avez pas encore activé votre compte.";
+      this.errorActive = 'Vous n\'avez pas encore activé votre compte.';
     } else {
-      this.error = "Le login et le mot de passe ne coincident pas.";
+      this.error = 'Le login et le mot de passe ne coincident pas.';
     }
   }
 
@@ -74,8 +72,18 @@ export class ConnexionComponent implements OnInit {
   //   this.errorActive = "Vous n'avez pas activé votre compte";
   // }
 
-redirectionVersFormulaire(){
-    this.router.navigateByUrl('/formulaireActivation');;
-}
+  redirectionVersFormulaire() {
+      this.router.navigateByUrl('/formulaireActivation');
+  }
+
+  redirectLostPassword() {
+    this.activeModal.close();
+    this.router.navigateByUrl('/request-password-reset');
+  }
+
+  redirectSignup() {
+    this.activeModal.close();
+    this.router.navigateByUrl('/signup');
+  }
 
 }

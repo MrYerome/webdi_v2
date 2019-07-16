@@ -6,6 +6,7 @@ import {Places} from '../../../models/places';
 import {City} from '../../../models/city';
 import {Usersdiners} from '../../../models/usersdiners';
 import {AuthService} from '../../../Services/auth.service';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-view-diner',
@@ -25,15 +26,16 @@ export class ViewDinerComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private Data: DinerServiceService,
-              private Auth: AuthService) {
+              private Auth: AuthService,
+              private modalService: NgbModal) {
   }
 
   ngOnInit() {
-    this.getDiner();
-    if (this.Auth.isAuthenticated()) {
-        this.userid = sessionStorage.getItem('id').toString();
-        console.log(this.userid);
-    }
+      this.getDiner();
+      if (this.Auth.isAuthenticated()) {
+          this.userid = sessionStorage.getItem('id').toString();
+          console.log(this.userid);
+      }
       this.router.events.subscribe((evt) => {
           if (!(evt instanceof NavigationEnd)) {
               return;

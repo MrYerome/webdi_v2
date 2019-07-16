@@ -67,9 +67,8 @@ export class CreateDinerComponent implements OnInit {
     // on récupère l'utilisateur connecté
     this.diner.id_Organisator = sessionStorage.getItem('id').toString();
     // formattage de la date
-    this.diner.date = this.diner.dateDiner.year + "-" + this.diner.dateDiner.month + "-" +
-    this.diner.dateDiner.day + " " + this.diner.time.hour + ":" + this.diner.time.minute + ":00";
-    //creation du diner
+    this.diner.date =  `${this.diner.dateDiner.year}-${this.diner.dateDiner.month}-${this.diner.dateDiner.day} ${this.diner.time.hour}:${this.diner.time.minute}:00`;
+    //creation du diner`
     this.Data.createDiner(this.diner).subscribe(
       data => {
         this.handleResponse(data);

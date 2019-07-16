@@ -1,8 +1,8 @@
 <div class="popIn">
-    <div class="crossPopIn whiteText">X</div>
+    <div class="crossPopIn whiteText" aria-label="Close" (click)="activeModal.close('Cross click')">X</div>
     <div class="contentPopIn">
-      <div class="blueText">Connexion</div>
-      <div>
+      <div class="blueText titleConnexion">Connexion</div>
+      <div class="connexionFrom">
         <form #loginForm=ngForm (ngSubmit)="onSubmit()">
 
           <div class="alert alert-danger" [hidden]="!error">
@@ -14,20 +14,24 @@
             <button (click)="redirectionVersFormulaire()">Recevoir un nouveau mail d'activation.</button>
           </div>
 
-          <label for="login" >Adresse e-mail</label>
-          <input matInput type="text" name="login" id="login" placeholder="login"
+          <div class="inputGroup">
+
+            <label for="login" class="blueText" >Adresse e-mail :</label>
+            <input type="text" name="login" id="login"
                        [(ngModel)]="form.login" required>
+          </div>
+          <div class="inputGroup">
+            <label for="inputPassword3" class="blueText">Mot de passe :</label>
+            <input type="password" name="password"  id="inputPassword3"
+                       [(ngModel)]="form.password"
+                       required>
+          </div>
+          <button type="submit" class="btonOk whiteText" [disabled]="!loginForm.valid">OK</button>
 
-          <label for="inputPassword3" >Mot de passe</label>
-          <input matInput type="password" name="password"  id="inputPassword3"
-                     placeholder="Password" [(ngModel)]="form.password"
-                     required>
 
-          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">OK</button>
+          <a (click)="redirectLostPassword()" class="orangeText linkConnexion">Mot de passe oublié ?</a>
+          <a (click)="redirectSignup()" class="blueText linkConnexion">Vous n'avez pas encore de compte ?</a>
 
-          <small class=float-right>
-            <a routerLink="/request-password-reset">Mot de passe oublié ?</a>
-          </small>
         </form>
       </div>
     </div>
