@@ -19,8 +19,8 @@
                   <ul>
                       <li>Mon compte</li>
                       <li>Mes conf' à venir (2)</li>
-                      <li *ngIf="!loggedIn" routerLink="connexion">Connexion</li>
-                      <li *ngIf="loggedIn">Déconnexion</li>
+                      <li *ngIf="!loggedIn" (click)="open()">Connexion</li>
+                      <li *ngIf="loggedIn" (click)="logout()">Déconnexion</li>
                   </ul>
               </div>
           </li>

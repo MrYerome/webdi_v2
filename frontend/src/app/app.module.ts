@@ -86,8 +86,11 @@ registerLocaleData(localeFr, 'fr');
   providers: [DataService, AuthService, TokenService, AfterLoginService, BeforeLoginService, AuthGuard,
 
     {provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService, {provide: LOCALE_ID, useValue: "fr-FR" }],
-  bootstrap: [AppComponent]
+    SnotifyService, {provide: LOCALE_ID, useValue: 'fr-FR' }],
+  bootstrap: [AppComponent],
+    entryComponents: [
+        ConnexionComponent
+    ]
 })
 
 export class AppModule {

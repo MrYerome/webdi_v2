@@ -1,6 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, NgModule, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import {AuthService} from '../../Services/auth.service';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {ConnexionComponent} from "../connexion/connexion.component";
+
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +13,8 @@ import {AuthService} from '../../Services/auth.service';
       '(document:click)': 'hideDropdown($event)',
   },
 })
+
+
 export class NavbarComponent implements OnInit {
     public showDropdown:boolean = false;
 
@@ -18,7 +23,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private Auth: AuthService,
     private router: Router,
-    private _eref: ElementRef
+    private _eref: ElementRef,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -27,10 +33,10 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(event: MouseEvent) {
-    event.preventDefault();
     this.Auth.changeAuthStatus(false);
     sessionStorage.clear();
     this.router.navigateByUrl('/accueil');
+
   }
 
   hideDropdown($e) {
@@ -38,6 +44,10 @@ export class NavbarComponent implements OnInit {
         this.showDropdown = false;
     } // or some similar check
   }
+
+    open() {
+        const modalRef = this.modalService.open(ConnexionComponent);
+    }
 
 
 }

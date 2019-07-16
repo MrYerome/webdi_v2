@@ -4,6 +4,7 @@ import {DataService} from "../../Services/Dataservice";
 import {Router} from "@angular/router";
 import {AuthService} from "../../Services/auth.service";
 import {typeSourceSpan} from "@angular/compiler";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -25,7 +26,8 @@ export class ConnexionComponent implements OnInit {
     private http: HttpClient,
     private Data: DataService,
     private router: Router,
-    private Auth: AuthService
+    private Auth: AuthService,
+    public activeModal: NgbActiveModal
   ) {
   }
 

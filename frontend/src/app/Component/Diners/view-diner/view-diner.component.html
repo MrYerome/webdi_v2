@@ -32,13 +32,13 @@
             <div class="conf-info-other">
                 <div class="conf-info-hour conf-info-other-content ">
                     <i class="far fa-clock"></i>
-                    <div>
+                    <div class="w75">
                         {{diner?.date | date:"HH'h'mm"}}
                     </div>
                 </div>
                 <div class="conf-info-place conf-info-other-content ">
                     <i class="fas fa-map-marker-alt"></i>
-                    <div>
+                    <div class="w75">
                         {{diner?.place.name}}<br>
                         {{diner?.place.numberStreet}} {{diner?.place.nameStreet}}<br>
                         {{diner?.city.code_postal.substr(0,5)}} {{diner?.city.nom_reel}}
