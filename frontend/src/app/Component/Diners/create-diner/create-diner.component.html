@@ -1,6 +1,10 @@
+
+<div id="bandeau">
+  <img src="assets/img/imageHeaderConf.jpg" alt="" srcset="">
+  <h1 id="bandeauTitle" class="regular">Organisez votre conf'</h1>
+</div>
 <form #dinerForm="ngForm" (ngSubmit)="onSubmit()">
   <div class="custom-container blueText medium">
-
         <div class="group-form">
           <label for="title">Titre :</label>
           <input type="text" id="title"  name="title" #name="ngModel" [(ngModel)]='diner.title'

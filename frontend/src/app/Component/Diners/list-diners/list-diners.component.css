@@ -254,7 +254,7 @@
 
 .recomandationConf{
   /*width: 90%;*/
-  margin: 0 auto;
+  margin: 50px auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

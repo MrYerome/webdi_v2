@@ -41,7 +41,7 @@
   </div>
 
   <div class="recomandationConf">
-    <div *ngFor="let d of diners; let i = index" class="col-sm-12 col-md-6 col-lg-3 cardContainer"
+    <div *ngFor="let d of diners; let i = index" class="col-sm-12 col-md-6 col-lg-3 cardContainer p-2"
          (click)="selectDiner(d.id)">
       <!-- boucle for -->
       <div class="card" *ngIf="!mobile">
