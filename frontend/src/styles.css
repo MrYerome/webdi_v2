@@ -129,6 +129,7 @@ body{
     text-align: left !important;
     justify-content: left !important;
     align-items: flex-start;
+    width: 100%;
 }
 .custom-dropdown ul li{
     outline: none;
@@ -167,6 +168,32 @@ ngb-modal-window.modal{
     background-color: transparent !important;
     border : none !important;
 }
+
+.underlineAnimation{
+    position: relative !important;
+}
+.underlineAnimation.whiteText::after{
+    background-color: white;
+}
+.underlineAnimation.blueText::after{
+    background-color: var(--blue-custom);
+}
+.underlineContainer .underlineAnimation::after{
+    content: '';
+    width: 0px;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    height: 2px;
+    transition-duration: 300ms;
+}
+.underlineContainer:hover .underlineAnimation::after{
+    width: 100%;
+    transition-duration: 300ms;
+
+}
+
+
 @media screen and (max-width: 756px) {
     .card{
         border: none !important;

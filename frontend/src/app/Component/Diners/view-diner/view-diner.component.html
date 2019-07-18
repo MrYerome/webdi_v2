@@ -10,8 +10,8 @@
             </div>
             <div class="subscribeBtnContainerTop">
 
-                <div class="subscribeBtn regular" *ngIf="!isSubscribe" (click)="subscribeDiner(diner?.id)">Inscrivez vous</div>
-                <div class="subscribeBtn regular" *ngIf="isSubscribe" (click)="unsubscribeDiner(diner?.id)">Vous désinscrire</div>
+                <div class="subscribeBtn regular underlineContainer" *ngIf="!isSubscribe" (click)="subscribeDiner(diner?.id)"><span class="underlineAnimation whiteText">Inscrivez vous</span></div>
+                <div class="subscribeBtn regular underlineContainer" *ngIf="isSubscribe" (click)="unsubscribeDiner(diner?.id)"><span class="underlineAnimation whiteText">Vous désinscrire</span></div>
             </div>
         </div>
 
@@ -64,8 +64,8 @@
         </div>
     </div>
     <div class="subscribeBtnContainer whiteText">
-        <div class="subscribeBtn regular" *ngIf="!isSubscribe" (click)="subscribeDiner(diner?.id)">INSCRIVEZ VOUS</div>
-        <div class="subscribeBtn regular" *ngIf="isSubscribe" (click)="unsubscribeDiner(diner?.id)">VOUS DÉSINCRIRE</div>
+        <div class="subscribeBtn regular underlineContainer" *ngIf="!isSubscribe" (click)="subscribeDiner(diner?.id)"><span class="underlineAnimation whiteText">INSCRIVEZ VOUS</span></div>
+        <div class="subscribeBtn regular underlineContainer" *ngIf="isSubscribe" (click)="unsubscribeDiner(diner?.id)"><span class="underlineAnimation whiteText">VOUS DÉSINCRIRE</span></div>
     </div>
     <div class="recomandationTitle orangeText regular">
         <h2>ÇA PEUT AUSSI VOUS INTÉRESSER</h2>
