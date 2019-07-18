@@ -68,6 +68,21 @@ export class ListDinersComponent implements OnInit {
     this.ObsDinersTemp = this.ObsDiners;
   }
 
+  selectFutureDiners() {
+    console.log("future diners");
+    // this.selectAllDiners();
+    this.ObsDiners = this.Data.getAllDiners();
+    this.ObsDinersTemp = this.ObsDiners;
+    this.selectAllDiners();
+  }
+
+  selectOldDiners() {
+    console.log("anciens diners");
+    this.ObsDiners = this.Data.getOldDiners();
+    this.ObsDinersTemp = this.ObsDiners;
+    this.selectAllDiners();
+  }
+
   /**
    * Au clic sur un diner, ouverture d'une nouvelle page avec les specs du diner
    * @param d
@@ -76,6 +91,7 @@ export class ListDinersComponent implements OnInit {
     console.log(d);
     this.router.navigate(['/diners/view', d]);
   }
+
 
 
   /**
@@ -115,24 +131,18 @@ export class ListDinersComponent implements OnInit {
 
 
   /**
-   * Ajuste la liste des diners en passant un filtre sur les thèmes
+   * Ajuste la liste des diners en passant un filtre sur la date d'aujourd'hui
    * @param filterThemeArray
    */
   today() {
-    console.log(this.dateToday);
-    console.log(this.dateToday.getDate());
-    console.log(this.dateToday.getUTCDate());
-
     this.ObsDiners.pipe(
       map(
         (diners: Diner[]) => diners.filter(
           (diner: Diner) => {
-            console.log(new Date(diner.date).toString());
-            // return new Date(diner.date) == this.dateToday;
-            return new Date(diner.date).getUTCDate() == this.dateToday.getUTCDate();
+            console.log(new Date(diner.date).getUTCDate());
+            return new Date(diner.date).getUTCDate() == this.dateToday.getUTCDate()
+              && new Date(diner.date).getUTCMonth()== this.dateToday.getUTCMonth();
           }
-          //2019-07-16 09:48:33
-          // (diner: Diner) => diner.date.
         )
       )
     ).subscribe(
@@ -140,8 +150,117 @@ export class ListDinersComponent implements OnInit {
         this.diners = diners;
       }
     );
+  }
+
+  /**
+   * Ajuste la liste des diners en passant un filtre sur la date de demain
+   * @param filterThemeArray
+   */
+  tomorrow() {
+    this.ObsDiners.pipe(
+      map(
+        (diners: Diner[]) => diners.filter(
+          (diner: Diner) => {
+            console.log(new Date(diner.date).getUTCDate());
+            return new Date(diner.date).getUTCDate() == this.dateToday.getUTCDate() + 1
+              && new Date(diner.date).getUTCMonth()== this.dateToday.getUTCMonth();
+          }
+        )
+      )
+    ).subscribe(
+      (diners: Diner[]) => {
+        this.diners = diners;
+      }
+    );
+  }
+  /**
+   * Ajuste la liste des diners en passant un filtre sur la date : semaine à venir
+   * @param filterThemeArray
+   */
+  week() {
+    this.ObsDiners.pipe(
+      map(
+        (diners: Diner[]) => diners.filter(
+          (diner: Diner) => {
+            console.log(new Date(diner.date).getUTCDate());
+            return new Date(diner.date).getUTCDate()>= this.dateToday.getUTCDate() && new Date(diner.date).getUTCDate()<= this.dateToday.getUTCDate()+8
+              && new Date(diner.date).getUTCMonth()== this.dateToday.getUTCMonth();
+          }
+        )
+      )
+    ).subscribe(
+      (diners: Diner[]) => {
+        this.diners = diners;
+      }
+    );
+  }
 
 
+  /**
+   * Ajuste la liste des diners en passant un filtre sur la date du mois en cours
+   * @param filterThemeArray
+   */
+  currmonth() {
+    this.ObsDiners.pipe(
+      map(
+        (diners: Diner[]) => diners.filter(
+          (diner: Diner) => {
+            console.log(new Date(diner.date).getUTCDate());
+            return new Date(diner.date).getUTCMonth()== this.dateToday.getUTCMonth();
+          }
+        )
+      )
+    ).subscribe(
+      (diners: Diner[]) => {
+        this.diners = diners;
+      }
+    );
+  }
+
+
+  /**
+   * Ajuste la liste des diners en passant un filtre sur la date du mois suivant
+   * @param filterThemeArray
+   */
+  nextmonth() {
+    console.log(this.dateToday);
+    this.ObsDiners.pipe(
+      map(
+        (diners: Diner[]) => diners.filter(
+          (diner: Diner) => {
+            console.log(new Date(diner.date).getUTCDate());
+            return new Date(diner.date).getUTCMonth()== this.dateToday.getUTCMonth() + 1;
+          }
+        )
+      )
+    ).subscribe(
+      (diners: Diner[]) => {
+        this.diners = diners;
+      }
+    );
+  }
+
+
+  /**
+   * Ajuste la liste des diners en passant un filtre sur la date : année en cours
+   * @param filterThemeArray
+   */
+  curryear() {
+    console.log(this.dateToday);
+    this.ObsDiners.pipe(
+      map(
+        (diners: Diner[]) => diners.filter(
+          (diner: Diner) => {
+            console.log(new Date(diner.date).getUTCDate());
+            return new Date(diner.date).getUTCFullYear()== this.dateToday.getUTCFullYear();
+          }
+        )
+      )
+    ).subscribe(
+      (diners: Diner[]) => {
+        this.diners = diners;
+      }
+    );
   }
 
 
@@ -151,7 +270,6 @@ export class ListDinersComponent implements OnInit {
    */
   tous() {
     this.selectAllDiners();
-
   }
 
 

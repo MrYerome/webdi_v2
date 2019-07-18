@@ -1,4 +1,13 @@
-<h2 class="center">Les dîners à venir</h2>
+<div id="bandeau">
+  <img src="assets/img/imageHeaderConf.jpg" alt="" srcset="">
+  <h1 id="bandeauTitle" class="regular">Les conférences</h1>
+</div>
+
+
+<div class="container2bttn">
+  <div class="whiteText SeeConf SeeFuturesConf underlineContainer"><span class="underlineAnimation whiteText" (click)="selectFutureDiners()">Les conf's à venir</span></div>
+  <div class="whiteText SeeConf SeeOldConf underlineContainer"><span class="underlineAnimation whiteText" (click)="selectOldDiners()">Les confs passées</span></div>
+</div>
 <div class="container">
 
 
@@ -46,10 +55,11 @@
             <div class="card-info-left bold">
               <span class="dayDate">{{ d.date | date : 'dd'}}</span>
               <span class="monthDate">{{d.date | date: 'MMM' : 'fr' }}</span>
+
             </div>
             <div class="card-info-right light">
-              <span class="date">{{d.date | date :"EEE dd/MM - HH'h'mm"}}</span>
-              <span>{{d.place?.name}} - {{d.city?.nom_reel}}</span>
+              <span class="date">{{d.date | date :"EEE dd/MM/yyyy - HH'h'mm"}}</span>
+              <span class="yearDate">{{d.date | date: 'yyyy' : 'fr' }}</span>
             </div>
           </div>
           <div class="blueText reserve bold"><a (click)="selectDiner(d.id)">Réservez</a></div>
