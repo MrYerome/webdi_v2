@@ -36,10 +36,10 @@ export class CreateDinerComponent implements OnInit {
   public error = [];
 
   ngOnInit() {
-    //on récupère les lieux
+    // on récupère les lieux
     this.Data.getAllPlaces().subscribe(
       places => {
-        this.places = places
+        this.places = places;
       },
       error => {
         console.log(error);
@@ -49,7 +49,7 @@ export class CreateDinerComponent implements OnInit {
       }
     );
 
-    //on récupère les thèmes
+    // on récupère les thèmes
     this.Data.getAllThemes().subscribe(
       themes => {
         this.themes = themes
@@ -61,14 +61,14 @@ export class CreateDinerComponent implements OnInit {
         console.log(this.themes);
       }
     );
-  };
+  }
 
   onSubmit() {
     // on récupère l'utilisateur connecté
     this.diner.id_Organisator = sessionStorage.getItem('id').toString();
     // formattage de la date
-    this.diner.date =  `${this.diner.dateDiner.year}-${this.diner.dateDiner.month}-${this.diner.dateDiner.day} ${this.diner.time.hour}:${this.diner.time.minute}:00`;
-    //creation du diner`
+    this.diner.date = `${this.diner.dateDiner.year}-${this.diner.dateDiner.month}-${this.diner.dateDiner.day} ${this.diner.time.hour}:${this.diner.time.minute}:00`;
+    // creation du diner`
     this.Data.createDiner(this.diner).subscribe(
       data => {
         this.handleResponse(data);

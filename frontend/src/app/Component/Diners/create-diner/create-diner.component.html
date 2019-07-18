@@ -1,40 +1,40 @@
 <form #dinerForm="ngForm" (ngSubmit)="onSubmit()">
-  <div class="row">
-    <div class="col s8 offset-s2">
-      <div class="card-panel">
-        <div class="form-group">
-          <label for="title">Titre</label>
-          <input type="text" id="title" class="form-control" name="title" #name="ngModel" [(ngModel)]='diner.title'
+  <div class="custom-container blueText medium">
+
+        <div class="group-form">
+          <label for="title">Titre :</label>
+          <input type="text" id="title"  name="title" #name="ngModel" [(ngModel)]='diner.title'
                  required
                  pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
         </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" id="description" class="form-control" name="description" #name="ngModel"
+        <div class="group-form">
+          <label for="description">Description :</label>
+          <textarea type="text" id="description"  name="description" #name="ngModel" rows="5"
                  [(ngModel)]='diner.description' required
-                 pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$">
+                    pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._;\-\,\!\?\'\s-]{1,100}$"></textarea>
         </div>
-        <div class="form-group">
-          <input class="form-control" placeholder="dd.mm.yyyy"
+        <div class="group-form">
+          <label for="dateDiner">Date :</label>
+          <input id="dateDiner" placeholder="yyyy-mm-dd"
                  [(ngModel)]="diner.dateDiner" ngbDatepicker #d="ngbDatepicker" name="dateDiner" (focus)="d.open()">
         </div>
-        <div class="form-group">
+        <div class="group-form" style="align-items: center">
           <ngb-timepicker [(ngModel)]="diner.time" name="time"></ngb-timepicker>
         </div>
-        <div class="form-group">
+        <div class="group-form">
           <label for="price">Tarif</label>
-          <input type="number" id="price" class="form-control" name="price" #name="ngModel" [(ngModel)]='diner.price'
+          <input type="number" id="price"  name="price" #name="ngModel" [(ngModel)]='diner.price'
                  required>
         </div>
-        <div class="form-group">
+        <div class="group-form">
           <label for="maxMembers">Nombre maximum de participants</label>
-          <input type="number" id="maxMembers" class="form-control" name="maxMembers" #name="ngModel"
+          <input type="number" id="maxMembers"  name="maxMembers" #name="ngModel"
                  [(ngModel)]='diner.maxMembers' required>
         </div>
 
-        <div class="form-group">
+        <div class="group-form">
           <label for="selectPlace">Choix du lieu</label>
-          <select class="form-control" id="selectPlace"
+          <select  id="selectPlace"
                   required
                   [(ngModel)]="diner.id_Places" name="selectPlace"
                   #place="ngModel">
@@ -47,9 +47,9 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="group-form">
           <label for="selectTheme">Indication du thème</label>
-          <select class="form-control" id="selectTheme"
+          <select  id="selectTheme"
                   required
                   [(ngModel)]="diner.id_Themes" name="selectTheme"
                   #theme="ngModel">
@@ -58,16 +58,14 @@
         </div>
 
 
-        <div class="divider"></div>
-        <div class="section center">
-          <button [disabled]="!dinerForm.valid" type="submit" class="btn waves-effect waves-light purple darken-4">
-            Valider les modifications
-          </button>
-        </div>
-      </div>
+
+        <button id="submitBtn" [disabled]="!dinerForm.valid" type="submit" class="underlineContainer"  >
+          <span class="whiteText underlineAnimation medium">CRÉER LA CONF'</span>
+        </button>
+
+
 
     </div>
 
-  </div>
 
 </form>

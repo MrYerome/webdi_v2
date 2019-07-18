@@ -10,8 +10,6 @@
 }
 
 
-
-
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
   border-color: var(--blue-custom);
 }
@@ -19,7 +17,6 @@
 ::ng-deep .mat-checkbox-checked .mat-checkbox-background {
   background-color: darkcyan !important;
 }
-
 
 
 .Economie{
