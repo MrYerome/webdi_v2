@@ -5,7 +5,7 @@
   <div class="aNavContainer light">
       <ul>
           <li>
-              <a class="aNav" routerLink="diners/list" >Les conf'</a>
+              <a class="aNav" routerLink="diners/list" >Les conf's</a>
           </li>
           <li>
               <a class="aNav" routerLink="" >Le concept</a>
@@ -18,7 +18,7 @@
               <div  id="dropdownMyAccount" class="custom-dropdown regular" [ngClass]="showDropdown ? 'showDrop' : 'hideDrop'">
                   <ul>
                       <li  *ngIf="loggedIn" routerLink="profile/view">Mon compte</li>
-                      <li  *ngIf="loggedIn">Mes conf' à venir (2)</li>
+                      <li  *ngIf="loggedIn">Mes conf's à venir (2)</li>
                       <li *ngIf="!loggedIn" (click)="open()">Connexion</li>
                       <li *ngIf="loggedIn" (click)="logout()">Déconnexion</li>
                   </ul>
