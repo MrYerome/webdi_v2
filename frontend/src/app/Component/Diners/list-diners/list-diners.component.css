@@ -309,6 +309,30 @@ mat-radio-button{
     width: 95%;
   }
 
+  .boutonFiltreBleu{
+    width: 90%;
+  }
+
+  #bandeauTitle{
+    font-size: 2.5rem;
+  }
+
+
+  .container2bttn{
+    width: 95%;
+  }
+
+  /*#dropdownMyThemes, #dropdownMyDates{*/
+    /*top : calc(100% + 2px);*/
+    /*left : 50%;*/
+    /*transform : translateX(-50%);*/
+    /*width: 85%;*/
+    /*border : 1px solid var(--blue-custom);*/
+    /*justify-content:space-between;*/
+    /*flex-wrap:wrap ;*/
+    /*padding : 10px 10px;*/
+  /*}*/
+
   .topPage h1 {
     font-size: 2rem;
   }
