@@ -183,6 +183,9 @@ ngb-modal-window.modal{
 .underlineAnimation.blueText::after{
     background-color: var(--blue-custom);
 }
+.underlineContainer{
+    cursor: pointer;
+}
 .underlineContainer .underlineAnimation::after{
     content: '';
     width: 0px;
