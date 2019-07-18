@@ -13,7 +13,7 @@ import {DatePipe} from "@angular/common";
   selector: 'app-list-diners',
   templateUrl: './list-diners.component.html',
   styleUrls: ['./list-diners.component.css'],
-  host : {
+  host: {
     '(document:click)': 'hideDropdown($event)',
   },
   providers: [DatePipe]
@@ -25,9 +25,9 @@ import {DatePipe} from "@angular/common";
   // exports: [MatCheckbox, MatCheckboxModule],
 })
 export class ListDinersComponent implements OnInit {
-  public showDropdown1:boolean = false;
-  public showDropdown2:boolean = false;
-  public dateToday : Date = new Date() ;
+  public showDropdown1: boolean = false;
+  public showDropdown2: boolean = false;
+  public dateToday: Date = new Date();
   ObsDiners = new Observable();
   ObsDinersTemp = new Observable();
   diners: Diner[];
@@ -37,9 +37,10 @@ export class ListDinersComponent implements OnInit {
   numberTheme: number;
   @ViewChild('dropdown1') dropdown1;
   @ViewChild('dropdown2') dropdown2;
+
   constructor(private Data: DinerServiceService,
               private router: Router,
-  private _eref: ElementRef) {
+              private _eref: ElementRef) {
   }
 
   ngOnInit() {
@@ -113,39 +114,35 @@ export class ListDinersComponent implements OnInit {
   }
 
 
+  /**
+   * Ajuste la liste des diners en passant un filtre sur les thèmes
+   * @param filterThemeArray
+   */
+  today() {
+    console.log(this.dateToday);
+    console.log(this.dateToday.getDate());
+    console.log(this.dateToday.getUTCDate());
 
-    /**
-     * Ajuste la liste des diners en passant un filtre sur les thèmes
-     * @param filterThemeArray
-     */
-    today() {
-      console.log(this.dateToday);
-      console.log(this.dateToday.getDate());
-      console.log(this.dateToday.getUTCDate());
-
-      this.ObsDiners.pipe(
-        map(
-          (diners: Diner[]) => diners.filter(
-            (diner: Diner) => {
-              console.log(new Date(diner.date).toString());
-              // return new Date(diner.date) == this.dateToday;
-              return new Date(diner.date).getUTCDate() == this.dateToday.getUTCDate();
-}
-            //2019-07-16 09:48:33
-            // (diner: Diner) => diner.date.
-          )
+    this.ObsDiners.pipe(
+      map(
+        (diners: Diner[]) => diners.filter(
+          (diner: Diner) => {
+            console.log(new Date(diner.date).toString());
+            // return new Date(diner.date) == this.dateToday;
+            return new Date(diner.date).getUTCDate() == this.dateToday.getUTCDate();
+          }
+          //2019-07-16 09:48:33
+          // (diner: Diner) => diner.date.
         )
-      ).subscribe(
-        (diners: Diner[]) => {
-          this.diners = diners;
-        }
-      );
+      )
+    ).subscribe(
+      (diners: Diner[]) => {
+        this.diners = diners;
+      }
+    );
 
 
-
-
-    }
-
+  }
 
 
   /**
@@ -158,9 +155,6 @@ export class ListDinersComponent implements OnInit {
   }
 
 
-
-
-
   hideDropdown($e) {
     if (!this.dropdown1.nativeElement.contains(event.target)) {
       this.showDropdown1 = false;
@@ -171,8 +165,6 @@ export class ListDinersComponent implements OnInit {
   }
 
 }
-
-
 
 
 /**
