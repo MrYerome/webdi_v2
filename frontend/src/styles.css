@@ -48,15 +48,17 @@ body{
     border: none !important;
     border-radius: unset !important;
     cursor: pointer;
+    height: 600px;
 }
 .card-content{
     border: 1px solid var(--blue-custom);
     border-top: none;
+    height: 350px;
 }
 .card-image{
     overflow: hidden;
     position: relative;
-    height: 400px;
+    height: 250px;
 }
 .card-image img{
     position: absolute;
@@ -69,6 +71,9 @@ body{
     font-size: 2rem;
     border-bottom: 2px solid var(--orange-custom);
     text-transform: uppercase;
+    height: 96px;
+    display: flex;
+    align-items: center;
 }
 .card-info{
     display: flex;

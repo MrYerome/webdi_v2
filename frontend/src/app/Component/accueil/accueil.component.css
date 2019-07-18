@@ -50,6 +50,7 @@ h2{
     border: none;
 }
 
+
 .SeeAllConf{
     font-size: 1.875rem;
     background-color: var(--blue-custom);
@@ -58,6 +59,7 @@ h2{
     justify-content: center;
     align-items: center;
     text-align: center;
+    cursor: pointer;
 }
 
 .organizeText{
@@ -77,6 +79,7 @@ h2{
     align-items: center;
     text-align: center;
     margin-bottom: 30px;
+    cursor: pointer;
 }
 
 .newsletterText{

@@ -11,13 +11,13 @@
               <a class="aNav" routerLink="" >Le concept</a>
           </li>
           <li>
-              <a class="aNav" routerLink="diners/create">Organiser</a>
+              <a class="aNav" (click)="redirectToOrganize()">Organiser</a>
           </li>
           <li #dropdownMyAccount style="position: relative">
               <a class="aNav orangeText myaccountBtn" (click)="showDropdown = !showDropdown "><i class="fas fa-user"></i></a>
               <div  id="dropdownMyAccount" class="custom-dropdown regular" [ngClass]="showDropdown ? 'showDrop' : 'hideDrop'">
                   <ul>
-                      <li  *ngIf="loggedIn">Mon compte</li>
+                      <li  *ngIf="loggedIn" routerLink="profile/view">Mon compte</li>
                       <li  *ngIf="loggedIn">Mes conf' à venir (2)</li>
                       <li *ngIf="!loggedIn" (click)="open()">Connexion</li>
                       <li *ngIf="loggedIn" (click)="logout()">Déconnexion</li>

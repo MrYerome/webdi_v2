@@ -21,6 +21,7 @@ export class ConnexionComponent implements OnInit {
   public error = null;
   public errorActive = null;
   public bErrorActive: boolean = false;
+  public redirect;
 
   constructor(
     private http: HttpClient,
@@ -51,6 +52,9 @@ export class ConnexionComponent implements OnInit {
      // sessionStorage.setItem('user', JSON.stringify(data));
       sessionStorage.setItem('id', JSON.stringify(data[0]["id"]));
       this.Auth.changeAuthStatus(true);
+      if (this.redirect !== 'false') {
+        this.router.navigateByUrl(this.redirect);
+      }
       this.activeModal.close();
     }
 

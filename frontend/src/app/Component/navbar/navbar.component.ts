@@ -47,9 +47,18 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-    open() {
+    open(redirectPage: string = 'false') {
         const modalRef = this.modalService.open(ConnexionComponent);
+        modalRef.componentInstance.redirect = redirectPage;
+
     }
 
+    redirectToOrganize() {
+        if (!this.loggedIn) {
+            this.open('/diners/create');
+        } else {
+            this.router.navigateByUrl('/diners/create');
+        }
+    }
 
 }
