@@ -6,9 +6,9 @@
 
 <div class="container2bttn">
   <div class="whiteText SeeConf underlineContainer" (click)="selectFutureDiners()" [ngClass]="activeClass ? 'SeeFuturesConf' : 'SeeOldConf'" >
-    <span class="underlineAnimation" [ngClass]="activeClass ? 'blueText' : 'whiteText'" >Les conf's à venir</span></div>
-  <div class="whiteText SeeConf underlineContainer" (click)="selectOldDiners()" [ngClass]="!activeClass ? 'SeeOldConf' : 'SeeFuturesConf'" >
-    <span class="underlineAnimation" [ngClass]="!activeClass ? 'whiteText' : 'blueText'">Les conf's passées</span></div>
+    <span class="underlineAnimation" [ngClass]="activeClass ? 'whiteText' : 'blueText'" >Les conf's à venir</span></div>
+  <div class="whiteText SeeConf underlineContainer" (click)="selectOldDiners()" [ngClass]="!activeClass ? 'SeeFuturesConf' : 'SeeOldConf'" >
+    <span class="underlineAnimation" [ngClass]="!activeClass ?  'whiteText' : 'blueText'">Les conf's passées</span></div>
 </div>
 <div class="container">
 

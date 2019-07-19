@@ -61,4 +61,8 @@ export class NavbarComponent implements OnInit {
         }
     }
 
+    signup(){
+      this.router.navigateByUrl('/signup');
+      console.log("signup");
+    }
 }

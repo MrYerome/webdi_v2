@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
     specAlim: null
   };
 
-  public isUserLoginDoesNotExist: boolean = true;
+  public isUserLoginDoesNotExist: boolean = false;
 
   public form2 = {
     email: null,

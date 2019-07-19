@@ -34,12 +34,12 @@ export class ActivationComponent implements OnInit {
   handleResponse(data) {
 //En cas de succès, je propose la redirection sur la page de connexion
     let _router = this.router;
-    this.Notify.confirm('Votre compte est désormais activé. Vous pouvez vous connecter', {
+    this.Notify.confirm('Votre compte est désormais activé. Vous pouvez vous connecter.', {
       buttons: [
         {
           text: 'Page de connexion',
           action: toster => {
-            _router.navigateByUrl('/connexion'),
+            _router.navigateByUrl('/'),
               this.Notify.remove(toster.id)
           }
         },

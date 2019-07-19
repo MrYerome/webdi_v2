@@ -4,7 +4,9 @@
 </div>
 
 <div class="custom-container">
-    <h2 class="blueText bold discoverTitle">Découvrez</h2>
+    <h2 class="blueText bold discoverTitle">Le concept</h2>
+  <div><p>Voici le concept.</p></div>
+    <h2 class="blueText bold discoverTitle">Nos trois prochaines conférences</h2>
     <div class='container3First row' >
         <div *ngFor="let diner of diners; let i = index" class="col-sm-12 col-md-6 col-lg-4 p-0 p-md-3 cardContainer" [ngClass]="i==1 ? 'secondCol' : ''" (click)="selectDiner(diner.id)">
             <!-- boucle for -->
@@ -36,7 +38,7 @@
 <div class="custom-container">
 
     <div class="blueText organizeText col-12">
-        Vous voulez organiser un conf' ?<br>
+        Vous voulez organiser une conf' ?<br>
         Avec plaisir !
     </div>
 </div>

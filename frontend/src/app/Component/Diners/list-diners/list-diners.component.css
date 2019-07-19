@@ -245,12 +245,12 @@
 
 .SeeFuturesConf{
   background-color: var(--blue-custom);
-  color : white!important;
+
 }
 
 .SeeOldConf{
   background-color: white;
-  color :  var(--black-custom)!important;
+  border : 2px solid var(--blue-custom);
 }
 
 

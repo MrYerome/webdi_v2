@@ -20,6 +20,7 @@
                       <li  *ngIf="loggedIn" routerLink="profile/view">Mon compte</li>
                       <li  *ngIf="loggedIn">Mes conf's à venir (2)</li>
                       <li *ngIf="!loggedIn" (click)="open()">Connexion</li>
+                      <li *ngIf="!loggedIn" (click)="signup()">Créer mon compte</li>
                       <li *ngIf="loggedIn" (click)="logout()">Déconnexion</li>
                   </ul>
               </div>
