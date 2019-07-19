@@ -5,7 +5,22 @@
 
 <div class="custom-container">
     <h2 class="blueText bold discoverTitle">Le concept</h2>
-  <div><p>Voici le concept.</p></div>
+  <div><p>Le concept</p></div>
+  <div><p>Vous avez envie d’apprendre ? De sortir ? De discuter ? D’échanger ? De rencontrer des nouvelles personnes ?
+
+    Bande de conf’ c’est un mélange de tout ça !</p>
+
+   <p> Le principe est simple, un sujet, un lieu, un intervenant et bien-sur vous, les participants.</p>
+
+    <p>Fini les conférences longues et ennuyeuses, ou l’on écoute un intervenant, sans même pouvoir interagir.
+    Bande de conf', c’est tout le contraire, un format court et dynamique, avec l’intervention d’un spécialiste du sujet abordé, de l’échange entre l’intervenant et les participants et tout cela autour d’un petit verre.
+    </p>
+    <p>La convivialité et la bonne humeur sont les maîtres-mots de notre concept !</p>
+
+    <p><i>N’hésitez pas à consulter tous nos événements.</i></p>
+
+    <p>On vous attends !</p>
+  </div>
     <h2 class="blueText bold discoverTitle">Nos trois prochaines conférences</h2>
     <div class='container3First row' >
         <div *ngFor="let diner of diners; let i = index" class="col-sm-12 col-md-6 col-lg-4 p-0 p-md-3 cardContainer" [ngClass]="i==1 ? 'secondCol' : ''" (click)="selectDiner(diner.id)">
