@@ -1,0 +1,85 @@
+.custom-container{
+    width: 55%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#bandeau img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#bandeauTitle{
+    text-align: center;
+    z-index: 1;
+    color: white;
+    font-size: 4.5rem;
+}
+#bandeau {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 50px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.group-form{
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    width: 400px;
+    align-items: flex-start;
+}
+.group-form label{
+    font-size: 1.25rem;
+}
+.group-form input,
+.group-form textarea,
+.group-form select{
+    width: 100%;
+    border: 1px solid var(--blue-custom);
+    padding: 5px 10px;
+}
+
+#submitBtn{
+    margin-bottom: 30px;
+    margin-top: 30px;
+    width: 400px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue-custom);
+    border: none;
+    cursor: pointer;
+}
+#submitBtn:disabled{
+    background-color:rgba(38, 70, 83, 0.4);
+}
+
+@media screen and (max-width: 756px) {
+    #bandeau{
+        height: 250px;
+        margin-bottom: 25px;
+    }
+    #bandeauTitle{
+        font-size: 2.5rem;
+    }
+    .custom-container{
+        width: 100%;
+    }
+    #submitBtn,
+    .group-form{
+        width: 90%;
+    }
+}

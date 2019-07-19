@@ -18,7 +18,7 @@ import {AuthGuard} from "../../Services/AuthGuard";
  */
 const dinersRoutes: Routes = [
     {path : 'diners/list', component : ListDinersComponent},
-    {path : 'diners/create', component : CreateDinerComponent},
+    {path : 'diners/create', canActivate: [AuthGuard], component : CreateDinerComponent},
     {path : 'diners/view/:id', component: ViewDinerComponent},
     {path : 'diners/list/old', component: ListoldDinersComponent},
     {path : 'diners/participe', canActivate: [AuthGuard], component: ParticipeDinerComponent},

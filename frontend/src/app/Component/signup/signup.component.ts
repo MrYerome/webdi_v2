@@ -4,6 +4,8 @@ import {DataService} from "../../Services/Dataservice";
 import {HttpClient} from "@angular/common/http";
 import {TokenService} from "../../Services/token.service";
 import {AuthService} from "../../Services/auth.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ConnexionComponent} from "../connexion/connexion.component";
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +23,7 @@ export class SignupComponent implements OnInit {
     password_confirmation: null,
     specAlim: null
   };
-
+  public isPasswordConfirm: boolean = true;
   public isUserLoginDoesNotExist: boolean = false;
 
   public form2 = {
@@ -33,12 +35,13 @@ export class SignupComponent implements OnInit {
     private Data: DataService,
     private Http: HttpClient,
     private router: Router,
-    private Auth: AuthService
+    private Auth: AuthService,
+    private modalService: NgbModal
   ) {
   }
 
   onSubmit() {
-    console.log(this.form);
+
     this.Data.signup(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -80,6 +83,19 @@ export class SignupComponent implements OnInit {
       this.isUserLoginDoesNotExist = false;
     }
     console.log("isUserLoginExist " + this.isUserLoginDoesNotExist);
+  }
+
+  open(redirectPage: string = 'false') {
+      const modalRef = this.modalService.open(ConnexionComponent);
+      modalRef.componentInstance.redirect = redirectPage;
+
+  }
+
+  chackPasswordConfirm() {
+      if (this.form.password != null && this.form.password_confirmation != null) {
+        this.isPasswordConfirm = (this.form.password === this.form.password_confirmation)
+      }
+    // if (this.form.password)
   }
 
 }

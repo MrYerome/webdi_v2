@@ -1,111 +1,80 @@
-<div class="mt-4 col-8 offset-2">
-  <div class="card">
-    <div class="card-header">Je crée mon compte</div>
-    <div class="card-body">
-      <form #signupForm=ngForm (ngSubmit)="onSubmit()">
-        <!--name-->
-        <div class="form-group row">
-          <label for="name" class="col-sm-2 col-form-label">Nom</label>
-          <div class="col-sm-10">
-            <mat-form-field>
-              <input matInput type="text" name="name" class="form-control" id="name" placeholder="Nom"
-                     [(ngModel)]="form.name" required>
-            </mat-form-field>
-            <!--<div class="alert alert-danger" [hidden]="!error.login">-->
-            <!--{{error.login}}-->
-            <!--</div>-->
-          </div>
-        </div>
-
-        <!--firstName-->
-        <div class="form-group row">
-          <label for="firstName" class="col-sm-2 col-form-label">Prénom</label>
-          <div class="col-sm-10">
-            <mat-form-field>
-              <input matInput type="text" name="firstName" class="form-control" id="firstName" placeholder=""
-                     [(ngModel)]="form.firstName">
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="login" class="col-sm-2 col-form-label">Login</label>
-          <div class="col-sm-10">
-            <mat-form-field>
-              <input matInput type="text" name="login" class="form-control" id="login" placeholder="Login"
-                     [(ngModel)]="form.login"
-                     required (change)="verifLogin(form.login)">
-            </mat-form-field>
-            <div class="alert alert-danger" *ngIf="isUserLoginDoesNotExist">
-              <p>Cet identifiant est déjà utilisé.</p>
-              <p>Veuillez en choisir un autre.</p>
-            </div>
-          </div>
-        </div>
-        <!--mail-->
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <mat-form-field>
-              <input matInput type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email"
-                     [(ngModel)]="form.email" required>
-            </mat-form-field>
-            <!--<div class="alert alert-danger" [hidden]="!error.email">-->
-            <!--{{error.email}}-->
-            <!--</div>-->
-          </div>
-        </div>
-        <!--password-->
-        <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Mot de passe</label>
-          <div class="col-sm-10">
-            <mat-form-field>
-              <input matInput type="password" name="password_confirmation" class="form-control" id="inputPassword3"
-                     placeholder="Mot de passe" [(ngModel)]="form.password_confirmation"
-                     required>
-            </mat-form-field>
-          </div>
-        </div>
-        <!--password2-->
-        <div class="form-group row">
-          <label for="inputPasswordConfirmation3" class="col-sm-2 col-form-label">Confirmer le mot de passe</label>
-          <div class="col-sm-10">
-            <mat-form-field>
-              <input matInput type="password" name="password" class="form-control" id="inputPasswordConfirmation3"
-                     placeholder="Confirmer le mot de passe"
-                     [(ngModel)]="form.password" required>
-            </mat-form-field>
-            <div class="alert alert-danger" *ngIf="form.password!=form.password_confirmation">Les deux mots de passe ne
-              sont pas identiques
-            </div>
-            <!--<div class="alert alert-danger" [hidden]="!error.password">-->
-            <!--{{error.password}}-->
-            <!--</div>-->
-          </div>
-        </div>
-
-
-        <div class="form-group row">
-          <label for="specAlim" class="col-sm-2 col-form-label">Régimes alimentaires, allergies</label>
-          <div class="col-sm-10">
-            <mat-form-field>
-              <input matInput type="text" id="specAlim" class="form-control" name="specAlim"
-                     placeholder="Allergies / régime alimentaire"
-                     [(ngModel)]="form.specAlim">
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-10 offset-2">
-            <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid || isUserLoginDoesNotExist">Créer mon compte
-            </button>
-            <a routerLink="/login" class="btn btn-info float-right">J'ai déjà un compte</a>
-
-          </div>
-        </div>
-
-      </form>
+<div id="bandeau">
+  <img src="assets/img/inscription.jpg" alt="" srcset="">
+  <h1 id="bandeauTitle" class="regular">Inscrivez vous</h1>
+</div>
+<div class="custom-container">
+  <form #signupForm=ngForm (ngSubmit)="onSubmit()">
+    <!--name-->
+    <div class="group-form">
+      <label for="name" >Nom</label>
+      <input type="text" name="name" id="name"
+                 [(ngModel)]="form.name" required>
     </div>
-  </div>
+
+    <!--firstName-->
+    <div class="group-form">
+      <label for="firstName" >Prénom</label>
+      <input type="text" name="firstName" id="firstName"
+                 [(ngModel)]="form.firstName">
+    </div>
+
+    <div class="group-form">
+      <label for="login">Login</label>
+      <input type="text" name="login" id="login"
+               [(ngModel)]="form.login"
+               required (change)="verifLogin(form.login)">
+      <div class="alert alert-danger" *ngIf="isUserLoginDoesNotExist">
+        <p>Cet identifiant est déjà utilisé.</p>
+        <p>Veuillez en choisir un autre.</p>
+      </div>
+    </div>
+    <!--mail-->
+    <div class="group-form">
+      <label for="inputEmail3" >Email</label>
+
+      <input type="email" name="email" id="inputEmail3"
+                 [(ngModel)]="form.email" required>
+    </div>
+    <!--password-->
+    <div class="group-form ">
+      <label for="inputPassword3" >Mot de passe</label>
+
+      <input type="password" name="password"  id="inputPassword3"
+                  [(ngModel)]="form.password"
+                  (change)="chackPasswordConfirm()"/>
+
+    </div>
+    <!--password2-->
+    <div class="group-form ">
+      <label for="inputPasswordConfirmation3">Confirmer le mot de passe</label>
+
+      <input type="password" name="password_confirmation" id="inputPasswordConfirmation3"
+             (change)="chackPasswordConfirm()"
+                 [(ngModel)]="form.password_confirmation" required>
+
+      <div class="alert alert-danger" *ngIf="!isPasswordConfirm">Les deux mots de passe ne
+        sont pas identiques
+      </div>
+
+    </div>
+
+
+    <div class="group-form ">
+      <label for="specAlim">Régimes alimentaires, allergies</label>
+
+      <input matInput type="text" id="specAlim" name="specAlim"
+                 [(ngModel)]="form.specAlim">
+
+    </div>
+
+
+
+    <button id="submitBtn" type="submit" class="underlineContainer" [disabled]="!signupForm.valid || isUserLoginDoesNotExist">
+      <span class="underlineAnimation whiteText">Créer mon compte</span>
+    </button>
+    <div style="display: flex; justify-content: center; margin-bottom: 25px">
+      <a (click)="open('/')" style="text-decoration: underline; cursor:pointer;" >Vous avez déjà un compte ?</a>
+    </div>
+
+  </form>
 </div>
