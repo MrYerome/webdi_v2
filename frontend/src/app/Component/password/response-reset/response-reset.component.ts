@@ -9,7 +9,14 @@ import {DataService} from "../../../Services/Dataservice";
   styleUrls: ['./response-reset.component.css']
 })
 export class ResponseResetComponent implements OnInit {
-  public error=[];
+  public error={
+    email : null,
+    password : null,
+    password_confirmation:null
+  }
+
+
+  ;
   public form = {
     email : null,
     password : null,

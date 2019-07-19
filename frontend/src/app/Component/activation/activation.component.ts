@@ -37,7 +37,7 @@ export class ActivationComponent implements OnInit {
     this.Notify.confirm('Votre compte est désormais activé. Vous pouvez vous connecter.', {
       buttons: [
         {
-          text: 'Page de connexion',
+          text: 'Retour à l\'accueil',
           action: toster => {
             _router.navigateByUrl('/'),
               this.Notify.remove(toster.id)

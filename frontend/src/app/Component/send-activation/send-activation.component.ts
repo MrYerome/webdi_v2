@@ -14,6 +14,7 @@ export class SendActivationComponent implements OnInit {
   public form = {
     email: null,
   };
+  public isUserLoginDoesNotExist : boolean = false;
 
   public error = [];
 
