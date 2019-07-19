@@ -28,6 +28,7 @@ export class ListDinersComponent implements OnInit {
   public showDropdown1: boolean = false;
   public showDropdown2: boolean = false;
   public dateToday: Date = new Date();
+  public activeClass : boolean = true;
   ObsDiners = new Observable();
   ObsDinersTemp = new Observable();
   diners: Diner[];
@@ -74,6 +75,8 @@ export class ListDinersComponent implements OnInit {
     this.ObsDiners = this.Data.getAllDiners();
     this.ObsDinersTemp = this.ObsDiners;
     this.selectAllDiners();
+    this.activeClass = true;
+    console.log(this.activeClass);
   }
 
   selectOldDiners() {
@@ -81,6 +84,9 @@ export class ListDinersComponent implements OnInit {
     this.ObsDiners = this.Data.getOldDiners();
     this.ObsDinersTemp = this.ObsDiners;
     this.selectAllDiners();
+    this.activeClass = false;
+    console.log(this.activeClass);
+
   }
 
   /**
