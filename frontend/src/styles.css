@@ -61,10 +61,10 @@ body{
     height: 250px;
 }
 .card-image img{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    object-fit: cover;
+    object-position: center;
     width: 100%;
+    height: 100%;
 }
 .card-title{
     padding: 10px 0px 10px 5px;
@@ -182,6 +182,9 @@ ngb-modal-window.modal{
 }
 .underlineAnimation.blueText::after{
     background-color: var(--blue-custom);
+}
+.underlineContainer{
+    cursor: pointer;
 }
 .underlineContainer .underlineAnimation::after{
     content: '';
