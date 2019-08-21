@@ -15,8 +15,6 @@ import {SendActivationComponent} from "../Component/send-activation/send-activat
 import {ForbiddenComponent} from "../Component/forbidden/forbidden.component";
 
 
-
-
 const ROUTES: Routes = [
   {path: '', component : AccueilComponent  },
   {path: 'accueil', component : AccueilComponent  },

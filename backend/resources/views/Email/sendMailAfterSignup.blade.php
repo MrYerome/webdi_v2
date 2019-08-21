@@ -8,7 +8,7 @@ Activer votre compte
 @endcomponent
 
 Si le lien ne fonctionne pas, veuillez copier / coller le lien suivant dans votre navigateur : <br>
-http://localhost:4200/accueil?token={{ $token }}
+http://localhost:4200/activation?token={{ $token }}
 <br>
 Merci,<br>
 L'équipe des Dîners Intéressants,<br>

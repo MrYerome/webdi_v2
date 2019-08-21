@@ -14,7 +14,7 @@
 
 
   <div class="boutonFiltreBleu blueText" style="position: relative" #dropdown1>
-    <div (click)="showDropdown1 = !showDropdown1 ">THEMES</div>
+    <div (click)="showDropdown1 = !showDropdown1 " style ="cursor: pointer" >THEMES</div>
     <div id="dropdownMyThemes" class="custom-dropdown regular" [ngClass]="showDropdown1 ? 'showDrop' : 'hideDrop'">
       <span *ngFor="let theme of themes; let i = index">
         <mat-checkbox name="themes" value="{{theme.id}}"
@@ -22,12 +22,11 @@
         </mat-checkbox>
       </span>
     </div>
-
   </div>
 
 
   <div class="boutonFiltreBleu blueText" style="position: relative" #dropdown2>
-    <div (click)="showDropdown2 = !showDropdown2 ">DATES</div>
+    <div (click)="showDropdown2 = !showDropdown2 " style ="cursor: pointer" >DATES</div>
     <div id="dropdownMyDates" class="custom-dropdown regular" [ngClass]="showDropdown2 ? 'showDrop' : 'hideDrop'">
       <mat-radio-group value="date">
       <mat-radio-button name="today" (change)="today()">Aujourd'hui  </mat-radio-button>
@@ -39,7 +38,6 @@
       <mat-radio-button name="tous" (change)="tous()">Tous les dîners </mat-radio-button>
       </mat-radio-group>
     </div>
-
   </div>
 
   <div class="recomandationConf">

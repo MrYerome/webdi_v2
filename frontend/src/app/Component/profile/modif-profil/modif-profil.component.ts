@@ -87,7 +87,7 @@ export class ModifProfilComponent implements OnInit {
 
   goBack(): void {
     console.log("router");
-     this.router.navigate(['/profile/list']);
+     this.router.navigate(['/profile/view']);
   }
 
 }

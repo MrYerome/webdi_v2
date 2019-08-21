@@ -7,7 +7,8 @@ import {ModifProfilComponent} from "./modif-profil/modif-profil.component";
 import {AuthGuard} from "../../Services/AuthGuard";
 
 const profilesRoutes: Routes = [
-  {path : 'profile/list', canActivate: [AuthGuard],  component : ListProfilesComponent},
+  // {path : 'profile/list', canActivate: [AuthGuard],  component : ListProfilesComponent},
+  {path : 'profile/list',  component : ListProfilesComponent},
   {path : 'profile/edit/:id', canActivate: [AuthGuard],  component : ModifProfilComponent},
   {path : 'profile/view/:id', canActivate: [AuthGuard], component : ProfileViewComponent},
   {path : 'profile/view', canActivate: [AuthGuard], component : ProfileViewComponent},
