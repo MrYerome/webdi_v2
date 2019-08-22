@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -8,19 +9,23 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   public mobile: boolean;
-  constructor() { }
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
     this.setIsMobile(window.innerWidth);
   }
+
   onResize(event) {
-      this.setIsMobile(event.target.innerWidth);
+    this.setIsMobile(event.target.innerWidth);
   }
+
   setIsMobile(width) {
-      if (width < 757) { // 768px portrait
-          this.mobile = true;
-      } else {
-          this.mobile = false;
-      }
+    if (width < 757) { // 768px portrait
+      this.mobile = true;
+    } else {
+      this.mobile = false;
+    }
   }
 }

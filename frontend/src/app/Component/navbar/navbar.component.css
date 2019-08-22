@@ -49,8 +49,13 @@ a{
 
 @media screen and (max-width: 768px) {
     .aNavContainer{
-        display: none;
+      /*display:none;*/
+        /*font-size: 1rem!important;*/
     }
+  .aNav{
+    font-size: 0.7rem;
+    margin: 20px 5px;
+  }
 
     #logoNav{
         width: 30px;

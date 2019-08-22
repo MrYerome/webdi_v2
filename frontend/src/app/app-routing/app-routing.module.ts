@@ -13,6 +13,7 @@ import { AfterLoginService} from "../Services/after-login.service";
 import {ActivationComponent} from "../Component/activation/activation.component";
 import {SendActivationComponent} from "../Component/send-activation/send-activation.component";
 import {ForbiddenComponent} from "../Component/forbidden/forbidden.component";
+import {MentionsComponent} from "../Component/mentions/mentions.component";
 
 
 const ROUTES: Routes = [
@@ -20,6 +21,7 @@ const ROUTES: Routes = [
   {path: 'accueil', component : AccueilComponent  },
   {path: 'test', component : TestComponent  },
   {path: 'forbidden', component : ForbiddenComponent  },
+  {path: 'mentions', component : MentionsComponent  },
   {path: 'connexion',
     component : ConnexionComponent,
     canActivate: [BeforeLoginService]},
