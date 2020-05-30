@@ -50,6 +50,7 @@
 
       <input type="password" name="password_confirmation" id="inputPasswordConfirmation3"
              (change)="chackPasswordConfirm()"
+
                  [(ngModel)]="form.password_confirmation" required>
 
       <div class="alert alert-danger" *ngIf="!isPasswordConfirm">Les deux mots de passe ne
@@ -60,7 +61,7 @@
 
 
     <div class="group-form ">
-      <label for="specAlim">Régimes alimentaires, allergies</label>
+      <label for="specAlim">Centres d'intérêt</label>
 
       <input matInput type="text" id="specAlim" name="specAlim"
                  [(ngModel)]="form.specAlim">

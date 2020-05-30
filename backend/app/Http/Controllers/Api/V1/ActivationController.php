@@ -30,6 +30,7 @@ class ActivationController extends Controller
 
     public function send($email)
     {
+
         $token = $this->createToken($email);
         Mail::to($email)->send(new SendMailAfterSignup($token));
     }

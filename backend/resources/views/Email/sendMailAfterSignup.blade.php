@@ -3,15 +3,15 @@
 
 Cliquez sur le bouton ci-dessous pour activer votre compte :
 
-@component('mail::button', ['url' => 'http://localhost:4200/activation?token='.$token])
+@component('mail::button', ['url' => 'http://bandedeconfs/activation?token='.$token])
 Activer votre compte
 @endcomponent
 
 Si le lien ne fonctionne pas, veuillez copier / coller le lien suivant dans votre navigateur : <br>
-http://localhost:4200/activation?token={{ $token }}
+http://bandedeconfs/activation?token={{ $token }}
 <br>
 Merci,<br>
-L'équipe des Dîners Intéressants,<br>
+L'équipe de Bande de Conf's,<br>
 {{ config('app.name') }}
 @endcomponent
 

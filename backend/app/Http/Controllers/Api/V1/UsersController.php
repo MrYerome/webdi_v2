@@ -47,7 +47,7 @@ class UsersController extends Controller
             $attribut['firstName'] = $request->firstName;
             $attribut['email'] = $request->email;
             // TODO: Modifier le id_Cities pour qu'il ne soit plus fixe
-            $attribut['id_Cities'] = 1;
+            $attribut['id_Cities'] = 18073;
             $attribut['id_UserTypes'] = '2';
 
             $user = Users::create($attribut);
